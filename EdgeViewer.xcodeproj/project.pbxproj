@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E01AAEBF20693BF100CDED0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AAEBE20693BF100CDED0A /* AppDelegate.swift */; };
+		E01AAEC120693BF100CDED0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AAEC020693BF100CDED0A /* ViewController.swift */; };
+		E01AAEC320693BF100CDED0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E01AAEC220693BF100CDED0A /* Assets.xcassets */; };
+		E01AAEC620693BF100CDED0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E01AAEC420693BF100CDED0A /* Main.storyboard */; };
+		E01AAED220693BF200CDED0A /* EdgeViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AAED120693BF200CDED0A /* EdgeViewerTests.swift */; };
+		E01AAEDD20693BF200CDED0A /* EdgeViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AAEDC20693BF200CDED0A /* EdgeViewerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E01AAECE20693BF200CDED0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E01AAEB320693BF100CDED0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E01AAEBA20693BF100CDED0A;
+			remoteInfo = EdgeViewer;
+		};
+		E01AAED920693BF200CDED0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E01AAEB320693BF100CDED0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E01AAEBA20693BF100CDED0A;
+			remoteInfo = EdgeViewer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E01AAEBB20693BF100CDED0A /* EdgeViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgeViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E01AAEBE20693BF100CDED0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E01AAEC020693BF100CDED0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E01AAEC220693BF100CDED0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E01AAEC520693BF100CDED0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E01AAEC720693BF100CDED0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E01AAEC820693BF100CDED0A /* EdgeViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EdgeViewer.entitlements; sourceTree = "<group>"; };
+		E01AAECD20693BF200CDED0A /* EdgeViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdgeViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E01AAED120693BF200CDED0A /* EdgeViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeViewerTests.swift; sourceTree = "<group>"; };
+		E01AAED320693BF200CDED0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E01AAED820693BF200CDED0A /* EdgeViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdgeViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E01AAEDC20693BF200CDED0A /* EdgeViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeViewerUITests.swift; sourceTree = "<group>"; };
+		E01AAEDE20693BF200CDED0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E01AAEB820693BF100CDED0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E01AAECA20693BF200CDED0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E01AAED520693BF200CDED0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E01AAEB220693BF100CDED0A = {
+			isa = PBXGroup;
+			children = (
+				E01AAEBD20693BF100CDED0A /* EdgeViewer */,
+				E01AAED020693BF200CDED0A /* EdgeViewerTests */,
+				E01AAEDB20693BF200CDED0A /* EdgeViewerUITests */,
+				E01AAEBC20693BF100CDED0A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E01AAEBC20693BF100CDED0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E01AAEBB20693BF100CDED0A /* EdgeViewer.app */,
+				E01AAECD20693BF200CDED0A /* EdgeViewerTests.xctest */,
+				E01AAED820693BF200CDED0A /* EdgeViewerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E01AAEBD20693BF100CDED0A /* EdgeViewer */ = {
+			isa = PBXGroup;
+			children = (
+				E01AAEBE20693BF100CDED0A /* AppDelegate.swift */,
+				E01AAEC020693BF100CDED0A /* ViewController.swift */,
+				E01AAEC220693BF100CDED0A /* Assets.xcassets */,
+				E01AAEC420693BF100CDED0A /* Main.storyboard */,
+				E01AAEC720693BF100CDED0A /* Info.plist */,
+				E01AAEC820693BF100CDED0A /* EdgeViewer.entitlements */,
+			);
+			path = EdgeViewer;
+			sourceTree = "<group>";
+		};
+		E01AAED020693BF200CDED0A /* EdgeViewerTests */ = {
+			isa = PBXGroup;
+			children = (
+				E01AAED120693BF200CDED0A /* EdgeViewerTests.swift */,
+				E01AAED320693BF200CDED0A /* Info.plist */,
+			);
+			path = EdgeViewerTests;
+			sourceTree = "<group>";
+		};
+		E01AAEDB20693BF200CDED0A /* EdgeViewerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E01AAEDC20693BF200CDED0A /* EdgeViewerUITests.swift */,
+				E01AAEDE20693BF200CDED0A /* Info.plist */,
+			);
+			path = EdgeViewerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E01AAEBA20693BF100CDED0A /* EdgeViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E01AAEE120693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewer" */;
+			buildPhases = (
+				E01AAEB720693BF100CDED0A /* Sources */,
+				E01AAEB820693BF100CDED0A /* Frameworks */,
+				E01AAEB920693BF100CDED0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EdgeViewer;
+			productName = EdgeViewer;
+			productReference = E01AAEBB20693BF100CDED0A /* EdgeViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E01AAECC20693BF200CDED0A /* EdgeViewerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E01AAEE420693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewerTests" */;
+			buildPhases = (
+				E01AAEC920693BF200CDED0A /* Sources */,
+				E01AAECA20693BF200CDED0A /* Frameworks */,
+				E01AAECB20693BF200CDED0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E01AAECF20693BF200CDED0A /* PBXTargetDependency */,
+			);
+			name = EdgeViewerTests;
+			productName = EdgeViewerTests;
+			productReference = E01AAECD20693BF200CDED0A /* EdgeViewerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E01AAED720693BF200CDED0A /* EdgeViewerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E01AAEE720693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewerUITests" */;
+			buildPhases = (
+				E01AAED420693BF200CDED0A /* Sources */,
+				E01AAED520693BF200CDED0A /* Frameworks */,
+				E01AAED620693BF200CDED0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E01AAEDA20693BF200CDED0A /* PBXTargetDependency */,
+			);
+			name = EdgeViewerUITests;
+			productName = EdgeViewerUITests;
+			productReference = E01AAED820693BF200CDED0A /* EdgeViewerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E01AAEB320693BF100CDED0A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = NoName;
+				TargetAttributes = {
+					E01AAEBA20693BF100CDED0A = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					E01AAECC20693BF200CDED0A = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E01AAEBA20693BF100CDED0A;
+					};
+					E01AAED720693BF200CDED0A = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E01AAEBA20693BF100CDED0A;
+					};
+				};
+			};
+			buildConfigurationList = E01AAEB620693BF100CDED0A /* Build configuration list for PBXProject "EdgeViewer" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E01AAEB220693BF100CDED0A;
+			productRefGroup = E01AAEBC20693BF100CDED0A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E01AAEBA20693BF100CDED0A /* EdgeViewer */,
+				E01AAECC20693BF200CDED0A /* EdgeViewerTests */,
+				E01AAED720693BF200CDED0A /* EdgeViewerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E01AAEB920693BF100CDED0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E01AAEC320693BF100CDED0A /* Assets.xcassets in Resources */,
+				E01AAEC620693BF100CDED0A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E01AAECB20693BF200CDED0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E01AAED620693BF200CDED0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E01AAEB720693BF100CDED0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E01AAEC120693BF100CDED0A /* ViewController.swift in Sources */,
+				E01AAEBF20693BF100CDED0A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E01AAEC920693BF200CDED0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E01AAED220693BF200CDED0A /* EdgeViewerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E01AAED420693BF200CDED0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E01AAEDD20693BF200CDED0A /* EdgeViewerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E01AAECF20693BF200CDED0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E01AAEBA20693BF100CDED0A /* EdgeViewer */;
+			targetProxy = E01AAECE20693BF200CDED0A /* PBXContainerItemProxy */;
+		};
+		E01AAEDA20693BF200CDED0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E01AAEBA20693BF100CDED0A /* EdgeViewer */;
+			targetProxy = E01AAED920693BF200CDED0A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E01AAEC420693BF100CDED0A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E01AAEC520693BF100CDED0A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E01AAEDF20693BF200CDED0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E01AAEE020693BF200CDED0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		E01AAEE220693BF200CDED0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EdgeViewer/EdgeViewer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EdgeViewer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		E01AAEE320693BF200CDED0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EdgeViewer/EdgeViewer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EdgeViewer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		E01AAEE520693BF200CDED0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EdgeViewerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EdgeViewer.app/Contents/MacOS/EdgeViewer";
+			};
+			name = Debug;
+		};
+		E01AAEE620693BF200CDED0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EdgeViewerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EdgeViewer.app/Contents/MacOS/EdgeViewer";
+			};
+			name = Release;
+		};
+		E01AAEE820693BF200CDED0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EdgeViewerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = EdgeViewer;
+			};
+			name = Debug;
+		};
+		E01AAEE920693BF200CDED0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EdgeViewerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = EdgeViewer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E01AAEB620693BF100CDED0A /* Build configuration list for PBXProject "EdgeViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E01AAEDF20693BF200CDED0A /* Debug */,
+				E01AAEE020693BF200CDED0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E01AAEE120693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E01AAEE220693BF200CDED0A /* Debug */,
+				E01AAEE320693BF200CDED0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E01AAEE420693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E01AAEE520693BF200CDED0A /* Debug */,
+				E01AAEE620693BF200CDED0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E01AAEE720693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E01AAEE820693BF200CDED0A /* Debug */,
+				E01AAEE920693BF200CDED0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E01AAEB320693BF100CDED0A /* Project object */;
+}

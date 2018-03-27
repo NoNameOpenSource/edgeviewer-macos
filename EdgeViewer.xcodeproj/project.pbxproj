@@ -7,63 +7,71 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E01AAEBF20693BF100CDED0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AAEBE20693BF100CDED0A /* AppDelegate.swift */; };
-		E01AAEC120693BF100CDED0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AAEC020693BF100CDED0A /* ViewController.swift */; };
-		E01AAEC320693BF100CDED0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E01AAEC220693BF100CDED0A /* Assets.xcassets */; };
-		E01AAEC620693BF100CDED0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E01AAEC420693BF100CDED0A /* Main.storyboard */; };
-		E01AAED220693BF200CDED0A /* EdgeViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AAED120693BF200CDED0A /* EdgeViewerTests.swift */; };
-		E01AAEDD20693BF200CDED0A /* EdgeViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AAEDC20693BF200CDED0A /* EdgeViewerUITests.swift */; };
+		B118CDB2206AAADC009E1413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDB1206AAADC009E1413 /* AppDelegate.swift */; };
+		B118CDB4206AAADC009E1413 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDB3206AAADC009E1413 /* ViewController.swift */; };
+		B118CDB6206AAADC009E1413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B118CDB5206AAADC009E1413 /* Assets.xcassets */; };
+		B118CDB9206AAADC009E1413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B118CDB7206AAADC009E1413 /* Main.storyboard */; };
+		B118CDC5206AAADC009E1413 /* EdgeviewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDC4206AAADC009E1413 /* EdgeviewerTests.swift */; };
+		B118CDD0206AAADC009E1413 /* EdgeviewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDCF206AAADC009E1413 /* EdgeviewerUITests.swift */; };
+		B118CDE1206AB133009E1413 /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDDF206AB133009E1413 /* Manga.swift */; };
+		B118CDE2206AB133009E1413 /* Manga.xib in Resources */ = {isa = PBXBuildFile; fileRef = B118CDE0206AB133009E1413 /* Manga.xib */; };
+		B118CDE5206AB1DA009E1413 /* Viewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDE3206AB1DA009E1413 /* Viewer.swift */; };
+		B118CDE6206AB1DA009E1413 /* Viewer.xib in Resources */ = {isa = PBXBuildFile; fileRef = B118CDE4206AB1DA009E1413 /* Viewer.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E01AAECE20693BF200CDED0A /* PBXContainerItemProxy */ = {
+		B118CDC1206AAADC009E1413 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E01AAEB320693BF100CDED0A /* Project object */;
+			containerPortal = B118CDA6206AAADC009E1413 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E01AAEBA20693BF100CDED0A;
-			remoteInfo = EdgeViewer;
+			remoteGlobalIDString = B118CDAD206AAADC009E1413;
+			remoteInfo = Edgeviewer;
 		};
-		E01AAED920693BF200CDED0A /* PBXContainerItemProxy */ = {
+		B118CDCC206AAADC009E1413 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E01AAEB320693BF100CDED0A /* Project object */;
+			containerPortal = B118CDA6206AAADC009E1413 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E01AAEBA20693BF100CDED0A;
-			remoteInfo = EdgeViewer;
+			remoteGlobalIDString = B118CDAD206AAADC009E1413;
+			remoteInfo = Edgeviewer;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E01AAEBB20693BF100CDED0A /* EdgeViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgeViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E01AAEBE20693BF100CDED0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E01AAEC020693BF100CDED0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E01AAEC220693BF100CDED0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E01AAEC520693BF100CDED0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E01AAEC720693BF100CDED0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E01AAEC820693BF100CDED0A /* EdgeViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EdgeViewer.entitlements; sourceTree = "<group>"; };
-		E01AAECD20693BF200CDED0A /* EdgeViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdgeViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E01AAED120693BF200CDED0A /* EdgeViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeViewerTests.swift; sourceTree = "<group>"; };
-		E01AAED320693BF200CDED0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E01AAED820693BF200CDED0A /* EdgeViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdgeViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E01AAEDC20693BF200CDED0A /* EdgeViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeViewerUITests.swift; sourceTree = "<group>"; };
-		E01AAEDE20693BF200CDED0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B118CDAE206AAADC009E1413 /* Edgeviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Edgeviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B118CDB1206AAADC009E1413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B118CDB3206AAADC009E1413 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B118CDB5206AAADC009E1413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B118CDB8206AAADC009E1413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B118CDBA206AAADC009E1413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B118CDBB206AAADC009E1413 /* Edgeviewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Edgeviewer.entitlements; sourceTree = "<group>"; };
+		B118CDC0206AAADC009E1413 /* EdgeviewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdgeviewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B118CDC4206AAADC009E1413 /* EdgeviewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeviewerTests.swift; sourceTree = "<group>"; };
+		B118CDC6206AAADC009E1413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B118CDCB206AAADC009E1413 /* EdgeviewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdgeviewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B118CDCF206AAADC009E1413 /* EdgeviewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeviewerUITests.swift; sourceTree = "<group>"; };
+		B118CDD1206AAADC009E1413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B118CDDF206AB133009E1413 /* Manga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
+		B118CDE0206AB133009E1413 /* Manga.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Manga.xib; sourceTree = "<group>"; };
+		B118CDE3206AB1DA009E1413 /* Viewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewer.swift; sourceTree = "<group>"; };
+		B118CDE4206AB1DA009E1413 /* Viewer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Viewer.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E01AAEB820693BF100CDED0A /* Frameworks */ = {
+		B118CDAB206AAADC009E1413 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E01AAECA20693BF200CDED0A /* Frameworks */ = {
+		B118CDBD206AAADC009E1413 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E01AAED520693BF200CDED0A /* Frameworks */ = {
+		B118CDC8206AAADC009E1413 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -73,140 +81,144 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E01AAEB220693BF100CDED0A = {
+		B118CDA5206AAADC009E1413 = {
 			isa = PBXGroup;
 			children = (
-				E01AAEBD20693BF100CDED0A /* EdgeViewer */,
-				E01AAED020693BF200CDED0A /* EdgeViewerTests */,
-				E01AAEDB20693BF200CDED0A /* EdgeViewerUITests */,
-				E01AAEBC20693BF100CDED0A /* Products */,
+				B118CDB0206AAADC009E1413 /* Edgeviewer */,
+				B118CDC3206AAADC009E1413 /* EdgeviewerTests */,
+				B118CDCE206AAADC009E1413 /* EdgeviewerUITests */,
+				B118CDAF206AAADC009E1413 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E01AAEBC20693BF100CDED0A /* Products */ = {
+		B118CDAF206AAADC009E1413 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E01AAEBB20693BF100CDED0A /* EdgeViewer.app */,
-				E01AAECD20693BF200CDED0A /* EdgeViewerTests.xctest */,
-				E01AAED820693BF200CDED0A /* EdgeViewerUITests.xctest */,
+				B118CDAE206AAADC009E1413 /* Edgeviewer.app */,
+				B118CDC0206AAADC009E1413 /* EdgeviewerTests.xctest */,
+				B118CDCB206AAADC009E1413 /* EdgeviewerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E01AAEBD20693BF100CDED0A /* EdgeViewer */ = {
+		B118CDB0206AAADC009E1413 /* Edgeviewer */ = {
 			isa = PBXGroup;
 			children = (
-				E01AAEBE20693BF100CDED0A /* AppDelegate.swift */,
-				E01AAEC020693BF100CDED0A /* ViewController.swift */,
-				E01AAEC220693BF100CDED0A /* Assets.xcassets */,
-				E01AAEC420693BF100CDED0A /* Main.storyboard */,
-				E01AAEC720693BF100CDED0A /* Info.plist */,
-				E01AAEC820693BF100CDED0A /* EdgeViewer.entitlements */,
+				B118CDB1206AAADC009E1413 /* AppDelegate.swift */,
+				B118CDB3206AAADC009E1413 /* ViewController.swift */,
+				B118CDB5206AAADC009E1413 /* Assets.xcassets */,
+				B118CDB7206AAADC009E1413 /* Main.storyboard */,
+				B118CDBA206AAADC009E1413 /* Info.plist */,
+				B118CDBB206AAADC009E1413 /* Edgeviewer.entitlements */,
+				B118CDDF206AB133009E1413 /* Manga.swift */,
+				B118CDE0206AB133009E1413 /* Manga.xib */,
+				B118CDE3206AB1DA009E1413 /* Viewer.swift */,
+				B118CDE4206AB1DA009E1413 /* Viewer.xib */,
 			);
-			path = EdgeViewer;
+			path = Edgeviewer;
 			sourceTree = "<group>";
 		};
-		E01AAED020693BF200CDED0A /* EdgeViewerTests */ = {
+		B118CDC3206AAADC009E1413 /* EdgeviewerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E01AAED120693BF200CDED0A /* EdgeViewerTests.swift */,
-				E01AAED320693BF200CDED0A /* Info.plist */,
+				B118CDC4206AAADC009E1413 /* EdgeviewerTests.swift */,
+				B118CDC6206AAADC009E1413 /* Info.plist */,
 			);
-			path = EdgeViewerTests;
+			path = EdgeviewerTests;
 			sourceTree = "<group>";
 		};
-		E01AAEDB20693BF200CDED0A /* EdgeViewerUITests */ = {
+		B118CDCE206AAADC009E1413 /* EdgeviewerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				E01AAEDC20693BF200CDED0A /* EdgeViewerUITests.swift */,
-				E01AAEDE20693BF200CDED0A /* Info.plist */,
+				B118CDCF206AAADC009E1413 /* EdgeviewerUITests.swift */,
+				B118CDD1206AAADC009E1413 /* Info.plist */,
 			);
-			path = EdgeViewerUITests;
+			path = EdgeviewerUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E01AAEBA20693BF100CDED0A /* EdgeViewer */ = {
+		B118CDAD206AAADC009E1413 /* Edgeviewer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E01AAEE120693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewer" */;
+			buildConfigurationList = B118CDD4206AAADC009E1413 /* Build configuration list for PBXNativeTarget "Edgeviewer" */;
 			buildPhases = (
-				E01AAEB720693BF100CDED0A /* Sources */,
-				E01AAEB820693BF100CDED0A /* Frameworks */,
-				E01AAEB920693BF100CDED0A /* Resources */,
+				B118CDAA206AAADC009E1413 /* Sources */,
+				B118CDAB206AAADC009E1413 /* Frameworks */,
+				B118CDAC206AAADC009E1413 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = EdgeViewer;
-			productName = EdgeViewer;
-			productReference = E01AAEBB20693BF100CDED0A /* EdgeViewer.app */;
+			name = Edgeviewer;
+			productName = Edgeviewer;
+			productReference = B118CDAE206AAADC009E1413 /* Edgeviewer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E01AAECC20693BF200CDED0A /* EdgeViewerTests */ = {
+		B118CDBF206AAADC009E1413 /* EdgeviewerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E01AAEE420693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewerTests" */;
+			buildConfigurationList = B118CDD7206AAADC009E1413 /* Build configuration list for PBXNativeTarget "EdgeviewerTests" */;
 			buildPhases = (
-				E01AAEC920693BF200CDED0A /* Sources */,
-				E01AAECA20693BF200CDED0A /* Frameworks */,
-				E01AAECB20693BF200CDED0A /* Resources */,
+				B118CDBC206AAADC009E1413 /* Sources */,
+				B118CDBD206AAADC009E1413 /* Frameworks */,
+				B118CDBE206AAADC009E1413 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E01AAECF20693BF200CDED0A /* PBXTargetDependency */,
+				B118CDC2206AAADC009E1413 /* PBXTargetDependency */,
 			);
-			name = EdgeViewerTests;
-			productName = EdgeViewerTests;
-			productReference = E01AAECD20693BF200CDED0A /* EdgeViewerTests.xctest */;
+			name = EdgeviewerTests;
+			productName = EdgeviewerTests;
+			productReference = B118CDC0206AAADC009E1413 /* EdgeviewerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E01AAED720693BF200CDED0A /* EdgeViewerUITests */ = {
+		B118CDCA206AAADC009E1413 /* EdgeviewerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E01AAEE720693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewerUITests" */;
+			buildConfigurationList = B118CDDA206AAADC009E1413 /* Build configuration list for PBXNativeTarget "EdgeviewerUITests" */;
 			buildPhases = (
-				E01AAED420693BF200CDED0A /* Sources */,
-				E01AAED520693BF200CDED0A /* Frameworks */,
-				E01AAED620693BF200CDED0A /* Resources */,
+				B118CDC7206AAADC009E1413 /* Sources */,
+				B118CDC8206AAADC009E1413 /* Frameworks */,
+				B118CDC9206AAADC009E1413 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E01AAEDA20693BF200CDED0A /* PBXTargetDependency */,
+				B118CDCD206AAADC009E1413 /* PBXTargetDependency */,
 			);
-			name = EdgeViewerUITests;
-			productName = EdgeViewerUITests;
-			productReference = E01AAED820693BF200CDED0A /* EdgeViewerUITests.xctest */;
+			name = EdgeviewerUITests;
+			productName = EdgeviewerUITests;
+			productReference = B118CDCB206AAADC009E1413 /* EdgeviewerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E01AAEB320693BF100CDED0A /* Project object */ = {
+		B118CDA6206AAADC009E1413 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = NoName;
+				ORGANIZATIONNAME = bmmkac;
 				TargetAttributes = {
-					E01AAEBA20693BF100CDED0A = {
+					B118CDAD206AAADC009E1413 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
-					E01AAECC20693BF200CDED0A = {
+					B118CDBF206AAADC009E1413 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
-						TestTargetID = E01AAEBA20693BF100CDED0A;
+						TestTargetID = B118CDAD206AAADC009E1413;
 					};
-					E01AAED720693BF200CDED0A = {
+					B118CDCA206AAADC009E1413 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
-						TestTargetID = E01AAEBA20693BF100CDED0A;
+						TestTargetID = B118CDAD206AAADC009E1413;
 					};
 				};
 			};
-			buildConfigurationList = E01AAEB620693BF100CDED0A /* Build configuration list for PBXProject "EdgeViewer" */;
+			buildConfigurationList = B118CDA9206AAADC009E1413 /* Build configuration list for PBXProject "Edgeviewer" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,36 +226,38 @@
 				en,
 				Base,
 			);
-			mainGroup = E01AAEB220693BF100CDED0A;
-			productRefGroup = E01AAEBC20693BF100CDED0A /* Products */;
+			mainGroup = B118CDA5206AAADC009E1413;
+			productRefGroup = B118CDAF206AAADC009E1413 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E01AAEBA20693BF100CDED0A /* EdgeViewer */,
-				E01AAECC20693BF200CDED0A /* EdgeViewerTests */,
-				E01AAED720693BF200CDED0A /* EdgeViewerUITests */,
+				B118CDAD206AAADC009E1413 /* Edgeviewer */,
+				B118CDBF206AAADC009E1413 /* EdgeviewerTests */,
+				B118CDCA206AAADC009E1413 /* EdgeviewerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E01AAEB920693BF100CDED0A /* Resources */ = {
+		B118CDAC206AAADC009E1413 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E01AAEC320693BF100CDED0A /* Assets.xcassets in Resources */,
-				E01AAEC620693BF100CDED0A /* Main.storyboard in Resources */,
+				B118CDB6206AAADC009E1413 /* Assets.xcassets in Resources */,
+				B118CDE6206AB1DA009E1413 /* Viewer.xib in Resources */,
+				B118CDE2206AB133009E1413 /* Manga.xib in Resources */,
+				B118CDB9206AAADC009E1413 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E01AAECB20693BF200CDED0A /* Resources */ = {
+		B118CDBE206AAADC009E1413 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E01AAED620693BF200CDED0A /* Resources */ = {
+		B118CDC9206AAADC009E1413 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,6 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B118CDE1206AB133009E1413 /* Manga.swift in Sources */,
+				B118CDE5206AB1DA009E1413 /* Viewer.swift in Sources */,
 				B118CDB4206AAADC009E1413 /* ViewController.swift in Sources */,
 				B118CDB2206AAADC009E1413 /* AppDelegate.swift in Sources */,
 			);

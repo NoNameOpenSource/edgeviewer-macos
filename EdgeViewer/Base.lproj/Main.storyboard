@@ -702,44 +702,50 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Liberary-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Edgeviewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" userLabel="Liberary" customClass="ViewController" customModule="Edgeviewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
+                    <connections>
+                        <segue destination="hGK-Qt-H2a" kind="custom" id="T1a-2g-zUg"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
-        <!--View Controller-->
+        <!--Manga-->
         <scene sceneID="pTw-Yr-WpL">
             <objects>
-                <viewController id="hGK-Qt-H2a" sceneMemberID="viewController">
+                <viewController id="hGK-Qt-H2a" userLabel="Manga" customClass="Manga" customModule="Edgeviewer" sceneMemberID="viewController">
                     <view key="view" id="T5f-zN-8Az">
-                        <rect key="frame" x="0.0" y="0.0" width="488" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="488" height="330"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
+                    <connections>
+                        <segue destination="TTs-tn-ZcX" kind="custom" id="YCT-iI-Jgr"/>
+                    </connections>
                 </viewController>
                 <customObject id="zo4-45-RgQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="71" y="999"/>
+            <point key="canvasLocation" x="-218" y="1140"/>
         </scene>
-        <!--View Controller-->
+        <!--Viewer-->
         <scene sceneID="N4x-JL-JbU">
             <objects>
-                <viewController id="TTs-tn-ZcX" sceneMemberID="viewController">
+                <viewController id="TTs-tn-ZcX" userLabel="Viewer" customClass="Viewer" customModule="Edgeviewer" sceneMemberID="viewController">
                     <view key="view" id="eKO-Hi-l6l">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="281"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="Qnm-Nt-425" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="999"/>
+            <point key="canvasLocation" x="711" y="1141"/>
         </scene>
     </scenes>
 </document>

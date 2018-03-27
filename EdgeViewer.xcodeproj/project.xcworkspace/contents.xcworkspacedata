@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:EdgeViewer.xcodeproj">
+      location = "self:Edgeviewer.xcodeproj">
    </FileRef>
 </Workspace>

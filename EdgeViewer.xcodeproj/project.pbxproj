@@ -253,51 +253,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E01AAEB720693BF100CDED0A /* Sources */ = {
+		B118CDAA206AAADC009E1413 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E01AAEC120693BF100CDED0A /* ViewController.swift in Sources */,
-				E01AAEBF20693BF100CDED0A /* AppDelegate.swift in Sources */,
+				B118CDB4206AAADC009E1413 /* ViewController.swift in Sources */,
+				B118CDB2206AAADC009E1413 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E01AAEC920693BF200CDED0A /* Sources */ = {
+		B118CDBC206AAADC009E1413 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E01AAED220693BF200CDED0A /* EdgeViewerTests.swift in Sources */,
+				B118CDC5206AAADC009E1413 /* EdgeviewerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E01AAED420693BF200CDED0A /* Sources */ = {
+		B118CDC7206AAADC009E1413 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E01AAEDD20693BF200CDED0A /* EdgeViewerUITests.swift in Sources */,
+				B118CDD0206AAADC009E1413 /* EdgeviewerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E01AAECF20693BF200CDED0A /* PBXTargetDependency */ = {
+		B118CDC2206AAADC009E1413 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E01AAEBA20693BF100CDED0A /* EdgeViewer */;
-			targetProxy = E01AAECE20693BF200CDED0A /* PBXContainerItemProxy */;
+			target = B118CDAD206AAADC009E1413 /* Edgeviewer */;
+			targetProxy = B118CDC1206AAADC009E1413 /* PBXContainerItemProxy */;
 		};
-		E01AAEDA20693BF200CDED0A /* PBXTargetDependency */ = {
+		B118CDCD206AAADC009E1413 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E01AAEBA20693BF100CDED0A /* EdgeViewer */;
-			targetProxy = E01AAED920693BF200CDED0A /* PBXContainerItemProxy */;
+			target = B118CDAD206AAADC009E1413 /* Edgeviewer */;
+			targetProxy = B118CDCC206AAADC009E1413 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E01AAEC420693BF100CDED0A /* Main.storyboard */ = {
+		B118CDB7206AAADC009E1413 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E01AAEC520693BF100CDED0A /* Base */,
+				B118CDB8206AAADC009E1413 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -305,7 +305,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E01AAEDF20693BF200CDED0A /* Debug */ = {
+		B118CDD2206AAADC009E1413 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -362,7 +362,7 @@
 			};
 			name = Debug;
 		};
-		E01AAEE020693BF200CDED0A /* Release */ = {
+		B118CDD3206AAADC009E1413 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -411,138 +411,138 @@
 			};
 			name = Release;
 		};
-		E01AAEE220693BF200CDED0A /* Debug */ = {
+		B118CDD5206AAADC009E1413 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = EdgeViewer/EdgeViewer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Edgeviewer/Edgeviewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = EdgeViewer/Info.plist;
+				INFOPLIST_FILE = Edgeviewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.Edgeviewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
-		E01AAEE320693BF200CDED0A /* Release */ = {
+		B118CDD6206AAADC009E1413 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = EdgeViewer/EdgeViewer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Edgeviewer/Edgeviewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = EdgeViewer/Info.plist;
+				INFOPLIST_FILE = Edgeviewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.Edgeviewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
-		E01AAEE520693BF200CDED0A /* Debug */ = {
+		B118CDD8206AAADC009E1413 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = EdgeViewerTests/Info.plist;
+				INFOPLIST_FILE = EdgeviewerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.NoNameGroup.EdgeviewerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EdgeViewer.app/Contents/MacOS/EdgeViewer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Edgeviewer.app/Contents/MacOS/Edgeviewer";
 			};
 			name = Debug;
 		};
-		E01AAEE620693BF200CDED0A /* Release */ = {
+		B118CDD9206AAADC009E1413 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = EdgeViewerTests/Info.plist;
+				INFOPLIST_FILE = EdgeviewerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.NoNameGroup.EdgeviewerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EdgeViewer.app/Contents/MacOS/EdgeViewer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Edgeviewer.app/Contents/MacOS/Edgeviewer";
 			};
 			name = Release;
 		};
-		E01AAEE820693BF200CDED0A /* Debug */ = {
+		B118CDDB206AAADC009E1413 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = EdgeViewerUITests/Info.plist;
+				INFOPLIST_FILE = EdgeviewerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.NoNameGroup.EdgeviewerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = EdgeViewer;
+				TEST_TARGET_NAME = Edgeviewer;
 			};
 			name = Debug;
 		};
-		E01AAEE920693BF200CDED0A /* Release */ = {
+		B118CDDC206AAADC009E1413 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = EdgeViewerUITests/Info.plist;
+				INFOPLIST_FILE = EdgeviewerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggomong.EdgeViewerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.NoNameGroup.EdgeviewerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = EdgeViewer;
+				TEST_TARGET_NAME = Edgeviewer;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E01AAEB620693BF100CDED0A /* Build configuration list for PBXProject "EdgeViewer" */ = {
+		B118CDA9206AAADC009E1413 /* Build configuration list for PBXProject "Edgeviewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E01AAEDF20693BF200CDED0A /* Debug */,
-				E01AAEE020693BF200CDED0A /* Release */,
+				B118CDD2206AAADC009E1413 /* Debug */,
+				B118CDD3206AAADC009E1413 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E01AAEE120693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewer" */ = {
+		B118CDD4206AAADC009E1413 /* Build configuration list for PBXNativeTarget "Edgeviewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E01AAEE220693BF200CDED0A /* Debug */,
-				E01AAEE320693BF200CDED0A /* Release */,
+				B118CDD5206AAADC009E1413 /* Debug */,
+				B118CDD6206AAADC009E1413 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E01AAEE420693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewerTests" */ = {
+		B118CDD7206AAADC009E1413 /* Build configuration list for PBXNativeTarget "EdgeviewerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E01AAEE520693BF200CDED0A /* Debug */,
-				E01AAEE620693BF200CDED0A /* Release */,
+				B118CDD8206AAADC009E1413 /* Debug */,
+				B118CDD9206AAADC009E1413 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E01AAEE720693BF200CDED0A /* Build configuration list for PBXNativeTarget "EdgeViewerUITests" */ = {
+		B118CDDA206AAADC009E1413 /* Build configuration list for PBXNativeTarget "EdgeviewerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E01AAEE820693BF200CDED0A /* Debug */,
-				E01AAEE920693BF200CDED0A /* Release */,
+				B118CDDB206AAADC009E1413 /* Debug */,
+				B118CDDC206AAADC009E1413 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E01AAEB320693BF100CDED0A /* Project object */;
+	rootObject = B118CDA6206AAADC009E1413 /* Project object */;
 }

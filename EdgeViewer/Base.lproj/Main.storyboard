@@ -695,7 +695,7 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="KyJ-QW-Jrx"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -716,7 +716,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-79" y="691"/>
+            <point key="canvasLocation" x="53" y="632"/>
         </scene>
         <!--Manga-->
         <scene sceneID="pTw-Yr-WpL">
@@ -733,6 +733,19 @@
                 <customObject id="zo4-45-RgQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="216" y="1530"/>
+        </scene>
+        <!--Chapter-->
+        <scene sceneID="X5R-gV-7UR">
+            <objects>
+                <viewController id="YXx-Au-qVp" customClass="chapter" sceneMemberID="viewController">
+                    <view key="view" id="1P4-2D-o6W">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="qBA-bD-M0W" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="738" y="1608"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="zvm-d8-oWr">
@@ -758,7 +771,7 @@
                 </tabViewController>
                 <customObject id="y2T-XR-YwR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-14151" y="2220"/>
+            <point key="canvasLocation" x="-13328" y="2356"/>
         </scene>
         <!--Single page viewer-->
         <scene sceneID="VuQ-Ye-AOL">
@@ -804,13 +817,13 @@
                                                     <constraint firstAttribute="width" constant="34" id="We2-WG-aje"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="bc8-SY-yoG"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="NSListViewTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oXL-RK-BQy">
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSListViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oXL-RK-BQy">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="Chapter_Button:" target="n1D-KC-JJv" id="3ov-ya-21d"/>
-                                                    <segue destination="KEk-jj-jGs" kind="popover" popoverAnchorView="g0l-L4-jv3" popoverBehavior="t" preferredEdge="maxY" id="gER-Fg-FtI"/>
+                                                    <segue destination="YXx-Au-qVp" kind="popover" popoverAnchorView="g0l-L4-jv3" popoverBehavior="t" preferredEdge="maxY" id="PsY-nC-cnI"/>
                                                 </connections>
                                             </button>
                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l5B-fd-1fE" userLabel="Go Back Button" propertyAccessControl="none">
@@ -824,7 +837,7 @@
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="Go_back_button:" target="n1D-KC-JJv" id="1dN-p5-o1Z"/>
-                                                    <segue destination="hGK-Qt-H2a" kind="show" id="jac-dC-nzP"/>
+                                                    <segue destination="hGK-Qt-H2a" kind="modal" id="fLm-jq-J9B"/>
                                                 </connections>
                                             </button>
                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m1x-jL-08R" userLabel="Bookmark Button">
@@ -865,7 +878,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="kEL-qN-gbo"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="tzS-tx-CF9"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="NSTouchBarGoForwardTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Dv-6A-6Bp">
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoForwardTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Dv-6A-6Bp">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -876,7 +889,7 @@
                                                     <constraint firstAttribute="height" constant="32" id="ftV-la-Rcb"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="tPg-Ox-qDL"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="NSTouchBarGoBackTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lob-iF-0gL">
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoBackTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lob-iF-0gL">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -955,6 +968,54 @@
                             <view translatesAutoresizingMaskIntoConstraints="NO" id="J9D-fp-975">
                                 <rect key="frame" x="0.0" y="0.0" width="935" height="607"/>
                                 <subviews>
+                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-74-5Aa">
+                                        <rect key="frame" x="0.0" y="0.0" width="468" height="607"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <clipView key="contentView" ambiguous="YES" id="PNb-QH-Yp4">
+                                            <rect key="frame" x="1" y="1" width="451" height="590"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGw-cL-PFR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="451" height="592"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="X7G-5V-Ptx">
+                                            <rect key="frame" x="1" y="591" width="451" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="vLs-RC-R6p">
+                                            <rect key="frame" x="452" y="1" width="15" height="590"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8r-YA-sDi">
+                                        <rect key="frame" x="467" y="-2" width="468" height="609"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <clipView key="contentView" ambiguous="YES" id="FcM-ou-NLU">
+                                            <rect key="frame" x="1" y="1" width="466" height="607"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YI-b3-eAS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="467" height="608"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Bt8-gK-gIG">
+                                            <rect key="frame" x="1" y="592" width="466" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Jno-8o-GgI">
+                                            <rect key="frame" x="451" y="1" width="16" height="607"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Dl2-0F-WLt">
+                                        <rect key="frame" x="465" y="-2" width="5" height="607"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </box>
                                     <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="tiI-7a-pwl" userLabel="Reader Panel">
                                         <rect key="frame" x="20" y="64" width="895" height="82"/>
                                         <subviews>
@@ -965,12 +1026,12 @@
                                                     <constraint firstAttribute="height" constant="32" id="MzI-Ou-U4A"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="lTz-DE-WzL"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="NSListViewTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eWW-Dy-RqY">
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSListViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eWW-Dy-RqY">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <segue destination="KEk-jj-jGs" kind="popover" popoverAnchorView="2V8-pq-nfx" popoverBehavior="t" preferredEdge="maxY" id="37B-8I-B1q"/>
+                                                    <segue destination="hGK-Qt-H2a" kind="popover" popoverAnchorView="2V8-pq-nfx" popoverBehavior="t" preferredEdge="maxY" id="6DN-jg-9ss"/>
                                                 </connections>
                                             </button>
                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bvl-kf-P5M" userLabel="Go Back Button" propertyAccessControl="none">
@@ -982,6 +1043,9 @@
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <segue destination="hGK-Qt-H2a" kind="modal" id="rYK-oL-bLd"/>
+                                                </connections>
                                             </button>
                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e0e-oe-xdg" userLabel="Bookmark Button">
                                                 <rect key="frame" x="800" y="30" width="34" height="32"/>
@@ -1010,7 +1074,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="Lgd-E5-FxM"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="dVC-oT-ok9"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="NSTouchBarGoForwardTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8uL-kt-0MO">
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoForwardTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8uL-kt-0MO">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -1032,7 +1096,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="DVB-ca-qGE"/>
                                                     <constraint firstAttribute="height" constant="32" id="k6l-JW-ODG"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="NSTouchBarGoBackTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qFQ-FI-OjM">
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoBackTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qFQ-FI-OjM">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -1065,54 +1129,6 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="wantsLayer" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </visualEffectView>
-                                    <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Dl2-0F-WLt">
-                                        <rect key="frame" x="465" y="-2" width="5" height="607"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </box>
-                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-74-5Aa">
-                                        <rect key="frame" x="0.0" y="0.0" width="468" height="607"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" ambiguous="YES" id="PNb-QH-Yp4">
-                                            <rect key="frame" x="1" y="1" width="466" height="605"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGw-cL-PFR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="466" height="607"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="X7G-5V-Ptx">
-                                            <rect key="frame" x="1" y="590" width="466" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="vLs-RC-R6p">
-                                            <rect key="frame" x="451" y="1" width="16" height="605"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8r-YA-sDi">
-                                        <rect key="frame" x="467" y="-2" width="468" height="609"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" ambiguous="YES" id="FcM-ou-NLU">
-                                            <rect key="frame" x="1" y="1" width="466" height="607"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YI-b3-eAS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="467" height="608"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Bt8-gK-gIG">
-                                            <rect key="frame" x="1" y="592" width="466" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Jno-8o-GgI">
-                                            <rect key="frame" x="451" y="1" width="16" height="607"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="935" id="MT8-gz-LgZ"/>
@@ -1144,20 +1160,7 @@
                 </viewController>
                 <customObject id="E0H-il-NNM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="1007"/>
-        </scene>
-        <!--Chapter-->
-        <scene sceneID="EfZ-G8-TQb">
-            <objects>
-                <viewController id="KEk-jj-jGs" customClass="Chapter" customModule="Edgeviewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="7MC-Pz-YAC">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="Zmr-wj-65F" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="718" y="1703"/>
+            <point key="canvasLocation" x="1222" y="194"/>
         </scene>
     </scenes>
     <resources>
@@ -1169,7 +1172,7 @@
         <image name="NSTouchBarGoForwardTemplate" width="10" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="37B-8I-B1q"/>
-        <segue reference="jac-dC-nzP"/>
+        <segue reference="xZb-QK-haP"/>
+        <segue reference="6DN-jg-9ss"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -715,7 +715,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="632"/>
+            <point key="canvasLocation" x="-208" y="590"/>
         </scene>
         <!--Manga-->
         <scene sceneID="pTw-Yr-WpL">
@@ -756,7 +756,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueF-oH-la0" userLabel="Pages Container" customClass="Page_Viewer" customModule="Edgeviewer" customModuleProvider="target">
+                            <scrollView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueF-oH-la0" userLabel="Content View" customClass="Page_Viewer" customModule="Edgeviewer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                 <clipView key="contentView" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" drawsBackground="NO" copiesOnScroll="NO" id="a02-fs-jrJ">
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
@@ -765,18 +765,18 @@
                                         <view horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="cw4-XR-fSr">
                                             <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                             <subviews>
-                                                <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-Nu-IBR" customClass="MangaImage" customModule="Edgeviewer" customModuleProvider="target">
+                                                <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-Nu-IBR" userLabel="Single Page View" customClass="MangaImage" customModule="Edgeviewer" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="example-cover" id="MQ0-K0-cMv"/>
                                                 </imageView>
-                                                <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yx0-x5-dHu" userLabel="Double Page Stack View">
+                                                <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yx0-x5-dHu" userLabel="Double Page View">
                                                     <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                                     <subviews>
-                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ZqF-Jk-gj8" userLabel="Left Page" customClass="MangaImage" customModule="Edgeviewer" customModuleProvider="target">
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ZqF-Jk-gj8" userLabel="Current Page" customClass="MangaImage" customModule="Edgeviewer" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="270"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="right" imageScaling="proportionallyUpOrDown" id="1iD-LO-o4K"/>
                                                         </imageView>
-                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JJ7-yY-OsP" userLabel="Right Page" customClass="MangaImage" customModule="Edgeviewer" customModuleProvider="target">
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JJ7-yY-OsP" userLabel="Current Next Page" customClass="MangaImage" customModule="Edgeviewer" customModuleProvider="target">
                                                             <rect key="frame" x="240" y="0.0" width="240" height="270"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyUpOrDown" id="krU-6J-q3C"/>
                                                         </imageView>
@@ -829,10 +829,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="zKy-Jb-ljf" userLabel="Reader Panel Container" customClass="UserPanelView" customModule="Edgeviewer" customModuleProvider="target">
+                            <customView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="zKy-Jb-ljf" userLabel="User Panel" customClass="UserPanelView" customModule="Edgeviewer" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="440" height="64"/>
                                 <subviews>
-                                    <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="8pF-KL-0dV" userLabel="Reader Panel">
+                                    <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="8pF-KL-0dV" userLabel="Panel">
                                         <rect key="frame" x="0.0" y="0.0" width="440" height="64"/>
                                         <subviews>
                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Poy-dK-6sC" userLabel="Settings Button">
@@ -1010,7 +1010,7 @@
                 </viewController>
                 <customObject id="4hV-sE-wBy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="841"/>
+            <point key="canvasLocation" x="561" y="1008"/>
         </scene>
     </scenes>
     <resources>

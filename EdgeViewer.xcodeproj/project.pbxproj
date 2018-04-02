@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CB88A1420726187001B05DC /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB88A1320726187001B05DC /* Manga.swift */; };
 		B118CDB2206AAADC009E1413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDB1206AAADC009E1413 /* AppDelegate.swift */; };
 		B118CDB4206AAADC009E1413 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDB3206AAADC009E1413 /* ViewController.swift */; };
 		B118CDB6206AAADC009E1413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B118CDB5206AAADC009E1413 /* Assets.xcassets */; };
 		B118CDB9206AAADC009E1413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B118CDB7206AAADC009E1413 /* Main.storyboard */; };
 		B118CDC5206AAADC009E1413 /* EdgeviewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDC4206AAADC009E1413 /* EdgeviewerTests.swift */; };
 		B118CDD0206AAADC009E1413 /* EdgeviewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDCF206AAADC009E1413 /* EdgeviewerUITests.swift */; };
-		B118CDE1206AB133009E1413 /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118CDDF206AB133009E1413 /* Manga.swift */; };
 		B118CDE2206AB133009E1413 /* Manga.xib in Resources */ = {isa = PBXBuildFile; fileRef = B118CDE0206AB133009E1413 /* Manga.xib */; };
 		B1559B002071CA2C0026E2ED /* Page Viewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1559AFF2071CA2C0026E2ED /* Page Viewer.swift */; };
 		B1559B062071CD610026E2ED /* MangaImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1559B052071CD610026E2ED /* MangaImage.swift */; };
@@ -45,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CB88A1320726187001B05DC /* Manga.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Manga.swift; path = EdgeViewer/Manga.swift; sourceTree = SOURCE_ROOT; };
 		B118CDAE206AAADC009E1413 /* Edgeviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Edgeviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B118CDB1206AAADC009E1413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B118CDB3206AAADC009E1413 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		B118CDCB206AAADC009E1413 /* EdgeviewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdgeviewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B118CDCF206AAADC009E1413 /* EdgeviewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeviewerUITests.swift; sourceTree = "<group>"; };
 		B118CDD1206AAADC009E1413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B118CDDF206AB133009E1413 /* Manga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
 		B118CDE0206AB133009E1413 /* Manga.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Manga.xib; sourceTree = "<group>"; };
 		B1559AFF2071CA2C0026E2ED /* Page Viewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Page Viewer.swift"; path = "EdgeViewer/Page Viewer.swift"; sourceTree = SOURCE_ROOT; };
 		B1559B052071CD610026E2ED /* MangaImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaImage.swift; sourceTree = "<group>"; };
@@ -119,16 +119,16 @@
 				B1559B052071CD610026E2ED /* MangaImage.swift */,
 				B118CDB1206AAADC009E1413 /* AppDelegate.swift */,
 				B118CDB3206AAADC009E1413 /* ViewController.swift */,
-				B118CDB5206AAADC009E1413 /* Assets.xcassets */,
-				B118CDB7206AAADC009E1413 /* Main.storyboard */,
 				B1559B072071D0C40026E2ED /* ContentViewer.swift */,
 				B1559B092071D14A0026E2ED /* UserPanelView.swift */,
+				1CB88A1320726187001B05DC /* Manga.swift */,
 				B1559AFF2071CA2C0026E2ED /* Page Viewer.swift */,
 				B1F893E620709238005DBCE0 /* Chapter.swift */,
+				B118CDB7206AAADC009E1413 /* Main.storyboard */,
 				B1F893E720709238005DBCE0 /* Chapter.xib */,
 				B118CDBA206AAADC009E1413 /* Info.plist */,
+				B118CDB5206AAADC009E1413 /* Assets.xcassets */,
 				B118CDBB206AAADC009E1413 /* Edgeviewer.entitlements */,
-				B118CDDF206AB133009E1413 /* Manga.swift */,
 				B118CDE0206AB133009E1413 /* Manga.xib */,
 			);
 			path = Edgeviewer;
@@ -291,7 +291,7 @@
 			files = (
 				B1559B0A2071D14A0026E2ED /* UserPanelView.swift in Sources */,
 				B1559B062071CD610026E2ED /* MangaImage.swift in Sources */,
-				B118CDE1206AB133009E1413 /* Manga.swift in Sources */,
+				1CB88A1420726187001B05DC /* Manga.swift in Sources */,
 				B1559B082071D0C40026E2ED /* ContentViewer.swift in Sources */,
 				B118CDB4206AAADC009E1413 /* ViewController.swift in Sources */,
 				B118CDB2206AAADC009E1413 /* AppDelegate.swift in Sources */,

@@ -3,7 +3,9 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -689,13 +691,10 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <connections>
-                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
-                        </connections>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="KyJ-QW-Jrx"/>
+                        <segue destination="WOx-47-VXE" kind="relationship" relationship="window.shadowedContentViewController" id="N9t-5J-Pu2"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -723,456 +722,307 @@
             <objects>
                 <viewController id="hGK-Qt-H2a" userLabel="Manga" customClass="Manga" customModule="Edgeviewer" sceneMemberID="viewController">
                     <view key="view" id="T5f-zN-8Az">
-                        <rect key="frame" x="0.0" y="0.0" width="488" height="330"/>
+                        <rect key="frame" x="0.0" y="0.0" width="488" height="338"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
-                    <connections>
-                        <segue destination="qGP-kE-q38" kind="modal" id="xZb-QK-haP"/>
-                    </connections>
                 </viewController>
                 <customObject id="zo4-45-RgQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="1530"/>
+            <point key="canvasLocation" x="53" y="1060"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="eeC-ZE-EQR">
+            <objects>
+                <windowController id="y8d-ay-IAE" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="fm7-Oz-qW9">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="y8d-ay-IAE" id="bHI-hw-29D"/>
+                        </connections>
+                    </window>
+                </windowController>
+                <customObject id="BrI-JK-sQw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="648" y="263"/>
+        </scene>
+        <!--Content Viewer-->
+        <scene sceneID="VFY-g6-sQG">
+            <objects>
+                <viewController id="WOx-47-VXE" customClass="ContentViewer" customModule="Edgeviewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="q3I-LR-PYq">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueF-oH-la0" userLabel="Pages Container" customClass="Page_Viewer" customModule="Edgeviewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <clipView key="contentView" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" drawsBackground="NO" copiesOnScroll="NO" id="a02-fs-jrJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="cw4-XR-fSr">
+                                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                            <subviews>
+                                                <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-Nu-IBR" customClass="MangaImage" customModule="Edgeviewer" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="example-cover" id="MQ0-K0-cMv"/>
+                                                </imageView>
+                                                <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yx0-x5-dHu" userLabel="Double Page Stack View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                                    <subviews>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ZqF-Jk-gj8" userLabel="Left Page" customClass="MangaImage" customModule="Edgeviewer" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="270"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="right" imageScaling="proportionallyUpOrDown" id="1iD-LO-o4K"/>
+                                                        </imageView>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JJ7-yY-OsP" userLabel="Right Page" customClass="MangaImage" customModule="Edgeviewer" customModuleProvider="target">
+                                                            <rect key="frame" x="240" y="0.0" width="240" height="270"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyUpOrDown" id="krU-6J-q3C"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="JJ7-yY-OsP" firstAttribute="leading" secondItem="ZqF-Jk-gj8" secondAttribute="trailing" id="4Dh-b4-mRy"/>
+                                                        <constraint firstAttribute="trailing" secondItem="JJ7-yY-OsP" secondAttribute="trailing" id="5hb-Me-ocE"/>
+                                                        <constraint firstItem="ZqF-Jk-gj8" firstAttribute="leading" secondItem="yx0-x5-dHu" secondAttribute="leading" id="KLq-KI-jvB"/>
+                                                        <constraint firstItem="JJ7-yY-OsP" firstAttribute="leading" secondItem="ZqF-Jk-gj8" secondAttribute="trailing" id="Le4-ea-6fJ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="JJ7-yY-OsP" secondAttribute="bottom" id="Q81-fV-G9F"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ZqF-Jk-gj8" secondAttribute="bottom" id="VSJ-4L-KF7"/>
+                                                        <constraint firstItem="JJ7-yY-OsP" firstAttribute="top" secondItem="yx0-x5-dHu" secondAttribute="top" id="YxM-b1-CS6"/>
+                                                        <constraint firstItem="ZqF-Jk-gj8" firstAttribute="top" secondItem="yx0-x5-dHu" secondAttribute="top" id="q4M-Gk-mVb"/>
+                                                    </constraints>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="yx0-x5-dHu" secondAttribute="trailing" id="2lg-SE-SWg"/>
+                                                <constraint firstItem="x3B-Nu-IBR" firstAttribute="leading" secondItem="cw4-XR-fSr" secondAttribute="leading" id="Akn-9z-xbZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="x3B-Nu-IBR" secondAttribute="trailing" id="WIj-OG-oWt"/>
+                                                <constraint firstAttribute="bottom" secondItem="x3B-Nu-IBR" secondAttribute="bottom" id="Yf2-Ac-Z9h"/>
+                                                <constraint firstItem="x3B-Nu-IBR" firstAttribute="top" secondItem="cw4-XR-fSr" secondAttribute="top" id="YwI-tX-bvX"/>
+                                                <constraint firstItem="yx0-x5-dHu" firstAttribute="top" secondItem="cw4-XR-fSr" secondAttribute="top" id="ZL2-Tp-0oF"/>
+                                                <constraint firstAttribute="bottom" secondItem="yx0-x5-dHu" secondAttribute="bottom" id="i3h-KB-cLS"/>
+                                                <constraint firstItem="yx0-x5-dHu" firstAttribute="leading" secondItem="cw4-XR-fSr" secondAttribute="leading" id="zg0-X5-ist"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="cw4-XR-fSr" secondAttribute="bottom" id="24h-en-x3U"/>
+                                        <constraint firstItem="cw4-XR-fSr" firstAttribute="leading" secondItem="a02-fs-jrJ" secondAttribute="leading" id="ZWO-f0-wKQ"/>
+                                        <constraint firstItem="cw4-XR-fSr" firstAttribute="top" secondItem="a02-fs-jrJ" secondAttribute="top" id="mZv-ug-eUB"/>
+                                        <constraint firstAttribute="trailing" secondItem="cw4-XR-fSr" secondAttribute="trailing" id="ulw-q2-rGS"/>
+                                    </constraints>
+                                </clipView>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="B6I-BI-lNz">
+                                    <rect key="frame" x="0.0" y="254" width="480" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="cCE-lC-BBn">
+                                    <rect key="frame" x="464" y="0.0" width="16" height="270"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <customView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="zKy-Jb-ljf" userLabel="Reader Panel Container" customClass="UserPanelView" customModule="Edgeviewer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="440" height="64"/>
+                                <subviews>
+                                    <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="8pF-KL-0dV" userLabel="Reader Panel">
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="64"/>
+                                        <subviews>
+                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Poy-dK-6sC" userLabel="Settings Button">
+                                                <rect key="frame" x="398" y="22" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="OJP-BJ-EgZ"/>
+                                                    <constraint firstAttribute="width" constant="20" id="uDY-Dd-YL2"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSActionTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="aIt-b5-654">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="readerSettingsButtonPressed:" target="WOx-47-VXE" id="dpr-nD-w4N"/>
+                                                </connections>
+                                            </button>
+                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wZh-rj-rdO" userLabel="ReturnToDetailView">
+                                                <rect key="frame" x="22" y="22" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="eJw-p8-cNq"/>
+                                                    <constraint firstAttribute="width" constant="20" id="fQB-Tk-Ldh"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarGoBackTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="jZb-Q6-Mtw">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="readerPageJumpButtonPressed:" target="WOx-47-VXE" id="Y6e-IJ-bPz"/>
+                                                    <segue destination="hGK-Qt-H2a" kind="modal" id="DAp-it-kqd"/>
+                                                </connections>
+                                            </button>
+                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mAf-O8-8lr" userLabel="Bookmark Button">
+                                                <rect key="frame" x="356" y="22" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="kYu-AU-iFb"/>
+                                                    <constraint firstAttribute="width" constant="20" id="xVu-OX-rTt"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSBookmarksTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="hrB-rh-jnv">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="readerBookmarkButtonPressed:" target="WOx-47-VXE" id="9gG-8J-2Ay"/>
+                                                </connections>
+                                            </button>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zzt-uc-P7P" userLabel="Page Number Label">
+                                                <rect key="frame" x="200" y="23" width="41" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="peC-k9-a9r">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MxK-WG-0Py" userLabel="NextPage Button">
+                                                <rect key="frame" x="275" y="22" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="Rja-0Y-6mR"/>
+                                                    <constraint firstAttribute="height" constant="20" id="Tyv-av-yf0"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSGoForwardTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="7j3-w6-QYK">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="readerBookmarkButtonPressed:" target="WOx-47-VXE" id="tr3-Ub-bKU"/>
+                                                </connections>
+                                            </button>
+                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5wh-pY-Yoj" userLabel="Chapter Button">
+                                                <rect key="frame" x="64" y="22" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="1EN-fC-dPd"/>
+                                                    <constraint firstAttribute="width" constant="20" id="vAg-lv-mfx"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSListViewTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="7gz-60-0vb">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="readerBookmarkButtonPressed:" target="WOx-47-VXE" id="YXf-SA-tiQ"/>
+                                                    <segue destination="yr8-xr-lQ9" kind="popover" popoverAnchorView="5wh-pY-Yoj" popoverBehavior="t" preferredEdge="maxY" id="Wtc-yD-cvE"/>
+                                                </connections>
+                                            </button>
+                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8As-ui-vvp" userLabel="PreviousPage Button">
+                                                <rect key="frame" x="146" y="22" width="20" height="20"/>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSGoBackTemplate" imagePosition="overlaps" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="BDe-tm-vSg">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="readerBookmarkButtonPressed:" target="WOx-47-VXE" id="5Gz-iD-ysv"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="8As-ui-vvp" firstAttribute="top" secondItem="5wh-pY-Yoj" secondAttribute="top" id="0G5-Ib-fz2"/>
+                                            <constraint firstItem="Zzt-uc-P7P" firstAttribute="centerY" secondItem="8pF-KL-0dV" secondAttribute="centerY" id="6dd-sA-ZlD"/>
+                                            <constraint firstItem="wZh-rj-rdO" firstAttribute="leading" secondItem="8pF-KL-0dV" secondAttribute="leading" constant="22" id="9Sb-C2-7m5"/>
+                                            <constraint firstAttribute="bottom" secondItem="mAf-O8-8lr" secondAttribute="bottom" constant="22" id="C1B-jz-tgD"/>
+                                            <constraint firstItem="MxK-WG-0Py" firstAttribute="top" secondItem="5wh-pY-Yoj" secondAttribute="top" id="CbX-Tr-xcN"/>
+                                            <constraint firstAttribute="bottom" secondItem="Poy-dK-6sC" secondAttribute="bottom" constant="22" id="CyK-2v-uam"/>
+                                            <constraint firstItem="MxK-WG-0Py" firstAttribute="top" secondItem="mAf-O8-8lr" secondAttribute="top" id="KgM-v7-SkZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Poy-dK-6sC" secondAttribute="trailing" constant="22" id="Odx-E2-jqk"/>
+                                            <constraint firstItem="Zzt-uc-P7P" firstAttribute="centerX" secondItem="8pF-KL-0dV" secondAttribute="centerX" id="b1i-e1-b5p"/>
+                                            <constraint firstItem="wZh-rj-rdO" firstAttribute="top" secondItem="8pF-KL-0dV" secondAttribute="top" constant="22" id="gme-ze-f0c"/>
+                                            <constraint firstItem="Poy-dK-6sC" firstAttribute="top" secondItem="8pF-KL-0dV" secondAttribute="top" constant="22" id="gw2-oo-dRP"/>
+                                            <constraint firstItem="8As-ui-vvp" firstAttribute="leading" secondItem="5wh-pY-Yoj" secondAttribute="trailing" constant="62" id="haJ-dE-Wz7"/>
+                                            <constraint firstItem="8As-ui-vvp" firstAttribute="bottom" secondItem="5wh-pY-Yoj" secondAttribute="bottom" id="iZp-4h-YVR"/>
+                                            <constraint firstItem="Poy-dK-6sC" firstAttribute="leading" secondItem="mAf-O8-8lr" secondAttribute="trailing" constant="22" id="kdv-0P-rcI"/>
+                                            <constraint firstItem="MxK-WG-0Py" firstAttribute="leading" secondItem="Zzt-uc-P7P" secondAttribute="trailing" constant="36" id="mfM-G3-HSM"/>
+                                            <constraint firstAttribute="bottom" secondItem="wZh-rj-rdO" secondAttribute="bottom" constant="22" id="trn-ny-jeM"/>
+                                            <constraint firstItem="5wh-pY-Yoj" firstAttribute="leading" secondItem="wZh-rj-rdO" secondAttribute="trailing" constant="22" id="uXa-TO-p7w"/>
+                                            <constraint firstItem="mAf-O8-8lr" firstAttribute="top" secondItem="8pF-KL-0dV" secondAttribute="top" constant="22" id="yD1-UC-99Z"/>
+                                            <constraint firstItem="Zzt-uc-P7P" firstAttribute="leading" secondItem="8As-ui-vvp" secondAttribute="trailing" constant="36" id="ynf-uI-Ybu"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="wantsLayer" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </visualEffectView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="8pF-KL-0dV" secondAttribute="bottom" id="1o3-RU-s1K"/>
+                                    <constraint firstAttribute="width" secondItem="zKy-Jb-ljf" secondAttribute="height" multiplier="55:8" id="3Pf-uQ-qW0"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="440" id="JnJ-yP-m8U"/>
+                                    <constraint firstItem="8pF-KL-0dV" firstAttribute="top" secondItem="zKy-Jb-ljf" secondAttribute="top" id="Xk2-1U-kwj"/>
+                                    <constraint firstAttribute="height" constant="64" id="eva-m4-eHE"/>
+                                    <constraint firstAttribute="trailing" secondItem="8pF-KL-0dV" secondAttribute="trailing" id="rKd-70-AhW"/>
+                                    <constraint firstItem="8pF-KL-0dV" firstAttribute="leading" secondItem="zKy-Jb-ljf" secondAttribute="leading" id="uuc-mK-VYJ"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ueF-oH-la0" secondAttribute="bottom" id="8Vb-0I-dau"/>
+                            <constraint firstItem="ueF-oH-la0" firstAttribute="top" secondItem="q3I-LR-PYq" secondAttribute="top" id="Boi-lU-7cK"/>
+                            <constraint firstItem="zKy-Jb-ljf" firstAttribute="centerX" secondItem="q3I-LR-PYq" secondAttribute="centerX" id="CAe-Ux-IS9"/>
+                            <constraint firstAttribute="trailing" secondItem="ueF-oH-la0" secondAttribute="trailing" id="L4M-FQ-VGQ"/>
+                            <constraint firstAttribute="trailing" secondItem="zKy-Jb-ljf" secondAttribute="trailing" priority="250" constant="20" id="d6V-wj-ZcT"/>
+                            <constraint firstItem="ueF-oH-la0" firstAttribute="leading" secondItem="q3I-LR-PYq" secondAttribute="leading" id="i4D-zB-M1C"/>
+                            <constraint firstAttribute="bottom" secondItem="zKy-Jb-ljf" secondAttribute="bottom" constant="20" id="jNh-un-Nyk"/>
+                            <constraint firstItem="zKy-Jb-ljf" firstAttribute="leading" secondItem="q3I-LR-PYq" secondAttribute="leading" priority="250" constant="20" id="sfa-J6-Ar6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="BookMark" destination="mAf-O8-8lr" id="0dd-tL-WUn"/>
+                        <outlet property="Chapter" destination="5wh-pY-Yoj" id="tjN-bL-25G"/>
+                        <outlet property="GoBackWard" destination="8As-ui-vvp" id="avb-So-SDE"/>
+                        <outlet property="GoForward" destination="MxK-WG-0Py" id="V0y-bR-1dM"/>
+                        <outlet property="PageNumber" destination="Zzt-uc-P7P" id="sRs-lx-bRM"/>
+                        <outlet property="ReturnToDetailView" destination="wZh-rj-rdO" id="znk-OA-Low"/>
+                        <outlet property="Settings" destination="Poy-dK-6sC" id="ywI-id-rLY"/>
+                        <outlet property="dualPageStackView" destination="yx0-x5-dHu" id="rh1-7L-7pV"/>
+                        <outlet property="leftPageReaderImageView" destination="ZqF-Jk-gj8" id="nAS-Hw-Xhq"/>
+                        <outlet property="readerBookmarkButton" destination="mAf-O8-8lr" id="cU4-9G-WhY"/>
+                        <outlet property="readerImageScrollView" destination="ueF-oH-la0" id="t7u-5e-xch"/>
+                        <outlet property="readerImageView" destination="x3B-Nu-IBR" id="g6v-yi-9bq"/>
+                        <outlet property="readerPageJumpButton" destination="wZh-rj-rdO" id="DYV-z6-aOb"/>
+                        <outlet property="readerPageNumberLabel" destination="Zzt-uc-P7P" id="GJ1-k7-ddR"/>
+                        <outlet property="readerPanelCornerRounding" destination="zKy-Jb-ljf" id="S8r-60-kxH"/>
+                        <outlet property="readerPanelVisualEffectView" destination="8pF-KL-0dV" id="DXf-My-kx1"/>
+                        <outlet property="readerSettingsButton" destination="Poy-dK-6sC" id="8cf-ID-kNS"/>
+                        <outlet property="rightPageReaderImageView" destination="JJ7-yY-OsP" id="lcJ-PD-pIs"/>
+                    </connections>
+                </viewController>
+                <customObject id="coW-Xz-xe7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="648" y="632"/>
         </scene>
         <!--Chapter-->
-        <scene sceneID="X5R-gV-7UR">
+        <scene sceneID="Zel-NO-4Tm">
             <objects>
-                <viewController id="YXx-Au-qVp" customClass="chapter" sceneMemberID="viewController">
-                    <view key="view" id="1P4-2D-o6W">
+                <viewController id="yr8-xr-lQ9" customClass="chapter" customModule="Edgeviewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="B5a-fa-3g0">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
-                <customObject id="qBA-bD-M0W" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="4hV-sE-wBy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="738" y="1608"/>
-        </scene>
-        <!--Tab View Controller-->
-        <scene sceneID="zvm-d8-oWr">
-            <objects>
-                <tabViewController selectedTabViewItemIndex="1" id="qGP-kE-q38" sceneMemberID="viewController">
-                    <tabViewItems>
-                        <tabViewItem identifier="" id="T9W-lp-0YN"/>
-                        <tabViewItem identifier="" id="e6Q-9O-O3j"/>
-                    </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="BL8-WM-YuE">
-                        <rect key="frame" x="3" y="0.0" width="488" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
-                        <connections>
-                            <outlet property="delegate" destination="qGP-kE-q38" id="Oda-cM-sNl"/>
-                        </connections>
-                    </tabView>
-                    <connections>
-                        <outlet property="tabView" destination="BL8-WM-YuE" id="GQH-iM-UVf"/>
-                        <segue destination="n1D-KC-JJv" kind="relationship" relationship="tabItems" id="35Q-kF-9GW"/>
-                        <segue destination="exw-MX-Mnz" kind="relationship" relationship="tabItems" id="bb0-r5-rKl"/>
-                    </connections>
-                </tabViewController>
-                <customObject id="y2T-XR-YwR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-13328" y="2356"/>
-        </scene>
-        <!--Single page viewer-->
-        <scene sceneID="VuQ-Ye-AOL">
-            <objects>
-                <customObject id="hAj-Ym-7WV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController id="n1D-KC-JJv" customClass="Single_page_viewer" customModule="Edgeviewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="TfX-yV-PLy">
-                        <rect key="frame" x="0.0" y="0.0" width="935" height="607"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <view translatesAutoresizingMaskIntoConstraints="NO" id="daG-TT-1ID">
-                                <rect key="frame" x="0.0" y="0.0" width="935" height="607"/>
-                                <subviews>
-                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgv-cA-o2r">
-                                        <rect key="frame" x="0.0" y="0.0" width="935" height="607"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" ambiguous="YES" id="IMV-lm-3Rf">
-                                            <rect key="frame" x="1" y="1" width="933" height="605"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGb-SR-Odd" userLabel="Manga">
-                                                    <rect key="frame" x="0.0" y="-748" width="934" height="606"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                </view>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ywe-EB-biA">
-                                            <rect key="frame" x="1" y="590" width="933" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="vLf-Qb-N7H">
-                                            <rect key="frame" x="918" y="1" width="16" height="605"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                    <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="xSX-k9-5Nb" userLabel="Reader Panel">
-                                        <rect key="frame" x="20" y="64" width="895" height="82"/>
-                                        <subviews>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g0l-L4-jv3" userLabel="Chapter Button">
-                                                <rect key="frame" x="83" y="23" width="46" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="R5J-3U-N4Y"/>
-                                                    <constraint firstAttribute="width" constant="34" id="We2-WG-aje"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="bc8-SY-yoG"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSListViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oXL-RK-BQy">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="Chapter_Button:" target="n1D-KC-JJv" id="3ov-ya-21d"/>
-                                                    <segue destination="YXx-Au-qVp" kind="popover" popoverAnchorView="g0l-L4-jv3" popoverBehavior="t" preferredEdge="maxY" id="PsY-nC-cnI"/>
-                                                </connections>
-                                            </button>
-                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l5B-fd-1fE" userLabel="Go Back Button" propertyAccessControl="none">
-                                                <rect key="frame" x="28" y="30" width="28" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="28" id="E78-B1-9iW"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSGoBackTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="m0X-Ht-dsh">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="Go_back_button:" target="n1D-KC-JJv" id="1dN-p5-o1Z"/>
-                                                    <segue destination="hGK-Qt-H2a" kind="modal" id="fLm-jq-J9B"/>
-                                                </connections>
-                                            </button>
-                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m1x-jL-08R" userLabel="Bookmark Button">
-                                                <rect key="frame" x="800" y="30" width="34" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="34" id="BIb-em-nxQ"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSBookmarksTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="8Fs-yt-UPx">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Eg-di-3Db" userLabel="Settings Button">
-                                                <rect key="frame" x="849" y="30" width="32" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="32" id="wYX-ye-GFO"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSActionTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="GHk-i9-f7N">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSd-Wg-Z4c">
-                                                <rect key="frame" x="671" y="30" width="121" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="RtQ-TN-cRd"/>
-                                                </constraints>
-                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="xVh-BV-R9p">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </searchFieldCell>
-                                            </searchField>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oXM-W2-Pm2" userLabel="read-next">
-                                                <rect key="frame" x="559" y="22" width="46" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="TQp-3X-dJe"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="kEL-qN-gbo"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="tzS-tx-CF9"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoForwardTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Dv-6A-6Bp">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lef-9z-Xcx" userLabel="read-prev">
-                                                <rect key="frame" x="295" y="23" width="46" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="ftV-la-Rcb"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="tPg-Ox-qDL"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoBackTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lob-iF-0gL">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="l5B-fd-1fE" firstAttribute="leading" secondItem="xSX-k9-5Nb" secondAttribute="leading" constant="28" id="4JN-QW-IUQ"/>
-                                            <constraint firstItem="l5B-fd-1fE" firstAttribute="top" secondItem="xSX-k9-5Nb" secondAttribute="top" constant="20" symbolic="YES" id="CBr-vw-kn7"/>
-                                            <constraint firstAttribute="bottom" secondItem="m1x-jL-08R" secondAttribute="bottom" constant="30" id="EDl-ET-YVh"/>
-                                            <constraint firstItem="g0l-L4-jv3" firstAttribute="leading" secondItem="l5B-fd-1fE" secondAttribute="trailing" constant="33" id="IRA-b0-Y45"/>
-                                            <constraint firstItem="nSd-Wg-Z4c" firstAttribute="leading" secondItem="oXM-W2-Pm2" secondAttribute="trailing" constant="72" id="KnX-GM-F8I"/>
-                                            <constraint firstItem="m1x-jL-08R" firstAttribute="top" secondItem="xSX-k9-5Nb" secondAttribute="top" constant="20" id="VSV-Ln-Qd8"/>
-                                            <constraint firstItem="1Eg-di-3Db" firstAttribute="leading" secondItem="m1x-jL-08R" secondAttribute="trailing" constant="15" id="XVg-6K-Hdb"/>
-                                            <constraint firstItem="oXM-W2-Pm2" firstAttribute="bottom" secondItem="l5B-fd-1fE" secondAttribute="bottom" constant="1" id="Xpe-wh-f4M"/>
-                                            <constraint firstItem="oXM-W2-Pm2" firstAttribute="leading" secondItem="lef-9z-Xcx" secondAttribute="trailing" constant="230" id="cVz-EU-Z3U"/>
-                                            <constraint firstAttribute="bottom" secondItem="l5B-fd-1fE" secondAttribute="bottom" constant="30" id="cdk-nR-2IG"/>
-                                            <constraint firstItem="l5B-fd-1fE" firstAttribute="bottom" secondItem="g0l-L4-jv3" secondAttribute="bottom" id="ce3-pj-rqG"/>
-                                            <constraint firstItem="nSd-Wg-Z4c" firstAttribute="centerY" secondItem="oXM-W2-Pm2" secondAttribute="centerY" id="e9S-o9-gjl"/>
-                                            <constraint firstItem="m1x-jL-08R" firstAttribute="top" secondItem="1Eg-di-3Db" secondAttribute="top" id="eKk-h5-f4y"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lef-9z-Xcx" secondAttribute="trailing" constant="20" symbolic="YES" id="edv-sd-xqI"/>
-                                            <constraint firstAttribute="width" constant="895" id="fTd-s7-B5N"/>
-                                            <constraint firstItem="lef-9z-Xcx" firstAttribute="top" secondItem="l5B-fd-1fE" secondAttribute="top" id="kan-iG-gcR"/>
-                                            <constraint firstItem="lef-9z-Xcx" firstAttribute="leading" secondItem="g0l-L4-jv3" secondAttribute="trailing" constant="178" id="muQ-vo-k14"/>
-                                            <constraint firstItem="m1x-jL-08R" firstAttribute="leading" secondItem="xSX-k9-5Nb" secondAttribute="leading" constant="800" id="o1Z-vi-AvO"/>
-                                            <constraint firstItem="m1x-jL-08R" firstAttribute="leading" secondItem="nSd-Wg-Z4c" secondAttribute="trailing" constant="8" id="s2y-ve-Dja"/>
-                                            <constraint firstItem="g0l-L4-jv3" firstAttribute="top" secondItem="xSX-k9-5Nb" secondAttribute="top" constant="20" id="sKm-Yy-a6F"/>
-                                            <constraint firstItem="m1x-jL-08R" firstAttribute="bottom" secondItem="1Eg-di-3Db" secondAttribute="bottom" id="vwh-5x-BbZ"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="wantsLayer" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </visualEffectView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="xSX-k9-5Nb" firstAttribute="top" secondItem="daG-TT-1ID" secondAttribute="top" constant="461" id="YQX-qA-0nr"/>
-                                    <constraint firstItem="xSX-k9-5Nb" firstAttribute="leading" secondItem="daG-TT-1ID" secondAttribute="leading" constant="20" symbolic="YES" id="bNv-NG-Zeb"/>
-                                    <constraint firstAttribute="bottom" secondItem="xSX-k9-5Nb" secondAttribute="bottom" constant="64" id="lFf-ug-cqR"/>
-                                    <constraint firstAttribute="width" constant="935" id="mAg-iS-xNE"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="daG-TT-1ID" firstAttribute="leading" secondItem="TfX-yV-PLy" secondAttribute="leading" id="KWD-Ue-ooB"/>
-                            <constraint firstAttribute="trailing" secondItem="daG-TT-1ID" secondAttribute="trailing" id="Lll-aZ-f7v"/>
-                            <constraint firstAttribute="bottom" secondItem="daG-TT-1ID" secondAttribute="bottom" id="cMv-uh-9P8"/>
-                            <constraint firstItem="daG-TT-1ID" firstAttribute="top" secondItem="TfX-yV-PLy" secondAttribute="top" id="pgA-eR-7Ni"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="Book_Mark_Button" destination="m1x-jL-08R" id="eKz-rH-x0g"/>
-                        <outlet property="Chapter_button" destination="g0l-L4-jv3" id="lTZ-tp-tXw"/>
-                        <outlet property="Constraint" destination="fTd-s7-B5N" id="ZmZ-vJ-scR"/>
-                        <outlet property="Content" destination="PGb-SR-Odd" id="E36-f7-qhU"/>
-                        <outlet property="ContentViewer" destination="lgv-cA-o2r" id="Zom-0M-5wJ"/>
-                        <outlet property="GoBack" destination="lgv-cA-o2r" id="47v-ym-jNV"/>
-                        <outlet property="Go_back_button" destination="l5B-fd-1fE" id="4sW-QC-o3V"/>
-                        <outlet property="Read_Next_Button" destination="oXM-W2-Pm2" id="fqd-Mi-zP6"/>
-                        <outlet property="Settings_Button" destination="1Eg-di-3Db" id="wu4-XU-7Pa"/>
-                        <outlet property="page_view" destination="lgv-cA-o2r" id="m0b-Fb-BE0"/>
-                        <outlet property="read_prev" destination="lef-9z-Xcx" id="ldB-Dj-jRl"/>
-                        <outlet property="user_panel" destination="xSX-k9-5Nb" id="rkJ-hJ-L16"/>
-                        <outlet property="viewer" destination="TfX-yV-PLy" id="boq-kg-23N"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1274" y="944"/>
-        </scene>
-        <!--Double page viewer-->
-        <scene sceneID="MAx-6V-ibn">
-            <objects>
-                <viewController id="exw-MX-Mnz" customClass="Double_page_viewer" customModule="Edgeviewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="vz1-Vk-BmQ">
-                        <rect key="frame" x="0.0" y="0.0" width="935" height="607"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <view translatesAutoresizingMaskIntoConstraints="NO" id="J9D-fp-975">
-                                <rect key="frame" x="0.0" y="0.0" width="935" height="607"/>
-                                <subviews>
-                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-74-5Aa">
-                                        <rect key="frame" x="0.0" y="0.0" width="468" height="607"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" ambiguous="YES" id="PNb-QH-Yp4">
-                                            <rect key="frame" x="1" y="1" width="451" height="590"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGw-cL-PFR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="451" height="592"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="X7G-5V-Ptx">
-                                            <rect key="frame" x="1" y="591" width="451" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="vLs-RC-R6p">
-                                            <rect key="frame" x="452" y="1" width="15" height="590"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8r-YA-sDi">
-                                        <rect key="frame" x="467" y="-2" width="468" height="609"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" ambiguous="YES" id="FcM-ou-NLU">
-                                            <rect key="frame" x="1" y="1" width="466" height="607"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YI-b3-eAS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="467" height="608"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Bt8-gK-gIG">
-                                            <rect key="frame" x="1" y="592" width="466" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Jno-8o-GgI">
-                                            <rect key="frame" x="451" y="1" width="16" height="607"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                    <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Dl2-0F-WLt">
-                                        <rect key="frame" x="465" y="-2" width="5" height="607"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </box>
-                                    <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="tiI-7a-pwl" userLabel="Reader Panel">
-                                        <rect key="frame" x="20" y="64" width="895" height="82"/>
-                                        <subviews>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2V8-pq-nfx" userLabel="Chapter Button">
-                                                <rect key="frame" x="83" y="23" width="46" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="34" id="Ji5-vz-6Et"/>
-                                                    <constraint firstAttribute="height" constant="32" id="MzI-Ou-U4A"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="lTz-DE-WzL"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSListViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eWW-Dy-RqY">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <segue destination="hGK-Qt-H2a" kind="popover" popoverAnchorView="2V8-pq-nfx" popoverBehavior="t" preferredEdge="maxY" id="6DN-jg-9ss"/>
-                                                </connections>
-                                            </button>
-                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bvl-kf-P5M" userLabel="Go Back Button" propertyAccessControl="none">
-                                                <rect key="frame" x="28" y="30" width="28" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="28" id="4Py-qr-eip"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSGoBackTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="KYj-xP-igv">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <segue destination="hGK-Qt-H2a" kind="modal" id="rYK-oL-bLd"/>
-                                                </connections>
-                                            </button>
-                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e0e-oe-xdg" userLabel="Bookmark Button">
-                                                <rect key="frame" x="800" y="30" width="34" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="34" id="35y-aG-cRg"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSBookmarksTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="T48-E6-9gL">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="76N-nY-3xA" userLabel="Settings Button">
-                                                <rect key="frame" x="849" y="30" width="32" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="32" id="p5G-ji-UhL"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSActionTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="7p4-eg-RxM">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XiA-jn-F8x" userLabel="read-next">
-                                                <rect key="frame" x="559" y="22" width="46" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="A3M-dR-22e"/>
-                                                    <constraint firstAttribute="height" constant="34" id="Lgd-E5-FxM"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="dVC-oT-ok9"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoForwardTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8uL-kt-0MO">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBB-Qb-fgf">
-                                                <rect key="frame" x="671" y="30" width="121" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="4hH-AR-Csd"/>
-                                                </constraints>
-                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="TJk-IP-WU9">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </searchFieldCell>
-                                            </searchField>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5xd-ao-8DA" userLabel="read-prev">
-                                                <rect key="frame" x="271" y="24" width="46" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="DVB-ca-qGE"/>
-                                                    <constraint firstAttribute="height" constant="32" id="k6l-JW-ODG"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoBackTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qFQ-FI-OjM">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="e0e-oe-xdg" secondAttribute="bottom" constant="30" id="9kd-ft-EqK"/>
-                                            <constraint firstItem="XiA-jn-F8x" firstAttribute="bottom" secondItem="Bvl-kf-P5M" secondAttribute="bottom" constant="1" id="BDD-GE-zLV"/>
-                                            <constraint firstAttribute="width" constant="895" id="EaH-DP-e5Q"/>
-                                            <constraint firstItem="Bvl-kf-P5M" firstAttribute="top" secondItem="tiI-7a-pwl" secondAttribute="top" constant="20" symbolic="YES" id="Hh1-eI-zeR"/>
-                                            <constraint firstAttribute="bottom" secondItem="Bvl-kf-P5M" secondAttribute="bottom" constant="30" id="K79-f3-InX"/>
-                                            <constraint firstItem="e0e-oe-xdg" firstAttribute="top" secondItem="76N-nY-3xA" secondAttribute="top" id="LSx-wo-jAr"/>
-                                            <constraint firstItem="e0e-oe-xdg" firstAttribute="leading" secondItem="tiI-7a-pwl" secondAttribute="leading" constant="800" id="MSd-2M-eh5"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5xd-ao-8DA" secondAttribute="trailing" constant="20" symbolic="YES" id="QnX-W6-y8t"/>
-                                            <constraint firstItem="zBB-Qb-fgf" firstAttribute="leading" secondItem="XiA-jn-F8x" secondAttribute="trailing" constant="72" id="Svp-Oz-96E"/>
-                                            <constraint firstItem="XiA-jn-F8x" firstAttribute="leading" secondItem="5xd-ao-8DA" secondAttribute="trailing" constant="254" id="TA1-kG-geo"/>
-                                            <constraint firstItem="Bvl-kf-P5M" firstAttribute="bottom" secondItem="2V8-pq-nfx" secondAttribute="bottom" id="cem-qm-TCZ"/>
-                                            <constraint firstItem="e0e-oe-xdg" firstAttribute="leading" secondItem="zBB-Qb-fgf" secondAttribute="trailing" constant="8" id="iNM-Dv-H09"/>
-                                            <constraint firstItem="5xd-ao-8DA" firstAttribute="leading" secondItem="2V8-pq-nfx" secondAttribute="trailing" constant="154" id="jBl-Rk-Gyv"/>
-                                            <constraint firstItem="2V8-pq-nfx" firstAttribute="leading" secondItem="Bvl-kf-P5M" secondAttribute="trailing" constant="33" id="lj0-0q-a6m"/>
-                                            <constraint firstItem="76N-nY-3xA" firstAttribute="leading" secondItem="e0e-oe-xdg" secondAttribute="trailing" constant="15" id="mEU-pT-ehy"/>
-                                            <constraint firstItem="e0e-oe-xdg" firstAttribute="bottom" secondItem="76N-nY-3xA" secondAttribute="bottom" id="mxp-bY-OEJ"/>
-                                            <constraint firstItem="Bvl-kf-P5M" firstAttribute="leading" secondItem="tiI-7a-pwl" secondAttribute="leading" constant="28" id="nzm-zW-gbH"/>
-                                            <constraint firstItem="2V8-pq-nfx" firstAttribute="top" secondItem="tiI-7a-pwl" secondAttribute="top" constant="20" id="r4i-Q6-ee8"/>
-                                            <constraint firstItem="zBB-Qb-fgf" firstAttribute="centerY" secondItem="XiA-jn-F8x" secondAttribute="centerY" id="rUQ-9o-7qZ"/>
-                                            <constraint firstItem="5xd-ao-8DA" firstAttribute="top" secondItem="Bvl-kf-P5M" secondAttribute="top" constant="-1" id="s6P-Ar-PXE"/>
-                                            <constraint firstItem="e0e-oe-xdg" firstAttribute="top" secondItem="tiI-7a-pwl" secondAttribute="top" constant="20" id="w65-tU-Ijl"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="wantsLayer" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </visualEffectView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="935" id="MT8-gz-LgZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="tiI-7a-pwl" secondAttribute="bottom" constant="64" id="S15-v0-Ylk"/>
-                                    <constraint firstItem="tiI-7a-pwl" firstAttribute="leading" secondItem="J9D-fp-975" secondAttribute="leading" constant="20" symbolic="YES" id="TOC-uw-CCA"/>
-                                    <constraint firstItem="tiI-7a-pwl" firstAttribute="top" secondItem="J9D-fp-975" secondAttribute="top" constant="461" id="VdF-F7-rL9"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="J9D-fp-975" firstAttribute="leading" secondItem="vz1-Vk-BmQ" secondAttribute="leading" id="2Cg-Yl-OpA"/>
-                            <constraint firstAttribute="trailing" secondItem="J9D-fp-975" secondAttribute="trailing" id="9mg-fs-t5Z"/>
-                            <constraint firstItem="J9D-fp-975" firstAttribute="top" secondItem="vz1-Vk-BmQ" secondAttribute="top" id="Yw4-Qy-DZ6"/>
-                            <constraint firstAttribute="bottom" secondItem="J9D-fp-975" secondAttribute="bottom" id="t1a-RU-wSD"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="Book_mark_buton" destination="e0e-oe-xdg" id="Lt9-SQ-fcT"/>
-                        <outlet property="Chapter_Button" destination="tiI-7a-pwl" id="g7R-Hs-p3m"/>
-                        <outlet property="Current_next_page" destination="k8r-YA-sDi" id="BlQ-eu-wrK"/>
-                        <outlet property="Current_page" destination="pUh-74-5Aa" id="etr-id-tpM"/>
-                        <outlet property="Go_back_button" destination="Bvl-kf-P5M" id="QTE-eH-uwW"/>
-                        <outlet property="Read_next_button" destination="XiA-jn-F8x" id="fLo-It-iTu"/>
-                        <outlet property="Read_prev_button" destination="5xd-ao-8DA" id="e2n-4W-0sj"/>
-                        <outlet property="Settings_button" destination="76N-nY-3xA" id="4ua-sh-Jgs"/>
-                        <outlet property="page_seperater" destination="Dl2-0F-WLt" id="fOD-On-wpK"/>
-                        <outlet property="user_panel" destination="tiI-7a-pwl" id="J1P-2e-yg6"/>
-                    </connections>
-                </viewController>
-                <customObject id="E0H-il-NNM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1222" y="194"/>
+            <point key="canvasLocation" x="761" y="841"/>
         </scene>
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSBookmarksTemplate" width="17" height="18"/>
         <image name="NSGoBackTemplate" width="9" height="12"/>
+        <image name="NSGoForwardTemplate" width="9" height="12"/>
         <image name="NSListViewTemplate" width="14" height="10"/>
         <image name="NSTouchBarGoBackTemplate" width="10" height="30"/>
-        <image name="NSTouchBarGoForwardTemplate" width="10" height="30"/>
+        <image name="example-cover" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xZb-QK-haP"/>
-        <segue reference="6DN-jg-9ss"/>
+        <segue reference="DAp-it-kqd"/>
     </inferredMetricsTieBreakers>
 </document>

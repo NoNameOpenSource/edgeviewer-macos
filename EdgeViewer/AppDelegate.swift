@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Edgeviewer
+//  EdgeViewer
 //
-//  Created by YunSang Lee on 2018. 3. 26..
+//  Created by YunSang Lee on 2018. 4. 2..
 //  Copyright © 2018년 NoName. All rights reserved.
 //
 

@@ -745,20 +745,20 @@
             <objects>
                 <viewController id="9sD-9f-o3V" customClass="ContentView" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="9bA-nd-1hD">
-                        <rect key="frame" x="0.0" y="0.0" width="380" height="280"/>
+                        <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM3-TN-q7G" userLabel="Content View" customClass="Page_View" customModule="EdgeViewer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="380" height="280"/>
+                                <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="6BO-fS-HHL">
-                                    <rect key="frame" x="0.0" y="0.0" width="380" height="280"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="VaH-Vp-DT3" userLabel="Manga">
-                                            <rect key="frame" x="0.0" y="0.0" width="380" height="280"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
                                             <subviews>
                                                 <imageView horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-7x-BX3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="380" height="280"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="Images" id="MHT-8k-PSH"/>
                                                 </imageView>
                                             </subviews>
@@ -778,19 +778,19 @@
                                     </constraints>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="jw4-Mh-yMg">
-                                    <rect key="frame" x="0.0" y="264" width="380" height="16"/>
+                                    <rect key="frame" x="0.0" y="592" width="683" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="iwE-nc-WPk">
-                                    <rect key="frame" x="364" y="0.0" width="16" height="280"/>
+                                    <rect key="frame" x="667" y="0.0" width="16" height="608"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel" customClass="User_Panel_View" customModule="EdgeViewer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="340" height="60"/>
+                                <rect key="frame" x="20" y="20" width="643" height="60"/>
                                 <subviews>
                                     <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="l8A-VE-plB" userLabel="Panel" colorLabel="IBBuiltInLabel-Green">
-                                        <rect key="frame" x="0.0" y="0.0" width="340" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="643" height="60"/>
                                         <subviews>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y2W-Bl-bR2" userLabel="BackToDetail">
                                                 <rect key="frame" x="18" y="17" width="24" height="25"/>
@@ -832,7 +832,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Kd-fa-cTA" userLabel="Zoom_plus">
-                                                <rect key="frame" x="138" y="17" width="24" height="25"/>
+                                                <rect key="frame" x="521" y="17" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="LsI-dc-pQc"/>
                                                     <constraint firstAttribute="height" constant="20" id="shp-9Z-oi7"/>
@@ -843,7 +843,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WUB-gd-Cvo">
-                                                <rect key="frame" x="178" y="17" width="24" height="25"/>
+                                                <rect key="frame" x="233" y="17" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="bqG-dW-Kbx"/>
                                                     <constraint firstAttribute="width" constant="20" id="tnj-lQ-9Xw"/>
@@ -853,19 +853,8 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </button>
-                                            <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H6H-i6-O6I" userLabel="View_Next">
-                                                <rect key="frame" x="218" y="17" width="24" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="Kyj-IJ-YqU"/>
-                                                    <constraint firstAttribute="width" constant="20" id="kJH-N8-3ul"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HfW-Ei-dmv">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-ku-Drs" userLabel="BookMark">
-                                                <rect key="frame" x="258" y="17" width="24" height="25"/>
+                                                <rect key="frame" x="561" y="17" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="Y5Q-Oz-Ixk"/>
                                                     <constraint firstAttribute="height" constant="20" id="pf2-Oo-Vdx"/>
@@ -876,12 +865,26 @@
                                                 </buttonCell>
                                             </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yE1-th-zUI" userLabel="Settings">
-                                                <rect key="frame" x="298" y="17" width="24" height="25"/>
+                                                <rect key="frame" x="601" y="17" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="YEo-Xw-uAV"/>
                                                     <constraint firstAttribute="height" constant="20" id="Z0y-u2-40O"/>
                                                 </constraints>
                                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lsv-sH-deE">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <segue destination="Vzp-Xk-mR3" kind="custom" id="9HS-Wh-d8i"/>
+                                                </connections>
+                                            </button>
+                                            <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H6H-i6-O6I" userLabel="View_Next">
+                                                <rect key="frame" x="386" y="17" width="24" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="Kyj-IJ-YqU"/>
+                                                    <constraint firstAttribute="width" constant="20" id="kJH-N8-3ul"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HfW-Ei-dmv">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -891,19 +894,18 @@
                                             <constraint firstItem="4Kd-fa-cTA" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="4vd-dn-YDf"/>
                                             <constraint firstItem="A4L-DW-9i9" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="901-2d-KLB"/>
                                             <constraint firstItem="H6H-i6-O6I" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="CRB-bp-ywm"/>
-                                            <constraint firstItem="4Kd-fa-cTA" firstAttribute="leading" secondItem="RdX-4a-fxa" secondAttribute="trailing" constant="20" id="E4e-zW-uvx"/>
-                                            <constraint firstItem="WUB-gd-Cvo" firstAttribute="leading" secondItem="4Kd-fa-cTA" secondAttribute="trailing" constant="20" id="FOq-K7-CkD"/>
                                             <constraint firstAttribute="bottom" secondItem="Y2W-Bl-bR2" secondAttribute="bottom" constant="20" id="I4t-a3-g11"/>
                                             <constraint firstAttribute="bottom" secondItem="A4L-DW-9i9" secondAttribute="bottom" constant="20" id="LSS-3j-cLr"/>
                                             <constraint firstAttribute="bottom" secondItem="yE1-th-zUI" secondAttribute="bottom" constant="20" id="Nfw-TR-iu8"/>
-                                            <constraint firstItem="4Kd-fa-cTA" firstAttribute="leading" secondItem="RdX-4a-fxa" secondAttribute="trailing" constant="20" id="OMr-Yh-4Vp"/>
+                                            <constraint firstItem="4Kd-fa-cTA" firstAttribute="leading" secondItem="H6H-i6-O6I" secondAttribute="trailing" constant="115" id="QwB-zf-81O"/>
                                             <constraint firstItem="yE1-th-zUI" firstAttribute="leading" secondItem="BV0-ku-Drs" secondAttribute="trailing" constant="20" id="RsP-mS-uKO"/>
                                             <constraint firstItem="A4L-DW-9i9" firstAttribute="leading" secondItem="Y2W-Bl-bR2" secondAttribute="trailing" constant="20" id="S3W-1V-bvR"/>
                                             <constraint firstItem="yE1-th-zUI" firstAttribute="leading" secondItem="BV0-ku-Drs" secondAttribute="trailing" constant="20" id="Sbv-HK-6bf"/>
+                                            <constraint firstItem="WUB-gd-Cvo" firstAttribute="leading" secondItem="RdX-4a-fxa" secondAttribute="trailing" constant="115" id="TdE-tn-qqq"/>
                                             <constraint firstAttribute="bottom" secondItem="WUB-gd-Cvo" secondAttribute="bottom" constant="20" id="U8P-Lz-Epz"/>
                                             <constraint firstAttribute="trailing" secondItem="yE1-th-zUI" secondAttribute="trailing" constant="20" id="XKr-ml-vol"/>
-                                            <constraint firstItem="H6H-i6-O6I" firstAttribute="leading" secondItem="WUB-gd-Cvo" secondAttribute="trailing" constant="20" id="brH-ts-mVQ"/>
                                             <constraint firstItem="RdX-4a-fxa" firstAttribute="leading" secondItem="A4L-DW-9i9" secondAttribute="trailing" constant="20" id="dNL-AV-utT"/>
+                                            <constraint firstItem="BV0-ku-Drs" firstAttribute="leading" secondItem="4Kd-fa-cTA" secondAttribute="trailing" constant="20" id="dye-Jz-M1k"/>
                                             <constraint firstItem="BV0-ku-Drs" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="fej-x0-DKb"/>
                                             <constraint firstItem="Y2W-Bl-bR2" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="gzn-4v-o71"/>
                                             <constraint firstItem="yE1-th-zUI" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="h8u-CB-tXh"/>
@@ -911,10 +913,8 @@
                                             <constraint firstItem="Y2W-Bl-bR2" firstAttribute="leading" secondItem="l8A-VE-plB" secondAttribute="leading" constant="20" id="oaL-GI-ALn"/>
                                             <constraint firstAttribute="bottom" secondItem="BV0-ku-Drs" secondAttribute="bottom" constant="20" id="ptq-Kc-68N"/>
                                             <constraint firstItem="WUB-gd-Cvo" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="uDN-pT-YMG"/>
-                                            <constraint firstItem="H6H-i6-O6I" firstAttribute="leading" secondItem="WUB-gd-Cvo" secondAttribute="trailing" constant="20" id="vmV-c0-zFY"/>
                                             <constraint firstAttribute="bottom" secondItem="4Kd-fa-cTA" secondAttribute="bottom" constant="20" id="wf3-Rw-0kM"/>
                                             <constraint firstAttribute="bottom" secondItem="H6H-i6-O6I" secondAttribute="bottom" constant="20" id="xEl-F2-HSE"/>
-                                            <constraint firstItem="WUB-gd-Cvo" firstAttribute="leading" secondItem="4Kd-fa-cTA" secondAttribute="trailing" constant="20" id="xic-x3-qsC"/>
                                         </constraints>
                                     </visualEffectView>
                                 </subviews>
@@ -936,10 +936,20 @@
                             <constraint firstItem="XM3-TN-q7G" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" id="xs6-N4-sba"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="BackToDetail" destination="Y2W-Bl-bR2" id="wGy-7G-L47"/>
+                        <outlet property="BookMark" destination="BV0-ku-Drs" id="3bn-uh-Hzb"/>
+                        <outlet property="Chapter" destination="A4L-DW-9i9" id="3f7-Gi-ptQ"/>
+                        <outlet property="Next" destination="HfW-Ei-dmv" id="TW8-DK-mDC"/>
+                        <outlet property="Previous" destination="WUB-gd-Cvo" id="CIt-3i-Udq"/>
+                        <outlet property="Settings" destination="yE1-th-zUI" id="yOP-xs-rNH"/>
+                        <outlet property="Zoom_Plus" destination="4Kd-fa-cTA" id="iMV-fa-Bpu"/>
+                        <outlet property="Zoom_minus" destination="RdX-4a-fxa" id="O3i-ay-vxB"/>
+                    </connections>
                 </viewController>
                 <customObject id="pKP-WL-jQz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1738"/>
+            <point key="canvasLocation" x="-355.5" y="1916"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NKr-hU-teY">
@@ -952,7 +962,65 @@
                 </viewController>
                 <customObject id="jYo-gy-qgO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="2104"/>
+            <point key="canvasLocation" x="442" y="2410"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="NoU-xq-c15">
+            <objects>
+                <viewController id="Vzp-Xk-mR3" userLabel="Setting View Controller" sceneMemberID="viewController">
+                    <view key="view" id="ojQ-pv-QxG">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="27Z-iH-MIK">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <subviews>
+                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G7M-s6-vAj" userLabel="Brightness Scroll">
+                                        <rect key="frame" x="-2" y="283" width="228" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="224" id="g3L-c1-28F"/>
+                                        </constraints>
+                                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="Pai-ei-DzX"/>
+                                    </slider>
+                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tRp-hg-TsT">
+                                        <rect key="frame" x="222" y="283" width="230" height="19"/>
+                                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="VJX-rP-2PP"/>
+                                    </slider>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4i-XS-tOp" userLabel="Brightness View">
+                                        <rect key="frame" x="0.0" y="200" width="224" height="80"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Images" id="fMu-fy-VYn"/>
+                                    </imageView>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnL-Mo-6SA">
+                                        <rect key="frame" x="224" y="200" width="226" height="80"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Images" id="Ydn-uz-SIE"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="W4i-XS-tOp" firstAttribute="top" secondItem="G7M-s6-vAj" secondAttribute="bottom" constant="5" id="6b5-ko-xMe"/>
+                                    <constraint firstItem="tRp-hg-TsT" firstAttribute="trailing" secondItem="hnL-Mo-6SA" secondAttribute="trailing" id="LJ6-zJ-7vH"/>
+                                    <constraint firstItem="hnL-Mo-6SA" firstAttribute="top" secondItem="tRp-hg-TsT" secondAttribute="bottom" constant="5" id="O3K-8C-3gS"/>
+                                    <constraint firstItem="G7M-s6-vAj" firstAttribute="trailing" secondItem="W4i-XS-tOp" secondAttribute="trailing" id="YJq-HM-IOw"/>
+                                    <constraint firstItem="tRp-hg-TsT" firstAttribute="leading" secondItem="hnL-Mo-6SA" secondAttribute="leading" id="c0Y-jY-013"/>
+                                    <constraint firstItem="G7M-s6-vAj" firstAttribute="top" secondItem="27Z-iH-MIK" secondAttribute="top" id="d0a-GZ-zIt"/>
+                                    <constraint firstItem="G7M-s6-vAj" firstAttribute="leading" secondItem="27Z-iH-MIK" secondAttribute="leading" id="oAE-za-iXi"/>
+                                    <constraint firstItem="tRp-hg-TsT" firstAttribute="leading" secondItem="G7M-s6-vAj" secondAttribute="trailing" id="ob8-La-wYV"/>
+                                    <constraint firstItem="tRp-hg-TsT" firstAttribute="top" secondItem="27Z-iH-MIK" secondAttribute="top" id="sYR-Fp-TY6"/>
+                                    <constraint firstItem="G7M-s6-vAj" firstAttribute="leading" secondItem="W4i-XS-tOp" secondAttribute="leading" id="sa4-ki-f0w"/>
+                                    <constraint firstAttribute="trailing" secondItem="tRp-hg-TsT" secondAttribute="trailing" id="wb7-ia-UNt"/>
+                                </constraints>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="27Z-iH-MIK" firstAttribute="top" secondItem="ojQ-pv-QxG" secondAttribute="top" id="BxO-zH-TkD"/>
+                            <constraint firstAttribute="trailing" secondItem="27Z-iH-MIK" secondAttribute="trailing" id="SC5-Sj-jYI"/>
+                            <constraint firstItem="27Z-iH-MIK" firstAttribute="leading" secondItem="ojQ-pv-QxG" secondAttribute="leading" id="Sph-X1-7P7"/>
+                            <constraint firstAttribute="bottom" secondItem="27Z-iH-MIK" secondAttribute="bottom" id="ctr-Jt-w1g"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Wv9-bV-pki" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-413" y="2626"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="va9-aM-e0v">

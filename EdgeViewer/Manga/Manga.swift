@@ -15,4 +15,16 @@ class Manga{
     var CoverPage : NSImage = NSImage()
     var title : String = ""
     var rate : Int = 0
+    
+    init(Title : String) {
+        self.title = Title
+    }
+    
+    func setTitle(_ Title : String){
+        self.title = Title
+    }
+    
+    func setPageNumber(_ pg : Int) {
+        self.PageNumber = pg
+    }
 }

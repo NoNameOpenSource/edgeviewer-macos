@@ -17,39 +17,39 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="EdgeViewer" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About EdgeViewer" id="5kV-Vb-QxS">
+                                        <menuItem title="About EdgeViewer" state="on" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" state="on" keyEquivalent="," id="BOF-NM-1cW"/>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide EdgeViewer" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide EdgeViewer" state="on" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
+                                        <menuItem title="Hide Others" state="on" keyEquivalent="h" id="Vdr-fp-XzO">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="VT4-aY-XCT"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Show All" id="Kd2-mp-pUS">
+                                        <menuItem title="Show All" state="on" id="Kd2-mp-pUS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="Dhg-Le-xox"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit EdgeViewer" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit EdgeViewer" state="on" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -746,29 +746,17 @@
             <objects>
                 <viewController id="9sD-9f-o3V" customClass="ContentView" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="9bA-nd-1hD">
-                        <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
+                        <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM3-TN-q7G" userLabel="Content View" customClass="Page_View" customModule="EdgeViewer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM3-TN-q7G" userLabel="Manga View" customClass="Page_View" customModule="EdgeViewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="6BO-fS-HHL">
-                                    <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="VaH-Vp-DT3" userLabel="Manga">
-                                            <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
-                                            <subviews>
-                                                <imageView horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-7x-BX3" customClass="Single_Page_Viewer" customModule="EdgeViewer" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="683" height="608"/>
-                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="Images" id="MHT-8k-PSH"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ojS-7x-BX3" firstAttribute="leading" secondItem="VaH-Vp-DT3" secondAttribute="leading" id="3zy-Bm-Bdh"/>
-                                                <constraint firstAttribute="bottom" secondItem="ojS-7x-BX3" secondAttribute="bottom" id="huU-vE-5gV"/>
-                                                <constraint firstAttribute="trailing" secondItem="ojS-7x-BX3" secondAttribute="trailing" id="j1h-pQ-buF"/>
-                                                <constraint firstItem="ojS-7x-BX3" firstAttribute="top" secondItem="VaH-Vp-DT3" secondAttribute="top" id="rD2-7P-Ao0"/>
-                                            </constraints>
+                                            <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -779,19 +767,19 @@
                                     </constraints>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="jw4-Mh-yMg">
-                                    <rect key="frame" x="0.0" y="592" width="683" height="16"/>
+                                    <rect key="frame" x="0.0" y="592" width="710" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="iwE-nc-WPk">
-                                    <rect key="frame" x="667" y="0.0" width="16" height="608"/>
+                                    <rect key="frame" x="694" y="0.0" width="16" height="608"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel" customClass="User_Panel_View" customModule="EdgeViewer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="643" height="60"/>
+                                <rect key="frame" x="20" y="20" width="670" height="60"/>
                                 <subviews>
                                     <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="l8A-VE-plB" userLabel="Panel" colorLabel="IBBuiltInLabel-Green">
-                                        <rect key="frame" x="0.0" y="0.0" width="643" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="670" height="60"/>
                                         <subviews>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y2W-Bl-bR2" userLabel="BackToDetail">
                                                 <rect key="frame" x="18" y="17" width="24" height="25"/>
@@ -799,7 +787,7 @@
                                                     <constraint firstAttribute="width" constant="20" id="gI7-E2-m5P"/>
                                                     <constraint firstAttribute="height" constant="20" id="pVg-OW-vtf"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="BackIcon" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ox-Iv-gXu">
+                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="BackIcon" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="0Ox-Iv-gXu">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -833,7 +821,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Kd-fa-cTA" userLabel="Zoom_plus">
-                                                <rect key="frame" x="521" y="17" width="24" height="25"/>
+                                                <rect key="frame" x="548" y="17" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="LsI-dc-pQc"/>
                                                     <constraint firstAttribute="height" constant="20" id="shp-9Z-oi7"/>
@@ -858,7 +846,7 @@
                                                 </connections>
                                             </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-ku-Drs" userLabel="BookMark">
-                                                <rect key="frame" x="561" y="17" width="24" height="25"/>
+                                                <rect key="frame" x="588" y="17" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="Y5Q-Oz-Ixk"/>
                                                     <constraint firstAttribute="height" constant="20" id="pf2-Oo-Vdx"/>
@@ -868,8 +856,16 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </button>
+                                            <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBO-ua-sUz">
+                                                <rect key="frame" x="316" y="20" width="37" height="20"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="7if-yS-wbL">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yE1-th-zUI" userLabel="Settings">
-                                                <rect key="frame" x="601" y="17" width="24" height="25"/>
+                                                <rect key="frame" x="628" y="17" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="YEo-Xw-uAV"/>
                                                     <constraint firstAttribute="height" constant="20" id="Z0y-u2-40O"/>
@@ -880,7 +876,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H6H-i6-O6I" userLabel="View_Next">
-                                                <rect key="frame" x="386" y="17" width="24" height="25"/>
+                                                <rect key="frame" x="413" y="17" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Kyj-IJ-YqU"/>
                                                     <constraint firstAttribute="width" constant="20" id="kJH-N8-3ul"/>
@@ -896,9 +892,11 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="4Kd-fa-cTA" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="4vd-dn-YDf"/>
+                                            <constraint firstItem="H6H-i6-O6I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WUB-gd-Cvo" secondAttribute="trailing" constant="160" id="7C2-Io-Lhd"/>
                                             <constraint firstItem="A4L-DW-9i9" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="901-2d-KLB"/>
                                             <constraint firstItem="H6H-i6-O6I" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="CRB-bp-ywm"/>
                                             <constraint firstAttribute="bottom" secondItem="Y2W-Bl-bR2" secondAttribute="bottom" constant="20" id="I4t-a3-g11"/>
+                                            <constraint firstItem="FBO-ua-sUz" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="JDY-Ng-tUu"/>
                                             <constraint firstAttribute="bottom" secondItem="A4L-DW-9i9" secondAttribute="bottom" constant="20" id="LSS-3j-cLr"/>
                                             <constraint firstAttribute="bottom" secondItem="yE1-th-zUI" secondAttribute="bottom" constant="20" id="Nfw-TR-iu8"/>
                                             <constraint firstItem="4Kd-fa-cTA" firstAttribute="leading" secondItem="H6H-i6-O6I" secondAttribute="trailing" constant="115" id="QwB-zf-81O"/>
@@ -914,6 +912,7 @@
                                             <constraint firstItem="Y2W-Bl-bR2" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="gzn-4v-o71"/>
                                             <constraint firstItem="yE1-th-zUI" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="h8u-CB-tXh"/>
                                             <constraint firstAttribute="bottom" secondItem="RdX-4a-fxa" secondAttribute="bottom" constant="20" id="kIl-cZ-L2S"/>
+                                            <constraint firstAttribute="bottom" secondItem="FBO-ua-sUz" secondAttribute="bottom" constant="20" id="nJ5-ZE-bNh"/>
                                             <constraint firstItem="Y2W-Bl-bR2" firstAttribute="leading" secondItem="l8A-VE-plB" secondAttribute="leading" constant="20" id="oaL-GI-ALn"/>
                                             <constraint firstAttribute="bottom" secondItem="BV0-ku-Drs" secondAttribute="bottom" constant="20" id="ptq-Kc-68N"/>
                                             <constraint firstItem="WUB-gd-Cvo" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="uDN-pT-YMG"/>
@@ -944,8 +943,10 @@
                         <outlet property="BackToDetail" destination="Y2W-Bl-bR2" id="wGy-7G-L47"/>
                         <outlet property="BookMark" destination="BV0-ku-Drs" id="3bn-uh-Hzb"/>
                         <outlet property="Chapter" destination="A4L-DW-9i9" id="3f7-Gi-ptQ"/>
-                        <outlet property="MangaView" destination="ojS-7x-BX3" id="Ael-8j-hEW"/>
+                        <outlet property="ContenView" destination="XM3-TN-q7G" id="Mxj-XN-TBL"/>
+                        <outlet property="MangaPage" destination="VaH-Vp-DT3" id="eRo-Jw-T9y"/>
                         <outlet property="Next" destination="H6H-i6-O6I" id="H9F-FP-mRE"/>
+                        <outlet property="PageNumberLabel" destination="FBO-ua-sUz" id="ob2-ci-94C"/>
                         <outlet property="Previous" destination="WUB-gd-Cvo" id="CIt-3i-Udq"/>
                         <outlet property="Settings" destination="yE1-th-zUI" id="yOP-xs-rNH"/>
                         <outlet property="Zoom_Plus" destination="4Kd-fa-cTA" id="iMV-fa-Bpu"/>
@@ -959,6 +960,7 @@
         <!--Chapter View-->
         <scene sceneID="NKr-hU-teY">
             <objects>
+                <customObject id="jYo-gy-qgO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Rzr-do-Qxw" userLabel="Chapter View" sceneMemberID="viewController">
                     <view key="view" id="VcZ-62-nO7">
                         <rect key="frame" x="0.0" y="0.0" width="587" height="458"/>
@@ -1006,7 +1008,6 @@
                         </constraints>
                     </view>
                 </viewController>
-                <customObject id="jYo-gy-qgO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="441.5" y="2410"/>
         </scene>
@@ -1065,7 +1066,6 @@
     </scenes>
     <resources>
         <image name="BackIcon" width="720" height="720"/>
-        <image name="Images" width="128" height="128"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSBookmarksTemplate" width="17" height="18"/>
         <image name="NSEnterFullScreenTemplate" width="15" height="15"/>

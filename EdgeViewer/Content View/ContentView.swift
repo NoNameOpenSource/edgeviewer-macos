@@ -25,6 +25,7 @@ class ContentView: NSViewController {
     var LeftPage : NSImageView = NSImageView()
     var RightPage : NSImageView = NSImageView()
     
+    var Page_ : Page = Page()
     //StoryBoard View
     
     @IBOutlet weak var MangaPage: NSView!
@@ -59,18 +60,24 @@ class ContentView: NSViewController {
         TestManga.addNewPage(Pages: TestManga.emptyPage)
         TestManga.currentPage = 1
        
-        updatePage(manga: TestManga)
+        if ifdoublepage{
+            Page_ = SinglePage()
+        }
+        Page_.ContentViewLayout(manga: TestManga, relatedView: MangaPage)
+        Page_.UpdatePage(manga: TestManga, relate: MangaPage)
+        
         // Do view setup here.
     }
     
     // func used to change the view size when window size changed
     override func viewWillLayout() {
-        layoutSingPageView()
+        Page_.PageViewLayout()
+        Page_.ContentViewLayout(manga: TestManga, relatedView: MangaPage)
     }
     
     
     // function used to set the image size inside view base on the page size and view type
-    func layoutSingPageView() {
+/*    func layoutSingPageView() {
         print(PageNumberLabel.bounds.size)
         PageNumberLabel.frame.origin = NSPoint(x: super.view.bounds.origin.x + super.view.bounds.width/2 - 33.0, y : super.view.bounds.origin.y)
         if ifdoublepage{
@@ -116,7 +123,7 @@ class ContentView: NSViewController {
         
     }
    
-    
+*/
     //go to next page
     func nextPage(Object : Manga){
         if ifdoublepage {
@@ -127,7 +134,6 @@ class ContentView: NSViewController {
                 print("It's the last Page of this chapter")
                 Object.currentPage  -= 2
             }
-            updatePage(manga: Object)
         }else{
             Object.currentPage = Object.currentPage + 1
             if Object.currentPage <= Object.PageNumber {
@@ -136,7 +142,6 @@ class ContentView: NSViewController {
                 print("It's the last Page of this chapter")
                 Object.currentPage  -= 1
             }
-            updatePage(manga: Object)
         }
     }
     
@@ -150,7 +155,6 @@ class ContentView: NSViewController {
                 print("It's the first page of this chapter"    )
                 Object.currentPage += 2
             }
-            updatePage(manga: Object)
         }else{
             Object.currentPage = Object.currentPage - 1
             if Object.currentPage >= 1 {
@@ -159,7 +163,6 @@ class ContentView: NSViewController {
                 print("It's the first page of this chapter"    )
                 Object.currentPage += 1
             }
-            updatePage(manga: Object)
         }
     }
     
@@ -171,11 +174,10 @@ class ContentView: NSViewController {
         }else{
             ifdoublepage = true
         }
-        updatePage(manga: TestManga)
     }
     
     // Update the page
-    func updatePage(manga : Manga) {
+/*    func updatePage(manga : Manga) {
         if manga.currentPage == manga.PageNumber{
             ifdoublepage = false
         }
@@ -212,4 +214,5 @@ class ContentView: NSViewController {
 
         layoutSingPageView()
     }
+     */
 }

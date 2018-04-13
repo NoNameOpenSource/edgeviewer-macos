@@ -105,7 +105,7 @@ class ContentView: NSViewController {
             }
         }
         
-    }
+    
    
     
     
@@ -156,7 +156,7 @@ class ContentView: NSViewController {
         
         
     }
-    func SwitchToDoublePage(){
+    func SwitchPageview(){
         ifdoublepage = true
         updatePage(manga: TestManga)
     }

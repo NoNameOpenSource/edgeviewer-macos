@@ -105,7 +105,7 @@ class ContentView: NSViewController {
             }
         }
         
-    
+    }
    
     
     

@@ -17,18 +17,24 @@ class ContentView: NSViewController {
     var LastPage = NSImage(named: NSImage.Name(rawValue: "Last"))
     var FinalPage = NSImage(named: NSImage.Name(rawValue: "download"))
     
+    
+    // main
+    
+    // Programmatical Page viewer
     var SinglePageView : NSImageView = NSImageView()
     var LeftPage : NSImageView = NSImageView()
     var RightPage : NSImageView = NSImageView()
     
-    @IBOutlet weak var ContenView: Page_View!
+    //StoryBoard View
+    
+    @IBOutlet weak var MangaPage: NSView!
+    @IBOutlet weak var MangaView: Page_View!
     
     @IBOutlet weak var BackToDetail: NSButton!
     
     @IBOutlet weak var PageNumberLabel: NSTextField!
     @IBOutlet weak var Chapter: NSButton!
-    @IBOutlet weak var Zoom_minus: NSButton!
-    @IBOutlet weak var Zoom_Plus: NSButton!
+
    
     @IBOutlet weak var BookMark: NSButton!
     @IBOutlet weak var Settings: NSButton!
@@ -57,10 +63,13 @@ class ContentView: NSViewController {
         // Do view setup here.
     }
     
+    // func used to change the view size when window size changed
     override func viewWillLayout() {
         layoutSingPageView()
     }
     
+    
+    // function used to set the image size inside view base on the page size and view type
     func layoutSingPageView() {
         print(PageNumberLabel.bounds.size)
         PageNumberLabel.frame.origin = NSPoint(x: super.view.bounds.origin.x + super.view.bounds.width/2 - 33.0, y : super.view.bounds.origin.y)
@@ -93,7 +102,7 @@ class ContentView: NSViewController {
             
             
         }else{
-            var SizesRatio = TestManga.Page[TestManga.currentPage - 1].size.height/TestManga.Page[TestManga.currentPage - 1].size.width
+            let SizesRatio = TestManga.Page[TestManga.currentPage - 1].size.height/TestManga.Page[TestManga.currentPage - 1].size.width
             SinglePageView.setFrameSize(self.view.bounds.size)
             SinglePageView.setFrameOrigin(self.view.bounds.origin)
             if SizesRatio >= 1{
@@ -108,7 +117,7 @@ class ContentView: NSViewController {
     }
    
     
-    
+    //go to next page
     func nextPage(Object : Manga){
         if ifdoublepage {
             Object.currentPage = Object.currentPage + 2
@@ -129,15 +138,14 @@ class ContentView: NSViewController {
             }
             updatePage(manga: Object)
         }
-        
-        
     }
     
+    // Go to previous page
     func previousPage(Object : Manga){
         if ifdoublepage {
             Object.currentPage = Object.currentPage - 2
             if Object.currentPage >= 1 {
-                print("Loading page \(Object.currentPage) of \(Object.title)")
+                print("Loading page \(Object.currentPage) of \(Object.title)") // for now be console
             }else{
                 print("It's the first page of this chapter"    )
                 Object.currentPage += 2
@@ -153,52 +161,55 @@ class ContentView: NSViewController {
             }
             updatePage(manga: Object)
         }
-        
-        
     }
+    
+    
+    // Switch View Size
     func SwitchPageview(){
-        ifdoublepage = true
+        if ifdoublepage {
+            ifdoublepage = false
+        }else{
+            ifdoublepage = true
+        }
         updatePage(manga: TestManga)
     }
     
-    func SettingBrightness(){}
+    // Update the page
     func updatePage(manga : Manga) {
-  //      if let image = mana.grabPage(pageNumber: self.currentPage)
-    //        self.pageImageView.image = image
-      //  else
-        //    image was nil, so next page does not exist, thus //play beep and do not change page
-        PageNumberLabel.stringValue = "\(manga.currentPage)/\(manga.PageNumber)"
-
-        ContenView.subviews[0].subviews.removeAll()
         if manga.currentPage == manga.PageNumber{
             ifdoublepage = false
         }
+        if ifdoublepage {
+            PageNumberLabel.stringValue = "\(manga.currentPage) & \(manga.currentPage + 1) / \(manga.PageNumber)"
+        }else{
+            PageNumberLabel.stringValue = "\(manga.currentPage) / \(manga.PageNumber)"
+        }
+
         if ifdoublepage{
             let NextLeftPage : NSImageView = LeftPage
             let NextRightPage :NSImageView = RightPage
-            
+        
             NextLeftPage.image = manga.grabPage()
             NextRightPage.image = manga.grabRightPage()
             
+            MangaPage.subviews.removeAll()
             LeftPage = NextLeftPage
             RightPage = NextRightPage
             
-            ContenView.subviews[0].addSubview(LeftPage)
-            ContenView.subviews[0].addSubview(RightPage)
+            MangaPage.addSubview(LeftPage)
+            MangaPage.addSubview(RightPage)
             
         }else{
 
             let NextPageView : NSImageView = SinglePageView
+     
             NextPageView.image = manga.grabPage()
             SinglePageView = NextPageView
-            ContenView.subviews[0].addSubview(SinglePageView)
+            MangaPage.subviews.removeAll()
+            MangaPage.addSubview(SinglePageView)
         }
         
 
         layoutSingPageView()
     }
-//    func initializer() {
- //       pageView = PageView(type: .doublePage, withLeftImage: //////NSIMageObject, andRightImage: NSImageObject)
-     //   destroyOldOne
-    //}
 }

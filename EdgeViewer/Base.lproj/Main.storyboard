@@ -944,6 +944,7 @@
                         <outlet property="BookMark" destination="BV0-ku-Drs" id="3bn-uh-Hzb"/>
                         <outlet property="Chapter" destination="A4L-DW-9i9" id="3f7-Gi-ptQ"/>
                         <outlet property="ContenView" destination="XM3-TN-q7G" id="Mxj-XN-TBL"/>
+                        <outlet property="Manga" destination="VaH-Vp-DT3" id="cJ4-Uf-tlx"/>
                         <outlet property="MangaPage" destination="VaH-Vp-DT3" id="eRo-Jw-T9y"/>
                         <outlet property="Next" destination="H6H-i6-O6I" id="H9F-FP-mRE"/>
                         <outlet property="PageNumberLabel" destination="FBO-ua-sUz" id="ob2-ci-94C"/>

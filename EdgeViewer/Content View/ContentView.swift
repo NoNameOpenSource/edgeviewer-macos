@@ -68,6 +68,7 @@ class ContentView: NSViewController {
     
     // func used to change the view size when window size changed
     override func viewWillLayout() {
+        PageNumberLabel.frame.origin = NSPoint(x: super.view.bounds.origin.x + super.view.bounds.width/2 - 33.0, y : super.view.bounds.origin.y)
         Page_.PageViewLayout()
         Page_.ContentViewLayout(manga: TestManga, relatedView: MangaPage)
     }
@@ -224,7 +225,12 @@ class ContentView: NSViewController {
     func updatePage(){
         if TestManga.currentPage == TestManga.PageNumber{
             ifdoublepage = false
-            
+        }
+        
+        if ifdoublepage {
+            PageNumberLabel.stringValue = "\(TestManga.currentPage) & \(TestManga.currentPage + 1) / \(TestManga.PageNumber)"
+        }else{
+            PageNumberLabel.stringValue = "\(TestManga.currentPage) / \(TestManga.PageNumber)"
         }
         MangaPage.subviews.removeAll()
         definePageType()

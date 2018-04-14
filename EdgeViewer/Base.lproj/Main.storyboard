@@ -829,6 +829,10 @@
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="dataSource" destination="I2y-Ef-iJ7" id="YDW-ub-kHG"/>
+                                        <outlet property="delegate" destination="I2y-Ef-iJ7" id="yPG-5t-vXO"/>
+                                    </connections>
                                 </outlineView>
                             </subviews>
                             <nil key="backgroundColor"/>
@@ -842,6 +846,9 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <connections>
+                        <outlet property="outlineView" destination="bPi-ax-xqb" id="2h7-dN-hyp"/>
+                    </connections>
                 </viewController>
                 <customObject id="z6H-Md-eNn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

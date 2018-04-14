@@ -702,10 +702,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Library View Controller-->
         <scene sceneID="Wf8-xJ-JRE">
             <objects>
-                <splitViewController id="KxQ-DW-RNo" sceneMemberID="viewController">
+                <splitViewController id="KxQ-DW-RNo" customClass="LibraryViewController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="eJW-CW-PH5"/>
                         <splitViewItem id="O6Z-Ve-W1r"/>

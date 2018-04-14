@@ -35,7 +35,7 @@ class LibraryViewController: NSViewController {
         // 2
         view.wantsLayer = true
         // 3
-        collectionView.layer?.backgroundColor = NSColor.black.cgColor
+        collectionView.layer?.backgroundColor = NSColor.lightGray.cgColor
     }
 }
 

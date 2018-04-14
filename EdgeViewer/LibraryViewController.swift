@@ -18,7 +18,6 @@ class LibraryViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        let initialFolderUrl = URL(fileURLWithPath: "/Library/Desktop Pictures", isDirectory: true)
         configureCollectionView()
         sections.append(sectionA)
         sections.append(sectionB)

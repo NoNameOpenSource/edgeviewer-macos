@@ -83,6 +83,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E029CFDE2081E564008EC2A7 /* LibraryView */ = {
+			isa = PBXGroup;
+			children = (
+				E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */,
+				8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */,
+				8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */,
+				E05BDD9F2081B8EB00AEA9AA /* LibraryViewController.swift */,
+			);
+			path = LibraryView;
+			sourceTree = "<group>";
+		};
 		E08E862E20731A7A0082723B = {
 			isa = PBXGroup;
 			children = (
@@ -106,17 +117,14 @@
 		E08E863920731A7A0082723B /* EdgeViewer */ = {
 			isa = PBXGroup;
 			children = (
-				8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */,
+				E029CFDE2081E564008EC2A7 /* LibraryView */,
 				E05BDD9B2081AA1300AEA9AA /* Manga.swift */,
-				8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */,
 				E08E863A20731A7A0082723B /* AppDelegate.swift */,
 				E08E863C20731A7A0082723B /* ViewController.swift */,
 				E08E863E20731A7A0082723B /* Assets.xcassets */,
 				E08E864020731A7A0082723B /* Main.storyboard */,
 				E08E864320731A7A0082723B /* Info.plist */,
 				E08E864420731A7A0082723B /* EdgeViewer.entitlements */,
-				E05BDD9F2081B8EB00AEA9AA /* LibraryViewController.swift */,
-				E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */,
 			);
 			path = EdgeViewer;
 			sourceTree = "<group>";

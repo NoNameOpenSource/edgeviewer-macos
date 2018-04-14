@@ -40,7 +40,7 @@ class LibraryViewController: NSViewController {
 }
 
 
-extension SourceListController : NSCollectionViewDataSource {
+extension LibraryViewController : NSCollectionViewDataSource {
     
     // 1
     func numberOfSections(in collectionView: NSCollectionView) -> Int {

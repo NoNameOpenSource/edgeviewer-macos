@@ -9,9 +9,22 @@
 import Cocoa
 
 class SourceListController: NSViewController {
-@IBOutlet weak var collectionView: NSCollectionView!
-    let imageDirectoryLoader = ImageDirectoryLoader()
-    fileprivate func configureCollectionView() {
+    
+    @IBOutlet weak var collectionView: NSCollectionView!
+    let sectionA: [Manga] = [Manga(Title: "DummyA"), Manga(Title: "DummyB")]
+    let sectionB: [Manga] = [Manga(Title: "DummyC"), Manga(Title: "DummyD")]
+    var  sections: [[Manga]] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureCollectionView()
+        let initialFolderUrl = URL(fileURLWithPath: "/Library/Desktop Pictures", isDirectory: true)
+        configureCollectionView()
+        sections.append(sectionA)
+        sections.append(sectionB)
+    }
+    
+    fileprivate func configureCollectionView() { // this one makes layout
         // 1
         let flowLayout = NSCollectionViewFlowLayout()
         flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
@@ -24,31 +37,19 @@ class SourceListController: NSViewController {
         // 3
         collectionView.layer?.backgroundColor = NSColor.black.cgColor
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureCollectionView()
-        let initialFolderUrl = URL(fileURLWithPath: "/Library/Desktop Pictures", isDirectory: true)
-        imageDirectoryLoader.loadDataForFolderWithUrl(initialFolderUrl)
-        configureCollectionView()
-    }
-    
-        func loadDataForNewFolderWithUrl(_ folderURL: URL) {
-        imageDirectoryLoader.loadDataForFolderWithUrl(folderURL)
-    }
-        // Do view setup here.
-    }
+}
     
 
 extension SourceListController : NSCollectionViewDataSource {
     
     // 1
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        return imageDirectoryLoader.numberOfSections
+        return self.sections.count
     }
     
     // 2
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageDirectoryLoader.numberOfItemsInSection(section)
+        return self.sections[section].count
     }
     
     // 3
@@ -56,11 +57,15 @@ extension SourceListController : NSCollectionViewDataSource {
         
         // 4
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CollectionViewItem"), for: indexPath)
-        guard let collectionViewItem = item as? CollectionViewItem else {return item}
+        guard let collectionViewItem = item as? CollectionViewItem else {
+            return item
+        }
         
-        // 5
-        let imageFile = imageDirectoryLoader.imageFileForIndexPath(indexPath)
-        collectionViewItem.imageFile = imageFile
+        let manga = sections[indexPath[0]][indexPath[1]]
+        
+        item.textField!.stringValue = manga.title
+        item.imageView!.image = manga.cover
+        
         return item
     }
     

@@ -27,7 +27,6 @@ class Manga {
     var title : String = ""
     var rate : Int = 0
     var chapter : [Int] = [1]
-    var emptyPage : NSImage = NSImage(named: NSImage.Name(rawValue: "blank"))!
     let cover : NSImage
     
     
@@ -44,15 +43,6 @@ class Manga {
     
     func grabPage () -> NSImage? {
         return self.Page[self.currentPage - 1] as NSImage
-    }
-    
-    func grabRightPage() -> NSImage? {
-        if self.currentPage == self.PageNumber{
-            return self.emptyPage as NSImage
-        }
-        else {
-            return self.Page[self.currentPage] as NSImage
-        }
     }
     
     func IfNewChapter() -> Bool {

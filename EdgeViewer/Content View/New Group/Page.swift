@@ -9,7 +9,7 @@
 import Cocoa
 
 class Page: NSView {
-    
+
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -23,4 +23,5 @@ class Page: NSView {
     
     func ContentViewLayout(manga : Manga, relatedView: NSView){}
     func UpdatePage(manga: Manga, relate : NSView){}
+    
 }

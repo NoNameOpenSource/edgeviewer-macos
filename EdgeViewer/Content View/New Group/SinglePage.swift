@@ -42,7 +42,10 @@ class SinglePage: Page {
         NextPageView.image = manga.grabPage()
         MangaPage = NextPageView
         MangaPage.subviews.removeAll()
-        relate.addSubview(MangaPage)
+        
         ContentViewLayout(manga: manga, relatedView: relate)
+        relate.addSubview(MangaPage)
     }
+    
+
 }

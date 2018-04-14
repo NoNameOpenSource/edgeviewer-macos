@@ -40,6 +40,7 @@ class ContentView: NSViewController {
     @IBOutlet weak var BookMark: NSButton!
     @IBOutlet weak var Settings: NSButton!
     var ifdoublepage : Bool = true
+ 
     var Brightness : Float = 1.0
     
     
@@ -60,13 +61,7 @@ class ContentView: NSViewController {
         TestManga.addNewPage(Pages: TestManga.emptyPage)
         TestManga.currentPage = 1
        
-        if ifdoublepage{
-            Page_ = DoublePage()
-        }else{
-            Page_ = SinglePage()
-        }
-        Page_.ContentViewLayout(manga: TestManga, relatedView: MangaPage)
-        Page_.UpdatePage(manga: TestManga, relate: MangaPage)
+        updatePage()
         
         // Do view setup here.
     }
@@ -145,7 +140,7 @@ class ContentView: NSViewController {
                 Object.currentPage  -= 1
             }
         }
-        Page_.UpdatePage(manga: TestManga, relate: MangaPage)
+        updatePage()
     }
     
     // Go to previous page
@@ -167,7 +162,7 @@ class ContentView: NSViewController {
                 Object.currentPage += 1
             }
         }
-        Page_.UpdatePage(manga: TestManga, relate: MangaPage)
+        updatePage()
     }
     
     
@@ -217,7 +212,23 @@ class ContentView: NSViewController {
         
 
         layoutSingPageView()
-     }
+    }
      */
-
+    func definePageType(){
+        if ifdoublepage {
+            Page_ = DoublePage()
+        }else{
+            Page_ = SinglePage()
+        }
+    }
+    func updatePage(){
+        if TestManga.currentPage == TestManga.PageNumber{
+            ifdoublepage = false
+            
+        }
+        MangaPage.subviews.removeAll()
+        definePageType()
+        Page_.UpdatePage(manga: TestManga, relate: MangaPage)
+    }
+    
 }

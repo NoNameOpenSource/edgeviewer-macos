@@ -46,7 +46,6 @@ class DoublePage: Page {
     }
     
     override func UpdatePage(manga: Manga, relate: NSView) {
-        
         let NextFirstPage : NSImageView = FirstPage
         let NextSecondPage :NSImageView = SecondPage
         
@@ -60,6 +59,6 @@ class DoublePage: Page {
         relate.addSubview(FirstPage)
         relate.addSubview(SecondPage)
         
-        
+        self.ContentViewLayout(manga: manga,relatedView: relate)
     }
 }

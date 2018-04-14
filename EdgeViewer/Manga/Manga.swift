@@ -30,7 +30,7 @@ class Manga{
     var emptyPage : NSImage = NSImage(named: NSImage.Name(rawValue: "blank"))!
 
     
-    init(Title : String) {
+    init(Title: String) {
         self.title = Title
     }
     

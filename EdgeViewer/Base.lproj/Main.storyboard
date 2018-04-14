@@ -753,10 +753,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="1738"/>
         </scene>
-        <!--View Controller-->
+        <!--Library List View Controller-->
         <scene sceneID="va9-aM-e0v">
             <objects>
-                <viewController id="I2y-Ef-iJ7" sceneMemberID="viewController">
+                <viewController id="I2y-Ef-iJ7" customClass="LibraryListViewController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="ZeB-36-4ba">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

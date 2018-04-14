@@ -695,7 +695,7 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="BhN-Gf-Gzt" kind="relationship" relationship="window.shadowedContentViewController" id="YQz-2U-rNh"/>
+                        <segue destination="KxQ-DW-RNo" kind="relationship" relationship="window.shadowedContentViewController" id="Esa-25-mMx"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -708,6 +708,7 @@
                 <splitViewController id="KxQ-DW-RNo" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="eJW-CW-PH5"/>
+                        <splitViewItem id="O6Z-Ve-W1r"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="yrr-Zu-kyp">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -719,6 +720,7 @@
                     <connections>
                         <outlet property="splitView" destination="yrr-Zu-kyp" id="AI0-XU-Vpa"/>
                         <segue destination="I2y-Ef-iJ7" kind="relationship" relationship="splitItems" id="gtb-WB-4TZ"/>
+                        <segue destination="BhN-Gf-Gzt" kind="relationship" relationship="splitItems" id="Byd-RH-bLA"/>
                     </connections>
                 </splitViewController>
                 <customObject id="cSb-Up-5PK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */; };
 		8AAFCF22207C3C6C003C8605 /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */; };
+		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
 		E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */; };
 		E05BDD9C2081AA1300AEA9AA /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BDD9B2081AA1300AEA9AA /* Manga.swift */; };
 		E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
+		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListViewController.swift; sourceTree = "<group>"; };
 		E05BDD9B2081AA1300AEA9AA /* Manga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
 		E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */,
 				8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */,
 				E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */,
+				E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */,
 			);
 			path = LibraryView;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */,
+				E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 			);

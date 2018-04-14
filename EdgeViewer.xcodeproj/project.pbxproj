@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B10073E720816D0D005E980A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10073E620816D0D005E980A /* Page.swift */; };
 		B10073E920816EE5005E980A /* SinglePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10073E820816EE5005E980A /* SinglePage.swift */; };
+		B10073EB208179C4005E980A /* DoublePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10073EA208179C4005E980A /* DoublePage.swift */; };
 		B1A8944B2073B58C003A67AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentView.swift */; };
 		B1A8944E2073B5F4003A67AB /* Page View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8944D2073B5F4003A67AB /* Page View.swift */; };
 		B1A894502073B612003A67AB /* User Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8944F2073B612003A67AB /* User Panel View.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		B10073E620816D0D005E980A /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		B10073E820816EE5005E980A /* SinglePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePage.swift; sourceTree = "<group>"; };
+		B10073EA208179C4005E980A /* DoublePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePage.swift; sourceTree = "<group>"; };
 		B1A894492073B58C003A67AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B1A8944D2073B5F4003A67AB /* Page View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Page View.swift"; sourceTree = "<group>"; };
 		B1A8944F2073B612003A67AB /* User Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Panel View.swift"; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				B10073E620816D0D005E980A /* Page.swift */,
 				B10073E820816EE5005E980A /* SinglePage.swift */,
+				B10073EA208179C4005E980A /* DoublePage.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				B10073E720816D0D005E980A /* Page.swift in Sources */,
 				B1A8944B2073B58C003A67AB /* ContentView.swift in Sources */,
 				B1A894502073B612003A67AB /* User Panel View.swift in Sources */,
+				B10073EB208179C4005E980A /* DoublePage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

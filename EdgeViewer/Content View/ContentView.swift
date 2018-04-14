@@ -39,7 +39,7 @@ class ContentView: NSViewController {
    
     @IBOutlet weak var BookMark: NSButton!
     @IBOutlet weak var Settings: NSButton!
-    var ifdoublepage : Bool = false
+    var ifdoublepage : Bool = true
     var Brightness : Float = 1.0
     
     
@@ -61,7 +61,7 @@ class ContentView: NSViewController {
         TestManga.currentPage = 1
        
         if ifdoublepage{
-            
+            Page_ = DoublePage()
         }else{
             Page_ = SinglePage()
         }
@@ -217,6 +217,7 @@ class ContentView: NSViewController {
         
 
         layoutSingPageView()
-    }
+     }
      */
+
 }

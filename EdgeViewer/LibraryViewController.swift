@@ -1,5 +1,5 @@
 //
-//  SourceListController.swift
+//  LibraryViewController.swift
 //  EdgeViewer
 //
 //  Created by Sanzhar Almakyn on 4/9/18.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SourceListController: NSViewController {
+class LibraryViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
     let sectionA: [Manga] = [Manga(Title: "DummyA"), Manga(Title: "DummyB")]
@@ -38,7 +38,7 @@ class SourceListController: NSViewController {
         collectionView.layer?.backgroundColor = NSColor.black.cgColor
     }
 }
-    
+
 
 extension SourceListController : NSCollectionViewDataSource {
     
@@ -70,3 +70,4 @@ extension SourceListController : NSCollectionViewDataSource {
     }
     
 }
+

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class LibraryViewController: NSViewController {
+class ShelfViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
     let sectionA: [Manga] = [Manga(Title: "DummyA"), Manga(Title: "DummyB")]
@@ -39,7 +39,7 @@ class LibraryViewController: NSViewController {
 }
 
 
-extension LibraryViewController : NSCollectionViewDataSource {
+extension ShelfViewController : NSCollectionViewDataSource {
     
     // 1
     func numberOfSections(in collectionView: NSCollectionView) -> Int {

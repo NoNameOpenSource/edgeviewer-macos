@@ -11,7 +11,7 @@
 		8AAFCF22207C3C6C003C8605 /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */; };
 		E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */; };
 		E05BDD9C2081AA1300AEA9AA /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BDD9B2081AA1300AEA9AA /* Manga.swift */; };
-		E05BDDA02081B8EB00AEA9AA /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BDD9F2081B8EB00AEA9AA /* LibraryViewController.swift */; };
+		E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */; };
 		E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E863A20731A7A0082723B /* AppDelegate.swift */; };
 		E08E863D20731A7A0082723B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E863C20731A7A0082723B /* ViewController.swift */; };
 		E08E863F20731A7A0082723B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E08E863E20731A7A0082723B /* Assets.xcassets */; };
@@ -42,7 +42,7 @@
 		8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
 		E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListViewController.swift; sourceTree = "<group>"; };
 		E05BDD9B2081AA1300AEA9AA /* Manga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
-		E05BDD9F2081B8EB00AEA9AA /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewController.swift; sourceTree = "<group>"; };
 		E08E863720731A7A0082723B /* EdgeViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgeViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08E863A20731A7A0082723B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E08E863C20731A7A0082723B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 				E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */,
 				8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */,
 				8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */,
-				E05BDD9F2081B8EB00AEA9AA /* LibraryViewController.swift */,
+				E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */,
 			);
 			path = LibraryView;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E05BDD9C2081AA1300AEA9AA /* Manga.swift in Sources */,
-				E05BDDA02081B8EB00AEA9AA /* LibraryViewController.swift in Sources */,
+				E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,

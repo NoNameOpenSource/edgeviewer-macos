@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SinglePage: Page {
+class SinglePageView: PageView {
     var MangaPage : NSImageView = NSImageView()
     
 

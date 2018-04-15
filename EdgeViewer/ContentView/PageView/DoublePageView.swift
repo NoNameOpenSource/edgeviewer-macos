@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DoublePage: Page {
+class DoublePageView: PageView {
     var FirstPage : NSImageView = NSImageView()
     var SecondPage : NSImageView = NSImageView()
     override func draw(_ dirtyRect: NSRect) {

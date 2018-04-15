@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Page: NSView {
+class PageView: NSView {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

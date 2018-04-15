@@ -25,11 +25,10 @@ class ContentView: NSViewController {
     var LeftPage : NSImageView = NSImageView()
     var RightPage : NSImageView = NSImageView()
     
-    var Page_ : Page = Page()
+    var Page_ : PageView = PageView()
     //StoryBoard View
     
     @IBOutlet weak var MangaPage: NSView!
-    @IBOutlet weak var MangaView: Page_View!
     
     @IBOutlet weak var BackToDetail: NSButton!
     
@@ -217,9 +216,9 @@ class ContentView: NSViewController {
      */
     func definePageType(){
         if ifdoublepage {
-            Page_ = DoublePage()
+            Page_ = DoublePageView()
         }else{
-            Page_ = SinglePage()
+            Page_ = SinglePageView()
         }
     }
     func updatePage(){

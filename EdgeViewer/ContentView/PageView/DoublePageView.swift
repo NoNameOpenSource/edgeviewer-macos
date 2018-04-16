@@ -9,56 +9,56 @@
 import Cocoa
 
 class DoublePageView: PageView {
-    var FirstPage : NSImageView = NSImageView()
-    var SecondPage : NSImageView = NSImageView()
+    var firstPage : NSImageView = NSImageView()
+    var secondPage : NSImageView = NSImageView()
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
         // Drawing code here.
     }
     
-    override func ContentViewLayout(manga: Manga, relatedView: NSView) {
-        let LeftSizesRatio = manga.Page[manga.currentPage - 1].size.height/manga.Page[manga.currentPage - 1].size.width
-        let RightSizesRatio = manga.Page[manga.currentPage].size.height/manga.Page[manga.currentPage].size.width
-        let FirstPageSize : NSSize = NSSize(width: relatedView.bounds.width/2, height: relatedView.bounds.height)
-        let SecondPageSize : NSSize = NSSize(width: relatedView.bounds.width/2, height: relatedView.bounds.height)
-        let SecondPageOrigin : NSPoint = NSPoint(x: relatedView.bounds.origin.x + FirstPageSize.width, y: relatedView.bounds.origin.y)
-        FirstPage.setFrameSize(FirstPageSize)
-        FirstPage.setFrameOrigin(relatedView.bounds.origin)
-        SecondPage.setFrameOrigin(SecondPageOrigin)
-        SecondPage.setFrameSize(SecondPageSize)
+    override func contentViewLayout(manga: Manga, relatedView: NSView) {
+        let leftSizesRatio = manga.Page[manga.currentPage - 1].size.height/manga.Page[manga.currentPage - 1].size.width
+        let rightSizesRatio = manga.Page[manga.currentPage].size.height/manga.Page[manga.currentPage].size.width
+        let firstPageSize : NSSize = NSSize(width: relatedView.bounds.width/2, height: relatedView.bounds.height)
+        let secondPageSize : NSSize = NSSize(width: relatedView.bounds.width/2, height: relatedView.bounds.height)
+        let secondPageOrigin : NSPoint = NSPoint(x: relatedView.bounds.origin.x + firstPageSize.width, y: relatedView.bounds.origin.y)
+        firstPage.setFrameSize(firstPageSize)
+        firstPage.setFrameOrigin(relatedView.bounds.origin)
+        secondPage.setFrameOrigin(secondPageOrigin)
+        secondPage.setFrameSize(secondPageSize)
         
-        if LeftSizesRatio < 1 {
-            FirstPage.image?.size.width = FirstPage.frame.size.width
-            FirstPage.image?.size.height = FirstPage.frame.size.width * LeftSizesRatio
+        if leftSizesRatio < 1 {
+            firstPage.image?.size.width = firstPage.frame.size.width
+            firstPage.image?.size.height = firstPage.frame.size.width * leftSizesRatio
         }else{
-            FirstPage.image?.size.height = FirstPage.frame.size.height
-            FirstPage.image?.size.width = FirstPage.frame.size.height / LeftSizesRatio
+            firstPage.image?.size.height = firstPage.frame.size.height
+            firstPage.image?.size.width = firstPage.frame.size.height / leftSizesRatio
         }
         
-        if RightSizesRatio  < 1 {
-            SecondPage.image?.size.width = SecondPage.frame.size.width
-            SecondPage.image?.size.height = SecondPage.frame.size.width * RightSizesRatio
+        if rightSizesRatio  < 1 {
+            secondPage.image?.size.width = secondPage.frame.size.width
+            secondPage.image?.size.height = secondPage.frame.size.width * rightSizesRatio
         }else{
-            SecondPage.image?.size.height = SecondPage.frame.size.height
-            SecondPage.image?.size.width = SecondPage.frame.size.height / RightSizesRatio
+            secondPage.image?.size.height = secondPage.frame.size.height
+            secondPage.image?.size.width = secondPage.frame.size.height / rightSizesRatio
         }
     }
     
-    override func UpdatePage(manga: Manga, relate: NSView) {
-        let NextFirstPage : NSImageView = FirstPage
-        let NextSecondPage :NSImageView = SecondPage
+    override func updatePage(manga: Manga, relate: NSView) {
+        let NextFirstPage : NSImageView = firstPage
+        let NextSecondPage :NSImageView = secondPage
         
         NextFirstPage.image = manga.grabPage()
         NextSecondPage.image = manga.grabRightPage()
         
         relate.subviews.removeAll()
-        FirstPage = NextFirstPage
-        SecondPage = NextSecondPage
+        firstPage = NextFirstPage
+        secondPage = NextSecondPage
         
-        relate.addSubview(FirstPage)
-        relate.addSubview(SecondPage)
+        relate.addSubview(firstPage)
+        relate.addSubview(secondPage)
         
-        self.ContentViewLayout(manga: manga,relatedView: relate)
+        self.contentViewLayout(manga: manga,relatedView: relate)
     }
 }

@@ -19,23 +19,23 @@ class ContentView: NSViewController {
     var manga: Manga? = nil
     var pageView : PageView = PageView()
     
-    @IBOutlet weak var MangaPage: NSView!
-    @IBOutlet weak var BackToDetail: NSButton!
-    @IBOutlet weak var PageNumberLabel: NSTextField!
-    @IBOutlet weak var Chapter: NSButton!
+    @IBOutlet weak var mangaPage: NSView!
+    @IBOutlet weak var backToDetail: NSButton!
+    @IBOutlet weak var pageNumberLabel: NSTextField!
+    @IBOutlet weak var chapter: NSButton!
 
    
-    @IBOutlet weak var BookMark: NSButton!
-    @IBOutlet weak var Settings: NSButton!
+    @IBOutlet weak var bookMark: NSButton!
+    @IBOutlet weak var settings: NSButton!
     var viewType: ViewType = .singlePage
  
-    var Brightness : Float = 1.0
+    var brightness: Float = 1.0
     
     
-    @IBAction func ViewPrevious(_ sender: Any) {
-        previousPage(Object: manga!)    }
-    @IBAction func ViewNext(_ sender: Any) {
-        nextPage(Object : manga!)
+    @IBAction func viewPrevious(_ sender: Any) {
+        previousPage(object: manga!)    }
+    @IBAction func viewNext(_ sender: Any) {
+        nextPage(object : manga!)
     }
     
     override func viewDidLoad() {
@@ -64,50 +64,50 @@ class ContentView: NSViewController {
     
     // func used to change the view size when window size changed
     override func viewWillLayout() {
-        PageNumberLabel.frame.origin = NSPoint(x: super.view.bounds.origin.x + super.view.bounds.width/2 - 33.0, y : super.view.bounds.origin.y)
-        pageView.PageViewLayout()
-        pageView.ContentViewLayout(manga: manga!, relatedView: MangaPage)
+        pageNumberLabel.frame.origin = NSPoint(x: super.view.bounds.origin.x + super.view.bounds.width/2 - 33.0, y : super.view.bounds.origin.y)
+        pageView.pageViewLayout()
+        pageView.contentViewLayout(manga: manga!, relatedView: mangaPage)
     }
     
     //go to next page
-    func nextPage(Object : Manga){
+    func nextPage(object : Manga){
         if self.viewType == .doublePage {
-            Object.currentPage = Object.currentPage + 2
-            if Object.currentPage <= Object.PageNumber {
-                print("Loading page \(String(Object.currentPage)) of \(Object.title)")
+            object.currentPage = object.currentPage + 2
+            if object.currentPage <= object.PageNumber {
+                print("Loading page \(String(object.currentPage)) of \(object.title)")
             }else{
                 print("It's the last Page of this chapter")
-                Object.currentPage  -= 2
+                object.currentPage  -= 2
             }
         }else{
-            Object.currentPage = Object.currentPage + 1
-            if Object.currentPage <= Object.PageNumber {
-                print("Loading page \(String(Object.currentPage)) of \(Object.title)")
+            object.currentPage = object.currentPage + 1
+            if object.currentPage <= object.PageNumber {
+                print("Loading page \(String(object.currentPage)) of \(object.title)")
             }else{
                 print("It's the last Page of this chapter")
-                Object.currentPage  -= 1
+                object.currentPage  -= 1
             }
         }
         updatePage()
     }
     
     // Go to previous page
-    func previousPage(Object : Manga){
+    func previousPage(object : Manga){
         if self.viewType == .doublePage {
-            Object.currentPage = Object.currentPage - 2
-            if Object.currentPage >= 1 {
-                print("Loading page \(Object.currentPage) of \(Object.title)") // for now be console
+            object.currentPage = object.currentPage - 2
+            if object.currentPage >= 1 {
+                print("Loading page \(object.currentPage) of \(object.title)") // for now be console
             }else{
                 print("It's the first page of this chapter"    )
-                Object.currentPage += 2
+                object.currentPage += 2
             }
         }else{
-            Object.currentPage = Object.currentPage - 1
-            if Object.currentPage >= 1 {
-                print("Loading page \(Object.currentPage) of \(Object.title)")
+            object.currentPage = object.currentPage - 1
+            if object.currentPage >= 1 {
+                print("Loading page \(object.currentPage) of \(object.title)")
             }else{
                 print("It's the first page of this chapter"    )
-                Object.currentPage += 1
+                object.currentPage += 1
             }
         }
         updatePage()
@@ -115,7 +115,7 @@ class ContentView: NSViewController {
     
     
     // Switch View Size
-    func SwitchPageview(){
+    func switchPageview(){
         switch self.viewType {
             case .singlePage:
                 self.viewType = .doublePage
@@ -138,13 +138,13 @@ class ContentView: NSViewController {
         }
         
         if self.viewType == .doublePage {
-            PageNumberLabel.stringValue = "\(manga!.currentPage) & \(manga!.currentPage + 1) / \(manga!.PageNumber)"
+            pageNumberLabel.stringValue = "\(manga!.currentPage) & \(manga!.currentPage + 1) / \(manga!.PageNumber)"
         }else{
-            PageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.PageNumber)"
+            pageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.PageNumber)"
         }
-        MangaPage.subviews.removeAll()
+        mangaPage.subviews.removeAll()
         definePageType()
-        pageView.UpdatePage(manga: manga!, relate: MangaPage)
+        pageView.updatePage(manga: manga!, relate: mangaPage)
     }
     
 }

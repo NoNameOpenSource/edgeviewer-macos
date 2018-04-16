@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class User_Panel_View: NSView {
+class UserPanelView: NSView {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

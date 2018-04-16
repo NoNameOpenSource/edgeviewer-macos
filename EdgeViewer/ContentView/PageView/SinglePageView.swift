@@ -9,7 +9,7 @@
 import Cocoa
 
 class SinglePageView: PageView {
-    var MangaPage : NSImageView = NSImageView()
+    var mangaPage : NSImageView = NSImageView()
     
 
     
@@ -19,32 +19,32 @@ class SinglePageView: PageView {
         // Drawing code here.
     }
     
-    override func ContentViewLayout(manga : Manga,relatedView: NSView) {
-        let SizesRatio = manga.Page[manga.currentPage - 1].size.height/manga.Page[manga.currentPage - 1].size.width
+    override func contentViewLayout(manga : Manga,relatedView: NSView) {
+        let sizesRatio = manga.Page[manga.currentPage - 1].size.height/manga.Page[manga.currentPage - 1].size.width
         
         let size = relatedView.bounds.size
         let origin = relatedView.bounds.origin
         
-        MangaPage.setFrameSize(size)
-        MangaPage.setFrameOrigin(origin)
-        if SizesRatio >= 1{
-            MangaPage.image?.size.height = MangaPage.frame.size.height
-            MangaPage.image?.size.width = MangaPage.frame.size.height / SizesRatio
+        mangaPage.setFrameSize(size)
+        mangaPage.setFrameOrigin(origin)
+        if sizesRatio >= 1{
+            mangaPage.image?.size.height = mangaPage.frame.size.height
+            mangaPage.image?.size.width = mangaPage.frame.size.height / sizesRatio
         }else{
-            MangaPage.image?.size.width = MangaPage.frame.size.width
-            MangaPage.image?.size.height = MangaPage.frame.size.width * SizesRatio
+            mangaPage.image?.size.width = mangaPage.frame.size.width
+            mangaPage.image?.size.height = mangaPage.frame.size.width * sizesRatio
         }
     }
     
-    override func UpdatePage(manga: Manga, relate : NSView) {
-        let NextPageView : NSImageView = MangaPage
+    override func updatePage(manga: Manga, relate : NSView) {
+        let nextPageView : NSImageView = mangaPage
         
-        NextPageView.image = manga.grabPage()
-        MangaPage = NextPageView
-        MangaPage.subviews.removeAll()
+        nextPageView.image = manga.grabPage()
+        mangaPage = nextPageView
+        mangaPage.subviews.removeAll()
         
-        ContentViewLayout(manga: manga, relatedView: relate)
-        relate.addSubview(MangaPage)
+        contentViewLayout(manga: manga, relatedView: relate)
+        relate.addSubview(mangaPage)
     }
     
 

@@ -16,12 +16,12 @@ class PageView: NSView {
         // Drawing code here.
     }
     
-    func PageViewLayout() {
+    func pageViewLayout() {
         self.bounds.size = super.bounds.size
         self.bounds.size = super.bounds.size
     }
     
-    func ContentViewLayout(manga : Manga, relatedView: NSView){}
-    func UpdatePage(manga: Manga, relate : NSView){}
+    func contentViewLayout(manga : Manga, relatedView: NSView){}
+    func updatePage(manga: Manga, relate : NSView){}
     
 }

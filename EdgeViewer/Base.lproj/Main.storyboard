@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment version="101100" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -752,11 +752,11 @@
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM3-TN-q7G" userLabel="Manga View" customClass="Page_View" customModule="EdgeViewer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="6BO-fS-HHL">
-                                    <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="695" height="593"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="VaH-Vp-DT3" userLabel="Manga">
-                                            <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="695" height="593"/>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -767,15 +767,15 @@
                                     </constraints>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="jw4-Mh-yMg">
-                                    <rect key="frame" x="0.0" y="592" width="710" height="16"/>
+                                    <rect key="frame" x="0.0" y="593" width="695" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="iwE-nc-WPk">
-                                    <rect key="frame" x="694" y="0.0" width="16" height="608"/>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="iwE-nc-WPk">
+                                    <rect key="frame" x="695" y="0.0" width="15" height="593"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel" customClass="User_Panel_View" customModule="EdgeViewer" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel" customClass="UserPanelView" customModule="EdgeViewer" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="670" height="60"/>
                                 <subviews>
                                     <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="l8A-VE-plB" userLabel="Panel" colorLabel="IBBuiltInLabel-Green">
@@ -842,7 +842,7 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="ViewPrevious:" target="9sD-9f-o3V" id="hN0-GQ-PWE"/>
+                                                    <action selector="viewPrevious:" target="9sD-9f-o3V" id="hN0-GQ-PWE"/>
                                                 </connections>
                                             </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-ku-Drs" userLabel="BookMark">
@@ -886,7 +886,7 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="ViewNext:" target="9sD-9f-o3V" id="RUI-P0-UU3"/>
+                                                    <action selector="viewPrevious:" target="9sD-9f-o3V" id="RUI-P0-UU3"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -940,18 +940,18 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="BackToDetail" destination="Y2W-Bl-bR2" id="wGy-7G-L47"/>
-                        <outlet property="BookMark" destination="BV0-ku-Drs" id="3bn-uh-Hzb"/>
-                        <outlet property="Chapter" destination="A4L-DW-9i9" id="3f7-Gi-ptQ"/>
                         <outlet property="ContenView" destination="XM3-TN-q7G" id="Mxj-XN-TBL"/>
                         <outlet property="Manga" destination="VaH-Vp-DT3" id="cJ4-Uf-tlx"/>
-                        <outlet property="MangaPage" destination="VaH-Vp-DT3" id="eRo-Jw-T9y"/>
                         <outlet property="Next" destination="H6H-i6-O6I" id="H9F-FP-mRE"/>
-                        <outlet property="PageNumberLabel" destination="FBO-ua-sUz" id="ob2-ci-94C"/>
                         <outlet property="Previous" destination="WUB-gd-Cvo" id="CIt-3i-Udq"/>
-                        <outlet property="Settings" destination="yE1-th-zUI" id="yOP-xs-rNH"/>
                         <outlet property="Zoom_Plus" destination="4Kd-fa-cTA" id="iMV-fa-Bpu"/>
                         <outlet property="Zoom_minus" destination="RdX-4a-fxa" id="O3i-ay-vxB"/>
+                        <outlet property="backToDetail" destination="Y2W-Bl-bR2" id="wGy-7G-L47"/>
+                        <outlet property="bookMark" destination="BV0-ku-Drs" id="3bn-uh-Hzb"/>
+                        <outlet property="chapter" destination="A4L-DW-9i9" id="3f7-Gi-ptQ"/>
+                        <outlet property="mangaPage" destination="VaH-Vp-DT3" id="eRo-Jw-T9y"/>
+                        <outlet property="pageNumberLabel" destination="FBO-ua-sUz" id="ob2-ci-94C"/>
+                        <outlet property="settings" destination="yE1-th-zUI" id="yOP-xs-rNH"/>
                     </connections>
                 </viewController>
                 <customObject id="pKP-WL-jQz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

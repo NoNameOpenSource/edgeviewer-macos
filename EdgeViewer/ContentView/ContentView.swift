@@ -17,7 +17,9 @@ enum ViewType {
 class ContentView: NSViewController {
     
     var manga: Manga? = nil
-    var pageView : PageView = PageView()
+    var pageView: PageView = PageView()
+    
+    var currentPage = 0
     
     @IBOutlet weak var mangaPage: NSView!
     @IBOutlet weak var backToDetail: NSButton!
@@ -51,9 +53,9 @@ class ContentView: NSViewController {
         for page in pages {
             if let page = page {
                 testManga.addNewPage(Pages: page)
-                testManga.currentPage = 1
             }
         }
+        self.currentPage = 1
         
         manga = testManga
        
@@ -72,20 +74,20 @@ class ContentView: NSViewController {
     //go to next page
     func nextPage(object : Manga){
         if self.viewType == .doublePage {
-            object.currentPage = object.currentPage + 2
-            if object.currentPage <= object.PageNumber {
-                print("Loading page \(String(object.currentPage)) of \(object.title)")
+            self.currentPage = object.currentPage + 2
+            if self.currentPage <= object.PageNumber {
+                print("Loading page \(String(self.currentPage)) of \(object.title)")
             }else{
                 print("It's the last Page of this chapter")
-                object.currentPage  -= 2
+                self.currentPage  -= 2
             }
         }else{
-            object.currentPage = object.currentPage + 1
-            if object.currentPage <= object.PageNumber {
-                print("Loading page \(String(object.currentPage)) of \(object.title)")
+            self.currentPage = object.currentPage + 1
+            if self.currentPage <= object.PageNumber {
+                print("Loading page \(String(self.currentPage)) of \(object.title)")
             }else{
                 print("It's the last Page of this chapter")
-                object.currentPage  -= 1
+                self.currentPage  -= 1
             }
         }
         updatePage()
@@ -94,20 +96,20 @@ class ContentView: NSViewController {
     // Go to previous page
     func previousPage(object : Manga){
         if self.viewType == .doublePage {
-            object.currentPage = object.currentPage - 2
-            if object.currentPage >= 1 {
-                print("Loading page \(object.currentPage) of \(object.title)") // for now be console
+            self.currentPage = object.currentPage - 2
+            if self.currentPage >= 1 {
+                print("Loading page \(self.currentPage) of \(object.title)") // for now be console
             }else{
                 print("It's the first page of this chapter"    )
-                object.currentPage += 2
+                self.currentPage += 2
             }
         }else{
-            object.currentPage = object.currentPage - 1
-            if object.currentPage >= 1 {
-                print("Loading page \(object.currentPage) of \(object.title)")
+            self.currentPage = self.currentPage - 1
+            if self.currentPage >= 1 {
+                print("Loading page \(self.currentPage) of \(object.title)")
             }else{
                 print("It's the first page of this chapter"    )
-                object.currentPage += 1
+                self.currentPage += 1
             }
         }
         updatePage()

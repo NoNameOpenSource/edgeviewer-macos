@@ -130,7 +130,7 @@ class ContentViewController: NSViewController {
         if self.viewType == .doublePage {
             pageView = DoublePageView()
         }else{
-            self.pageView = SingleePageView()
+            self.pageView = SinglePageView()
         }
     }
     
@@ -139,11 +139,8 @@ class ContentViewController: NSViewController {
             self.viewType = .singlePage
         }
         
-        if self.viewType == .doublePage {
-            pageNumberLabel.stringValue = "\(manga!.currentPage) & \(manga!.currentPage + 1) / \(manga!.PageNumber)"
-        }else{
-            pageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.PageNumber)"
-        }
+        pageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.PageNumber)"
+        
         mangaPage.subviews.removeAll()
         definePageType()
         pageView.updatePage(manga: manga!, relate: mangaPage)

@@ -9,6 +9,8 @@
 import Cocoa
 
 class CollectionViewItem: NSCollectionViewItem {
+    
+   
     // 2
     override func viewDidLoad() {
         super.viewDidLoad()

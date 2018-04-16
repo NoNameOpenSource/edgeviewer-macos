@@ -867,7 +867,7 @@
                             <subviews>
                                 <collectionView id="x64-m2-pdu">
                                     <rect key="frame" x="0.0" y="0.0" width="448" height="158"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="JUt-Pe-cnc">
                                         <size key="itemSize" width="50" height="50"/>
                                     </collectionViewFlowLayout>

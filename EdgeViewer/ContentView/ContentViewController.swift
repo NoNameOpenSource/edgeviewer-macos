@@ -14,7 +14,7 @@ enum ViewType {
     case verticalScroll
 }
 
-class ContentView: NSViewController {
+class ContentViewController: NSViewController {
     
     var manga: Manga? = nil
     var pageView: PageView = PageView()

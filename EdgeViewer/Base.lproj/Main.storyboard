@@ -741,10 +741,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="1224"/>
         </scene>
-        <!--Content View-->
+        <!--Content View Controller-->
         <scene sceneID="97D-BY-Yjf">
             <objects>
-                <viewController id="9sD-9f-o3V" customClass="ContentView" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9sD-9f-o3V" customClass="ContentViewController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="9bA-nd-1hD">
                         <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                         <autoresizingMask key="autoresizingMask"/>

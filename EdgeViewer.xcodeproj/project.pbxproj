@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C2033FF207EAD4800830821 /* ChapterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2033FE207EAD4800830821 /* ChapterView.swift */; };
 		1C7BFFF2207C18FA00B61444 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BFFF1207C18FA00B61444 /* DetailView.swift */; };
 		1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BFFF5207C282600B61444 /* RatingControl.swift */; };
 		E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E863A20731A7A0082723B /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C2033FE207EAD4800830821 /* ChapterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterView.swift; sourceTree = "<group>"; };
 		1C7BFFF1207C18FA00B61444 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		1C7BFFF5207C282600B61444 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		E08E863720731A7A0082723B /* EdgeViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgeViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				E08E863C20731A7A0082723B /* ViewController.swift */,
 				E08E863E20731A7A0082723B /* Assets.xcassets */,
 				E08E864020731A7A0082723B /* Main.storyboard */,
+				1C2033FE207EAD4800830821 /* ChapterView.swift */,
 				1C7BFFF1207C18FA00B61444 /* DetailView.swift */,
 				1C7BFFF5207C282600B61444 /* RatingControl.swift */,
 				E08E864320731A7A0082723B /* Info.plist */,
@@ -267,6 +270,7 @@
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				1C7BFFF2207C18FA00B61444 /* DetailView.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
+				1C2033FF207EAD4800830821 /* ChapterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

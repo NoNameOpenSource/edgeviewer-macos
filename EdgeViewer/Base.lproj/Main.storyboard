@@ -867,13 +867,13 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrq-6M-c5M" customClass="ChapterView">
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrq-6M-c5M">
                                 <rect key="frame" x="20" y="20" width="832" height="180"/>
                                 <clipView key="contentView" drawsBackground="NO" id="ViM-E8-KQX">
                                     <rect key="frame" x="1" y="1" width="830" height="178"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="BFi-bc-MnB">
+                                        <collectionView id="BFi-bc-MnB" customClass="ChapterView" customModule="EdgeViewer" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="719" height="194"/>
                                             <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="LDw-oZ-vXJ">
@@ -894,9 +894,9 @@
                                 </scroller>
                             </scrollView>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogn-HN-6cc" customClass="RatingControl" customModule="EdgeViewer" customModuleProvider="target">
-                                <rect key="frame" x="159" y="380" width="300" height="36"/>
+                                <rect key="frame" x="159" y="380" width="200" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="RRc-Vh-nKr"/>
+                                    <constraint firstAttribute="width" constant="200" id="RRc-Vh-nKr"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">

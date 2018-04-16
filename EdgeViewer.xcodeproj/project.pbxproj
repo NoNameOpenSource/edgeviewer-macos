@@ -13,6 +13,7 @@
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
 		B1A894502073B612003A67AB /* UserPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8944F2073B612003A67AB /* UserPanelView.swift */; };
 		B1A894532073C507003A67AB /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894522073C507003A67AB /* Manga.swift */; };
+		E002F1012085477200AACCC0 /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F1002085477200AACCC0 /* PageController.swift */; };
 		E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E863A20731A7A0082723B /* AppDelegate.swift */; };
 		E08E863D20731A7A0082723B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E863C20731A7A0082723B /* ViewController.swift */; };
 		E08E863F20731A7A0082723B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E08E863E20731A7A0082723B /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		B1A8944F2073B612003A67AB /* UserPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPanelView.swift; sourceTree = "<group>"; };
 		B1A894522073C507003A67AB /* Manga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
+		E002F1002085477200AACCC0 /* PageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
 		E08E863720731A7A0082723B /* EdgeViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgeViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08E863A20731A7A0082723B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E08E863C20731A7A0082723B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		B10073E520816CA7005E980A /* PageView */ = {
 			isa = PBXGroup;
 			children = (
+				E002F1002085477200AACCC0 /* PageController.swift */,
 				B10073E620816D0D005E980A /* PageView.swift */,
 				B10073E820816EE5005E980A /* SinglePageView.swift */,
 				B10073EA208179C4005E980A /* DoublePageView.swift */,
@@ -302,6 +305,7 @@
 			files = (
 				B1A894532073C507003A67AB /* Manga.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
+				E002F1012085477200AACCC0 /* PageController.swift in Sources */,
 				B10073E920816EE5005E980A /* SinglePageView.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 				B10073E720816D0D005E980A /* PageView.swift in Sources */,

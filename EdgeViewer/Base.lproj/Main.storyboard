@@ -938,7 +938,7 @@
         <!--Page Controller-->
         <scene sceneID="AEb-3Y-ybK">
             <objects>
-                <pagecontroller id="5tG-XQ-LIP" sceneMemberID="viewController">
+                <pagecontroller id="5tG-XQ-LIP" customClass="PageController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="1Zo-bT-kLi">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

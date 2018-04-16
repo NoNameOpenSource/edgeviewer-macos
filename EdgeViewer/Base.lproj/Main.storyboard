@@ -867,32 +867,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrq-6M-c5M">
-                                <rect key="frame" x="20" y="20" width="832" height="180"/>
-                                <clipView key="contentView" drawsBackground="NO" id="ViM-E8-KQX">
-                                    <rect key="frame" x="1" y="1" width="830" height="178"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <collectionView id="BFi-bc-MnB" customClass="ChapterView" customModule="EdgeViewer" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="719" height="194"/>
-                                            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="LDw-oZ-vXJ">
-                                                <size key="itemSize" width="50" height="50"/>
-                                            </collectionViewFlowLayout>
-                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </collectionView>
-                                    </subviews>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Qu1-nu-tOc">
-                                    <rect key="frame" x="1" y="143" width="719" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="JIy-ki-uue">
-                                    <rect key="frame" x="815" y="1" width="16" height="178"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogn-HN-6cc" customClass="RatingControl" customModule="EdgeViewer" customModuleProvider="target">
                                 <rect key="frame" x="159" y="380" width="200" height="36"/>
                                 <constraints>
@@ -904,39 +878,69 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2On-Do-ZzQ">
+                                <rect key="frame" x="20" y="20" width="832" height="210"/>
+                                <clipView key="contentView" drawsBackground="NO" id="0Rs-sF-ulf">
+                                    <rect key="frame" x="1" y="1" width="830" height="208"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView id="48C-KD-Wpa">
+                                            <rect key="frame" x="0.0" y="0.0" width="830" height="158"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Umc-K4-4sc">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="ymU-Zp-kRl" id="tKI-XB-WjC"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="xDE-Jx-PXR"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="E4B-wE-2kO">
+                                    <rect key="frame" x="1" y="193" width="830" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="3ly-vN-mxi">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="NN9-2C-Rxb" firstAttribute="top" secondItem="0TQ-aj-gUl" secondAttribute="top" constant="20" id="2d5-tQ-80S"/>
                             <constraint firstItem="q0e-5w-N1Z" firstAttribute="top" secondItem="aVl-8M-baY" secondAttribute="bottom" constant="8" symbolic="YES" id="4ub-3B-w5D"/>
                             <constraint firstItem="gIj-sJ-v8P" firstAttribute="top" secondItem="7mB-RJ-UXb" secondAttribute="bottom" constant="8" symbolic="YES" id="ER0-cW-oLX"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="top" secondItem="igz-bX-fLC" secondAttribute="bottom" constant="75" id="H2X-PW-be4"/>
+                            <constraint firstAttribute="bottom" secondItem="2On-Do-ZzQ" secondAttribute="bottom" constant="20" id="Jfw-ka-biO"/>
                             <constraint firstItem="q0e-5w-N1Z" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="JkR-cl-NSf"/>
-                            <constraint firstItem="Yrq-6M-c5M" firstAttribute="height" secondItem="NN9-2C-Rxb" secondAttribute="height" id="NMZ-cy-Gcm"/>
-                            <constraint firstItem="Yrq-6M-c5M" firstAttribute="leading" secondItem="0TQ-aj-gUl" secondAttribute="leading" constant="20" id="PVy-F7-ZSm"/>
+                            <constraint firstItem="2On-Do-ZzQ" firstAttribute="leading" secondItem="0TQ-aj-gUl" secondAttribute="leading" constant="20" id="KjJ-JY-Jrm"/>
                             <constraint firstItem="7mB-RJ-UXb" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="Q8a-Ze-x1k"/>
                             <constraint firstItem="BdN-H7-7Lb" firstAttribute="leading" secondItem="HZc-eQ-sBA" secondAttribute="leading" id="QRC-xk-nie"/>
                             <constraint firstItem="igz-bX-fLC" firstAttribute="top" secondItem="HZc-eQ-sBA" secondAttribute="top" id="Qjd-D5-gET"/>
-                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="q0e-5w-N1Z" secondAttribute="trailing" id="RLR-8l-1Dg"/>
-                            <constraint firstAttribute="trailing" secondItem="Yrq-6M-c5M" secondAttribute="trailing" constant="20" id="SWY-b6-Jq8"/>
                             <constraint firstItem="HZc-eQ-sBA" firstAttribute="leading" secondItem="igz-bX-fLC" secondAttribute="trailing" constant="8" symbolic="YES" id="SZi-lS-ozE"/>
                             <constraint firstItem="aVl-8M-baY" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="TGu-Yg-AlL"/>
-                            <constraint firstAttribute="bottom" secondItem="Yrq-6M-c5M" secondAttribute="bottom" constant="20" id="UuG-hF-GsC"/>
                             <constraint firstItem="NN9-2C-Rxb" firstAttribute="leading" secondItem="0TQ-aj-gUl" secondAttribute="leading" constant="20" id="YEw-k1-AnQ"/>
                             <constraint firstItem="NN9-2C-Rxb" firstAttribute="top" secondItem="HWi-Jl-N00" secondAttribute="top" id="Yu0-hV-Gx4"/>
                             <constraint firstItem="gIj-sJ-v8P" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="ame-ZP-VGn"/>
                             <constraint firstItem="BdN-H7-7Lb" firstAttribute="top" secondItem="HZc-eQ-sBA" secondAttribute="bottom" constant="7" id="b59-Id-qyx"/>
+                            <constraint firstAttribute="trailing" secondItem="2On-Do-ZzQ" secondAttribute="trailing" constant="20" id="bf0-uB-7WU"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="bottom" secondItem="NN9-2C-Rxb" secondAttribute="bottom" id="der-kL-ODC"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="leading" secondItem="q0e-5w-N1Z" secondAttribute="leading" id="dwI-JJ-cpS"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="top" secondItem="q0e-5w-N1Z" secondAttribute="bottom" constant="8" symbolic="YES" id="eS8-fn-h8q"/>
                             <constraint firstItem="HWi-Jl-N00" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="pVY-LS-zJJ"/>
                             <constraint firstItem="aVl-8M-baY" firstAttribute="top" secondItem="gIj-sJ-v8P" secondAttribute="bottom" constant="8" symbolic="YES" id="s3Q-SP-QH6"/>
-                            <constraint firstItem="NN9-2C-Rxb" firstAttribute="leading" secondItem="Yrq-6M-c5M" secondAttribute="leading" id="v8x-LI-fSr"/>
+                            <constraint firstItem="igz-bX-fLC" firstAttribute="centerX" secondItem="2On-Do-ZzQ" secondAttribute="centerX" id="uA5-TL-uiO"/>
                             <constraint firstItem="7mB-RJ-UXb" firstAttribute="top" secondItem="HWi-Jl-N00" secondAttribute="bottom" constant="8" symbolic="YES" id="vmQ-yn-bvA"/>
-                            <constraint firstItem="Yrq-6M-c5M" firstAttribute="centerX" secondItem="igz-bX-fLC" secondAttribute="centerX" id="wmY-5n-8y9"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ReadFromBeginningButton" destination="BdN-H7-7Lb" id="TKD-g5-qKw"/>
+                        <outlet property="chapterView" destination="48C-KD-Wpa" id="g6A-mg-BLz"/>
                     </connections>
                 </viewController>
                 <customObject id="cbN-3g-A2U" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -8,6 +8,12 @@
 
 import Cocoa
 
+enum ViewType {
+    case singlePage
+    case doublePage
+    case verticalScroll
+}
+
 class ContentView: NSViewController {
     
     var manga: Manga? = nil
@@ -21,7 +27,7 @@ class ContentView: NSViewController {
    
     @IBOutlet weak var BookMark: NSButton!
     @IBOutlet weak var Settings: NSButton!
-    var ifdoublepage : Bool = true
+    var viewType: ViewType = .singlePage
  
     var Brightness : Float = 1.0
     
@@ -65,7 +71,7 @@ class ContentView: NSViewController {
     
     //go to next page
     func nextPage(Object : Manga){
-        if ifdoublepage {
+        if self.viewType == .doublePage {
             Object.currentPage = Object.currentPage + 2
             if Object.currentPage <= Object.PageNumber {
                 print("Loading page \(String(Object.currentPage)) of \(Object.title)")
@@ -87,7 +93,7 @@ class ContentView: NSViewController {
     
     // Go to previous page
     func previousPage(Object : Manga){
-        if ifdoublepage {
+        if self.viewType == .doublePage {
             Object.currentPage = Object.currentPage - 2
             if Object.currentPage >= 1 {
                 print("Loading page \(Object.currentPage) of \(Object.title)") // for now be console
@@ -110,15 +116,16 @@ class ContentView: NSViewController {
     
     // Switch View Size
     func SwitchPageview(){
-        if ifdoublepage {
-            ifdoublepage = false
-        }else{
-            ifdoublepage = true
+        switch self.viewType {
+            case .singlePage:
+                self.viewType = .doublePage
+            default:
+                self.viewType = .singlePage
         }
     }
     
     func definePageType(){
-        if ifdoublepage {
+        if self.viewType == .doublePage {
             pageView = DoublePageView()
         }else{
             self.pageView = SingleePageView()
@@ -127,10 +134,10 @@ class ContentView: NSViewController {
     
     func updatePage(){
         if manga!.currentPage == manga!.PageNumber{
-            ifdoublepage = false
+            self.viewType = .singlePage
         }
         
-        if ifdoublepage {
+        if self.viewType == .doublePage {
             PageNumberLabel.stringValue = "\(manga!.currentPage) & \(manga!.currentPage + 1) / \(manga!.PageNumber)"
         }else{
             PageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.PageNumber)"

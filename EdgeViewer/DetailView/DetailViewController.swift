@@ -1,5 +1,5 @@
 //
-//  DetailView.swift
+//  DetailViewController.swift
 //  EdgeViewer
 //
 //  Created by Matthew Dean on 4/9/18.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DetailView: NSViewController {
+class DetailViewController: NSViewController {
     
     @IBOutlet weak var ReadFromBeginningButton: NSButton!
     
@@ -51,7 +51,7 @@ class DetailView: NSViewController {
     }
 }
 
-extension DetailView : NSCollectionViewDataSource {
+extension DetailViewController : NSCollectionViewDataSource {
     
     // 1
     func numberOfSections(in collectionView: NSCollectionView) -> Int {

@@ -749,12 +749,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="odq-BA-TXz">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="CEg-mC-6aL">
                                 <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
-                                <connections>
-                                    <segue destination="5tG-XQ-LIP" kind="embed" id="XQC-x7-rnR"/>
-                                </connections>
-                            </containerView>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel" customClass="UserPanelView" customModule="EdgeViewer" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="670" height="60"/>
                                 <subviews>
@@ -910,13 +907,13 @@
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="odq-BA-TXz" secondAttribute="bottom" id="21t-HA-Cad"/>
-                            <constraint firstItem="odq-BA-TXz" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" id="WRE-S2-1SP"/>
+                            <constraint firstAttribute="trailing" secondItem="CEg-mC-6aL" secondAttribute="trailing" id="7Xz-xX-yiw"/>
+                            <constraint firstItem="CEg-mC-6aL" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" id="M7o-0K-iDl"/>
+                            <constraint firstItem="CEg-mC-6aL" firstAttribute="top" secondItem="9bA-nd-1hD" secondAttribute="top" id="Pa4-Mz-xFY"/>
                             <constraint firstAttribute="trailing" secondItem="cBX-50-cRv" secondAttribute="trailing" constant="20" id="iWn-6z-faJ"/>
-                            <constraint firstItem="odq-BA-TXz" firstAttribute="top" secondItem="9bA-nd-1hD" secondAttribute="top" id="lcJ-xp-PoH"/>
-                            <constraint firstAttribute="trailing" secondItem="odq-BA-TXz" secondAttribute="trailing" id="miU-Hw-7c5"/>
                             <constraint firstItem="cBX-50-cRv" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" constant="20" id="mwP-lT-enN"/>
                             <constraint firstAttribute="bottom" secondItem="cBX-50-cRv" secondAttribute="bottom" constant="20" id="sDH-AZ-ouQ"/>
+                            <constraint firstAttribute="bottom" secondItem="CEg-mC-6aL" secondAttribute="bottom" id="yho-5p-lxC"/>
                         </constraints>
                     </view>
                     <connections>
@@ -934,19 +931,6 @@
                 <customObject id="pKP-WL-jQz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-356" y="1916"/>
-        </scene>
-        <!--Page Controller-->
-        <scene sceneID="AEb-3Y-ybK">
-            <objects>
-                <pagecontroller id="5tG-XQ-LIP" customClass="PageController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="1Zo-bT-kLi">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </pagecontroller>
-                <customObject id="5rQ-Py-4FV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-356" y="2600"/>
         </scene>
         <!--Chapter View-->
         <scene sceneID="NKr-hU-teY">

@@ -9,7 +9,7 @@
 import Cocoa
 
 class Manga {
-    var chapters : [[NSImage]] = [[NSImage()]]
+    var chapters : [Chapter] = [Chapter()]
     
     var Author : String = ""
     var title : String = ""
@@ -23,17 +23,16 @@ class Manga {
         self.coverImage.backgroundColor = NSColor(calibratedRed: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
     }
     
-    func addNewPage(page : NSImage, chapter : Int, index : Int?) {
-        if (index == nil) { // index not given
-            self.chapters[chapter].append(page)
+    func addNewPage(page : NSImage, chapterIndex : Int, pageIndex : Int?) {
+        guard let pIndex = pageIndex else {
+            self.chapters[chapterIndex].pages.append(page)
+            return
         }
-        else { // index given
-            self.chapters[chapter].insert(page, at: index!)
-        }
+        self.chapters[chapterIndex].pages.insert(page, at: pIndex)
     }
     
     func addNewChapter() {
-        chapters.append([NSImage()])
+        chapters.append(Chapter())
     }
     
     func addNewChapters(howMany numNewChapters: Int) -> Int {

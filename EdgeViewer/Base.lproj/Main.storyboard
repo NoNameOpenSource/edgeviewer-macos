@@ -941,6 +941,7 @@
                     <connections>
                         <outlet property="ReadFromBeginningButton" destination="BdN-H7-7Lb" id="TKD-g5-qKw"/>
                         <outlet property="chapterView" destination="48C-KD-Wpa" id="g6A-mg-BLz"/>
+                        <outlet property="ratingControl" destination="Ogn-HN-6cc" id="CDk-Mr-pdu"/>
                     </connections>
                 </viewController>
                 <customObject id="cbN-3g-A2U" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

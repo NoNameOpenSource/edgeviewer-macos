@@ -12,6 +12,8 @@ class DetailView: NSViewController {
     
     @IBOutlet weak var ReadFromBeginningButton: NSButton!
     
+    @IBOutlet weak var ratingControl: RatingControl!
+    
     @IBAction func showReadFromBeginningButton(_ sender: Any) {
         print("pressed")
         ReadFromBeginningButton.isHidden = false
@@ -21,16 +23,15 @@ class DetailView: NSViewController {
     
     var myManga : Manga = Manga(title: "The Best Manga")
     
-    
-    let sectionA: [Manga] = [Manga(title: "DummyA"), Manga(title: "DummyB")]
-    var  sections: [[Manga]] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = myManga.addNewChapters(howMany: 5) // there are now howMany + 1 chapters
+        _ = myManga.addNewChapters(howMany: 4) // there are now howMany + 1 chapters
+        for i in 0..<myManga.chapters.count {
+            myManga.chapters[i].coverImage = #imageLiteral(resourceName: "emptyStar")
+            myManga.chapters[i].title = "\(i)"
+        }
+        myManga.rating = 3
         configureCollectionView()
-        sections.append(sectionA)
-        // Do view setup here.
     }
     
     
@@ -54,12 +55,12 @@ extension DetailView : NSCollectionViewDataSource {
     
     // 1
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        return self.sections.count
+        return 1
     }
     
     // 2
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sections[section].count
+        return myManga.chapters.count
     }
     
     // 3
@@ -71,12 +72,9 @@ extension DetailView : NSCollectionViewDataSource {
             return item
         }
         
-        let mangaChapter = myManga.chapters
-        
-        //item.textField!.stringValue = manga.title
-        //item.imageView!.image = manga.coverImage
+        item.textField!.stringValue = myManga.chapters[indexPath.item].title
+        item.imageView!.image = myManga.chapters[indexPath.item].coverImage
         
         return item
     }
-    
 }

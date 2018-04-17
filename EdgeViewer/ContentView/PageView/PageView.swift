@@ -23,5 +23,4 @@ class PageView: NSView {
     
     func contentViewLayout(manga : Manga, relatedView: NSView){}
     func updatePage(manga: Manga, relate : NSView){}
-    
 }

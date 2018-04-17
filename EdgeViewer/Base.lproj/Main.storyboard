@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment version="101100" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -752,11 +752,11 @@
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM3-TN-q7G" userLabel="Manga View" customClass="Page_View" customModule="EdgeViewer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="6BO-fS-HHL">
-                                    <rect key="frame" x="0.0" y="0.0" width="695" height="593"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="VaH-Vp-DT3" userLabel="Manga">
-                                            <rect key="frame" x="0.0" y="0.0" width="695" height="593"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -767,11 +767,11 @@
                                     </constraints>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="jw4-Mh-yMg">
-                                    <rect key="frame" x="0.0" y="593" width="695" height="15"/>
+                                    <rect key="frame" x="0.0" y="592" width="710" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="iwE-nc-WPk">
-                                    <rect key="frame" x="695" y="0.0" width="15" height="593"/>
+                                    <rect key="frame" x="694" y="0.0" width="16" height="608"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -856,7 +856,7 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBO-ua-sUz">
+                                            <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FBO-ua-sUz">
                                                 <rect key="frame" x="316" y="20" width="37" height="20"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="7if-yS-wbL">
                                                     <font key="font" metaFont="system"/>
@@ -886,7 +886,7 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="viewPrevious:" target="9sD-9f-o3V" id="RUI-P0-UU3"/>
+                                                    <action selector="viewNext:" target="9sD-9f-o3V" id="wtA-c9-qgH"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -915,6 +915,7 @@
                                             <constraint firstAttribute="bottom" secondItem="FBO-ua-sUz" secondAttribute="bottom" constant="20" id="nJ5-ZE-bNh"/>
                                             <constraint firstItem="Y2W-Bl-bR2" firstAttribute="leading" secondItem="l8A-VE-plB" secondAttribute="leading" constant="20" id="oaL-GI-ALn"/>
                                             <constraint firstAttribute="bottom" secondItem="BV0-ku-Drs" secondAttribute="bottom" constant="20" id="ptq-Kc-68N"/>
+                                            <constraint firstItem="FBO-ua-sUz" firstAttribute="centerX" secondItem="l8A-VE-plB" secondAttribute="centerX" id="rrN-y4-vCO"/>
                                             <constraint firstItem="WUB-gd-Cvo" firstAttribute="top" secondItem="l8A-VE-plB" secondAttribute="top" constant="20" id="uDN-pT-YMG"/>
                                             <constraint firstAttribute="bottom" secondItem="4Kd-fa-cTA" secondAttribute="bottom" constant="20" id="wf3-Rw-0kM"/>
                                             <constraint firstAttribute="bottom" secondItem="H6H-i6-O6I" secondAttribute="bottom" constant="20" id="xEl-F2-HSE"/>

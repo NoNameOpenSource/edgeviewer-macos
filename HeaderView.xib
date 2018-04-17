@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="HeaderView" customModule="EdgeViewer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kkj-n3-Oyb">
+                    <rect key="frame" x="18" y="11" width="112" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Section Number" id="23A-yP-AcI">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehJ-lr-IRW">
+                    <rect key="frame" x="385" y="11" width="97" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Manga Number" id="8aO-Jj-Z3Q">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ehJ-lr-IRW" secondAttribute="trailing" constant="20" id="C7Y-x1-6gf"/>
+                <constraint firstAttribute="trailing" secondItem="kkj-n3-Oyb" secondAttribute="trailing" constant="20" id="DV0-hY-vmU"/>
+                <constraint firstItem="kkj-n3-Oyb" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="Msn-tk-Z8Z"/>
+                <constraint firstItem="kkj-n3-Oyb" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="12" id="aLN-Az-hdw"/>
+            </constraints>
+            <connections>
+                <outlet property="imageCount" destination="ehJ-lr-IRW" id="o8i-xU-hSo"/>
+                <outlet property="sectionTitle" destination="kkj-n3-Oyb" id="DeY-Vw-blZ"/>
+            </connections>
+        </customView>
+    </objects>
+</document>

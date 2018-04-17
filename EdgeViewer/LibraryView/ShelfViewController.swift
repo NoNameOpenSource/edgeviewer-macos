@@ -67,6 +67,6 @@ extension ShelfViewController : NSCollectionViewDataSource {
         
         return item
     }
-    
 }
+
 

@@ -35,6 +35,11 @@ class ShelfViewController: NSViewController {
         view.wantsLayer = true
         // 3
         collectionView.layer?.backgroundColor = NSColor.lightGray.cgColor
+        if #available(OSX 10.12, *) {
+            flowLayout.sectionHeadersPinToVisibleBounds = true
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
@@ -56,7 +61,7 @@ extension ShelfViewController : NSCollectionViewDataSource {
         
         // 4
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CollectionViewItem"), for: indexPath)
-        guard let collectionViewItem = item as? CollectionViewItem else {
+        guard let _ = item as? CollectionViewItem else {
             return item
         }
         
@@ -66,6 +71,19 @@ extension ShelfViewController : NSCollectionViewDataSource {
         item.imageView!.image = manga.cover
         
         return item
+    }
+    func collectionView(_ collectionView: NSCollectionView,viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
+        
+        let view = collectionView.makeSupplementaryView(ofKind: NSCollectionView.SupplementaryElementKind.sectionHeader, withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderView"), for: indexPath) as? HeaderView
+        view?.sectionTitle.stringValue = "Section \(indexPath.section)"
+        let numberOfItemsInSection = self.sections[indexPath.section].count
+        view?.imageCount.stringValue = "\(numberOfItemsInSection) image files"
+        return view!
+    }
+}
+extension ShelfViewController : NSCollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+        return NSSize(width: 1000, height: 40)
     }
 }
 

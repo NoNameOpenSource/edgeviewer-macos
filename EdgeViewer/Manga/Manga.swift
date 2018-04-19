@@ -9,7 +9,7 @@
 import Cocoa
 
 class Manga{
-    var Chapter : [[NSImage]] = [[NSImage()]]
+    var chapter : [[NSImage]] = [[NSImage()]]
 //    var currentChapter : Int() {
   //  get
     //
@@ -19,48 +19,48 @@ class Manga{
     
     //}
     //}
-    var Author : String = ""
-    var Page : [NSImage] = []
+    var author : String = ""
+    var page : [NSImage] = []
     var currentPage : Int = 1
-    var PageNumber : Int = 0
-    var CoverPage : NSImage = NSImage()
+    var pageNumber : Int = 0
+    var coverPage : NSImage = NSImage()
     var title : String = ""
     var rate : Int = 0
     var chapter : [Int] = [1]
     var emptyPage : NSImage = NSImage(named: NSImage.Name(rawValue: "blank"))!
 
     
-    init(Title: String) {
-        self.title = Title
+    init(title: String) {
+        self.title = title
     }
     
     func addNewPage(Pages : NSImage){
-        self.Page.append(Pages)
-        self.PageNumber += 1
+        self.page.append(Pages)
+        self.pageNumber += 1
     }
     
     func grabPage () -> NSImage? {
-       return self.Page[self.currentPage - 1] as NSImage
+       return self.page[self.currentPage - 1] as NSImage
     }
     
     func grabRightPage() -> NSImage? {
-        if self.currentPage == self.PageNumber{
+        if self.currentPage == self.pageNumber{
             return self.emptyPage as NSImage
         }
         else {
-            return self.Page[self.currentPage] as NSImage
+            return self.page[self.currentPage] as NSImage
         }
     }
     
-    func IfNewChapter() -> Bool {
-        var BeginOfChapter = false
+    func ifNewChapter() -> Bool {
+        var beginOfChapter = false
         
         for Page in chapter {
             if currentPage == Page {
-                BeginOfChapter = true
+                beginOfChapter = true
                 break
             }
         }
-        return BeginOfChapter
+        return beginOfChapter
     }
 }

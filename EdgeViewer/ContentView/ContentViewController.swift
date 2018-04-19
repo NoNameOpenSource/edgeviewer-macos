@@ -41,7 +41,7 @@ class ContentViewController: NSViewController {
     }
     
     func setUpDummyData() {
-        let testManga = Manga(Title: "Pandora Heart")
+        let testManga = Manga(title: "Pandora Heart")
         let pages: [NSImage?] = [NSImage(named: NSImage.Name(rawValue: "images")),
                                  NSImage(named: NSImage.Name(rawValue: "first")),
                                  NSImage(named: NSImage.Name(rawValue: "Last")),
@@ -79,7 +79,7 @@ class ContentViewController: NSViewController {
     func nextPage(object : Manga){
         if self.viewType == .doublePage {
             self.currentPage = object.currentPage + 2
-            if self.currentPage <= object.PageNumber {
+            if self.currentPage <= object.pageNumber {
                 print("Loading page \(String(self.currentPage)) of \(object.title)")
             }else{
                 print("It's the last Page of this chapter")
@@ -87,7 +87,7 @@ class ContentViewController: NSViewController {
             }
         }else{
             self.currentPage = object.currentPage + 1
-            if self.currentPage <= object.PageNumber {
+            if self.currentPage <= object.pageNumber {
                 print("Loading page \(String(self.currentPage)) of \(object.title)")
             }else{
                 print("It's the last Page of this chapter")
@@ -139,11 +139,11 @@ class ContentViewController: NSViewController {
     }
     
     func updatePage(){
-        if manga!.currentPage == manga!.PageNumber{
+        if manga!.currentPage == manga!.pageNumber{
             self.viewType = .singlePage
         }
         
-        pageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.PageNumber)"
+        pageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.pageNumber)"
         
         mangaPage.subviews.removeAll()
         definePageType()

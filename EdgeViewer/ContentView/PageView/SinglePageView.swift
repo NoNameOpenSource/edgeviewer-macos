@@ -20,7 +20,7 @@ class SinglePageView: PageView {
     }
     
     override func contentViewLayout(manga : Manga,relatedView: NSView) {
-        let sizesRatio = manga.Page[manga.currentPage - 1].size.height/manga.Page[manga.currentPage - 1].size.width
+        let sizesRatio = manga.page[manga.currentPage - 1].size.height/manga.page[manga.currentPage - 1].size.width
         
         let size = relatedView.bounds.size
         let origin = relatedView.bounds.origin

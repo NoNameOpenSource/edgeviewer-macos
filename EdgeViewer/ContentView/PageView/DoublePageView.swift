@@ -18,8 +18,8 @@ class DoublePageView: PageView {
     }
     
     override func contentViewLayout(manga: Manga, relatedView: NSView) {
-        let leftSizesRatio = manga.Page[manga.currentPage - 1].size.height/manga.Page[manga.currentPage - 1].size.width
-        let rightSizesRatio = manga.Page[manga.currentPage].size.height/manga.Page[manga.currentPage].size.width
+        let leftSizesRatio = manga.page[manga.currentPage - 1].size.height/manga.page[manga.currentPage - 1].size.width
+        let rightSizesRatio = manga.page[manga.currentPage].size.height/manga.page[manga.currentPage].size.width
         let firstPageSize : NSSize = NSSize(width: relatedView.bounds.width/2, height: relatedView.bounds.height)
         let secondPageSize : NSSize = NSSize(width: relatedView.bounds.width/2, height: relatedView.bounds.height)
         let secondPageOrigin : NSPoint = NSPoint(x: relatedView.bounds.origin.x + firstPageSize.width, y: relatedView.bounds.origin.y)

@@ -925,6 +925,7 @@
                         <outlet property="bookMark" destination="BV0-ku-Drs" id="3bn-uh-Hzb"/>
                         <outlet property="chapter" destination="A4L-DW-9i9" id="3f7-Gi-ptQ"/>
                         <outlet property="pageNumberLabel" destination="FBO-ua-sUz" id="ob2-ci-94C"/>
+                        <outlet property="pageView" destination="CEg-mC-6aL" id="WZ0-Yh-YkF"/>
                         <outlet property="settings" destination="yE1-th-zUI" id="yOP-xs-rNH"/>
                     </connections>
                 </viewController>

@@ -14,10 +14,13 @@ enum ViewType {
     case verticalScroll
 }
 
-class ContentViewController: NSViewController {
+class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     var manga: Manga? = nil
-    var pageView: PageView = PageView()
+    //var pageView: PageView = PageView()
+    
+    let pageController: NSPageController = NSPageController();
+    @IBOutlet weak var pageView: NSView!
     
     var currentPage = 0
     
@@ -60,19 +63,36 @@ class ContentViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pageController.view = pageView
+        pageController.delegate = self
+        
         // Dummy Data for testing purpose
         setUpDummyData()
+        
+        // Setup PageView
+        pageController.arrangedObjects = manga!.pages
        
         updatePage()
         
         // Do view setup here.
     }
     
+    //------------------------------------------------------------------------------------------------
+    //MARK: PageControllerDelegate
+    //------------------------------------------------------------------------------------------------
+    func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
+        return NSPageController.ObjectIdentifier("PageView")
+    }
+    
+    func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
+        return NSViewController()
+    }
+    
     // func used to change the view size when window size changed
     override func viewWillLayout() {
         pageNumberLabel.frame.origin = NSPoint(x: super.view.bounds.origin.x + super.view.bounds.width/2 - 33.0, y : super.view.bounds.origin.y)
-        pageView.pageViewLayout()
-        pageView.contentViewLayout(manga: manga!, relatedView: mangaPage)
+        //pageView.pageViewLayout()
+        //pageView.contentViewLayout(manga: manga!, relatedView: mangaPage)
     }
     
     //go to next page
@@ -147,7 +167,7 @@ class ContentViewController: NSViewController {
         
         mangaPage.subviews.removeAll()
         definePageType()
-        pageView.updatePage(manga: manga!, relate: mangaPage)
+        //pageView.updatePage(manga: manga!, relate: mangaPage)
     }
     
 }

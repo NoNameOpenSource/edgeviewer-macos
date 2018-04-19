@@ -9,16 +9,6 @@
 import Cocoa
 
 class Manga{
-    //var chapter : [[NSImage]] = [[NSImage()]]
-//    var currentChapter : Int() {
-  //  get
-    //
-    //}
-    //set {
-     //fuck you
-    
-    //}
-    //}
     var author : String = ""
     var page : [NSImage] = []
     var currentPage : Int = 1

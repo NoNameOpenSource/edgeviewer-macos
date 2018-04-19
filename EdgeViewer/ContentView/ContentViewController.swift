@@ -154,7 +154,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         if self.viewType == .doublePage {
             pageView = DoublePageView()
         }else{
-            self.pageView = SinglePageView()
+            //self.pageView = SinglePageView()
         }
     }
     

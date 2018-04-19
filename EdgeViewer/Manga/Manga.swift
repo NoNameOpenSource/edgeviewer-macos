@@ -12,7 +12,7 @@ class Manga{
     var author : String = ""
     var page : [NSImage] = []
     var currentPage : Int = 1
-    var pageNumber : Int = 0
+    var numberOfPages : Int = 0
     var coverPage : NSImage = NSImage()
     var title : String = ""
     var rate : Int = 0
@@ -26,7 +26,7 @@ class Manga{
     
     func addNewPage(Pages : NSImage){
         self.page.append(Pages)
-        self.pageNumber += 1
+        self.numberOfPages += 1
     }
     
     func grabPage () -> NSImage? {
@@ -34,7 +34,7 @@ class Manga{
     }
     
     func grabRightPage() -> NSImage? {
-        if self.currentPage == self.pageNumber{
+        if self.currentPage == self.numberOfPages{
             return self.emptyPage as NSImage
         }
         else {

@@ -79,7 +79,7 @@ class ContentViewController: NSViewController {
     func nextPage(object : Manga){
         if self.viewType == .doublePage {
             self.currentPage = object.currentPage + 2
-            if self.currentPage <= object.pageNumber {
+            if self.currentPage <= object.numberOfPages {
                 print("Loading page \(String(self.currentPage)) of \(object.title)")
             }else{
                 print("It's the last Page of this chapter")
@@ -87,7 +87,7 @@ class ContentViewController: NSViewController {
             }
         }else{
             self.currentPage = object.currentPage + 1
-            if self.currentPage <= object.pageNumber {
+            if self.currentPage <= object.numberOfPages {
                 print("Loading page \(String(self.currentPage)) of \(object.title)")
             }else{
                 print("It's the last Page of this chapter")
@@ -139,11 +139,11 @@ class ContentViewController: NSViewController {
     }
     
     func updatePage(){
-        if manga!.currentPage == manga!.pageNumber{
+        if manga!.currentPage == manga!.numberOfPages{
             self.viewType = .singlePage
         }
         
-        pageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.pageNumber)"
+        pageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.numberOfPages)"
         
         mangaPage.subviews.removeAll()
         definePageType()

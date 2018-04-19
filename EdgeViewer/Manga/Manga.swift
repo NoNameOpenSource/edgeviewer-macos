@@ -10,7 +10,7 @@ import Cocoa
 
 class Manga{
     var author : String = ""
-    var page : [NSImage] = []
+    var pages : [NSImage] = []
     var currentPage : Int = 1
     var numberOfPages : Int = 0
     var coverPage : NSImage = NSImage()
@@ -25,12 +25,12 @@ class Manga{
     }
     
     func addNewPage(Pages : NSImage){
-        self.page.append(Pages)
+        self.pages.append(Pages)
         self.numberOfPages += 1
     }
     
     func grabPage () -> NSImage? {
-       return self.page[self.currentPage - 1] as NSImage
+       return self.pages[self.currentPage - 1] as NSImage
     }
     
     func grabRightPage() -> NSImage? {
@@ -38,7 +38,7 @@ class Manga{
             return self.emptyPage as NSImage
         }
         else {
-            return self.page[self.currentPage] as NSImage
+            return self.pages[self.currentPage] as NSImage
         }
     }
     

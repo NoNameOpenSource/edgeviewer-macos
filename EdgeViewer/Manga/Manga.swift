@@ -9,7 +9,7 @@
 import Cocoa
 
 class Manga{
-    var chapter : [[NSImage]] = [[NSImage()]]
+    //var chapter : [[NSImage]] = [[NSImage()]]
 //    var currentChapter : Int() {
   //  get
     //

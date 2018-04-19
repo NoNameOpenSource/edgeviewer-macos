@@ -40,15 +40,12 @@ class ContentViewController: NSViewController {
         nextPage(object : manga!)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Dummy Data for testing purpose
+    func setUpDummyData() {
         let testManga = Manga(Title: "Pandora Heart")
-        let pages: [NSImage?] = [NSImage(named:NSImage.Name(rawValue: "images")),
-                                NSImage(named: NSImage.Name(rawValue: "first")),
-                                NSImage(named: NSImage.Name(rawValue: "Last")),
-                                NSImage(named: NSImage.Name(rawValue: "download"))]
+        let pages: [NSImage?] = [NSImage(named: NSImage.Name(rawValue: "images")),
+                                 NSImage(named: NSImage.Name(rawValue: "first")),
+                                 NSImage(named: NSImage.Name(rawValue: "Last")),
+                                 NSImage(named: NSImage.Name(rawValue: "download"))]
         
         for page in pages {
             if let page = page {
@@ -58,6 +55,13 @@ class ContentViewController: NSViewController {
         self.currentPage = 1
         
         manga = testManga
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Dummy Data for testing purpose
+        setUpDummyData()
        
         updatePage()
         

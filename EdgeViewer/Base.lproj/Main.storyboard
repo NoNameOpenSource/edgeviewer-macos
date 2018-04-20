@@ -749,8 +749,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="CEg-mC-6aL">
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CEg-mC-6aL">
                                 <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel" customClass="UserPanelView" customModule="EdgeViewer" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="670" height="60"/>
@@ -907,13 +908,9 @@
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CEg-mC-6aL" secondAttribute="trailing" id="7Xz-xX-yiw"/>
-                            <constraint firstItem="CEg-mC-6aL" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" id="M7o-0K-iDl"/>
-                            <constraint firstItem="CEg-mC-6aL" firstAttribute="top" secondItem="9bA-nd-1hD" secondAttribute="top" id="Pa4-Mz-xFY"/>
                             <constraint firstAttribute="trailing" secondItem="cBX-50-cRv" secondAttribute="trailing" constant="20" id="iWn-6z-faJ"/>
                             <constraint firstItem="cBX-50-cRv" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" constant="20" id="mwP-lT-enN"/>
                             <constraint firstAttribute="bottom" secondItem="cBX-50-cRv" secondAttribute="bottom" constant="20" id="sDH-AZ-ouQ"/>
-                            <constraint firstAttribute="bottom" secondItem="CEg-mC-6aL" secondAttribute="bottom" id="yho-5p-lxC"/>
                         </constraints>
                     </view>
                     <connections>

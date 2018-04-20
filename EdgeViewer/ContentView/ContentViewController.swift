@@ -38,7 +38,11 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     
     @IBAction func viewPrevious(_ sender: Any) {
-        previousPage(object: manga!)    }
+        //previousPage(object: manga!)
+        
+        currentPage += 1;
+        pageController.navigateForward(nil)
+    }
     @IBAction func viewNext(_ sender: Any) {
         nextPage(object : manga!)
     }
@@ -71,6 +75,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
         // Setup PageView
         pageController.arrangedObjects = manga!.pages
+        //pageController.view.layer!.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
        
         updatePage()
         
@@ -80,12 +85,24 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     //------------------------------------------------------------------------------------------------
     //MARK: PageControllerDelegate
     //------------------------------------------------------------------------------------------------
+    
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
-        return NSPageController.ObjectIdentifier("PageView")
+        return NSPageController.ObjectIdentifier("SinglePageViewController")
     }
     
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        return NSViewController()
+        
+        return SinglePageViewController()
+    }
+    
+    func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
+        if let viewController = viewController as? SinglePageViewController {
+            viewController.imageView.image = manga!.pages[currentPage]
+        }
+    }
+    
+    func pageController(_ pageController: NSPageController, frameFor object: Any?) -> NSRect {
+        return pageController.view.frame
     }
     
     // func used to change the view size when window size changed
@@ -165,7 +182,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
         pageNumberLabel.stringValue = "\(manga!.currentPage) / \(manga!.numberOfPages)"
         
-        mangaPage.subviews.removeAll()
+        //mangaPage.subviews.removeAll()
         definePageType()
         //pageView.updatePage(manga: manga!, relate: mangaPage)
     }

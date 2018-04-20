@@ -41,7 +41,16 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         //previousPage(object: manga!)
         
         currentPage += 1;
-        pageController.navigateForward(nil)
+        //pageController.navigateForward(nil)
+        if currentPage == 4 {
+            currentPage = 0
+        }
+        NSAnimationContext.runAnimationGroup({ context in
+            self.pageController.animator().selectedIndex = currentPage
+        }) {
+            self.pageController.completeTransition()
+        }
+        pageController.selectedIndex = currentPage
     }
     @IBAction func viewNext(_ sender: Any) {
         nextPage(object : manga!)
@@ -59,7 +68,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                 testManga.addNewPage(Pages: page)
             }
         }
-        self.currentPage = 1
+        self.currentPage = 0
         
         manga = testManga
     }
@@ -97,7 +106,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
         if let viewController = viewController as? SinglePageViewController {
-            viewController.imageView.image = manga!.pages[currentPage - 1]
+            viewController.imageView.image = manga!.pages[currentPage]
         }
     }
     

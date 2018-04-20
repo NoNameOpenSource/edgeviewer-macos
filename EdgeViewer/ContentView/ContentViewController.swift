@@ -92,7 +92,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     @IBAction func viewNext(_ sender: Any) {
-        nextPage(object : manga!)
+        currentPage += 1;
     }
     
     //------------------------------------------------------------------------------------------------

@@ -97,7 +97,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
         if let viewController = viewController as? SinglePageViewController {
-            viewController.imageView.image = manga!.pages[currentPage]
+            viewController.imageView.image = manga!.pages[currentPage - 1]
         }
     }
     

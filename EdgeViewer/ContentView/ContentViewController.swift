@@ -65,7 +65,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
         for page in pages {
             if let page = page {
-                testManga.addNewPage(Pages: page)
+                testManga.addNewPage(image: page)
             }
         }
         self.currentPage = 0

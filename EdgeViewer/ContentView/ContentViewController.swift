@@ -17,7 +17,11 @@ enum ViewType {
 class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     var manga: Manga? = nil
-    var currentPage = 0
+    var currentPage = 0 {
+        didSet {
+            updatePage()
+        }
+    }
     var viewType: ViewType = .singlePage
     let pageController: NSPageController = NSPageController();
     
@@ -70,24 +74,21 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-    //------------------------------------------------------------------------------------------------
-    //MARK: UI Action
-    //------------------------------------------------------------------------------------------------
-    
-    @IBAction func viewPrevious(_ sender: Any) {
-        //previousPage(object: manga!)
-        
-        currentPage += 1;
-        //pageController.navigateForward(nil)
-        if currentPage == 4 {
-            currentPage = 0
-        }
+    func updatePage() {
         NSAnimationContext.runAnimationGroup({ context in
             self.pageController.animator().selectedIndex = currentPage
         }) {
             self.pageController.completeTransition()
         }
         pageController.selectedIndex = currentPage
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    //MARK: UI Action
+    //------------------------------------------------------------------------------------------------
+    
+    @IBAction func viewPrevious(_ sender: Any) {
+        currentPage -= 1;
     }
     
     @IBAction func viewNext(_ sender: Any) {

@@ -12,12 +12,12 @@ class RatingControl: NSStackView {
     
     //MARK: Properties
     
-    private var rating = 0 {
+    var rating = 0 {
         didSet {
             updateStars()
         }
     }
-    
+        
     private lazy var starSize: CGSize = CGSize(width: self.bounds.width / CGFloat(starCount), height: self.bounds.height)
     
     private var ratingStars = [NSImageView]()

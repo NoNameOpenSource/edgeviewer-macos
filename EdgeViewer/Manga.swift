@@ -11,19 +11,18 @@ import Cocoa
 class Manga {
     var chapters : [Chapter] = [Chapter()]
     
-    var Author : String = ""
-    var title : String = ""
-    var rating : Int = 0
+    var title: String = ""
+    var author: String = ""
+    var genre: String = ""
+    var rating: Int = 0
+    var releaseDate: String = ""
     
-    let coverImage : NSImage
-    
-    init(title : String) {
+    init(title: String) {
         self.title = title
-        self.coverImage = NSImage()
-        self.coverImage.backgroundColor = NSColor(calibratedRed: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+        
     }
     
-    func addNewPage(page : NSImage, chapterIndex : Int, pageIndex : Int?) {
+    func addNewPage(page: NSImage, chapterIndex : Int, pageIndex: Int?) {
         guard let pIndex = pageIndex else {
             self.chapters[chapterIndex].pages.append(page)
             return

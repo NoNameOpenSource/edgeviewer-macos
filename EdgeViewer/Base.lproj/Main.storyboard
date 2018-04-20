@@ -528,21 +528,21 @@
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                 </menuItem>
                                                                 <menuItem id="YGs-j5-SAR">
-                                                                    <string key="title">	Default</string>
+                                                                    <string key="title">    Default</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                     <connections>
                                                                         <action selector="makeBaseWritingDirectionNatural:" target="Ady-hI-5gd" id="qtV-5e-UBP"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem id="Lbh-J2-qVU">
-                                                                    <string key="title">	Left to Right</string>
+                                                                    <string key="title">    Left to Right</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                     <connections>
                                                                         <action selector="makeBaseWritingDirectionLeftToRight:" target="Ady-hI-5gd" id="S0X-9S-QSf"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem id="jFq-tB-4Kx">
-                                                                    <string key="title">	Right to Left</string>
+                                                                    <string key="title">    Right to Left</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                     <connections>
                                                                         <action selector="makeBaseWritingDirectionRightToLeft:" target="Ady-hI-5gd" id="5fk-qB-AqJ"/>
@@ -553,21 +553,21 @@
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                 </menuItem>
                                                                 <menuItem id="Nop-cj-93Q">
-                                                                    <string key="title">	Default</string>
+                                                                    <string key="title">    Default</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                     <connections>
                                                                         <action selector="makeTextWritingDirectionNatural:" target="Ady-hI-5gd" id="lPI-Se-ZHp"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem id="BgM-ve-c93">
-                                                                    <string key="title">	Left to Right</string>
+                                                                    <string key="title">    Left to Right</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                     <connections>
                                                                         <action selector="makeTextWritingDirectionLeftToRight:" target="Ady-hI-5gd" id="caW-Bv-w94"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem id="RB4-Sm-HuC">
-                                                                    <string key="title">	Right to Left</string>
+                                                                    <string key="title">    Right to Left</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                     <connections>
                                                                         <action selector="makeTextWritingDirectionRightToLeft:" target="Ady-hI-5gd" id="EXD-6r-ZUu"/>
@@ -749,32 +749,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM3-TN-q7G" userLabel="Manga View" customClass="Page_View" customModule="EdgeViewer" customModuleProvider="target">
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CEg-mC-6aL">
                                 <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="6BO-fS-HHL">
-                                    <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <view translatesAutoresizingMaskIntoConstraints="NO" id="VaH-Vp-DT3" userLabel="Manga">
-                                            <rect key="frame" x="0.0" y="0.0" width="710" height="608"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="VaH-Vp-DT3" firstAttribute="top" secondItem="6BO-fS-HHL" secondAttribute="top" id="JBA-Q9-B2n"/>
-                                        <constraint firstAttribute="bottom" secondItem="VaH-Vp-DT3" secondAttribute="bottom" id="LRA-I0-p6R"/>
-                                        <constraint firstItem="VaH-Vp-DT3" firstAttribute="leading" secondItem="6BO-fS-HHL" secondAttribute="leading" id="T82-GI-M6w"/>
-                                        <constraint firstAttribute="trailing" secondItem="VaH-Vp-DT3" secondAttribute="trailing" id="uh8-Tl-7ZZ"/>
-                                    </constraints>
-                                </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="jw4-Mh-yMg">
-                                    <rect key="frame" x="0.0" y="592" width="710" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="iwE-nc-WPk">
-                                    <rect key="frame" x="694" y="0.0" width="16" height="608"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel" customClass="UserPanelView" customModule="EdgeViewer" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="670" height="60"/>
                                 <subviews>
@@ -931,18 +909,12 @@
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="XM3-TN-q7G" firstAttribute="top" secondItem="9bA-nd-1hD" secondAttribute="top" id="GyB-S8-4xx"/>
-                            <constraint firstAttribute="trailing" secondItem="XM3-TN-q7G" secondAttribute="trailing" id="dNm-LL-Zfd"/>
                             <constraint firstAttribute="trailing" secondItem="cBX-50-cRv" secondAttribute="trailing" constant="20" id="iWn-6z-faJ"/>
                             <constraint firstItem="cBX-50-cRv" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" constant="20" id="mwP-lT-enN"/>
-                            <constraint firstAttribute="bottom" secondItem="XM3-TN-q7G" secondAttribute="bottom" id="qy9-2F-shj"/>
                             <constraint firstAttribute="bottom" secondItem="cBX-50-cRv" secondAttribute="bottom" constant="20" id="sDH-AZ-ouQ"/>
-                            <constraint firstItem="XM3-TN-q7G" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" id="xs6-N4-sba"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ContenView" destination="XM3-TN-q7G" id="Mxj-XN-TBL"/>
-                        <outlet property="Manga" destination="VaH-Vp-DT3" id="cJ4-Uf-tlx"/>
                         <outlet property="Next" destination="H6H-i6-O6I" id="H9F-FP-mRE"/>
                         <outlet property="Previous" destination="WUB-gd-Cvo" id="CIt-3i-Udq"/>
                         <outlet property="Zoom_Plus" destination="4Kd-fa-cTA" id="iMV-fa-Bpu"/>
@@ -950,14 +922,14 @@
                         <outlet property="backToDetail" destination="Y2W-Bl-bR2" id="wGy-7G-L47"/>
                         <outlet property="bookMark" destination="BV0-ku-Drs" id="3bn-uh-Hzb"/>
                         <outlet property="chapter" destination="A4L-DW-9i9" id="3f7-Gi-ptQ"/>
-                        <outlet property="mangaPage" destination="VaH-Vp-DT3" id="eRo-Jw-T9y"/>
                         <outlet property="pageNumberLabel" destination="FBO-ua-sUz" id="ob2-ci-94C"/>
+                        <outlet property="pageView" destination="CEg-mC-6aL" id="WZ0-Yh-YkF"/>
                         <outlet property="settings" destination="yE1-th-zUI" id="yOP-xs-rNH"/>
                     </connections>
                 </viewController>
                 <customObject id="pKP-WL-jQz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-355.5" y="1916"/>
+            <point key="canvasLocation" x="-356" y="1916"/>
         </scene>
         <!--Chapter View-->
         <scene sceneID="NKr-hU-teY">

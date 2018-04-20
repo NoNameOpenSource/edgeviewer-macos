@@ -882,9 +882,7 @@
                                         <collectionView id="48C-KD-Wpa">
                                             <rect key="frame" x="0.0" y="0.0" width="830" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="Umc-K4-4sc">
-                                                <size key="itemSize" width="50" height="50"/>
-                                            </collectionViewFlowLayout>
+                                            <collectionViewLayout key="collectionViewLayout" id="NU7-W5-Agr"/>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="ymU-Zp-kRl" id="tKI-XB-WjC"/>
@@ -938,6 +936,7 @@
                         <outlet property="chapterView" destination="48C-KD-Wpa" id="g6A-mg-BLz"/>
                         <outlet property="mangaAuthor" destination="7mB-RJ-UXb" id="ke9-el-Rqx"/>
                         <outlet property="mangaGenre" destination="gIj-sJ-v8P" id="AeV-7C-MUU"/>
+                        <outlet property="mangaImage" destination="NN9-2C-Rxb" id="hUC-fN-3VX"/>
                         <outlet property="mangaReleaseDate" destination="aVl-8M-baY" id="qXu-Zv-UGs"/>
                         <outlet property="mangaTitle" destination="HWi-Jl-N00" id="li8-e5-DwW"/>
                         <outlet property="ratingControl" destination="Ogn-HN-6cc" id="CDk-Mr-pdu"/>

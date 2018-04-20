@@ -16,6 +16,7 @@ class Manga {
     var genre: String = ""
     var rating: Int = 0
     var releaseDate: String = ""
+    var coverImage = NSImage()
     
     init(title: String) {
         self.title = title

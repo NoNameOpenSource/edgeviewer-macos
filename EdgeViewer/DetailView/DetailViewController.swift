@@ -19,13 +19,13 @@ class DetailViewController: NSViewController {
     @IBOutlet weak var mangaAuthor: NSTextField!
     @IBOutlet weak var mangaGenre: NSTextField!
     @IBOutlet weak var mangaReleaseDate: NSTextField!
+    @IBOutlet var mangaImage: NSImageView!
     
     // Set up UI Action
     @IBAction func showReadFromBeginningButton(_ sender: Any) {
         print("pressed")
         ReadFromBeginningButton.isHidden = false
     }
-    
     
     // Create a Dummy Manga Object
     var myManga : Manga = Manga(title: "The Best Manga")
@@ -39,6 +39,7 @@ class DetailViewController: NSViewController {
         myManga.author = "Steven"
         myManga.genre = "Mystery"
         myManga.releaseDate = "May 5, 2000"
+        myManga.coverImage = #imageLiteral(resourceName: "highlightedStar")
         
         // Set up Chapters in Dummy Manga Object
         for i in 0 ..< myManga.chapters.count {
@@ -52,7 +53,8 @@ class DetailViewController: NSViewController {
         self.mangaAuthor.stringValue = myManga.author
         self.mangaGenre.stringValue = myManga.genre
         self.mangaReleaseDate.stringValue = myManga.releaseDate
-        
+        self.mangaImage.image = myManga.coverImage
+                
         configureCollectionView()
     }
     

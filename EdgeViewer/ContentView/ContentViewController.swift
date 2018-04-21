@@ -92,11 +92,29 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     //------------------------------------------------------------------------------------------------
     
     @IBAction func viewPrevious(_ sender: Any) {
-        currentPage -= 1;
+        switch self.viewType {
+        case .singlePage:
+            currentPage -= 1;
+            break
+        case .doublePage:
+            currentPage -= 2;
+            break
+        default:
+            return
+        }
     }
     
     @IBAction func viewNext(_ sender: Any) {
-        currentPage += 1;
+        switch self.viewType {
+        case .singlePage:
+            currentPage += 1;
+            break
+        case .doublePage:
+            currentPage += 2;
+            break
+        default:
+            return
+        }
     }
     
     //------------------------------------------------------------------------------------------------

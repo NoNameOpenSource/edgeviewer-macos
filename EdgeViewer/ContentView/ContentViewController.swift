@@ -19,7 +19,26 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var manga: Manga? = nil;
     var currentPage = 0 {
         didSet {
-            updatePage()
+            switch self.viewType {
+            case .singlePage:
+                if currentPage < 0 || currentPage >= manga!.numberOfPages{
+                    currentPage = oldValue;
+                }else{
+                    updatePage()
+                }
+            case .doublePage:
+                if currentPage < 0 || currentPage == manga!.numberOfPages + 1 {
+                    currentPage = oldValue
+                }else if currentPage == manga!.numberOfPages {
+                    self.viewType = .doublePage
+                    currentPage = oldValue + 1
+                    updatePage()
+                }else{
+                    updatePage()
+                }
+            default:
+                return
+            }
         }
     }
     var viewType: ViewType = .singlePage
@@ -43,7 +62,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         setUpDummyData()
         // Setup PageView
         pageController.arrangedObjects = manga!.pages
-        
+        updatePage()
     }
     
     override func viewDidDisappear() {
@@ -68,6 +87,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     func updatePage() {
+        self.pageNumberLabel.stringValue = "\(currentPage + 1) / \(manga!.numberOfPages)"
         NSAnimationContext.runAnimationGroup({ context in
             self.pageController.animator().selectedIndex = currentPage
         }) {
@@ -99,17 +119,10 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     @IBAction func viewNext(_ sender: Any) {
         switch self.viewType {
             case .singlePage:
-                if currentPage < manga!.numberOfPages - 1 {
-                    currentPage += 1;
-                }
+                currentPage += 1;
                 break
             case .doublePage:
-                if currentPage < manga!.numberOfPages - 2 {
-                    currentPage += 2;
-                }else if currentPage < manga!.numberOfPages - 1 {
-                    self.viewType = .singlePage;
-                    currentPage += 1;
-                }
+                currentPage += 2;
                 break
             default:
                 return
@@ -134,14 +147,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     //------------------------------------------------------------------------------------------------
     
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
-        switch self.viewType {
-        case .singlePage:
-            return NSPageController.ObjectIdentifier("SinglePageViewController")
-        case .doublePage:
-            return NSPageController.ObjectIdentifier("DoublePageViewController")
-        case .verticalScroll:
-            return NSPageController.ObjectIdentifier("VerticalPageViewController")
-        }
+        
+         return NSPageController.ObjectIdentifier("SinglePageViewController")
     }
     
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {

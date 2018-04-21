@@ -27,9 +27,9 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                     updatePage()
                 }
             case .doublePage:
-                if currentPage < 0 || currentPage == manga!.numberOfPages + 1 {
+                if currentPage < 0 || currentPage == manga!.numberOfPages{
                     currentPage = oldValue
-                }else if currentPage == manga!.numberOfPages {
+                }else if currentPage == manga!.numberOfPages - 1{
                     self.viewType = .doublePage
                     currentPage = oldValue + 1
                     updatePage()
@@ -41,7 +41,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             }
         }
     }
-    var viewType: ViewType = .singlePage
+    var viewType: ViewType = .doublePage
     let pageController: NSPageController = NSPageController();
     
     @IBOutlet weak var pageView: NSView!
@@ -148,20 +148,21 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
         
-         return NSPageController.ObjectIdentifier("SinglePageViewController")
+         return NSPageController.ObjectIdentifier("DoublePageViewController")
     }
     
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        return SinglePageViewController()
+        return DoublePageViewController()
     }
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
-        if let viewController = viewController as? SinglePageViewController {
-            viewController.imageView.image = manga!.pages[currentPage]
+        if let viewController = viewController as? DoublePageViewController {
+            viewController.leftImageView.image = manga!.pages[currentPage]
         }
     }
     
     func pageController(_ pageController: NSPageController, frameFor object: Any?) -> NSRect {
+        
         return pageController.view.frame
     }
     

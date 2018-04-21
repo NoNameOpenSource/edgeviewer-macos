@@ -36,7 +36,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        
         pageController.view = pageView
         pageController.delegate = self
         
@@ -59,7 +58,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                 testManga.addNewPage(image: page)
             }
         }
-        self.currentPage = 0
         
         manga = testManga
     }
@@ -125,7 +123,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        
         return SinglePageViewController()
     }
     
@@ -142,8 +139,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     // func used to change the view size when window size changed
     override func viewWillLayout() {
         pageNumberLabel.frame.origin = NSPoint(x: super.view.bounds.origin.x + super.view.bounds.width/2 - 33.0, y : super.view.bounds.origin.y)
-        //pageView.pageViewLayout()
-        //pageView.contentViewLayout(manga: manga!, relatedView: mangaPage)
     }
     
 }

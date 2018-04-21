@@ -41,7 +41,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             }
         }
     }
-    var viewType: ViewType = .doublePage
+    var viewType: ViewType = .singlePage
     let pageController: NSPageController = NSPageController();
     
     @IBOutlet weak var pageView: NSView!
@@ -152,12 +152,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        return DoublePageViewController()
+        return SinglePageViewController()
     }
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
-        if let viewController = viewController as? DoublePageViewController {
-            viewController.leftImageView.image = manga!.pages[currentPage]
+        if let viewController = viewController as? SinglePageViewController {
+            viewController.imageView.image = manga!.pages[currentPage]
+            print(viewController.imageView.image)
         }
     }
     

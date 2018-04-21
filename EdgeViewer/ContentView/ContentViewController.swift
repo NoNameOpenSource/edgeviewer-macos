@@ -65,12 +65,16 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     // Switch View Size
-    func switchPageview(){
+    func switchViewType(){
         switch self.viewType {
         case .singlePage:
             self.viewType = .doublePage
-        default:
+            break
+        case .doublePage:
             self.viewType = .singlePage
+            break
+        default:
+            return
         }
     }
     

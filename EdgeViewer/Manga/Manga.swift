@@ -16,7 +16,7 @@ class Manga{
     var title : String = ""
     var rate : Int = 0
     var chapter : [Int] = [0]
-    var emptyPage : NSImage = NSImage(named: NSImage.Name(rawValue: "blank"))!
+    var bookMark : Int = 0
 
     
     init(title: String) {

@@ -16,7 +16,7 @@ enum ViewType {
 
 class ContentViewController: NSViewController, NSPageControllerDelegate {
     
-    var manga: Manga? = nil
+    var manga: Manga? = nil;
     var currentPage = 0 {
         didSet {
             updatePage()
@@ -36,15 +36,20 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        
+       
         pageController.view = pageView
         pageController.delegate = self
         
         // Dummy Data for testing purpose
         setUpDummyData()
-        
         // Setup PageView
         pageController.arrangedObjects = manga!.pages
+        
+    }
+    
+    override func viewDidDisappear() {
+        manga!.bookMark = self.currentPage;
+        print(manga!.bookMark);
     }
     
     func setUpDummyData() {
@@ -53,7 +58,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                                  NSImage(named: NSImage.Name(rawValue: "first")),
                                  NSImage(named: NSImage.Name(rawValue: "Last")),
                                  NSImage(named: NSImage.Name(rawValue: "download"))]
-        
+        testManga.bookMark = 2
         for page in pages {
             if let page = page {
                 testManga.addNewPage(image: page)
@@ -88,11 +93,15 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     //------------------------------------------------------------------------------------------------
     
     @IBAction func viewPrevious(_ sender: Any) {
-        currentPage -= 1;
+        if currentPage > 0 {
+            currentPage -= 1;
+        }
     }
     
     @IBAction func viewNext(_ sender: Any) {
-        currentPage += 1;
+        if currentPage  < manga!.numberOfPages - 1 {
+            currentPage += 1;
+        }
     }
     
     //------------------------------------------------------------------------------------------------
@@ -100,7 +109,14 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     //------------------------------------------------------------------------------------------------
     
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
-        return NSPageController.ObjectIdentifier("SinglePageViewController")
+        switch self.viewType {
+        case .singlePage:
+            return NSPageController.ObjectIdentifier("SinglePageViewController")
+        case .doublePage:
+            return NSPageController.ObjectIdentifier("DoublePageViewController")
+        case .verticalScroll:
+            return NSPageController.ObjectIdentifier("VerticalPageViewController")
+        }
     }
     
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {

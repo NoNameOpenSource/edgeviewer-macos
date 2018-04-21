@@ -64,20 +64,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         manga = testManga
     }
     
-    // Switch View Size
-    func switchViewType(){
-        switch self.viewType {
-        case .singlePage:
-            self.viewType = .doublePage
-            break
-        case .doublePage:
-            self.viewType = .singlePage
-            break
-        default:
-            return
-        }
-    }
-    
     func updatePage() {
         NSAnimationContext.runAnimationGroup({ context in
             self.pageController.animator().selectedIndex = currentPage
@@ -111,6 +97,19 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             break
         case .doublePage:
             currentPage += 2;
+            break
+        default:
+            return
+        }
+    }
+    
+    @IBAction func switchViewType(_ sender: Any){
+        switch self.viewType {
+        case .singlePage:
+            self.viewType = .doublePage
+            break
+        case .doublePage:
+            self.viewType = .singlePage
             break
         default:
             return

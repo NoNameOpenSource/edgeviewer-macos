@@ -9,6 +9,11 @@
 import Cocoa
 
 class DoublePageViewController: NSViewController {
+
+
+    @IBOutlet weak var leftImageView: NSImageView!
+    @IBOutlet weak var rightImageView: NSImageView!
+
     
     init() {
         super.init(nibName: NSNib.Name(rawValue: "DoublePageViewController"), bundle: nil)

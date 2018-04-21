@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,7 +21,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehJ-lr-IRW">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ehJ-lr-IRW">
                     <rect key="frame" x="385" y="11" width="97" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Manga Number" id="8aO-Jj-Z3Q">
                         <font key="font" metaFont="system"/>
@@ -35,6 +35,7 @@
                 <constraint firstAttribute="trailing" secondItem="kkj-n3-Oyb" secondAttribute="trailing" constant="20" id="DV0-hY-vmU"/>
                 <constraint firstItem="kkj-n3-Oyb" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="Msn-tk-Z8Z"/>
                 <constraint firstItem="kkj-n3-Oyb" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="12" id="aLN-Az-hdw"/>
+                <constraint firstItem="ehJ-lr-IRW" firstAttribute="top" secondItem="kkj-n3-Oyb" secondAttribute="top" id="mRR-DR-xjg"/>
             </constraints>
             <connections>
                 <outlet property="imageCount" destination="ehJ-lr-IRW" id="o8i-xU-hSo"/>

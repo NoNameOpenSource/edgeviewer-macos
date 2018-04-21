@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class LibraryListViewController: NSViewController, NSOutlineViewDelegate {
+class LibraryListViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewDataSource {
     
     @IBOutlet weak var outlineView: NSOutlineView!
     
@@ -20,16 +20,20 @@ class LibraryListViewController: NSViewController, NSOutlineViewDelegate {
         // Do view setup here.
     }
     
-    // delegate
+    //------------------------------------------------------------------------------------------------
+    //MARK: OutlineViewDelegate
+    //------------------------------------------------------------------------------------------------
     
     func outlineViewSelectionDidChange(_ notification: Notification) {
         let index = outlineView.selectedRow
         //TODO: tell super controller which library selected
         return
     }
-}
-
-extension LibraryListViewController : NSOutlineViewDataSource {
+    
+    //------------------------------------------------------------------------------------------------
+    //MARK: OutlineViewDataSource
+    //------------------------------------------------------------------------------------------------
+    
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         return data.count
     }

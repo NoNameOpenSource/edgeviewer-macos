@@ -156,8 +156,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         switch self.viewType {
         case .singlePage:
             return NSPageController.ObjectIdentifier("SinglePageViewController")
-        case .doublePage:
-            return NSPageController.ObjectIdentifier("DoublePageViewController")
         default:
             return NSPageController.ObjectIdentifier("DoublePageViewController")
         }
@@ -167,8 +165,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         switch self.viewType {
         case .singlePage:
             return SinglePageViewController()
-        case .doublePage:
-            return DoublePageViewController()
         default:
             return DoublePageViewController()
         }

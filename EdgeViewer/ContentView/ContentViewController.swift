@@ -27,10 +27,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                     updatePage()
                 }
             case .doublePage:
-                if currentPage < 0 || currentPage == manga!.numberOfPages{
+                if currentPage == ( 0 - 2 ) || currentPage == manga!.numberOfPages{
                     currentPage = oldValue
+                }else if currentPage == ( 0 - 1){
+                    self.viewType = .singlePage
+                    currentPage = oldValue - 1
                 }else if currentPage == manga!.numberOfPages - 1{
-                    self.viewType = .doublePage
+                    self.viewType = .singlePage
                     currentPage = oldValue + 1
                     updatePage()
                 }else{
@@ -52,6 +55,9 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     @IBOutlet weak var bookMark: NSButton!
     @IBOutlet weak var settings: NSButton!
     
+    override func viewWillAppear() {
+        setUpDummyData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -93,6 +99,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }) {
             self.pageController.completeTransition()
         }
+        print(self.pageController.animator())
         pageController.selectedIndex = currentPage
     }
     
@@ -140,6 +147,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         default:
             return
         }
+        updatePage()
     }
     
     //------------------------------------------------------------------------------------------------
@@ -147,18 +155,38 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     //------------------------------------------------------------------------------------------------
     
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
-        
-         return NSPageController.ObjectIdentifier("DoublePageViewController")
+        switch self.viewType {
+        case .singlePage:
+            return NSPageController.ObjectIdentifier("SinglePageViewController")
+        case .doublePage:
+            return NSPageController.ObjectIdentifier("DoublePageViewController")
+        default:
+            return NSPageController.ObjectIdentifier("DoublePageViewController")
+        }
     }
     
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        return SinglePageViewController()
+        switch self.viewType {
+        case .singlePage:
+            return SinglePageViewController()
+        case .doublePage:
+            return DoublePageViewController()
+        default:
+            return DoublePageViewController()
+        }
     }
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
+        let image = self.manga!.pages
+        
+        
         if let viewController = viewController as? SinglePageViewController {
-            viewController.imageView.image = manga!.pages[currentPage]
-            print(viewController.imageView.image)
+            viewController.imageView.image = image[self.currentPage]
+        }
+        
+        if let viewController = viewController as? DoublePageViewController {
+            viewController.leftImageView.image = image[self.currentPage]
+            viewController.rightImageView.image = image[self.currentPage + 1]
         }
     }
     

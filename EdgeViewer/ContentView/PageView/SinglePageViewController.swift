@@ -11,7 +11,6 @@ import Cocoa
 class SinglePageViewController: NSViewController {
     
     @IBOutlet weak var imageView: NSImageView!
-    
     init() {
         super.init(nibName: NSNib.Name(rawValue: "SinglePageViewController"), bundle: nil)
     }
@@ -19,7 +18,7 @@ class SinglePageViewController: NSViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

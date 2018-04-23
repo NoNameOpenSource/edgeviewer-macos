@@ -19,29 +19,14 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var manga: Manga? = nil;
     var currentPage = 0 {
         didSet {
-            switch self.viewType {
-            case .singlePage:
-                if currentPage < 0 || currentPage >= manga!.numberOfPages{
-                    currentPage = oldValue;
-                }else{
-                    updatePage()
-                }
-            case .doublePage:
-                if currentPage == ( 0 - 2 ) || currentPage == manga!.numberOfPages{
-                    currentPage = oldValue
-                }else if currentPage == ( 0 - 1){
-                    self.viewType = .singlePage
-                    currentPage = oldValue - 1
-                }else if currentPage == manga!.numberOfPages - 1{
-                    self.viewType = .singlePage
-                    currentPage = oldValue + 1
-                    updatePage()
-                }else{
-                    updatePage()
-                }
-            default:
-                return
+            // fix if the page number is out of range
+            if(currentPage < 0) {
+                currentPage = 0;
+            } else if(currentPage >= manga!.numberOfPages) {
+                currentPage = manga!.numberOfPages - 1;
             }
+            // update page
+            updatePage();
         }
     }
     var viewType: ViewType = .singlePage

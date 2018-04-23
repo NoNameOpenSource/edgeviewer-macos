@@ -50,7 +50,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         setUpDummyData()
         // Setup PageView
         pageController.arrangedObjects = manga!.pages
-        updatePage()
     }
     
     override func viewDidDisappear() {
@@ -151,26 +150,20 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
         let image = self.manga!.pages
-        let views = viewController.view.subviews
         
-        if let viewController = viewController as? SinglePageViewController {
-            if let view = views[0] as? NSImageView{
-                view.image = image[currentPage]
-            }
-        }
-        
-        if let viewController = viewController as? DoublePageViewController {
-            if let leftView = views[0] as? NSImageView {
-                if let rightView = views[1] as? NSImageView {
-                    leftView.image = image[self.currentPage]
-                    rightView.image = image[self.currentPage + 1]
-                }
-            }
+        switch viewController {
+            case let viewController as SinglePageViewController:
+                viewController.imageView.image = image[currentPage]
+                break
+            case let viewController as DoublePageViewController:
+                viewController.leftImageView.image = image[self.currentPage]
+                viewController.rightImageView.image = image[self.currentPage + 1]
+            default:
+                return
         }
     }
     
     func pageController(_ pageController: NSPageController, frameFor object: Any?) -> NSRect {
-        
         return pageController.view.frame
     }
     

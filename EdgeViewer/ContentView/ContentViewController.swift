@@ -29,7 +29,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             updatePage()
         }
     }
-    var viewType: ViewType = .singlePage
+    var viewType: ViewType = .singlePage {
+        didSet {
+            // there could be a better way, but this works
+            pageController.selectedIndex = currentPage + 1;
+            pageController.selectedIndex = currentPage;
+        }
+    }
     var pageController: NSPageController = NSPageController()
     
     @IBOutlet weak var pageView: NSView!

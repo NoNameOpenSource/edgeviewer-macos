@@ -73,7 +73,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     override func viewDidDisappear() {
         manga!.bookMark = self.currentPage;
-        print(manga!.bookMark);
     }
     
     func setUpDummyData() {
@@ -99,7 +98,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }) {
             self.pageController.completeTransition()
         }
-        print(self.pageController.animator())
         pageController.selectedIndex = currentPage
     }
     
@@ -178,15 +176,21 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
         let image = self.manga!.pages
-        
+        let views = viewController.view.subviews
         
         if let viewController = viewController as? SinglePageViewController {
-            viewController.imageView.image = image[self.currentPage]
+            if let view = views[0] as? NSImageView{
+                view.image = image[currentPage]
+            }
         }
         
         if let viewController = viewController as? DoublePageViewController {
-            viewController.leftImageView.image = image[self.currentPage]
-            viewController.rightImageView.image = image[self.currentPage + 1]
+            if let leftView = views[0] as? NSImageView {
+                if let rightView = views[1] as? NSImageView {
+                    leftView.image = image[self.currentPage]
+                    rightView.image = image[self.currentPage + 1]
+                }
+            }
         }
     }
     

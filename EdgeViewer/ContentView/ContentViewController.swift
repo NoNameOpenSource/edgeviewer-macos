@@ -21,16 +21,16 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         didSet {
             // fix if the page number is out of range
             if(currentPage < 0) {
-                currentPage = 0;
+                currentPage = 0
             } else if(currentPage >= manga!.numberOfPages) {
-                currentPage = manga!.numberOfPages - 1;
+                currentPage = manga!.numberOfPages - 1
             }
             // update page
-            updatePage();
+            updatePage()
         }
     }
     var viewType: ViewType = .singlePage
-    let pageController: NSPageController = NSPageController();
+    var pageController: NSPageController = NSPageController()
     
     @IBOutlet weak var pageView: NSView!
     @IBOutlet weak var mangaPage: NSView!
@@ -123,7 +123,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         default:
             return
         }
-        updatePage()
     }
     
     //------------------------------------------------------------------------------------------------
@@ -153,11 +152,12 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
         switch viewController {
             case let viewController as SinglePageViewController:
-                viewController.imageView.image = image[currentPage]
+                viewController.image = image[currentPage]
                 break
             case let viewController as DoublePageViewController:
-                viewController.leftImageView.image = image[self.currentPage]
-                viewController.rightImageView.image = image[self.currentPage + 1]
+                viewController.leftImage = image[self.currentPage]
+                viewController.rightImage = image[self.currentPage + 1]
+                break
             default:
                 return
         }

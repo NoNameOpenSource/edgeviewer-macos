@@ -10,6 +10,13 @@ import Cocoa
 
 class SinglePageViewController: NSViewController {
     
+    var image: NSImage? {
+        didSet {
+            if isViewLoaded {
+                imageView.image = self.image
+            }
+        }
+    }
     @IBOutlet weak var imageView: NSImageView!
     init() {
         super.init(nibName: NSNib.Name(rawValue: "SinglePageViewController"), bundle: nil)
@@ -22,6 +29,10 @@ class SinglePageViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
+        if imageView.image != image {
+            imageView.image = image
+        }
     }
     
 }

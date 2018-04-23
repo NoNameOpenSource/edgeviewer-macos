@@ -9,8 +9,21 @@
 import Cocoa
 
 class DoublePageViewController: NSViewController {
-
-
+    
+    var leftImage: NSImage? {
+        didSet {
+            if isViewLoaded {
+                leftImageView.image = leftImage
+            }
+        }
+    }
+    var rightImage: NSImage? {
+        didSet {
+            if isViewLoaded {
+                rightImageView.image = rightImage
+            }
+        }
+    }
     @IBOutlet weak var leftImageView: NSImageView!
     @IBOutlet weak var rightImageView: NSImageView!
 
@@ -26,6 +39,12 @@ class DoublePageViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        if leftImageView.image != leftImage {
+            leftImageView.image = leftImage
+        }
+        if rightImageView.image != rightImage {
+            rightImageView.image = rightImage
+        }
     }
     
 }

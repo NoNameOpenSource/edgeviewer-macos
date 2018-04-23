@@ -40,9 +40,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     @IBOutlet weak var bookMark: NSButton!
     @IBOutlet weak var settings: NSButton!
     
-    override func viewWillAppear() {
-        setUpDummyData()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

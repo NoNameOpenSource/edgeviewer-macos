@@ -39,7 +39,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var pageController: NSPageController = NSPageController()
     
     @IBOutlet weak var pageView: NSView!
-    @IBOutlet weak var mangaPage: NSView!
     @IBOutlet weak var backToDetail: NSButton!
     @IBOutlet weak var pageNumberLabel: NSTextField!
     @IBOutlet weak var chapter: NSButton!

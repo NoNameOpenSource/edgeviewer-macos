@@ -32,7 +32,7 @@ class DetailViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = myManga.addNewChapters(howMany: 50) // there are now howMany + 1 chapters
+        _ = myManga.addNewChapters(howMany: 2) // there are now howMany + 1 chapters
         
         // Set up properties in Dummy Manga Object
         myManga.rating = 3
@@ -68,10 +68,10 @@ class DetailViewController: NSViewController {
         flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
+        flowLayout.scrollDirection = NSCollectionView.ScrollDirection.horizontal
         chapterView.collectionViewLayout = flowLayout
         view.wantsLayer = true
         chapterView.layer?.backgroundColor = NSColor.black.cgColor
-        flowLayout.scrollDirection = NSCollectionView.ScrollDirection(rawValue: 1)! // enumeration: horizontal = 1; vertical = 0
     }
 }
 

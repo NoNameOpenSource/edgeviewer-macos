@@ -56,6 +56,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         setUpDummyData()
         // Setup PageView
         pageController.arrangedObjects = manga!.pages
+        updatePage()
     }
     
     override func viewDidDisappear() {

@@ -20,11 +20,11 @@ class DetailViewController: NSViewController {
     @IBOutlet weak var mangaGenre: NSTextField!
     @IBOutlet weak var mangaReleaseDate: NSTextField!
     @IBOutlet var mangaImage: NSImageView!
+    @IBOutlet weak var mangaProgress: NSProgressIndicator!
     
     // Set up UI Action
     @IBAction func showReadFromBeginningButton(_ sender: Any) {
-        print("pressed")
-        ReadFromBeginningButton.isHidden = false
+        ReadFromBeginningButton.isHidden = !ReadFromBeginningButton.isHidden
     }
     
     // Create a Dummy Manga Object
@@ -32,7 +32,7 @@ class DetailViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = myManga.addNewChapters(howMany: 4) // there are now howMany + 1 chapters
+        _ = myManga.addNewChapters(howMany: 50) // there are now howMany + 1 chapters
         
         // Set up properties in Dummy Manga Object
         myManga.rating = 3
@@ -40,6 +40,7 @@ class DetailViewController: NSViewController {
         myManga.genre = "Mystery"
         myManga.releaseDate = "May 5, 2000"
         myManga.coverImage = #imageLiteral(resourceName: "highlightedStar")
+        myManga.progress = 50
         
         // Set up Chapters in Dummy Manga Object
         for i in 0 ..< myManga.chapters.count {
@@ -54,6 +55,7 @@ class DetailViewController: NSViewController {
         self.mangaGenre.stringValue = myManga.genre
         self.mangaReleaseDate.stringValue = myManga.releaseDate
         self.mangaImage.image = myManga.coverImage
+        self.mangaProgress.doubleValue = myManga.progress
                 
         configureCollectionView()
     }
@@ -62,15 +64,15 @@ class DetailViewController: NSViewController {
     // Set up Basic Collection View UI Settings
     private func configureCollectionView() {
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
+        flowLayout.itemSize = NSSize(width: 100.0, height: 140.0)
         flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         chapterView.collectionViewLayout = flowLayout
         view.wantsLayer = true
         chapterView.layer?.backgroundColor = NSColor.black.cgColor
+        flowLayout.scrollDirection = NSCollectionView.ScrollDirection(rawValue: 1)! // enumeration: horizontal = 1; vertical = 0
     }
-    
 }
 
 extension DetailViewController : NSCollectionViewDataSource {

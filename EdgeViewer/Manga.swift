@@ -17,10 +17,10 @@ class Manga {
     var rating: Int = 0
     var releaseDate: String = ""
     var coverImage = NSImage()
+    var progress: Double = 0
     
     init(title: String) {
         self.title = title
-        
     }
     
     func addNewPage(page: NSImage, chapterIndex : Int, pageIndex: Int?) {

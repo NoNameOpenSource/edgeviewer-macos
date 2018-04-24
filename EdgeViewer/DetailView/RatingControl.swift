@@ -18,7 +18,7 @@ class RatingControl: NSStackView {
         }
     }
     
-    // set star sizes according to size of RatingControl UI element
+    // set star sizes proportionate to size of RatingControl UI element
     private lazy var starSize: CGSize = CGSize(width: self.bounds.width / CGFloat(starCount), height: self.bounds.height)
     
     private var ratingStars = [NSImageView]()
@@ -42,10 +42,12 @@ class RatingControl: NSStackView {
         initializeStars()
     }
     
+    
     //MARK: Overrides
     
+    // when user clicks in this view,
+    // grab location and calculate which star image user clicked on
     override func mouseDown(with event: NSEvent) {
-        print("Event: ", event.locationInWindow)
         let eventLocation: NSPoint = convert(event.locationInWindow, from: nil)
         rating = (Int(eventLocation.x) / Int(starSize.width)) + 1
     }
@@ -53,11 +55,16 @@ class RatingControl: NSStackView {
     
     //MARK: Methods
 
+    // update UI stars according to current rating
     private func updateStars() {
         if rating <= starCount { // make sure rating is not higher than number of stars
             // add filled stars to show rating
             for i in 0..<rating {
                 ratingStars[i].image = #imageLiteral(resourceName: "filledStar")
+            }
+            // fill in remaining with empty stars
+            for i in rating..<starCount {
+                ratingStars[i].image = #imageLiteral(resourceName: "emptyStar")
             }
         }
     }
@@ -75,6 +82,7 @@ class RatingControl: NSStackView {
             
             // initialize images to empty stars
             addArrangedSubview(emptyStarImage)
+            
             // initialize star array with empty stars to match UI
             ratingStars.append(emptyStarImage)
         }

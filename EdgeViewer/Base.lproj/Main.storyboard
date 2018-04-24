@@ -882,7 +882,9 @@
                                         <collectionView id="48C-KD-Wpa">
                                             <rect key="frame" x="0.0" y="0.0" width="830" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                            <collectionViewLayout key="collectionViewLayout" id="NU7-W5-Agr"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="hxA-4J-WU5">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="ymU-Zp-kRl" id="tKI-XB-WjC"/>
@@ -906,7 +908,9 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="NN9-2C-Rxb" firstAttribute="top" secondItem="0TQ-aj-gUl" secondAttribute="top" constant="20" id="2d5-tQ-80S"/>
+                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gIj-sJ-v8P" secondAttribute="trailing" constant="8" id="4fg-Dh-8mQ"/>
                             <constraint firstItem="q0e-5w-N1Z" firstAttribute="top" secondItem="aVl-8M-baY" secondAttribute="bottom" constant="8" symbolic="YES" id="4ub-3B-w5D"/>
+                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aVl-8M-baY" secondAttribute="trailing" constant="8" id="6SS-cq-aDG"/>
                             <constraint firstItem="gIj-sJ-v8P" firstAttribute="top" secondItem="7mB-RJ-UXb" secondAttribute="bottom" constant="8" symbolic="YES" id="ER0-cW-oLX"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="top" secondItem="igz-bX-fLC" secondAttribute="bottom" constant="75" id="H2X-PW-be4"/>
                             <constraint firstAttribute="bottom" secondItem="2On-Do-ZzQ" secondAttribute="bottom" constant="20" id="Jfw-ka-biO"/>
@@ -924,11 +928,16 @@
                             <constraint firstAttribute="trailing" secondItem="2On-Do-ZzQ" secondAttribute="trailing" constant="20" id="bf0-uB-7WU"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="bottom" secondItem="NN9-2C-Rxb" secondAttribute="bottom" id="der-kL-ODC"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="leading" secondItem="q0e-5w-N1Z" secondAttribute="leading" id="dwI-JJ-cpS"/>
+                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="q0e-5w-N1Z" secondAttribute="trailing" constant="24" id="e7C-PO-y0S"/>
+                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HWi-Jl-N00" secondAttribute="trailing" constant="24" id="eBJ-Ra-BXv"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="top" secondItem="q0e-5w-N1Z" secondAttribute="bottom" constant="8" symbolic="YES" id="eS8-fn-h8q"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BdN-H7-7Lb" secondAttribute="trailing" constant="8" id="oey-cw-Scs"/>
                             <constraint firstItem="HWi-Jl-N00" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="pVY-LS-zJJ"/>
+                            <constraint firstItem="48C-KD-Wpa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NN9-2C-Rxb" secondAttribute="bottom" constant="24" id="pvx-Qs-U6O"/>
                             <constraint firstItem="aVl-8M-baY" firstAttribute="top" secondItem="gIj-sJ-v8P" secondAttribute="bottom" constant="8" symbolic="YES" id="s3Q-SP-QH6"/>
                             <constraint firstItem="igz-bX-fLC" firstAttribute="centerX" secondItem="2On-Do-ZzQ" secondAttribute="centerX" id="uA5-TL-uiO"/>
                             <constraint firstItem="7mB-RJ-UXb" firstAttribute="top" secondItem="HWi-Jl-N00" secondAttribute="bottom" constant="8" symbolic="YES" id="vmQ-yn-bvA"/>
+                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7mB-RJ-UXb" secondAttribute="trailing" constant="8" id="yaP-ys-beK"/>
                         </constraints>
                     </view>
                     <connections>
@@ -937,6 +946,7 @@
                         <outlet property="mangaAuthor" destination="7mB-RJ-UXb" id="ke9-el-Rqx"/>
                         <outlet property="mangaGenre" destination="gIj-sJ-v8P" id="AeV-7C-MUU"/>
                         <outlet property="mangaImage" destination="NN9-2C-Rxb" id="hUC-fN-3VX"/>
+                        <outlet property="mangaProgress" destination="q0e-5w-N1Z" id="IMl-og-mSM"/>
                         <outlet property="mangaReleaseDate" destination="aVl-8M-baY" id="qXu-Zv-UGs"/>
                         <outlet property="mangaTitle" destination="HWi-Jl-N00" id="li8-e5-DwW"/>
                         <outlet property="ratingControl" destination="Ogn-HN-6cc" id="CDk-Mr-pdu"/>

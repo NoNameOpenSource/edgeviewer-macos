@@ -10,17 +10,23 @@ import Cocoa
 
 class Manga {
     var chapters : [Chapter] = [Chapter()]
-    
-    var title: String = ""
-    var author: String = ""
+    var author : String = ""
     var genre: String = ""
-    var rating: Int = 0
+    var Page : [NSImage] = []
+    var currentPage : Int = 1
+    var PageNumber : Int = 0
+    var title : String = ""
+    var rating : Int = 0
     var releaseDate: String = ""
-    var coverImage = NSImage()
+    var coverImage : NSImage = NSImage()
+    var chapter : [Int] = [1]
     var progress: Double = 0
+    let cover : NSImage
     
-    init(title: String) {
+    init(title : String) {
         self.title = title
+        self.cover = NSImage()
+        self.cover.backgroundColor = NSColor(calibratedRed: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
     }
     
     func addNewPage(page: NSImage, chapterIndex : Int, pageIndex: Int?) {
@@ -42,6 +48,3 @@ class Manga {
         return chapters.count
     }
 }
-
-
-

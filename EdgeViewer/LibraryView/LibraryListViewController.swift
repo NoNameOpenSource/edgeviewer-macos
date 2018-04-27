@@ -14,6 +14,7 @@ class LibraryListViewController: NSViewController, NSOutlineViewDelegate, NSOutl
     
     // dummy model
     let data = ["Cell 1", "Cell 2", "Cell 3"]
+    var librarySelectionHandler: ((Int) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,8 @@ class LibraryListViewController: NSViewController, NSOutlineViewDelegate, NSOutl
     
     func outlineViewSelectionDidChange(_ notification: Notification) {
         let index = outlineView.selectedRow
-        //TODO: tell super controller which library selected
-        return
+        guard let librarySelectionHandler = librarySelectionHandler else { return }
+        librarySelectionHandler(index)
     }
     
     //------------------------------------------------------------------------------------------------

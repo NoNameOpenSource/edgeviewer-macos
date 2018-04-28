@@ -8,5 +8,10 @@
 
 import Foundation
 
-class Plugin {
+protocol Plugin {
+    var name: String { get }
+    var version: Double { get }
+    
+    func page(atIndex index: Int) -> LibraryPage
+    func book(withIdentifier identifier: Any) -> Book
 }

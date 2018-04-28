@@ -18,6 +18,8 @@
 		E01ED2A92093266600CC805F /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2A82093266600CC805F /* Manga.swift */; };
 		E01ED2AC2093E92F00CC805F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01ED2AA2093E92F00CC805F /* HeaderView.xib */; };
 		E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2AB2093E92F00CC805F /* HeaderView.swift */; };
+		E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2AF2093EBB700CC805F /* Plugin.swift */; };
+		E01ED2B22093EC6400CC805F /* JSPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2B12093EC6400CC805F /* JSPlugin.swift */; };
 		E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */; };
 		E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */; };
 		E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E863A20731A7A0082723B /* AppDelegate.swift */; };
@@ -57,6 +59,8 @@
 		E01ED2A82093266600CC805F /* Manga.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
 		E01ED2AA2093E92F00CC805F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		E01ED2AB2093E92F00CC805F /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		E01ED2AF2093EBB700CC805F /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
+		E01ED2B12093EC6400CC805F /* JSPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPlugin.swift; sourceTree = "<group>"; };
 		E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListViewController.swift; sourceTree = "<group>"; };
 		E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewController.swift; sourceTree = "<group>"; };
 		E08E863720731A7A0082723B /* EdgeViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgeViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +114,15 @@
 			path = DetailView;
 			sourceTree = "<group>";
 		};
+		E01ED2AE2093EB8F00CC805F /* PluginAPI */ = {
+			isa = PBXGroup;
+			children = (
+				E01ED2AF2093EBB700CC805F /* Plugin.swift */,
+				E01ED2B12093EC6400CC805F /* JSPlugin.swift */,
+			);
+			path = PluginAPI;
+			sourceTree = "<group>";
+		};
 		E029CFDE2081E564008EC2A7 /* LibraryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +160,7 @@
 		E08E863920731A7A0082723B /* EdgeViewer */ = {
 			isa = PBXGroup;
 			children = (
+				E01ED2AE2093EB8F00CC805F /* PluginAPI */,
 				E029CFDE2081E564008EC2A7 /* LibraryView */,
 				1C1A1CB520843486000074DC /* DetailView */,
 				E08E863A20731A7A0082723B /* AppDelegate.swift */,
@@ -324,7 +338,9 @@
 				8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */,
 				E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */,
 				E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */,
+				E01ED2B22093EC6400CC805F /* JSPlugin.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,
+				E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 			);

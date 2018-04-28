@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        let firstPlugin = JSPlugin(pluginName: "test.js")
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

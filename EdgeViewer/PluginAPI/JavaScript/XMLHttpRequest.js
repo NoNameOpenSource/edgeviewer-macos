@@ -37,15 +37,16 @@ class XMLHttpRequest {
     
     send(body = null) {
         request(this.url, function(statusCode, mimeType, responseText) {
-                var evt = new Object();
-                evt.target = this;
-                if(this.onload) {
+            var evt = new Object();
+            evt.target = this;
+            this.readyState = 4;
+            if(this.onload) {
                 var parser = new DOMParser();
                 this.responseText = responseText;
                 this.responseHTML = parser.parseFromString(responseText, mimeType);
                 this.status = statusCode;
                 this.onload(evt);
-                }
-                }.bind(this));
+            }
+        }.bind(this));
     }
 }

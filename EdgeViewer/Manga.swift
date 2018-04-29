@@ -12,9 +12,9 @@ class Manga {
     var chapters : [Chapter] = [Chapter()]
     var author : String = ""
     var genre: String = ""
-    var Page : [NSImage] = []
+    var pages : [NSImage] = []
     var currentPage : Int = 1
-    var PageNumber : Int = 0
+    var numberOfPages : Int = 0
     var title : String = ""
     var rating : Int = 0
     var releaseDate: String = ""
@@ -22,6 +22,7 @@ class Manga {
     var chapter : [Int] = [1]
     var progress: Double = 0
     let cover : NSImage
+    var bookMark : Int = 0
     
     init(title : String) {
         self.title = title
@@ -35,6 +36,11 @@ class Manga {
             return
         }
         self.chapters[chapterIndex].pages.insert(page, at: pIndex)
+    }
+    
+    func addNewPage(image : NSImage){
+        self.pages.append(image)
+        self.numberOfPages += 1
     }
     
     func addNewChapter() {

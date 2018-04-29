@@ -28,6 +28,26 @@ class JSPlugin: Plugin {
     
     let context = JSContext()!
     
+    let request: @convention(block) (String, JSValue?) -> Void  = { url, callback in
+        guard let url = URL(string: url) else { return }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+          
+            //TODO: handle error with (if let error = error)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                // request failed
+                return
+            }
+            if let mimeType = httpResponse.mimeType, mimeType == "text/html",
+                let data = data,
+                let string = String(data: data, encoding: .utf8) {
+                if let callback = callback {
+                    _ = callback.call(withArguments: [httpResponse.statusCode, mimeType, string])!
+                }
+            }
+        }
+        task.resume()
+    }
+    
     let consoleLog: @convention(block) (String) -> Void = { string in
         print(string)
     }
@@ -39,7 +59,9 @@ class JSPlugin: Plugin {
         let contentData = FileManager.default.contents(atPath: path)
         let content = String(data: contentData!, encoding: .utf8)
         let consoleLog = unsafeBitCast(self.consoleLog, to: AnyObject.self)
+        let request = unsafeBitCast(self.request, to: AnyObject.self)
         context.setObject(consoleLog, forKeyedSubscript: "consoleLog" as NSCopying & NSObjectProtocol)
+        context.setObject(request, forKeyedSubscript: "request" as NSCopying & NSObjectProtocol)
         context.evaluateScript(content)
         _ = homePage
     }

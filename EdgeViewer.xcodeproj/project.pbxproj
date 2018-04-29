@@ -61,6 +61,7 @@
 		E01ED2AB2093E92F00CC805F /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E01ED2AF2093EBB700CC805F /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
 		E01ED2B12093EC6400CC805F /* JSPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPlugin.swift; sourceTree = "<group>"; };
+		E01ED36F2095C90D00CC805F /* XMLHttpRequest.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = XMLHttpRequest.js; sourceTree = "<group>"; };
 		E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListViewController.swift; sourceTree = "<group>"; };
 		E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewController.swift; sourceTree = "<group>"; };
 		E08E863720731A7A0082723B /* EdgeViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgeViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,10 +118,19 @@
 		E01ED2AE2093EB8F00CC805F /* PluginAPI */ = {
 			isa = PBXGroup;
 			children = (
+				E01ED36E2095C8DB00CC805F /* JavaScript */,
 				E01ED2AF2093EBB700CC805F /* Plugin.swift */,
 				E01ED2B12093EC6400CC805F /* JSPlugin.swift */,
 			);
 			path = PluginAPI;
+			sourceTree = "<group>";
+		};
+		E01ED36E2095C8DB00CC805F /* JavaScript */ = {
+			isa = PBXGroup;
+			children = (
+				E01ED36F2095C90D00CC805F /* XMLHttpRequest.js */,
+			);
+			path = JavaScript;
 			sourceTree = "<group>";
 		};
 		E029CFDE2081E564008EC2A7 /* LibraryView */ = {

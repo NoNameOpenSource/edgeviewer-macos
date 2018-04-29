@@ -13,6 +13,7 @@ import JavaScriptCore
 let pluginFolder = Bundle.main.resourcePath! + "/"
 
 class JSPlugin: Plugin {
+    
     let name: String
     var version: Double
     
@@ -27,12 +28,18 @@ class JSPlugin: Plugin {
     
     let context = JSContext()!
     
+    let consoleLog: @convention(block) (String) -> Void = { string in
+        print(string)
+    }
+    
     init(pluginName: String) {
         self.name = pluginName
         self.version = 0.1
         let path = pluginFolder + pluginName
         let contentData = FileManager.default.contents(atPath: path)
         let content = String(data: contentData!, encoding: .utf8)
+        let consoleLog = unsafeBitCast(self.consoleLog, to: AnyObject.self)
+        context.setObject(consoleLog, forKeyedSubscript: "consoleLog" as NSCopying & NSObjectProtocol)
         context.evaluateScript(content)
         _ = homePage
     }

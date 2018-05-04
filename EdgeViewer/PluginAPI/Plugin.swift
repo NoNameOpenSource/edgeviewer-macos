@@ -6,7 +6,7 @@
 //  Copyright © 2018년 NoName. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 protocol Plugin {
     var name: String { get }

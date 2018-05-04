@@ -29,6 +29,7 @@
 		E08E864E20731A7A0082723B /* EdgeViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E864D20731A7A0082723B /* EdgeViewerTests.swift */; };
 		E08E865920731A7A0082723B /* EdgeViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E865820731A7A0082723B /* EdgeViewerUITests.swift */; };
 		E0AEDFED20AD304300E72B6E /* DOMParser.js in Resources */ = {isa = PBXBuildFile; fileRef = E0AEDFEC20AD304300E72B6E /* DOMParser.js */; };
+		E0AEDFEF20AD304300E72B6E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AEDFEE20AD304300E72B6E /* Book.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		E08E865820731A7A0082723B /* EdgeViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeViewerUITests.swift; sourceTree = "<group>"; };
 		E08E865A20731A7A0082723B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0AEDFEC20AD304300E72B6E /* DOMParser.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = DOMParser.js; sourceTree = "<group>"; };
+		E0AEDFEE20AD304300E72B6E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				E01ED36E2095C8DB00CC805F /* JavaScript */,
 				E01ED2AF2093EBB700CC805F /* Plugin.swift */,
 				E01ED2B12093EC6400CC805F /* JSPlugin.swift */,
+				E0AEDFEE20AD304300E72B6E /* Book.swift */,
 			);
 			path = PluginAPI;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */,
 				8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */,
 				E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */,
+				E0AEDFEF20AD304300E72B6E /* Book.swift in Sources */,
 				E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */,
 				E01ED2B22093EC6400CC805F /* JSPlugin.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,

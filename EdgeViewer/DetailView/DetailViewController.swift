@@ -27,39 +27,29 @@ class DetailViewController: NSViewController {
         ReadFromBeginningButton.isHidden = !ReadFromBeginningButton.isHidden
     }
     
-    // Create a Dummy Manga Object
-    var myManga : Manga = Manga(title: "The Best Manga")
+    // Create a Local Library Based on XML Parser
+    let local: LocalPluginParser = LocalPluginParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = myManga.addNewChapters(howMany: 2) // there are now howMany + 1 chapters
-        
-        // Set up properties in Dummy Manga Object
-        myManga.rating = 3
-        myManga.author = "Steven"
-        myManga.genre = "Mystery"
-        myManga.releaseDate = "May 5, 2000"
-        myManga.coverImage = #imageLiteral(resourceName: "highlightedStar")
-        myManga.progress = 50
         
         // Set up Chapters in Dummy Manga Object
-        for i in 0 ..< myManga.chapters.count {
-            myManga.chapters[i].coverImage = #imageLiteral(resourceName: "emptyStar")
-            myManga.chapters[i].title = "\(i)"
+        for i in 0 ..< local.books[0].chapters.count {
+            local.books[0].chapters[i].coverImage = #imageLiteral(resourceName: "emptyStar")
+            local.books[0].chapters[i].title = "\(i)"
         }
         
         // Write to UI based on properties in Manga Object
-        ratingControl.rating = myManga.rating
-        self.mangaTitle.stringValue = myManga.title
-        self.mangaAuthor.stringValue = myManga.author
-        self.mangaGenre.stringValue = myManga.genre
-        self.mangaReleaseDate.stringValue = myManga.releaseDate
-        self.mangaImage.image = myManga.coverImage
-        self.mangaProgress.doubleValue = myManga.progress
+        ratingControl.rating = local.books[0].rating
+        self.mangaTitle.stringValue = local.books[0].title
+        self.mangaAuthor.stringValue = local.books[0].author
+        self.mangaGenre.stringValue = local.books[0].genre
+        self.mangaReleaseDate.stringValue = local.books[0].releaseDate
+        self.mangaImage.image = local.books[0].coverImage
+        self.mangaProgress.doubleValue = local.books[0].progress
                 
         configureCollectionView()
     }
-    
     
     // Set up Basic Collection View UI Settings
     private func configureCollectionView() {
@@ -81,7 +71,7 @@ extension DetailViewController : NSCollectionViewDataSource {
     
     // Returns the number of items in the section
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myManga.chapters.count
+        return local.books[0].chapters.count
     }
     
     // Return an NSCollectionView item for a given path
@@ -95,8 +85,8 @@ extension DetailViewController : NSCollectionViewDataSource {
         }
         
         // Set the textField and imageView of the current NSCollectionView item
-        item.textField!.stringValue = myManga.chapters[indexPath.item].title
-        item.imageView!.image = myManga.chapters[indexPath.item].coverImage
+        item.textField!.stringValue = local.books[0].chapters[indexPath.item].title
+        item.imageView!.image = local.books[0].chapters[indexPath.item].coverImage
         
         return item
     }

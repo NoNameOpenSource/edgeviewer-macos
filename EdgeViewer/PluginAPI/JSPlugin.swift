@@ -6,7 +6,7 @@
 //  Copyright © 2018년 NoName. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 import JavaScriptCore
 
 // for now it lives in home folder of the user
@@ -64,5 +64,46 @@ class JSPlugin: Plugin {
         context.setObject(request, forKeyedSubscript: "request" as NSCopying & NSObjectProtocol)
         context.evaluateScript(content)
         _ = homePage
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    //MARK: Plugin protocol
+    //------------------------------------------------------------------------------------------------
+    
+    func page(withIdentifier identifier: Any) -> LibraryPage? {
+        return nil
+    }
+    
+    func book(withIdentifier identifier: Any) -> Book? {
+        guard let function = context.objectForKeyedSubscript("loadBook") else {
+            return nil
+        }
+        guard let bookJS = function.call(withArguments: [identifier]) else {
+            return nil
+        }
+        let title = bookJS.forProperty("title")!.toString()!
+        let numberOfPages: Int = Int(bookJS.forProperty("identifier")!.toInt32())
+        let book = Book( identifier: identifier)
+        return book
+    }
+    
+    func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
+        guard let function = context.objectForKeyedSubscript("loadPageOfBook") else {
+            return nil
+        }
+        guard let pageURL = function.call(withArguments: [book.identifier, 0]).toString() else {
+            return nil
+        }
+        print(pageURL)
+        let url = URL(string: pageURL)
+        guard url != nil else {
+            return nil
+        }
+        let image = NSImage(contentsOf: url!)
+        if let bits = image?.representations.first as? NSBitmapImageRep {
+            let data = bits.representation(using: .jpeg, properties: [:])
+            try? data?.write(to: URL(fileURLWithPath: pluginFolder + "image.jpg"))
+        }
+        return image
     }
 }

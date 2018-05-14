@@ -14,6 +14,7 @@ class LocalPluginParser: NSObject, XMLParserDelegate {
     var eName: String
     var title: String
     var author: String
+    var genre: String
     var id: Int
     var release: Int
     var series: Int
@@ -22,7 +23,7 @@ class LocalPluginParser: NSObject, XMLParserDelegate {
     //    lazy var chapters = [Int]()
     var bookmark: Int
     var rating: Double
-    var updatedTime: Date?
+    var releaseDate: Date?
     var chapters: [Int]
     enum type {
         case manga
@@ -37,6 +38,7 @@ class LocalPluginParser: NSObject, XMLParserDelegate {
         author = String()
         id = Int()
         release = Int()
+        genre = String()
         series = Int()
         seriesName = String()
         numPages = Int()
@@ -47,7 +49,9 @@ class LocalPluginParser: NSObject, XMLParserDelegate {
         if let path = Bundle.main.url(forResource: "LocalLibrary", withExtension: "xml") {
             if let parser = XMLParser(contentsOf: path) {
                 parser.delegate = self
-                print(parser.parse())
+                if !parser.parse() {
+                    print("Failed to parse XML file for books.")
+                }
             }
         }
     }
@@ -62,9 +66,10 @@ class LocalPluginParser: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "book" {
             
-            let book = Book(id: 5)
+            let book = Book(id: 0)
             book.title = title
             book.author = author
+            book.genre = genre
             book.release = release
             book.series = series
             book.seriesName = seriesName
@@ -72,7 +77,7 @@ class LocalPluginParser: NSObject, XMLParserDelegate {
             //            book.chapters = chapters
             book.bookmark = bookmark
             book.rating = Int(rating)
-            book.updatedTime = updatedTime
+            book.releaseDate = releaseDate
             
             books.append(book)
         }
@@ -92,6 +97,9 @@ class LocalPluginParser: NSObject, XMLParserDelegate {
             else if eName == "release" {
                 release = Int(data)!
             }
+            else if eName == "genre" {
+                genre = data
+            }
             else if eName == "series" {
                 series = Int(data)!
             }
@@ -101,26 +109,6 @@ class LocalPluginParser: NSObject, XMLParserDelegate {
             else if eName == "numPages" {
                 numPages = Int(data)!
             }
-                // // need to handle chapters array
-                //            else if eName == "chapters" {
-                //                chapters += data
-                //            }
-            else if eName == "bookmark" {
-                bookmark = Int(data)!
-            }
-            else if eName == "rating" {
-                rating = Double(data)!
-            }
-            else if eName == "updatedTime" {
-                let dateFormatter = DateFormatter()
-                if let time = dateFormatter.date(from: data) {
-                    updatedTime = time
-                }
-                else {
-                    print("Unable to retrieve date. Check formatting of date string.")
-                    updatedTime = nil
-                }
-            }
             else if eName == "chapters" {
                 let chaptersArray = data.split(separator: ",")
                 var index = 0
@@ -128,7 +116,42 @@ class LocalPluginParser: NSObject, XMLParserDelegate {
                     chapters.append(Int(char)!)
                     index += 1
                 }
-                print(chapters)
+            }
+            else if eName == "bookmark" {
+                if let safeBookmark = Int(data) {
+                    bookmark = safeBookmark
+                }
+                else {
+                    print("XML Parsing Error: Could not retrieve saved bookmark.")
+                    bookmark = 0
+                }
+            }
+            else if eName == "rating" {
+                if let safeRating = Double(data) {
+                    rating = safeRating
+                }
+                else {
+                    print("XML Parsing Error: Could not retrieve saved rating.")
+                    bookmark = 0
+                }
+                rating = Double(data)!
+            }
+            else if eName == "updatedTime" {
+                let RFC3339DateFormatter = DateFormatter()
+                RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                if let time = RFC3339DateFormatter.date(from: data) {
+                    releaseDate = time
+                }
+                else {
+                    print("Unable to retrieve date. Check formatting of date string.")
+                    releaseDate = nil
+                }
+            }
+            
+            else if eName == "type" {
+                
             }
         }
     }

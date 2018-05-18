@@ -6,10 +6,11 @@
 //  Copyright © 2018년 NoName. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 class Book {
     
+    let owner: Plugin
     var title: String = ""
     var author: String?
     var series: Any?
@@ -18,7 +19,14 @@ class Book {
     var numberOfPages: Int = 0
     var chapters: [Chapter]?
     
-    init(identifier: Any) {
+    
+    init(owner: Plugin, identifier: Any) {
+        self.owner = owner;
         self.identifier = identifier
     }
+    
+    func page(atIndex index: Int) -> NSImage? {
+        return owner.page(ofBook: self, pageNumber: index)
+    }
 }
+

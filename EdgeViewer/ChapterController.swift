@@ -32,27 +32,21 @@ extension ChapterController: NSOutlineViewDataSource{
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        // no indent, item always root
         return data[index]
     }
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         guard let item  = item as? String else {
-            //TODO: error handling
-            // item is not string
             return nil
         }
         guard let cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CellID"), owner: self) as? NSTableCellView else {
-            //TODO: error handling
-            // failed to makeView ( cell )
             return nil
         }
         if let textField = cell.textField {
             textField.stringValue = item
         }
         if let imageView = cell.imageView {
-            // need proper icon
-            imageView.image = NSImage(named: NSImage.Name.columnViewTemplate)
+            imageView.image = NSImage(named: NSImage.Name.quickLookTemplate)
         }
         return cell
     }
@@ -61,9 +55,10 @@ extension ChapterController: NSOutlineViewDataSource{
 extension ChapterController: NSOutlineViewDelegate{
     
     func outlineViewSelectionDidChange(_ notification: Notification) {
-        let index = outlineView.selectedRow
-        guard let chapterSelectionHandler = chapterSelectionHandler else { return }
-        chapterSelectionHandler(index)
+        if let myoutline = notification.object as? NSOutlineView {let selected = myoutline.selectedRowIndexes.map { Int($0) }
+            print(selected)
+        }
+    
 }
     
 }

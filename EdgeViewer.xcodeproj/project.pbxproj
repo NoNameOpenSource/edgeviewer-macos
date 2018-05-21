@@ -31,6 +31,7 @@
 		E0AEDFED20AD304300E72B6E /* DOMParser.js in Resources */ = {isa = PBXBuildFile; fileRef = E0AEDFEC20AD304300E72B6E /* DOMParser.js */; };
 		E0AEDFEF20AD304300E72B6E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AEDFEE20AD304300E72B6E /* Book.swift */; };
 		E0AEDFF120AD304300E72B6E /* LibraryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AEDFF020AD304300E72B6E /* LibraryPage.swift */; };
+		E0AEDFF220B3900700E72B6E /* XMLHttpRequest.js in Resources */ = {isa = PBXBuildFile; fileRef = E01ED36F2095C90D00CC805F /* XMLHttpRequest.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E08E863F20731A7A0082723B /* Assets.xcassets in Resources */,
+				E0AEDFF220B3900700E72B6E /* XMLHttpRequest.js in Resources */,
 				E01ED2AC2093E92F00CC805F /* HeaderView.xib in Resources */,
 				E0AEDFED20AD304300E72B6E /* DOMParser.js in Resources */,
 				1C1A1CBB20843CD1000074DC /* ChapterViewItem.xib in Resources */,

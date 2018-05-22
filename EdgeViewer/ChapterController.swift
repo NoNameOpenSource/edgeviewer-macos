@@ -13,7 +13,6 @@ class ChapterController: NSViewController{
     @IBOutlet weak var outlineView: NSOutlineView!
  
     let data = ["Chapter 1", "Chapter 2", "Chapter 3","Chapter 4"]
-    var chapterSelectionHandler: ((Int) -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
      

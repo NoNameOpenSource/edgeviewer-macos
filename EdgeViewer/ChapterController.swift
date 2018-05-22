@@ -44,9 +44,6 @@ extension ChapterController: NSOutlineViewDataSource{
         if let textField = cell.textField {
             textField.stringValue = item
         }
-        if let imageView = cell.imageView {
-            imageView.image = NSImage(named: NSImage.Name.quickLookTemplate)
-        }
         return cell
     }
     

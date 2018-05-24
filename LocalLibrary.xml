@@ -1,31 +1,25 @@
 <?xml version="1.0"?>
-<books>
-    <book>
-        <id>1</id>
-        <title>Super Special Book</title>
-        <author>Yun Lee</author>
-        <release>4</release>
-        <series>2</series>
-        <seriesName>Series Name 1</seriesName>
-        <numPages>20</numPages>
-        <chapters>1,4,6,9</chapters>
-        <bookmark>4</bookmark>
-        <rating>3.6</rating>
-        <updatedTime>2016-04-01T06:00:00</updatedTime>
-        <type>manga</type>
-    </book>
-    <book>
-        <id>1</id>
-        <title>Some Book 1</title>
-        <author>Some Author 1</author>
-        <release>4</release>
-        <series>2</series>
-        <seriesName>Series Name 1</seriesName>
-        <numPages>20</numPages>
-        <chapters>4,7,9</chapters>
-        <bookmark>4</bookmark>
-        <rating>3.6</rating>
-        <updatedTime>2016-04-01T06:00:00</updatedTime>
-        <type>manga</type>
-    </book>
-</books>
+<book>
+    <id>1</id>
+    <title>Super Special Book</title>
+    <author>Yun Lee</author>
+    <release>4</release>
+    <genre>Horror</genre>
+    <series>2</series>
+    <seriesName>Series Name 1</seriesName>
+    <numPages>20</numPages>
+    <chapters>
+        <chapter>
+            <chapterTitle>First Chapter</chapterTitle>
+            <chapterPageIndex>1</chapterPageIndex>
+        </chapter>
+        <chapter>
+            <chapterTitle>Second Chapter</chapterTitle>
+            <chapterPageIndex>5</chapterPageIndex>
+        </chapter>
+    </chapters>
+    <bookmark>4</bookmark>
+    <rating>3.6</rating>
+    <updatedTime>2016-04-01T06:00:00</updatedTime>
+    <type>manga</type>
+</book>

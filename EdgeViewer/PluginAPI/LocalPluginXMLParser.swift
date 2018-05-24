@@ -11,12 +11,15 @@ import Foundation
 class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     
     var book: Book
-    var chapters: [Chapter]
-    var currentChapter: Chapter
-    var currentChapterTitle: String
-    var currentChapterPageIndex: Int
+    
+    private var eName: String
+    private var chapters: [Chapter]
+    private var currentChapter: Chapter
+    private var currentChapterTitle: String
+    private var currentChapterPageIndex: Int
     
     override init() {
+        eName = String()
         book = Book(id: 0)
         chapters = [Chapter]()
         currentChapter = Chapter(title: "unimiportant", pageIndex: 5)
@@ -35,6 +38,7 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        eName = elementName
     }
     
     
@@ -48,37 +52,59 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         let data = string.trimmingCharacters(in: (NSCharacterSet.whitespacesAndNewlines) )
         
-        switch string {
+        switch eName {
+        case "id":
+            if let data = Int(data) { book.id = data}
+            else {
+                book.id = 0
+                XMLCorrupt()
+            }
         case "title":
             print(data)
             book.title = data
         case "author":
+            print(data)
             book.author = data
         case "release":
-            book.release = Int(data)!
+            if let data = Int(data) { book.release = data}
+            else {
+                book.release = 0
+                XMLCorrupt()
+            }
         case "genre":
+            print(data)
             book.genre = data
         case "series":
-            book.series = Int(data)!
+            print("Series: \(data)")
+            if let data = Int(data) { book.series = data}
+            else {
+                book.series = 0
+                XMLCorrupt()
+            }
         case "seriesName":
             book.seriesName = data
         case "numPages":
-            book.numPages = Int(data)!
+            print("Series: \(data)")
+            if let data = Int(data) { book.numPages = data}
+            else {
+                book.numPages = 0
+                XMLCorrupt()
+            }
         case "bookmark":
-            if let safeBookmark = Int(data) {
-                book.bookmark = safeBookmark
+            if let data = Int(data) {
+                book.bookmark = data
             }
             else {
                 print("XML Parsing Error: Could not retrieve saved bookmark.")
                 book.bookmark = 0
             }
         case "rating":
-            if let safeRating = Double(data) {
-                book.rating = safeRating
+            if let data = Double(data) {
+                book.rating = data
             }
             else {
-                print("XML Parsing Error: Could not retrieve saved rating.")
                 book.rating = 0
+                XMLCorrupt()
             }
         case "updatedTime":
             let RFC3339DateFormatter = DateFormatter()
@@ -93,14 +119,16 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
                 book.lastUpdated = nil
             }
         case "type":
-            if data == "manga" {
+            switch data {
+            case "manga":
                 book.type = .manga
-            }
-            else if data == "comic" {
+            case "comic":
                 book.type = .comic
-            }
-            else if data == "webManga" {
+            case "webManga":
                 book.type = .webManga
+            default:
+                XMLCorrupt()
+                break
             }
         case "chapterTitle":
             currentChapterTitle = data

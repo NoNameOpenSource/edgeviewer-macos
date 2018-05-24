@@ -28,92 +28,77 @@ class DetailViewController: NSViewController {
     }
     
     // Create a Local Library Based on XML Parser
-    let local: LocalPluginParser = LocalPluginParser()
+    let local: LocalPluginXMLParser = LocalPluginXMLParser()
+    lazy var book = local.book
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         // Set up Chapters in Dummy Manga Object
         
-        if local.books.count == 0 {
-            print("No books.")
-            return
-        }
         
-        for i in 0 ..< local.books[0].chapters.count {
-            local.books[0].chapters[i].coverImage = #imageLiteral(resourceName: "emptyStar")
-            local.books[0].chapters[i].title = "\(i)"
+        
+        for i in 0 ..< book.chapters.count {
+            book.chapters[i].pageIndex = i * 2
+            book.chapters[i].title = "\(i)"
         }
         
         // Write to UI based on properties in Manga Object
-        ratingControl.rating = local.books[0].rating
-        self.mangaTitle.stringValue = local.books[0].title
-        self.mangaAuthor.stringValue = local.books[0].author
-        self.mangaGenre.stringValue = local.books[0].genre
+        ratingControl.rating = Int(book.rating)
+        self.mangaTitle.stringValue = book.title
+        self.mangaAuthor.stringValue = book.author
+        self.mangaGenre.stringValue = book.genre
         let localizedDateFormatter = DateFormatter()
         localizedDateFormatter.locale = Locale(identifier: "en_US_POSIX")
         localizedDateFormatter.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())
         localizedDateFormatter.dateFormat = "MMMM d, yyyy h:mm a"
-        if let date = local.books[0].releaseDate {
+        if let date = book.lastUpdated {
             self.mangaReleaseDate.stringValue = localizedDateFormatter.string(from: date)
         } else {
             print("date nil")
             mangaReleaseDate.stringValue = "Unknown Release Date"
         }
         
-        self.mangaImage.image = local.books[0].coverImage
-        self.mangaProgress.doubleValue = local.books[0].progress
+        self.mangaImage.image = book.coverImage
+        self.mangaProgress.doubleValue = book.progress
         configureCollectionView()
         
+        var newBook = Book(id: 5)
+        newBook.title = "New Book"
+        newBook.author = "Shelly"
+        newBook.release = 3
+        newBook.series = 1
+        newBook.seriesName = "Special Series Name"
+        newBook.numPages = 8
+        newBook.bookmark = 2
+        let chapters = [Chapter(title: "First Chapter", pageIndex: 0),
+                        Chapter(title: "Second Chapter", pageIndex: 3),
+                        Chapter(title: "Third Chapter", pageIndex: 8)]
+        newBook.bookmark = 3
+        newBook.chapters = chapters
+        newBook.genre = "Romance"
+        newBook.currentPage = 0
+        newBook.numPages = 9
+        newBook.rating = 4
+        let newDateString = "1996-12-19T16:39:57-00:00"
+        let RFC3339DateFormatter = DateFormatter()
+        RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        if let time = RFC3339DateFormatter.date(from: newDateString) {
+            newBook.lastUpdated = time
+        }
+        else {
+            print("Unable to retrieve date. Check formatting of date string.")
+            newBook.lastUpdated = nil
+        }
+        newBook.coverImage = #imageLiteral(resourceName: "emptyStar")
+        newBook.type = .manga
         
         // MARK: Write to XML Document
+        var _ = LocalPluginXMLStorer(book: newBook)
         
-        var xmlDoc: XMLDocument
-        
-        let applicationSupportDirectoryURL: URL? = getApplicationSupportDirectory()?.appendingPathComponent("EdgeViewer")
-        
-        // Create EdgeViewer directory in user's Application Support directory
-        do {
-            try FileManager.default.createDirectory(at: applicationSupportDirectoryURL!, withIntermediateDirectories: true)
-        }
-        catch {
-            print("Could not create directory: \(error)")
-        }
-        
-        if let xmlDocumentLocation: URL = applicationSupportDirectoryURL?.appendingPathComponent("LocalLibrary.xml") {
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: xmlDocumentLocation.absoluteString) { // LocalLibrary.xml file exists
-                // Get existing content from LocalLibrary.xml
-                do {
-                    xmlDoc = try XMLDocument(contentsOf: xmlDocumentLocation, options: XMLNode.Options())
-                }
-                catch {
-                    print("Could not get XMLDocument object from XML file: \(error)")
-                    return
-                }
-            } else { // LocalLibrary.xml file does not exist
-                print("LocalLibrary.xml file did not exist and will be created.")
-                xmlDoc = XMLDocument(rootElement: XMLElement(name: "books"))
-            }
-            
-            // Set up XMLDocument element with new values
-            var elements = [XMLNode]()
-            let titleEl: XMLNode = XMLNode.element(withName: "title", stringValue: "My Great New Book") as! XMLNode
-            elements.append(titleEl)
-            let newBook: XMLNode = XMLNode.element(withName: "book", children: elements, attributes: [XMLNode]()) as! XMLNode
-            xmlDoc.rootElement()?.addChild(newBook)
-            let xmlDataString: Data = xmlDoc.xmlData
-            
-            // Write XMLDocument contents to LocalLibrary.xml (overwrites, doesn't append)
-            do {
-                try xmlDataString.write(to: xmlDocumentLocation)
-            } catch {
-                print(error)
-            }
-        }
-        else { // if let xmlDocumentLocation
-            print("Could not find EdgeViewer folder in ~/Library/ApplicationSupport directory")
-        }
     }
     
     // Set up Basic Collection View UI Settings
@@ -128,15 +113,6 @@ class DetailViewController: NSViewController {
         view.wantsLayer = true
         chapterView.layer?.backgroundColor = NSColor.black.cgColor
     }
-    
-    private func getApplicationSupportDirectory() -> NSURL? {
-        let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
-        if paths.count >= 1 {
-            return NSURL(fileURLWithPath: paths[0], isDirectory: true)
-        }
-        print("Could not find application support directory.")
-        return nil
-    }
 }
 
 extension DetailViewController : NSCollectionViewDataSource {
@@ -145,13 +121,7 @@ extension DetailViewController : NSCollectionViewDataSource {
     
     // Returns the number of items in the section
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        if local.books.count == 0 {
-            print("No books.")
-            return 0
-        }
-        else {
-            return local.books[0].chapters.count
-        }
+        return book.chapters.count
     }
     
     // Return an NSCollectionView item for a given path
@@ -166,8 +136,8 @@ extension DetailViewController : NSCollectionViewDataSource {
         }
         
         // Set the textField and imageView of the current NSCollectionView item
-        item.textField!.stringValue = local.books[0].chapters[indexPath.item].title
-        item.imageView!.image = local.books[0].chapters[indexPath.item].coverImage
+        item.textField!.stringValue = book.chapters[indexPath.item].title
+        // item.imageView!.image = local.books[0].chapters[indexPath.item].pageIndex
         
         return item
     }

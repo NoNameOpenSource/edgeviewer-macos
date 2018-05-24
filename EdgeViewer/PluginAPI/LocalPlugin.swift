@@ -6,15 +6,21 @@
 //  Copyright © 2018 NoName. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 class LocalPlugin: Plugin {
+    func page(atIndex index: Int) -> NSImage {
+        return NSImage()
+    }
     
+    func pages() -> [NSImage] {
+        return [NSImage()]
+    }
     
     var name: String = "Local"
     var version: Double = 0.1
     
-    var Books = [Book]()
+    var books = [Book]()
     
     func addBook() {
         // some code
@@ -29,7 +35,4 @@ class LocalPlugin: Plugin {
         // some code
         return Book(id: 4)
     }
-    
-    let pluginFolder = Bundle.main.resourcePath! + "/"
-    let xmlFileName = "LocalLibrary.xml"
 }

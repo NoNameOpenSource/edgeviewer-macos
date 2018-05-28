@@ -10,21 +10,10 @@ import Foundation
 
 class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     
-    var book: Book
-    
-    private var eName: String
-    private var chapters: [Chapter]
-    private var currentChapter: Chapter
-    private var currentChapterTitle: String
-    private var currentChapterPageIndex: Int
+    var currentElement: Any
+    var eName: String
     
     override init() {
-        eName = String()
-        book = Book(id: 0)
-        chapters = [Chapter]()
-        currentChapter = Chapter(title: "unimiportant", pageIndex: 5)
-        currentChapterTitle = ""
-        currentChapterPageIndex = 0
         super.init()
         if let path = Bundle.main.url(forResource: "LocalLibrary", withExtension: "xml") {
             if let parser = XMLParser(contentsOf: path) {
@@ -43,8 +32,13 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "chapter" {
-            chapters.append(Chapter(title: currentChapterTitle, pageIndex: currentChapterPageIndex))
+        switch elementName {
+        case "book":
+            currentElement = Book(id: 0, plugin: LocalPlugin())
+        case "chapters":
+            currentElement = [Chapter]()
+        default:
+            print("help me!")
         }
     }
     
@@ -52,98 +46,81 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         let data = string.trimmingCharacters(in: (NSCharacterSet.whitespacesAndNewlines) )
         
-        switch eName {
-        case "id":
-            if let data = Int(data) { book.id = data}
-            else {
-                book.id = 0
-                XMLCorrupt()
+        switch currentElement {
+        case let book as Book:
+            if eName == "title" {
+                book.title = data
             }
-        case "title":
-            print(data)
-            book.title = data
-        case "author":
-            print(data)
-            book.author = data
-        case "release":
-            if let data = Int(data) { book.release = data}
-            else {
-                book.release = 0
-                XMLCorrupt()
+            else if eName == "author" {
+                book.author = data
             }
-        case "genre":
-            print(data)
-            book.genre = data
-        case "series":
-            print("Series: \(data)")
-            if let data = Int(data) { book.series = data}
-            else {
-                book.series = 0
-                XMLCorrupt()
+            else if eName == "release" {
+                book.release = Int(data)!
             }
-        case "seriesName":
-            book.seriesName = data
-        case "numPages":
-            print("Series: \(data)")
-            if let data = Int(data) { book.numPages = data}
-            else {
-                book.numPages = 0
-                XMLCorrupt()
+            else if eName == "genre" {
+                book.genre = data
             }
-        case "bookmark":
-            if let data = Int(data) {
-                book.bookmark = data
+            else if eName == "series" {
+                book.series = Int(data)!
             }
-            else {
-                print("XML Parsing Error: Could not retrieve saved bookmark.")
-                book.bookmark = 0
+            else if eName == "seriesName" {
+                book.seriesName = data
             }
-        case "rating":
-            if let data = Double(data) {
-                book.rating = data
+            else if eName == "numPages" {
+                book.numPages = Int(data)!
             }
-            else {
-                book.rating = 0
-                XMLCorrupt()
+            
+            else if eName == "bookmark" {
+                if let safeBookmark = Int(data) {
+                    book.bookmark = safeBookmark
+                }
+                else {
+                    print("XML Parsing Error: Could not retrieve saved bookmark.")
+                    book.bookmark = 0
+                }
             }
-        case "updatedTime":
-            let RFC3339DateFormatter = DateFormatter()
-            RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-            if let time = RFC3339DateFormatter.date(from: data) {
-                book.lastUpdated = time
+            else if eName == "rating" {
+                if let safeRating = Double(data) {
+                    book.rating = safeRating
+                }
+                else {
+                    print("XML Parsing Error: Could not retrieve saved rating.")
+                    book.rating = 0
+                }
             }
-            else {
-                print("Unable to retrieve date. Check formatting of date string.")
-                book.lastUpdated = nil
+            else if eName == "updatedTime" {
+                let RFC3339DateFormatter = DateFormatter()
+                RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                if let time = RFC3339DateFormatter.date(from: data) {
+                    book.lastUpdated = time
+                }
+                else {
+                    print("Unable to retrieve date. Check formatting of date string.")
+                    book.lastUpdated = nil
+                }
             }
-        case "type":
-            switch data {
-            case "manga":
-                book.type = .manga
-            case "comic":
-                book.type = .comic
-            case "webManga":
-                book.type = .webManga
-            default:
-                XMLCorrupt()
-                break
+            else if eName == "type" {
+                if data == "manga" {
+                    book.type = .manga
+                }
+                else if data == "comic" {
+                    book.type = .comic
+                }
+                else if data == "webManga" {
+                    book.type = .webManga
+                }
             }
-        case "chapterTitle":
-            currentChapterTitle = data
-        case "chapterPageIndex":
-            if let data = Int(data) { currentChapterPageIndex = data }
-            else { XMLCorrupt() }
+        case let chapters as [Chapter]:
+            if eName == "chapter" {
+                chapters.append(Chapter(title: data, pageIndex: <#T##Int#>))
+            }
         default:
-            break
+            print("help me! o my")
         }
         
         if (!data.isEmpty) {
         }
-    }
-    
-    func XMLCorrupt() {
-        print("XML book file is corrupt")
     }
 }

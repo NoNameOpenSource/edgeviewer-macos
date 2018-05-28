@@ -16,8 +16,9 @@
 		1C9268FD2095564500ADF847 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9268FC2095564500ADF847 /* Book.swift */; };
 		1C9268FF20955B1400ADF847 /* LocalPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9268FE20955B1400ADF847 /* LocalPlugin.swift */; };
 		1C92690320960E0500ADF847 /* LocalLibrary.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1C92690220960E0500ADF847 /* LocalLibrary.xml */; };
-		1CCA28A320AA56610058BB5B /* LocalPluginXMLStorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA28A220AA56610058BB5B /* LocalPluginXMLStorer.swift */; };
-		1CEDB6942097C3D200815C33 /* LocalPluginXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEDB6932097C3D200815C33 /* LocalPluginXMLParser.swift */; };
+		1C95803A20B918B100D3AC9D /* LocalPluginXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C95803920B918B100D3AC9D /* LocalPluginXMLParser.swift */; };
+		1C95803C20B91A0900D3AC9D /* LocalPluginXMLStorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */; };
+		1CEDB6942097C3D200815C33 /* LocalPluginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEDB6932097C3D200815C33 /* LocalPluginParser.swift */; };
 		8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */; };
 		8AAFCF22207C3C6C003C8605 /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */; };
 		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
@@ -63,8 +64,9 @@
 		1C9268FC2095564500ADF847 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		1C9268FE20955B1400ADF847 /* LocalPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlugin.swift; sourceTree = "<group>"; };
 		1C92690220960E0500ADF847 /* LocalLibrary.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocalLibrary.xml; sourceTree = "<group>"; };
-		1CCA28A220AA56610058BB5B /* LocalPluginXMLStorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalPluginXMLStorer.swift; path = EdgeViewer/PluginAPI/LocalPluginXMLStorer.swift; sourceTree = SOURCE_ROOT; };
-		1CEDB6932097C3D200815C33 /* LocalPluginXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginXMLParser.swift; sourceTree = "<group>"; };
+		1C95803920B918B100D3AC9D /* LocalPluginXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPluginXMLParser.swift; sourceTree = "<group>"; };
+		1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginXMLStorer.swift; sourceTree = "<group>"; };
+		1CEDB6932097C3D200815C33 /* LocalPluginParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginParser.swift; sourceTree = "<group>"; };
 		8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
 		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
@@ -134,8 +136,9 @@
 				1C9268FC2095564500ADF847 /* Book.swift */,
 				1C9268FA2095562D00ADF847 /* LibraryPage.swift */,
 				1C9268FE20955B1400ADF847 /* LocalPlugin.swift */,
-				1CEDB6932097C3D200815C33 /* LocalPluginXMLParser.swift */,
-				1CCA28A220AA56610058BB5B /* LocalPluginXMLStorer.swift */,
+				1C95803920B918B100D3AC9D /* LocalPluginXMLParser.swift */,
+				1CEDB6932097C3D200815C33 /* LocalPluginParser.swift */,
+				1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */,
 			);
 			path = PluginAPI;
 			sourceTree = "<group>";
@@ -349,16 +352,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C9268FD2095564500ADF847 /* Book.swift in Sources */,
+				1C95803A20B918B100D3AC9D /* LocalPluginXMLParser.swift in Sources */,
 				1C1A1CBA20843CD1000074DC /* ChapterViewItem.swift in Sources */,
 				1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
+				1C95803C20B91A0900D3AC9D /* LocalPluginXMLStorer.swift in Sources */,
 				1C9268FB2095562D00ADF847 /* LibraryPage.swift in Sources */,
 				1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */,
 				1C9268FF20955B1400ADF847 /* LocalPlugin.swift in Sources */,
 				1C4B5E5020856871002F0728 /* Chapter.swift in Sources */,
 				E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */,
 				8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */,
-				1CCA28A320AA56610058BB5B /* LocalPluginXMLStorer.swift in Sources */,
 				E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */,
 				E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */,
 				E01ED2B22093EC6400CC805F /* JSPlugin.swift in Sources */,
@@ -366,7 +370,7 @@
 				E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
-				1CEDB6942097C3D200815C33 /* LocalPluginXMLParser.swift in Sources */,
+				1CEDB6942097C3D200815C33 /* LocalPluginParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -74,7 +74,6 @@ class LocalPluginXMLStorer {
         //elements.append(XMLNode.element(withName: "coverImage", stringValue: book.coverImage) as! XMLNode)
         //elements.append(XMLNode.element(withName: "cover", stringValue: book.cover) as! XMLNode)
         elements.append(XMLNode.element(withName: "type", stringValue: getTypeAsString()) as! XMLNode)
-        
         let newBook: XMLNode = XMLNode.element(withName: "book", children: elements, attributes: [XMLNode]()) as! XMLNode
         xmlDoc.rootElement()?.addChild(newBook)
         xmlDoc.version = "1.0"

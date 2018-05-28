@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <book>
     <id>1</id>
-    <title>Super Special Book</title>
+    <title>My Special Book</title>
     <author>Yun Lee</author>
     <release>4</release>
     <genre>Horror</genre>
@@ -19,7 +19,7 @@
         </chapter>
     </chapters>
     <bookmark>4</bookmark>
-    <rating>3.6</rating>
-    <updatedTime>2016-04-01T06:00:00</updatedTime>
+    <rating>4.1</rating>
+    <updatedTime>2016-04-01T06:00:00-08:00</updatedTime>
     <type>manga</type>
 </book>

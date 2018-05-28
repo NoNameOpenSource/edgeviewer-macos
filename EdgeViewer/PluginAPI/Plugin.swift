@@ -6,12 +6,13 @@
 //  Copyright © 2018년 NoName. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 protocol Plugin {
     var name: String { get }
     var version: Double { get }
     
-    func page(atIndex index: Int) -> LibraryPage
-    func book(withIdentifier identifier: Any) -> Book
+    func page(withIdentifier identifier: Any) -> LibraryPage?
+    func book(withIdentifier identifier: Any) -> Book?
+    func page(ofBook book: Book, pageNumber: Int) -> NSImage?
 }

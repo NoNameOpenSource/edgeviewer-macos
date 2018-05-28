@@ -30,7 +30,7 @@ class Book {
     var series: Any?
     var seriesName: String?
 
-    var rating : Int?
+    var rating : Double?
     var lastUpdated: Date?
     
     var bookmark: Int // should be manually updated by user
@@ -42,6 +42,11 @@ class Book {
         self.owner = owner
         self.identifier = identifier
         self.type = type
+        title = String()
+        coverImage = NSImage()
+        bookmark = Int()
+        currentPage = Int()
+        numberOfPages = Int()
     }
     
     func page(atIndex index: Int) -> NSImage? {
@@ -50,7 +55,7 @@ class Book {
 
     var progress: Double {
 		get {
-			return Double(currentPage) / Double(pageNumber)
+			return Double(currentPage) / Double(numberOfPages)
 		}
 	}
 }

@@ -8,25 +8,49 @@
 
 import Cocoa
 
+enum BookType {
+    case manga
+    case comic
+    case webManga
+}
+
 class Book {
     
     let owner: Plugin
-    var title: String = ""
+
+    var identifier: Any
+
+    var title: String
     var author: String?
+    var genre: String?
+    var coverImage : NSImage
+    var chapters: [Chapter]?
+    var type: BookType
+
     var series: Any?
     var seriesName: String?
-    var identifier: Any
-    var numberOfPages: Int = 0
-    var chapters: [Chapter]?
+
+    var rating : Int?
+    var lastUpdated: Date?
     
+    var bookmark: Int // should be manually updated by user
+    var currentPage: Int // should be automatically updated by UI
+
+    var numberOfPages: Int
     
-    init(owner: Plugin, identifier: Any) {
-        self.owner = owner;
+    init(owner: Plugin, identifier: Any, type: BookType) {
+        self.owner = owner
         self.identifier = identifier
+        self.type = type
     }
     
     func page(atIndex index: Int) -> NSImage? {
         return owner.page(ofBook: self, pageNumber: index)
     }
-}
 
+    var progress: Double {
+		get {
+			return Double(currentPage) / Double(pageNumber)
+		}
+	}
+}

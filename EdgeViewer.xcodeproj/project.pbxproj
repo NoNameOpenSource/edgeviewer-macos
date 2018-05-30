@@ -12,8 +12,6 @@
 		1C4B5E5020856871002F0728 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4B5E4F20856871002F0728 /* Chapter.swift */; };
 		1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BFFF1207C18FA00B61444 /* DetailViewController.swift */; };
 		1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BFFF5207C282600B61444 /* RatingControl.swift */; };
-		1C9268FB2095562D00ADF847 /* LibraryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9268FA2095562D00ADF847 /* LibraryPage.swift */; };
-		1C9268FD2095564500ADF847 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9268FC2095564500ADF847 /* Book.swift */; };
 		1C9268FF20955B1400ADF847 /* LocalPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9268FE20955B1400ADF847 /* LocalPlugin.swift */; };
 		1C92690320960E0500ADF847 /* LocalLibrary.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1C92690220960E0500ADF847 /* LocalLibrary.xml */; };
 		1C95803A20B918B100D3AC9D /* LocalPluginXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C95803920B918B100D3AC9D /* LocalPluginXMLParser.swift */; };
@@ -70,8 +68,6 @@
 		1C7BFFF1207C18FA00B61444 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1C7BFFF5207C282600B61444 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		1C9268FA2095562D00ADF847 /* LibraryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPage.swift; sourceTree = "<group>"; };
-		1C9268FC2095564500ADF847 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		1C9268FE20955B1400ADF847 /* LocalPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlugin.swift; sourceTree = "<group>"; };
 		1C92690220960E0500ADF847 /* LocalLibrary.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocalLibrary.xml; sourceTree = "<group>"; };
 		1C95803920B918B100D3AC9D /* LocalPluginXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPluginXMLParser.swift; sourceTree = "<group>"; };
 		1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginXMLStorer.swift; sourceTree = "<group>"; };
@@ -191,15 +187,6 @@
 			path = JavaScript;
 			sourceTree = "<group>";
 		};
-		E023917620BC62D100A9489B /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				1C9268FC2095564500ADF847 /* Book.swift */,
-				1C9268FA2095562D00ADF847 /* LibraryPage.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		E029CFDE2081E564008EC2A7 /* LibraryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,7 +209,6 @@
 				E08E864C20731A7A0082723B /* EdgeViewerTests */,
 				E08E865720731A7A0082723B /* EdgeViewerUITests */,
 				E08E863820731A7A0082723B /* Products */,
-				E023917620BC62D100A9489B /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -415,7 +401,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C9268FD2095564500ADF847 /* Book.swift in Sources */,
 				1C95803A20B918B100D3AC9D /* LocalPluginXMLParser.swift in Sources */,
 				1C1A1CBA20843CD1000074DC /* ChapterViewItem.swift in Sources */,
 				1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */,
@@ -423,7 +408,6 @@
 				E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				1C95803C20B91A0900D3AC9D /* LocalPluginXMLStorer.swift in Sources */,
-				1C9268FB2095562D00ADF847 /* LibraryPage.swift in Sources */,
 				1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */,
 				1C9268FF20955B1400ADF847 /* LocalPlugin.swift in Sources */,
 				1C4B5E5020856871002F0728 /* Chapter.swift in Sources */,

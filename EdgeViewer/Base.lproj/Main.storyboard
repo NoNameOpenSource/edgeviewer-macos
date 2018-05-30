@@ -841,7 +841,7 @@
                                                 <rect key="frame" x="413" y="17" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Kyj-IJ-YqU"/>
-                                                    <constraint firstAttribute="width" constant="20" id="kJH-N8-3ul"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="kJH-N8-3ul"/>
                                                 </constraints>
                                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HfW-Ei-dmv">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -923,13 +923,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrM-Yn-h5N">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrM-Yn-h5N">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <clipView key="contentView" id="uWc-Ud-qa3">
                                     <rect key="frame" x="1" y="0.0" width="448" height="299"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="27" rowSizeStyle="automatic" headerView="zGW-DT-mdw" viewBased="YES" id="oIK-83-43U" userLabel="outlineView" customClass="NSOutlineView">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="zGW-DT-mdw" viewBased="YES" id="oIK-83-43U" userLabel="outlineView" customClass="NSOutlineView">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="276"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -949,31 +949,22 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="CellID" misplaced="YES" id="CeA-Sq-TZY">
-                                                            <rect key="frame" x="1" y="1" width="200" height="27"/>
+                                                        <tableCellView identifier="CellID" id="C9o-Vw-ff0">
+                                                            <rect key="frame" x="1" y="1" width="200" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bta-ao-gm2">
-                                                                    <rect key="frame" x="-2" y="-2" width="201" height="28"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="25" id="Moa-Oa-aZa"/>
-                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="TQa-pS-CFW"/>
-                                                                    </constraints>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="cfe-jt-nCd">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFP-yD-AxR">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="y1u-4T-lBh">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="Bta-ao-gm2" firstAttribute="leading" secondItem="CeA-Sq-TZY" secondAttribute="leading" id="HzG-kF-Wn8"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Bta-ao-gm2" secondAttribute="bottom" constant="2" id="RVF-bf-maV"/>
-                                                                <constraint firstItem="Bta-ao-gm2" firstAttribute="top" secondItem="CeA-Sq-TZY" secondAttribute="top" id="aC4-tf-B4C"/>
-                                                                <constraint firstItem="Bta-ao-gm2" firstAttribute="top" secondItem="CeA-Sq-TZY" secondAttribute="top" constant="2" id="pFK-ye-8ea"/>
-                                                            </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="Bta-ao-gm2" id="ogk-2Z-bap"/>
+                                                                <outlet property="textField" destination="aFP-yD-AxR" id="HZa-Oz-oZJ"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>

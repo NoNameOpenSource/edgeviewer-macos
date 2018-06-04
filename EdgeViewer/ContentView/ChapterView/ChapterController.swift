@@ -8,11 +8,12 @@
 
 import Cocoa
 
-class ChapterController: NSViewController{
+class ChapterController: NSViewController {
 
     @IBOutlet weak var outlineView: NSOutlineView!
  
     let data = ["Chapter 1", "Chapter 2", "Chapter 3","Chapter 4"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -20,7 +21,8 @@ class ChapterController: NSViewController{
     }
     
 }
-extension ChapterController: NSOutlineViewDataSource{
+
+extension ChapterController: NSOutlineViewDataSource {
  
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         return data.count
@@ -44,18 +46,18 @@ extension ChapterController: NSOutlineViewDataSource{
         if let textField = cell.textField {
             textField.stringValue = item
         }
+        
         return cell
     }
-    
 }
+
 extension ChapterController: NSOutlineViewDelegate{
     
     func outlineViewSelectionDidChange(_ notification: Notification) {
-        if let myoutline = notification.object as? NSOutlineView {let selected = myoutline.selectedRowIndexes.map { Int($0) }
+        if let myoutline = notification.object as? NSOutlineView {
+            let selected = myoutline.selectedRowIndexes.map { Int($0) }
             print(selected)
         }
-    
-}
-    
+    }
 }
 

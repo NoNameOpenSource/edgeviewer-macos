@@ -138,6 +138,7 @@
 		B1A894482073B559003A67AB /* ContentView */ = {
 			isa = PBXGroup;
 			children = (
+				E0D12D1120C5158700D26797 /* ChapterView */,
 				B10073E520816CA7005E980A /* PageView */,
 				B1A894492073B58C003A67AB /* ContentViewController.swift */,
 				B1A8944F2073B612003A67AB /* UserPanelView.swift */,
@@ -190,8 +191,6 @@
 				E08E863C20731A7A0082723B /* ViewController.swift */,
 				E08E863E20731A7A0082723B /* Assets.xcassets */,
 				E08E864020731A7A0082723B /* Main.storyboard */,
-				1C4B5E4F20856871002F0728 /* Chapter.swift */,
-				8A34150120A8B84A0075D779 /* ChapterController.swift */,
 				E08E864320731A7A0082723B /* Info.plist */,
 				E08E864420731A7A0082723B /* EdgeViewer.entitlements */,
 			);
@@ -214,6 +213,15 @@
 				E08E865A20731A7A0082723B /* Info.plist */,
 			);
 			path = EdgeViewerUITests;
+			sourceTree = "<group>";
+		};
+		E0D12D1120C5158700D26797 /* ChapterView */ = {
+			isa = PBXGroup;
+			children = (
+				1C4B5E4F20856871002F0728 /* Chapter.swift */,
+				8A34150120A8B84A0075D779 /* ChapterController.swift */,
+			);
+			path = ChapterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

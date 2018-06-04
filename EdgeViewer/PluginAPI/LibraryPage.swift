@@ -16,8 +16,11 @@ enum LibraryPageType {
 class LibraryPage {
     let identifier: Any
     let type: LibraryPageType
+    let owner: Plugin
+    var items: [PageItem] = [PageItem]()
     
-    init(identifier: Any, type: LibraryPageType) {
+    init(owner: Plugin, identifier: Any, type: LibraryPageType) {
+        self.owner = owner
         self.identifier = identifier
         self.type = type
     }

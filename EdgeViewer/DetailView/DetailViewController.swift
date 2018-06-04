@@ -64,6 +64,7 @@ class DetailViewController: NSViewController {
         configureCollectionView()
         
         
+        
         // MARK: Write to XML Document
         
         var xmlDoc: XMLDocument
@@ -112,6 +113,38 @@ class DetailViewController: NSViewController {
         else { // if let xmlDocumentLocation
             print("Could not find EdgeViewer folder in ~/Library/ApplicationSupport directory")
         }
+        
+        // MARK: Read Images
+        let bookImageDirectory: URL? = LocalPlugin.getApplicationSupportDirectory()?.appendingPathComponent("EdgeViewer/Books/\(book.title)/Images")
+        do {
+            try FileManager.default.createDirectory(at: bookImageDirectory!, withIntermediateDirectories: true)
+        }
+        catch {
+            print("Could not create directory: \(error)")
+        }
+        
+        let bookImageDirectoryString = bookImageDirectory?.absoluteString
+        
+        var imagesOfPages = [NSImage]()
+        let fileManager = FileManager.default
+        do {
+            let filePaths = try fileManager.contentsOfDirectory(at: bookImageDirectory!, includingPropertiesForKeys: [localizedNameKey], options: [])
+            for filePath in filePaths {
+                do {
+                    NSURL.get
+                    try print("filename: \(filePath.getResourceValue(forKeys: kCFURLNameKey) as NSString))")
+                }
+                catch {
+                    print("Could not get resourceValue kCFURLNameKey")
+                }
+                
+                imagesOfPages.append(NSImage(contentsOf: filePath)!)
+            }
+        }
+        catch {
+            print("could not get file paths from \(bookImageDirectoryString ?? "") directory: \(error)")
+        }
+        print(imagesOfPages)
     }
     
     // Set up Basic Collection View UI Settings

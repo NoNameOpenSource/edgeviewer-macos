@@ -12,6 +12,15 @@ class LocalPlugin: Plugin {
     
     static var sharedInstance = LocalPlugin()
     
+    static func getApplicationSupportDirectory() -> NSURL? {
+        let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
+        if paths.count >= 1 {
+            return NSURL(fileURLWithPath: paths[0], isDirectory: true)
+        }
+        print("Could not find application support directory.")
+        return nil
+    }
+    
     func page(withIdentifier identifier: Any) -> LibraryPage? {
         return LibraryPage(identifier: 5, type: .regular)
     }

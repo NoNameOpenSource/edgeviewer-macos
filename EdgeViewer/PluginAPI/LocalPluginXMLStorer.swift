@@ -18,7 +18,7 @@ class LocalPluginXMLStorer {
     }
     
     private func storeBookData() {
-        let bookDirectoryURL: URL? = getApplicationSupportDirectory()?.appendingPathComponent("EdgeViewer/Books/\(book.title)")
+        let bookDirectoryURL: URL? = LocalPlugin.getApplicationSupportDirectory()?.appendingPathComponent("EdgeViewer/Books/\(book.title)")
         // Create Book directory in user's Application Support directory
         do {
             try FileManager.default.createDirectory(at: bookDirectoryURL!, withIntermediateDirectories: true)
@@ -42,15 +42,6 @@ class LocalPluginXMLStorer {
         else { // if let xmlDocumentLocation
             print("Could not find \(book.title) folder in user's Application Support Directory")
         }
-    }
-    
-    private func getApplicationSupportDirectory() -> NSURL? {
-        let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
-        if paths.count >= 1 {
-            return NSURL(fileURLWithPath: paths[0], isDirectory: true)
-        }
-        print("Could not find application support directory.")
-        return nil
     }
     
     private func getXMLDocumentData() -> Data {

@@ -1064,7 +1064,7 @@
         <!--Shelf View Controller-->
         <scene sceneID="TFM-27-BAs">
             <objects>
-                <viewController id="BhN-Gf-Gzt" customClass="ShelfViewController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShelfViewController" id="BhN-Gf-Gzt" customClass="ShelfViewController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="5hz-ky-35L">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

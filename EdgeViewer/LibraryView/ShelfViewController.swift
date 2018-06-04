@@ -15,12 +15,22 @@ class ShelfViewController: NSViewController {
     let sectionB: [Manga] = [Manga(title: "DummyC"), Manga(title: "DummyD")]
     var  sections: [[Manga]] = []
     
+    var libraryPage: LibraryPage? = nil {
+        didSet(oldValue) { // reject any changes after first set
+            if oldValue != nil {
+                libraryPage = oldValue
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCollectionView()
-        configureCollectionView()
-        sections.append(sectionA)
-        sections.append(sectionB)
+        if let libraryPage = libraryPage {
+            // prepare only when page available
+            configureCollectionView()
+            sections.append(sectionA)
+            sections.append(sectionB)
+        }
     }
     
     fileprivate func configureCollectionView() { // this one makes layout
@@ -43,11 +53,14 @@ class ShelfViewController: NSViewController {
 extension ShelfViewController : NSCollectionViewDataSource {
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        return self.sections.count
+        return 1
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sections[section].count
+        guard let libraryPage = libraryPage else {
+            return 0
+        }
+        return libraryPage.items.count
     }
     
     func collectionView(_ itemForRepresentedObjectAtcollectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -55,10 +68,12 @@ extension ShelfViewController : NSCollectionViewDataSource {
         guard let _ = item as? CollectionViewItem else {
             return item
         }
+        guard let libraryPage = libraryPage else {
+            return item
+        }
         
-        let manga = sections[indexPath[0]][indexPath[1]]
-        item.textField!.stringValue = manga.title
-        item.imageView!.image = manga.cover
+        let pageItem = libraryPage.items[indexPath.item]
+        item.textField!.stringValue = pageItem.name
         
         return item
     }

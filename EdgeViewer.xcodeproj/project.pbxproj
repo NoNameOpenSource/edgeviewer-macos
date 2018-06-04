@@ -26,6 +26,7 @@
 		E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2AB2093E92F00CC805F /* HeaderView.swift */; };
 		E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2AF2093EBB700CC805F /* Plugin.swift */; };
 		E01ED2B22093EC6400CC805F /* JSPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2B12093EC6400CC805F /* JSPlugin.swift */; };
+		E023917820C4F6C900A9489B /* PageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023917720C4F6C500A9489B /* PageItem.swift */; };
 		E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */; };
 		E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */; };
 		E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E863A20731A7A0082723B /* AppDelegate.swift */; };
@@ -78,6 +79,7 @@
 		E01ED2AF2093EBB700CC805F /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
 		E01ED2B12093EC6400CC805F /* JSPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPlugin.swift; sourceTree = "<group>"; };
 		E01ED36F2095C90D00CC805F /* XMLHttpRequest.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = XMLHttpRequest.js; sourceTree = "<group>"; };
+		E023917720C4F6C500A9489B /* PageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItem.swift; sourceTree = "<group>"; };
 		E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListViewController.swift; sourceTree = "<group>"; };
 		E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewController.swift; sourceTree = "<group>"; };
 		E08E863720731A7A0082723B /* EdgeViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgeViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,27 +136,6 @@
 			path = DetailView;
 			sourceTree = "<group>";
 		};
-		E01ED2AE2093EB8F00CC805F /* PluginAPI */ = {
-			isa = PBXGroup;
-			children = (
-				E01ED36E2095C8DB00CC805F /* JavaScript */,
-				E01ED2AF2093EBB700CC805F /* Plugin.swift */,
-				E01ED2B12093EC6400CC805F /* JSPlugin.swift */,
-				E0AEDFEE20AD304300E72B6E /* Book.swift */,
-				E0AEDFF020AD304300E72B6E /* LibraryPage.swift */,
-			);
-			path = PluginAPI;
-			sourceTree = "<group>";
-		};
-		E01ED36E2095C8DB00CC805F /* JavaScript */ = {
-			isa = PBXGroup;
-			children = (
-				E01ED36F2095C90D00CC805F /* XMLHttpRequest.js */,
-				E0AEDFEC20AD304300E72B6E /* DOMParser.js */,
-			);
-			path = JavaScript;
-			sourceTree = "<group>";
-		};
 		B10073E520816CA7005E980A /* PageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +155,28 @@
 				B1A8944F2073B612003A67AB /* UserPanelView.swift */,
 			);
 			path = ContentView;
+			sourceTree = "<group>";
+		};
+		E01ED2AE2093EB8F00CC805F /* PluginAPI */ = {
+			isa = PBXGroup;
+			children = (
+				E01ED36E2095C8DB00CC805F /* JavaScript */,
+				E01ED2AF2093EBB700CC805F /* Plugin.swift */,
+				E01ED2B12093EC6400CC805F /* JSPlugin.swift */,
+				E0AEDFEE20AD304300E72B6E /* Book.swift */,
+				E0AEDFF020AD304300E72B6E /* LibraryPage.swift */,
+				E023917720C4F6C500A9489B /* PageItem.swift */,
+			);
+			path = PluginAPI;
+			sourceTree = "<group>";
+		};
+		E01ED36E2095C8DB00CC805F /* JavaScript */ = {
+			isa = PBXGroup;
+			children = (
+				E01ED36F2095C90D00CC805F /* XMLHttpRequest.js */,
+				E0AEDFEC20AD304300E72B6E /* DOMParser.js */,
+			);
+			path = JavaScript;
 			sourceTree = "<group>";
 		};
 		E029CFDE2081E564008EC2A7 /* LibraryView */ = {
@@ -399,6 +402,7 @@
 				8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */,
 				E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */,
 				E0AEDFEF20AD304300E72B6E /* Book.swift in Sources */,
+				E023917820C4F6C900A9489B /* PageItem.swift in Sources */,
 				E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */,
 				E01ED2B22093EC6400CC805F /* JSPlugin.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,

@@ -20,9 +20,7 @@ class JSPlugin: Plugin {
     var homePage: LibraryPage {
         get {
             let page = context.evaluateScript("loadHomePage();")!
-            let identifier = page.forProperty("identifier")!.toString()!
-            let type = page.forProperty("type")!.toString()!
-            return LibraryPage(identifier: identifier, type: LibraryPage.LibraryPageType(fromString: type))
+            return self.page(fromJavascriptObject: page)!
         }
     }
     
@@ -64,6 +62,51 @@ class JSPlugin: Plugin {
         context.setObject(request, forKeyedSubscript: "request" as NSCopying & NSObjectProtocol)
         context.evaluateScript(content)
         _ = homePage
+    }
+    
+    func page(fromJavascriptObject object:JSValue) -> LibraryPage? {
+        guard let identifier = object.forProperty("identifier")?.toString() else {
+            return nil
+        }
+        guard let type = object.forProperty("type")?.toString() else {
+            return nil
+        }
+        let page = LibraryPage(owner: self, identifier: identifier, type: LibraryPage.LibraryPageType(fromString: type))
+        
+        if let items = object.forProperty("items"),
+           !items.isUndefined,
+           let length = items.forProperty("length")?.toInt32(),
+           length > 0 {
+            for i in 0..<length {
+                if let pageItem = pageItem(fromJabascriptObject: items.forProperty(String(i))) {
+                    page.items.append(pageItem)
+                }
+            }
+        }
+        
+        return page
+    }
+    
+    func pageItem(fromJabascriptObject object: JSValue) -> PageItem? {
+        guard let identifier = object.forProperty("identifier")?.toString() else {
+            return nil
+        }
+        guard let type = object.forProperty("type")?.toString() else {
+            return nil
+        }
+        let pageItem = PageItem(identifier: identifier, type: PageItem.PageItemType(fromString: type))
+        
+        if let name = object.forProperty("name"),
+           !name.isUndefined {
+            pageItem.name = name.toString()
+        }
+        
+        if let thumbnail = object.forProperty("thumbnail"),
+            !thumbnail.isUndefined {
+            pageItem.thumbnail = thumbnail.toString()
+        }
+        
+        return pageItem
     }
     
     //------------------------------------------------------------------------------------------------

@@ -103,7 +103,7 @@ class JSPlugin: Plugin {
         
         if let thumbnail = object.forProperty("thumbnail"),
             !thumbnail.isUndefined {
-            pageItem.thumbnail = thumbnail.toString()
+            pageItem.thumbnailURL = thumbnail.toString()
         }
         
         return pageItem

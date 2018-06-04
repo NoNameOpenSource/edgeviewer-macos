@@ -74,6 +74,7 @@ extension ShelfViewController : NSCollectionViewDataSource {
         
         let pageItem = libraryPage.items[indexPath.item]
         item.textField!.stringValue = pageItem.name
+        item.imageView!.image = pageItem.thumbnail
         
         return item
     }

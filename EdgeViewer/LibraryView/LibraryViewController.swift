@@ -37,4 +37,20 @@ class LibraryViewController: NSSplitViewController {
             }
         }
     }
+    
+    func segue(toPage page: LibraryPage) {
+        let newShelf = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ShelfViewController")) as! ShelfViewController
+        newShelf.libraryPage = page
+        let oldShelf = self.splitViewItems[1].viewController
+        let segue = NSStoryboardSegue(identifier: NSStoryboardSegue.Identifier(rawValue: "LibraryPageSegue"),
+                                      source: oldShelf,
+                                      destination: newShelf,
+                                      performHandler: {
+                                        self.removeSplitViewItem(self.splitViewItems[1])
+                                        self.addSplitViewItem(NSSplitViewItem(viewController: newShelf))
+        })
+        oldShelf.prepare(for: segue, sender: user.self)
+        segue.perform()
+        shelfViewController = newShelf
+    }
 }

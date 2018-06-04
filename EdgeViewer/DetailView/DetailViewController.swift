@@ -39,16 +39,15 @@ class DetailViewController: NSViewController {
         
         // Set up Chapters in Dummy Manga Object
         
-        for i in 0 ..< book.chapters.count {
-            //book.chapters[i].coverImage = #imageLiteral(resourceName: "emptyStar")
-            book.chapters[i].title = "\(i)"
-        }
+//        for i in 0 ..< book.chapters!.count {
+//            book.chapters![i].title = "\(i)"
+//        }
         
         // Write to UI based on properties in Manga Object
-        ratingControl.rating = Int(book.rating)
+        ratingControl.rating = Int(book.rating!)
         self.mangaTitle.stringValue = book.title
-        self.mangaAuthor.stringValue = book.author
-        self.mangaGenre.stringValue = book.genre
+        self.mangaAuthor.stringValue = book.author!
+        self.mangaGenre.stringValue = book.genre!
         let localizedDateFormatter = DateFormatter()
         localizedDateFormatter.locale = Locale(identifier: "en_US_POSIX")
         localizedDateFormatter.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())
@@ -160,7 +159,7 @@ extension DetailViewController : NSCollectionViewDataSource {
         }
         
         // Set the textField and imageView of the current NSCollectionView item
-        //item.textField!.stringValue = book.chapters[indexPath.item].title
+        item.textField!.stringValue = book.chapters![indexPath.item].title
         //item.imageView!.image = book.chapters[indexPath.item].coverImage
         
         return item

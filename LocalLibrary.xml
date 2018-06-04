@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <book>
-    <id>1</id>
+    <identifier>1</identifier>
     <title>My Special Book</title>
     <author>Yun Lee</author>
-    <release>4</release>
     <genre>Horror</genre>
-    <series>2</series>
-    <seriesName>Series Name 1</seriesName>
-    <numPages>20</numPages>
     <chapters>
         <chapter>
-            <chapterTitle>First Chapter</chapterTitle>
-            <chapterPageIndex>1</chapterPageIndex>
+            <title>First Chapter</title>
+            <pageIndex>1</pageIndex>
         </chapter>
         <chapter>
-            <chapterTitle>Second Chapter</chapterTitle>
-            <chapterPageIndex>5</chapterPageIndex>
+            <title>Second Chapter</title>
+            <pageIndex>5</pageIndex>
         </chapter>
     </chapters>
-    <bookmark>4</bookmark>
-    <rating>4.1</rating>
-    <updatedTime>2016-04-01T06:00:00-08:00</updatedTime>
     <type>manga</type>
+    <series>2</series>
+    <seriesName>Series Name 1</seriesName>
+    <rating>4.1</rating>
+    <lastUpdated>2018-06-04T01:14:03GMT</lastUpdated>
+    <bookmark>4</bookmark>
+    <currentPage>5</currentPage>
+    <numberOfPages>8</numberOfPages>
 </book>

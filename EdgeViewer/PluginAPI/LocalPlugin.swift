@@ -9,6 +9,21 @@
 import Cocoa
 
 class LocalPlugin: Plugin {
+    
+    static var sharedInstance = LocalPlugin()
+    
+    func page(withIdentifier identifier: Any) -> LibraryPage? {
+        return LibraryPage(identifier: 5, type: .regular)
+    }
+    
+    func book(withIdentifier identifier: Any) -> Book? {
+        return Book(owner: self, identifier: 5, type: .manga)
+    }
+    
+    func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
+        return NSImage()
+    }
+    
     func page(atIndex index: Int) -> NSImage {
         return NSImage()
     }
@@ -24,15 +39,5 @@ class LocalPlugin: Plugin {
     
     func addBook() {
         // some code
-    }
-    
-    func page(atIndex index: Int) -> LibraryPage {
-        // some code
-        return LibraryPage()
-    }
-    
-    func book(withIdentifier identifier: Any) -> Book {
-        // some code
-        return Book(id: 4)
     }
 }

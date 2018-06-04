@@ -56,51 +56,71 @@ class LocalPluginXMLStorer {
     private func getXMLDocumentData() -> Data {
         // Set up XMLDocument element with new values
         let xmlDoc = XMLDocument(rootElement: XMLElement(name: "book"))
-        var elements = [XMLNode]()
-        //elements.append(XMLNode.element(withName: "id", stringValue: String(book.id)) as! XMLNode)
-        elements.append(XMLNode.element(withName: "title", stringValue: book.title) as! XMLNode)
-        elements.append(XMLNode.element(withName: "release", stringValue: String(book.release)) as! XMLNode)
-        elements.append(XMLNode.element(withName: "seriesName", stringValue: book.seriesName) as! XMLNode)
-        elements.append(XMLNode.element(withName: "numPages", stringValue: String(book.numPages)) as! XMLNode)
-        elements.append(XMLNode.element(withName: "bookmark", stringValue: String(book.bookmark)) as! XMLNode)
-        //elements.append(XMLNode.element(withName: "chapters", stringValue: book.chapters) as! XMLNode)
-        elements.append(XMLNode.element(withName: "author", stringValue: book.author) as! XMLNode)
-        elements.append(XMLNode.element(withName: "genre", stringValue: book.genre) as! XMLNode)
-        elements.append(XMLNode.element(withName: "progress", stringValue: String(book.progress)) as! XMLNode)
-        elements.append(XMLNode.element(withName: "currentPage", stringValue: String(book.currentPage)) as! XMLNode)
-        elements.append(XMLNode.element(withName: "pageNumber", stringValue: String(book.numPages)) as! XMLNode)
-        elements.append(XMLNode.element(withName: "rating", stringValue: String(book.rating)) as! XMLNode)
-        elements.append(XMLNode.element(withName: "lastUpdated", stringValue: getDateAsString()) as! XMLNode)
-        //elements.append(XMLNode.element(withName: "coverImage", stringValue: book.coverImage) as! XMLNode)
-        //elements.append(XMLNode.element(withName: "cover", stringValue: book.cover) as! XMLNode)
-        elements.append(XMLNode.element(withName: "type", stringValue: getTypeAsString()) as! XMLNode)
-        let newBook: XMLNode = XMLNode.element(withName: "book", children: elements, attributes: [XMLNode]()) as! XMLNode
-        xmlDoc.rootElement()?.addChild(newBook)
+        
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "identifier", stringValue: String(book.identifier as! Int)) as! XMLNode)
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "title", stringValue: book.title) as! XMLNode)
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "author", withProperty: book.author))
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "genre", withProperty: book.genre))
+        
+        // chapters
+        var chapters = [XMLNode]()
+        if book.chapters != nil {
+            for chapter in book.chapters! {
+                let chapterTitle = XMLNode.element(withName: "title", stringValue: chapter.title)
+                let chapterPageIndex = XMLNode.element(withName: "pageIndex", stringValue: String(chapter.pageIndex))
+                chapters.append(XMLNode.element(withName: "chapter", children: [chapterTitle as! XMLNode, chapterPageIndex as! XMLNode], attributes: nil) as! XMLNode)
+            }
+        }
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "chapters", children: chapters, attributes: nil) as! XMLNode)
+        
+        // bookType
+        let bookType: String
+        switch book.type {
+        case .manga:
+            bookType = "manga"
+        case .comic:
+            bookType = "comic"
+        case .webManga:
+            bookType = "webManga"
+        }
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "type", stringValue: bookType) as! XMLNode)
+        
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "series", stringValue: String(book.series as! Int)) as! XMLNode)
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "seriesName", withProperty: book.seriesName))
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "rating", withProperty: book.rating))
+        
+        var lastUpdated: String
+        let RFC3339DateFormatter = DateFormatter()
+        RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
+        RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        if let lastUpdatedDate = book.lastUpdated {
+            lastUpdated = RFC3339DateFormatter.string(from: lastUpdatedDate)
+        } else {
+            print("date nil")
+            lastUpdated = "Unknown Release Date"
+        }
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "lastUpdated", stringValue: lastUpdated) as! XMLNode)
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "bookmark", stringValue: String(book.bookmark)) as! XMLNode)
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "currentPage", stringValue: String(book.currentPage)) as! XMLNode)
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "numberOfPages", stringValue: String(book.numberOfPages)) as! XMLNode)
+
         xmlDoc.version = "1.0"
         return xmlDoc.xmlData(options:[.nodePrettyPrint, .nodeCompactEmptyElement])
     }
     
-    private func getDateAsString() -> String {
-        let RFC3339DateFormatter = DateFormatter()
-        RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        if let lastUpdatedDate = book.lastUpdated {
-            return RFC3339DateFormatter.string(from: lastUpdatedDate)
-        } else {
-            print("date nil")
-            return "Unknown Release Date"
+    private func safeElement(withName elName: String, withProperty prop: Any?) -> XMLNode {
+        var value = ""
+        if let prop = prop {
+            switch prop {
+                case let prop as Double:
+                    value = String(prop)
+                case let prop as String:
+                    value = prop
+                default:
+                    print("help me")
+            }
         }
-    }
-    
-    private func getTypeAsString() -> String {
-        switch book.type {
-        case .manga:
-            return "manga"
-        case .comic:
-            return "comic"
-        case .webManga:
-            return "webManga"
-        }
+        return XMLNode.element(withName: elName, stringValue: value) as! XMLNode
     }
 }

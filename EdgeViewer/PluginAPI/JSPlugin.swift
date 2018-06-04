@@ -83,7 +83,7 @@ class JSPlugin: Plugin {
         }
         let title = bookJS.forProperty("title")!.toString()!
         let numberOfPages: Int = Int(bookJS.forProperty("identifier")!.toInt32())
-        let book = Book(owner: self, identifier: identifier)
+        let book = Book(owner: self, identifier: identifier, type: .manga)
         return book
     }
     

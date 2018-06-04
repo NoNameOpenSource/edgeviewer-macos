@@ -36,6 +36,9 @@ class LibraryViewController: NSSplitViewController {
                 }
             }
         }
+        
+        let firstPlugin = JSPlugin(pluginName: "test.js")
+        segue(toPage: firstPlugin.homePage)
     }
     
     func segue(toPage page: LibraryPage) {

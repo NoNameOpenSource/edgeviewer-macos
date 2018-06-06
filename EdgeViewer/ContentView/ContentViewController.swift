@@ -23,15 +23,10 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var displayedItem : [String] = ["ForwardButtom","ButtomItem", "BackWardButtom", "SwitchModeButtom"]
     
     @IBOutlet weak var userPanel: NSCollectionView!
-    var viewType: ViewType = .singlePage
+    
     var pageController: NSPageController = NSPageController()
     var manga: Manga? = nil;
     @IBOutlet weak var pageView: NSView!
-    @IBOutlet weak var backToDetail: NSButton!
-    @IBOutlet weak var pageNumberLabel: NSTextField!
-    @IBOutlet weak var chapter: NSButton!
-    @IBOutlet weak var bookMark: NSButton!
-    @IBOutlet weak var settings: NSButton!
     
     var currentPage = 0 {
         didSet {
@@ -43,6 +38,14 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             }
             // update page
             updatePage()
+        }
+    }
+    
+    var viewType: ViewType = .singlePage {
+        didSet {
+            // there could be a better way, but this works
+            pageController.selectedIndex = currentPage + 1;
+            pageController.selectedIndex = currentPage;
         }
     }
     
@@ -93,6 +96,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             self.pageController.animator().selectedIndex = currentPage
         }) {
             self.pageController.completeTransition()
+            
         }
         pageController.selectedIndex = currentPage
     }
@@ -101,19 +105,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     //MARK: UI Action
     //------------------------------------------------------------------------------------------------
     
-    @IBAction func switchViewType(_ sender: Any){
-        switch viewType {
-        case .singlePage:
-            viewType = .doublePage
-            break
-        case .doublePage:
-            viewType = .singlePage
-            break
-        default:
-            return
-        }
-    }
-    
+ 
     //------------------------------------------------------------------------------------------------
     //MARK: PageControllerDelegate
     //------------------------------------------------------------------------------------------------
@@ -184,6 +176,18 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
+    @objc public func viewTypeSwitch(){
+        switch viewType {
+        case .singlePage:
+            viewType = .doublePage
+            break
+        case .doublePage:
+            viewType = .singlePage
+            break
+        default:
+            return
+        }
+    }
     
     fileprivate func configureCollectionView() { // this one makes layout
         let flowLayout = NSCollectionViewFlowLayout()
@@ -288,8 +292,7 @@ class SwitchModeButtom: NSCollectionViewItem {
         }
     }
     
-    @IBAction func switchViewTypr(_ sender: Any) {
-    }
+    @IBOutlet weak var switchTypeViewButtom: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -330,6 +333,7 @@ extension ContentViewController: NSCollectionViewDataSource{
             someForwardButtom.forward.target = self
             someForwardButtom.forward.action = #selector(pageForward)
             guard let _ = item as? ForwardButtom else{
+                item = someForwardButtom
                 return item
             }
             
@@ -342,6 +346,8 @@ extension ContentViewController: NSCollectionViewDataSource{
             }
             
         case let someSwitchModeButtom as SwitchModeButtom:
+            someSwitchModeButtom.switchTypeViewButtom.target = self
+            someSwitchModeButtom.switchTypeViewButtom.action = #selector(viewTypeSwitch)
             guard let _ = item as? SwitchModeButtom else{
                 item = someSwitchModeButtom
                 return item
@@ -364,10 +370,12 @@ extension ContentViewController : NSCollectionViewDelegate{
     
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
         let pb = NSPasteboardItem()
+
         pb.setString(displayedItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
         return pb;
     }
     func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
+
         return .move
     }
     
@@ -379,7 +387,7 @@ extension ContentViewController : NSCollectionViewDelegate{
             //NSAnimationContext.current.duration = 0.5
             userPanel.animator().moveItem(at: i, to: indexPath)
         }
-        
+
         return true
     }
 }

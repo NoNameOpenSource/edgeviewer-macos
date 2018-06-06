@@ -14,9 +14,25 @@ enum ViewType {
     case verticalScroll
 }
 
+
+
+
 class ContentViewController: NSViewController, NSPageControllerDelegate {
+   
+    var draggingIndexPath : Set<IndexPath> = []
+    var displayedItem : [String] = ["ForwardButtom","ButtomItem", "BackWardButtom", "SwitchModeButtom"]
     
+    @IBOutlet weak var userPanel: NSCollectionView!
+    var viewType: ViewType = .singlePage
+    var pageController: NSPageController = NSPageController()
     var manga: Manga? = nil;
+    @IBOutlet weak var pageView: NSView!
+    @IBOutlet weak var backToDetail: NSButton!
+    @IBOutlet weak var pageNumberLabel: NSTextField!
+    @IBOutlet weak var chapter: NSButton!
+    @IBOutlet weak var bookMark: NSButton!
+    @IBOutlet weak var settings: NSButton!
+    
     var currentPage = 0 {
         didSet {
             // fix if the page number is out of range
@@ -29,21 +45,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             updatePage()
         }
     }
-    var viewType: ViewType = .singlePage {
-        didSet {
-            // there could be a better way, but this works
-            pageController.selectedIndex = currentPage + 1;
-            pageController.selectedIndex = currentPage;
-        }
-    }
-    var pageController: NSPageController = NSPageController()
-    
-    @IBOutlet weak var pageView: NSView!
-    @IBOutlet weak var backToDetail: NSButton!
-    @IBOutlet weak var pageNumberLabel: NSTextField!
-    @IBOutlet weak var chapter: NSButton!
-    @IBOutlet weak var bookMark: NSButton!
-    @IBOutlet weak var settings: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +56,20 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         setUpDummyData()
         // Setup PageView
         pageController.arrangedObjects = manga!.pages
+        currentPage = (manga?.bookMark)!
+        
+        userPanel.isSelectable = true;
+        
+        
+        userPanel.backgroundColors = [NSColor.gray]
+        configureCollectionView()
+        configureCollectionView()
+        userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
         updatePage()
     }
     
     override func viewDidDisappear() {
-        manga!.bookMark = self.currentPage;
+        manga!.bookMark = currentPage;
     }
     
     func setUpDummyData() {
@@ -79,7 +89,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     func updatePage() {
-        self.pageNumberLabel.stringValue = "\(currentPage + 1) / \(manga!.numberOfPages)"
         NSAnimationContext.runAnimationGroup({ context in
             self.pageController.animator().selectedIndex = currentPage
         }) {
@@ -92,39 +101,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     //MARK: UI Action
     //------------------------------------------------------------------------------------------------
     
-    @IBAction func viewPrevious(_ sender: Any) {
-       switch self.viewType {
-        case .singlePage:
-            currentPage -= 1;
-            break
-        case .doublePage:
-            currentPage -= 2;
-            break
-        default:
-            return
-        }
-    }
-    
-    @IBAction func viewNext(_ sender: Any) {
-        switch self.viewType {
-            case .singlePage:
-                currentPage += 1;
-                break
-            case .doublePage:
-                currentPage += 2;
-                break
-            default:
-                return
-        }
-    }
-    
     @IBAction func switchViewType(_ sender: Any){
-        switch self.viewType {
+        switch viewType {
         case .singlePage:
-            self.viewType = .doublePage
+            viewType = .doublePage
             break
         case .doublePage:
-            self.viewType = .singlePage
+            viewType = .singlePage
             break
         default:
             return
@@ -136,7 +119,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     //------------------------------------------------------------------------------------------------
     
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
-        switch self.viewType {
+        switch viewType {
         case .singlePage:
             return NSPageController.ObjectIdentifier("SinglePageViewController")
         default:
@@ -145,7 +128,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        switch self.viewType {
+        switch viewType {
         case .singlePage:
             return SinglePageViewController()
         default:
@@ -154,15 +137,15 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
-        let image = self.manga!.pages
+        let image = manga!.pages
         
         switch viewController {
             case let viewController as SinglePageViewController:
                 viewController.image = image[currentPage]
                 break
             case let viewController as DoublePageViewController:
-                viewController.leftImage = image[self.currentPage]
-                viewController.rightImage = image[self.currentPage + 1]
+                viewController.leftImage = image[currentPage]
+                viewController.rightImage = image[currentPage + 1]
                 break
             default:
                 return
@@ -174,8 +157,229 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     // func used to change the view size when window size changed
-    override func viewWillLayout() {
-        pageNumberLabel.frame.origin = NSPoint(x: super.view.bounds.origin.x + super.view.bounds.width/2 - 33.0, y : super.view.bounds.origin.y)
+    
+    @objc func pageForward(){
+        switch viewType {
+        case .singlePage:
+            currentPage += 1;
+            break
+        case .doublePage:
+            currentPage += 2;
+            break
+        default:
+            return
+        }
     }
     
+    @objc public func pageBack(){
+        switch viewType {
+        case .singlePage:
+            currentPage -= 1;
+            break
+        case .doublePage:
+            currentPage -= 2;
+            break
+        default:
+            return
+        }
+    }
+    
+    
+    fileprivate func configureCollectionView() { // this one makes layout
+        let flowLayout = NSCollectionViewFlowLayout()
+        flowLayout.itemSize = NSSize(width: 50.0, height: 50.0)
+        flowLayout.sectionInset = NSEdgeInsets(top: 5.0, left: 20.0, bottom: 5.0, right: 20.0)
+        flowLayout.minimumInteritemSpacing = 20.0
+        flowLayout.minimumLineSpacing = 20.0
+        userPanel.collectionViewLayout = flowLayout
+        view.wantsLayer = true
+        userPanel.layer?.backgroundColor = NSColor.lightGray.cgColor
+        if #available(OSX 10.12, *) {
+            flowLayout.sectionHeadersPinToVisibleBounds = true
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+
+}
+
+class ButtomItem: NSCollectionViewItem {
+
+    
+    override var isSelected: Bool {
+        didSet {
+            view.layer?.borderWidth = isSelected ? 5.0 : 1.0
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageView?.frame.size = self.view.bounds.size
+        // Do view setup here.
+        view.wantsLayer = true
+        view.layer?.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        
+        // Sets white boarder when the width is greater than zero
+        view.layer?.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        
+        // Sets the boarders to 0.0
+        view.layer?.borderWidth = 1.0
+    }
+    
+}
+
+class ForwardButtom: NSCollectionViewItem {
+    
+    @IBOutlet weak var forward: NSButton!
+    
+    override var isSelected: Bool {
+        didSet {
+            view.layer?.borderWidth = isSelected ? 5.0 : 1.0
+        }
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageView?.frame.size = self.view.bounds.size
+        // Do view setup here.
+        view.wantsLayer = true
+        view.layer?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        // Sets white boarder when the width is greater than zero
+        view.layer?.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        
+        // Sets the boarders to 0.0
+        view.layer?.borderWidth = 1.0
+    }
+}
+
+class BackWardButtom
+: NSCollectionViewItem {
+    
+    @IBOutlet weak var backward: NSButton!
+    
+    override var isSelected: Bool {
+        didSet {
+            view.layer?.borderWidth = isSelected ? 5.0 : 1.0
+        }
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageView?.frame.size = self.view.bounds.size
+        // Do view setup here.
+        view.wantsLayer = true
+        view.layer?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        // Sets white boarder when the width is greater than zero
+        view.layer?.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        
+        // Sets the boarders to 0.0
+        view.layer?.borderWidth = 1.0
+    }
+}
+
+class SwitchModeButtom: NSCollectionViewItem {
+    override var isSelected: Bool {
+        didSet {
+            view.layer?.borderWidth = isSelected ? 5.0 : 1.0
+        }
+    }
+    
+    @IBAction func switchViewTypr(_ sender: Any) {
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageView?.frame.size = self.view.bounds.size
+        // Do view setup here.
+        view.wantsLayer = true
+        view.layer?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        // Sets white boarder when the width is greater than zero
+        view.layer?.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        
+        // Sets the boarders to 0.0
+        view.layer?.borderWidth = 1.0
+    }
+}
+
+
+extension ContentViewController: NSCollectionViewDataSource{
+    
+    
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        return displayedItem.count
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+        print(displayedItem[indexPath.item])
+        var item = userPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: displayedItem[indexPath.item]), for: indexPath)
+        
+        switch item {
+        case is ButtomItem:
+            guard let _ = item as? ButtomItem else{
+                
+                return item
+            }
+            
+            
+        case let someForwardButtom as ForwardButtom:
+            someForwardButtom.forward.target = self
+            someForwardButtom.forward.action = #selector(pageForward)
+            guard let _ = item as? ForwardButtom else{
+                return item
+            }
+            
+        case let someBackWardButtom as BackWardButtom:
+            someBackWardButtom.backward.target = self
+            someBackWardButtom.backward.action = #selector(pageBack)
+            guard let _ = item as? BackWardButtom else{
+                item = someBackWardButtom
+                return item
+            }
+            
+        case let someSwitchModeButtom as SwitchModeButtom:
+            guard let _ = item as? SwitchModeButtom else{
+                item = someSwitchModeButtom
+                return item
+            }
+        default:
+            break
+        }
+        return item
+    }
+}
+
+extension ContentViewController : NSCollectionViewDelegate{
+    func collectionView(_ collectionView: NSCollectionView, willDisplay item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
+        
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, draggingSession session: NSDraggingSession, willBeginAt screenPoint: NSPoint, forItemsAt indexPaths: Set<IndexPath>) {
+        draggingIndexPath = indexPaths
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
+        let pb = NSPasteboardItem()
+        pb.setString(displayedItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
+        return pb;
+    }
+    func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
+        return .move
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, acceptDrop draggingInfo: NSDraggingInfo, indexPath: IndexPath, dropOperation: NSCollectionView.DropOperation) -> Bool {
+        for i in draggingIndexPath{
+            let tmp = displayedItem.remove(at: i.item)
+            displayedItem.insert(tmp, at:
+                (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
+            //NSAnimationContext.current.duration = 0.5
+            userPanel.animator().moveItem(at: i, to: indexPath)
+        }
+        
+        return true
+    }
 }

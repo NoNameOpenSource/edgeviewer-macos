@@ -8,17 +8,12 @@
 
 import Foundation
 
-class LocalPluginXMLStorer {
+final class LocalPluginXMLStorer { // pseudo-static class
     
-    var book: Book
+    private init() {}
     
-    init(book: Book) {
-        self.book = book
-        storeBookData()
-    }
-    
-    private func storeBookData() {
-        let bookDirectoryURL: URL? = LocalPlugin.getApplicationSupportDirectory()?.appendingPathComponent("EdgeViewer/Books/\(book.title)")
+    static func storeBookData(ofBook book: Book) {
+        let bookDirectoryURL: URL? = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books/\(book.identifier)")
         // Create Book directory in user's Application Support directory
         do {
             try FileManager.default.createDirectory(at: bookDirectoryURL!, withIntermediateDirectories: true)
@@ -29,7 +24,7 @@ class LocalPluginXMLStorer {
         
         if let xmlDocumentLocation: URL = bookDirectoryURL?.appendingPathComponent("BookData.xml") {
             
-            let xmlDataString = getXMLDocumentData()
+            let xmlDataString = createXMLDocumentData(book: book)
             
             // Write XMLDocument contents to LocalLibrary.xml (overwrites, doesn't append)
             do {
@@ -44,8 +39,10 @@ class LocalPluginXMLStorer {
         }
     }
     
-    private func getXMLDocumentData() -> Data {
+    private static func createXMLDocumentData(book: Book) -> Data {
         // Set up XMLDocument element with new values
+        
+        // root element
         let xmlDoc = XMLDocument(rootElement: XMLElement(name: "book"))
         
         xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "identifier", stringValue: String(book.identifier as! Int)) as! XMLNode)
@@ -80,6 +77,7 @@ class LocalPluginXMLStorer {
         xmlDoc.rootElement()?.addChild(safeElement(withName: "seriesName", withProperty: book.seriesName))
         xmlDoc.rootElement()?.addChild(safeElement(withName: "rating", withProperty: book.rating))
         
+        // lastUpdated
         var lastUpdated: String
         let RFC3339DateFormatter = DateFormatter()
         RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -96,11 +94,14 @@ class LocalPluginXMLStorer {
         xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "currentPage", stringValue: String(book.currentPage)) as! XMLNode)
         xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "numberOfPages", stringValue: String(book.numberOfPages)) as! XMLNode)
 
+        // XML version
         xmlDoc.version = "1.0"
+        
+        // return the XMLDocument that has been assembled by the preceding code in this function
         return xmlDoc.xmlData(options:[.nodePrettyPrint, .nodeCompactEmptyElement])
     }
     
-    private func safeElement(withName elName: String, withProperty prop: Any?) -> XMLNode {
+    private static func safeElement(withName elName: String, withProperty prop: Any?) -> XMLNode {
         var value = ""
         if let prop = prop {
             switch prop {

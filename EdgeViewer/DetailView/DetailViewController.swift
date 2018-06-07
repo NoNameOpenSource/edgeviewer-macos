@@ -28,13 +28,13 @@ class DetailViewController: NSViewController {
     }
     
     // Create a Local Library Based on XML Parser
-    let local = LocalPluginXMLParser()
+    let local = LocalPluginXMLParser(identifier: )
     lazy var book = local.book
     
     
     
     override func viewDidLoad() {
-        let _ = LocalPluginXMLStorer(book: book)
+        LocalPluginXMLStorer.storeBookData(ofBook: book)
         super.viewDidLoad()
         
         // Set up Chapters in Dummy Manga Object
@@ -65,86 +65,40 @@ class DetailViewController: NSViewController {
         
         
         
-        // MARK: Write to XML Document
         
-        var xmlDoc: XMLDocument
         
-        let applicationSupportDirectoryURL: URL? = getApplicationSupportDirectory()?.appendingPathComponent("EdgeViewer")
-        
-        // Create EdgeViewer directory in user's Application Support directory
-        do {
-            try FileManager.default.createDirectory(at: applicationSupportDirectoryURL!, withIntermediateDirectories: true)
-        }
-        catch {
-            print("Could not create directory: \(error)")
-        }
-        
-        if let xmlDocumentLocation: URL = applicationSupportDirectoryURL?.appendingPathComponent("LocalLibrary.xml") {
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: xmlDocumentLocation.absoluteString) { // LocalLibrary.xml file exists
-                // Get existing content from LocalLibrary.xml
-                do {
-                    xmlDoc = try XMLDocument(contentsOf: xmlDocumentLocation, options: XMLNode.Options())
-                }
-                catch {
-                    print("Could not get XMLDocument object from XML file: \(error)")
-                    return
-                }
-            } else { // LocalLibrary.xml file does not exist
-                print("LocalLibrary.xml file did not exist and will be created.")
-                xmlDoc = XMLDocument(rootElement: XMLElement(name: "books"))
-            }
-            
-            // Set up XMLDocument element with new values
-            var elements = [XMLNode]()
-            let titleEl: XMLNode = XMLNode.element(withName: "title", stringValue: "My Great New Book") as! XMLNode
-            elements.append(titleEl)
-            let newBook: XMLNode = XMLNode.element(withName: "book", children: elements, attributes: [XMLNode]()) as! XMLNode
-            xmlDoc.rootElement()?.addChild(newBook)
-            let xmlDataString: Data = xmlDoc.xmlData
-            
-            // Write XMLDocument contents to LocalLibrary.xml (overwrites, doesn't append)
-            do {
-                try xmlDataString.write(to: xmlDocumentLocation)
-            } catch {
-                print(error)
-            }
-        }
-        else { // if let xmlDocumentLocation
-            print("Could not find EdgeViewer folder in ~/Library/ApplicationSupport directory")
-        }
-        
-        // MARK: Read Images
-        let bookImageDirectory: URL? = LocalPlugin.getApplicationSupportDirectory()?.appendingPathComponent("EdgeViewer/Books/\(book.title)/Images")
-        do {
-            try FileManager.default.createDirectory(at: bookImageDirectory!, withIntermediateDirectories: true)
-        }
-        catch {
-            print("Could not create directory: \(error)")
-        }
-        
-        let bookImageDirectoryString = bookImageDirectory?.absoluteString
-        
-        var imagesOfPages = [NSImage]()
-        let fileManager = FileManager.default
-        do {
-            let filePaths = try fileManager.contentsOfDirectory(at: bookImageDirectory!, includingPropertiesForKeys: [localizedNameKey], options: [])
-            for filePath in filePaths {
-                do {
-                    NSURL.get
-                    try print("filename: \(filePath.getResourceValue(forKeys: kCFURLNameKey) as NSString))")
-                }
-                catch {
-                    print("Could not get resourceValue kCFURLNameKey")
-                }
-                
-                imagesOfPages.append(NSImage(contentsOf: filePath)!)
-            }
-        }
-        catch {
-            print("could not get file paths from \(bookImageDirectoryString ?? "") directory: \(error)")
-        }
-        print(imagesOfPages)
+//        // MARK: Read Images
+//        let bookImageDirectory: URL? = LocalPlugin.getApplicationSupportDirectory()?.appendingPathComponent("EdgeViewer/Books/\(book.title)/Images")
+//        do {
+//            try FileManager.default.createDirectory(at: bookImageDirectory!, withIntermediateDirectories: true)
+//        }
+//        catch {
+//            print("Could not create directory: \(error)")
+//        }
+//
+//        let bookImageDirectoryString = bookImageDirectory?.absoluteString
+//
+//        var imagesOfPages = [NSImage]()
+//        let fileManager = FileManager.default
+//        do {
+//            let filePaths = try fileManager.contentsOfDirectory(at: bookImageDirectory!, includingPropertiesForKeys: [localizedNameKey], options: [])
+//            for filePath in filePaths {
+//                do {
+//                    NSURL.get
+//                    try print("filename: \(filePath.getResourceValue(forKeys: kCFURLNameKey) as NSString))")
+//                }
+//                catch {
+//                    print("Could not get resourceValue kCFURLNameKey")
+//                }
+//
+//                imagesOfPages.append(NSImage(contentsOf: filePath)!)
+//            }
+//        }
+//        catch {
+//            print("could not get file paths from \(bookImageDirectoryString ?? "") directory: \(error)")
+//        }
+//        print(imagesOfPages)
+        LocalPlugin.sharedInstance.page(ofBook: book, pageNumber: 5)
     }
     
     // Set up Basic Collection View UI Settings

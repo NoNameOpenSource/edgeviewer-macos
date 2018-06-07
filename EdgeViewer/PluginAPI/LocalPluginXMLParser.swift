@@ -10,7 +10,7 @@ import Foundation
 
 class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     
-    var book: Book
+    public var book: Book
     
     var currentBook: Book
     var isParsingChapters: Bool
@@ -21,23 +21,25 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     private var currentChapterTitle: String
     private var currentChapterPageIndex: Int
     
-    override init() {
+    init(identifier: UUID) {
         eName = String()
-        book = Book(owner: LocalPlugin(), identifier: 0, type: .manga)
+        book = Book(owner: LocalPlugin.sharedInstance, identifier: 0, type: .manga)
         chapters = [Chapter]()
-        currentChapter = Chapter(title: "unimportant", pageIndex: 5)
+        currentChapter = Chapter(title: "", pageIndex: 99999999)
         currentChapterTitle = ""
         currentChapterPageIndex = 0
         currentBook = Book(owner: LocalPlugin.sharedInstance, identifier: 0, type: .manga)
         isParsingChapters = false
         super.init()
-        if let path = Bundle.main.url(forResource: "LocalLibrary", withExtension: "xml") {
-            if let parser = XMLParser(contentsOf: path) {
-                parser.delegate = self
-                if !parser.parse() {
-                    print("Failed to parse XML file for books.")
-                }
+        let bookDirectory = LocalPlugin.getBookDirectory(ofBookWithIdentifier: identifier)
+        if let parser = XMLParser(contentsOf: (bookDirectory?.appendingPathComponent("BookData.xml"))!) {
+            parser.delegate = self
+            if !parser.parse() {
+                print("Failed to parse XML file for book with identifier \(identifier).")
             }
+        }
+        else {
+            print("Failed to find XML file for book with identifier \(identifier).")
         }
     }
     

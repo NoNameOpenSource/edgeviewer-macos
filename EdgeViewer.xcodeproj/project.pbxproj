@@ -20,6 +20,10 @@
 		B1D8A4AB20C8281B00F4683A /* ButtomItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A4A720C8281B00F4683A /* ButtomItem.xib */; };
 		B1D8A4AC20C8281B00F4683A /* ForwardButtom.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A4A820C8281B00F4683A /* ForwardButtom.xib */; };
 		B1D8A4AD20C8281B00F4683A /* SwitchModeButtom.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A4A920C8281B00F4683A /* SwitchModeButtom.xib */; };
+		B1D8A4AF20C99B2F00F4683A /* BackWardButtom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A4AE20C99B2F00F4683A /* BackWardButtom.swift */; };
+		B1D8A4B120C99B6F00F4683A /* SwitchModeButtom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A4B020C99B6F00F4683A /* SwitchModeButtom.swift */; };
+		B1D8A4B320C99BBA00F4683A /* ForwardButtom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A4B220C99BBA00F4683A /* ForwardButtom.swift */; };
+		B1D8A4B520C99CCA00F4683A /* ButtomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A4B420C99CCA00F4683A /* ButtomItem.swift */; };
 		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
 		E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */; };
 		E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */; };
@@ -69,6 +73,10 @@
 		B1D8A4A720C8281B00F4683A /* ButtomItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtomItem.xib; sourceTree = "<group>"; };
 		B1D8A4A820C8281B00F4683A /* ForwardButtom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForwardButtom.xib; sourceTree = "<group>"; };
 		B1D8A4A920C8281B00F4683A /* SwitchModeButtom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchModeButtom.xib; sourceTree = "<group>"; };
+		B1D8A4AE20C99B2F00F4683A /* BackWardButtom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackWardButtom.swift; sourceTree = "<group>"; };
+		B1D8A4B020C99B6F00F4683A /* SwitchModeButtom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchModeButtom.swift; sourceTree = "<group>"; };
+		B1D8A4B220C99BBA00F4683A /* ForwardButtom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtom.swift; sourceTree = "<group>"; };
+		B1D8A4B420C99CCA00F4683A /* ButtomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtomItem.swift; sourceTree = "<group>"; };
 		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
 		E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
@@ -156,9 +164,13 @@
 			isa = PBXGroup;
 			children = (
 				B1D8A4A620C8281B00F4683A /* BackWardButtom.xib */,
+				B1D8A4AE20C99B2F00F4683A /* BackWardButtom.swift */,
 				B1D8A4A720C8281B00F4683A /* ButtomItem.xib */,
+				B1D8A4B420C99CCA00F4683A /* ButtomItem.swift */,
 				B1D8A4A820C8281B00F4683A /* ForwardButtom.xib */,
+				B1D8A4B220C99BBA00F4683A /* ForwardButtom.swift */,
 				B1D8A4A920C8281B00F4683A /* SwitchModeButtom.xib */,
+				B1D8A4B020C99B6F00F4683A /* SwitchModeButtom.swift */,
 			);
 			path = ButtomItem;
 			sourceTree = "<group>";
@@ -386,11 +398,14 @@
 			files = (
 				1C1A1CBA20843CD1000074DC /* ChapterViewItem.swift in Sources */,
 				1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */,
+				B1D8A4AF20C99B2F00F4683A /* BackWardButtom.swift in Sources */,
 				E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */,
+				B1D8A4B320C99BBA00F4683A /* ForwardButtom.swift in Sources */,
 				E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */,
 				1C4B5E5020856871002F0728 /* Chapter.swift in Sources */,
+				B1D8A4B520C99CCA00F4683A /* ButtomItem.swift in Sources */,
 				8A34150220A8B84A0075D779 /* ChapterController.swift in Sources */,
 				E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */,
 				8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */,
@@ -398,6 +413,7 @@
 				E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
+				B1D8A4B120C99B6F00F4683A /* SwitchModeButtom.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 				B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */,
 			);

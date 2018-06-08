@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="ForwardButtom" customModule="EdgeViewer" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="ForwardButton" customModule="EdgeViewer" customModuleProvider="target">
             <connections>
                 <outlet property="forward" destination="GU2-1c-0SB" id="2pa-Y0-3m3"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -34,7 +33,7 @@
             </constraints>
             <point key="canvasLocation" x="-3062" y="81"/>
         </customView>
-        <collectionViewItem id="BOt-Pb-anX" customClass="ForwardButtom" customModule="EdgeViewer" customModuleProvider="target"/>
+        <collectionViewItem id="BOt-Pb-anX" customClass="ForwardButton" customModule="EdgeViewer" customModuleProvider="target"/>
     </objects>
     <resources>
         <image name="NSGoForwardTemplate" width="9" height="12"/>

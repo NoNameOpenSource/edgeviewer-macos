@@ -1,5 +1,5 @@
 //
-//  SwitchModeButtom.swift
+//  ForwardButton.swift
 //  EdgeViewer
 //
 //  Created by bmmkac on 6/7/18.
@@ -8,14 +8,16 @@
 
 import Cocoa
 
-class SwitchModeButtom: NSCollectionViewItem {
+class ForwardButton: NSCollectionViewItem {
+    
+    @IBOutlet weak var forward: NSButton!
+    
     override var isSelected: Bool {
         didSet {
             view.layer?.borderWidth = isSelected ? 5.0 : 1.0
         }
     }
     
-    @IBOutlet weak var switchTypeViewButtom: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class BackWardButtom : NSCollectionViewItem {
+class BackWardButton : NSCollectionViewItem {
     
     @IBOutlet weak var backward: NSButton!
     

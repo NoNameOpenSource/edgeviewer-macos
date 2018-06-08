@@ -20,7 +20,7 @@ enum ViewType {
 class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
-    var displayedItem : [String] = ["ForwardButtom","ButtomItem", "BackWardButtom", "SwitchModeButtom"]
+    var displayedItem : [String] = ["ForwardButton","ButtonItem", "BackWardButton", "SwitchModeButton"]
     
     @IBOutlet weak var userPanel: NSCollectionView!
     
@@ -219,34 +219,34 @@ extension ContentViewController: NSCollectionViewDataSource{
         var item = userPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: displayedItem[indexPath.item]), for: indexPath)
         
         switch item {
-        case is ButtomItem:
-            guard let _ = item as? ButtomItem else{
+        case is ButtonItem:
+            guard let _ = item as? ButtonItem else{
                 
                 return item
             }
             
             
-        case let someForwardButtom as ForwardButtom:
-            someForwardButtom.forward.target = self
-            someForwardButtom.forward.action = #selector(pageForward)
-            guard let _ = item as? ForwardButtom else{
-                item = someForwardButtom
+        case let someForwardButton as ForwardButton:
+            someForwardButton.forward.target = self
+            someForwardButton.forward.action = #selector(pageForward)
+            guard let _ = item as? ForwardButton else{
+                item = someForwardButton
                 return item
             }
             
-        case let someBackWardButtom as BackWardButtom:
-            someBackWardButtom.backward.target = self
-            someBackWardButtom.backward.action = #selector(pageBack)
-            guard let _ = item as? BackWardButtom else{
-                item = someBackWardButtom
+        case let someBackWardButton as BackWardButton:
+            someBackWardButton.backward.target = self
+            someBackWardButton.backward.action = #selector(pageBack)
+            guard let _ = item as? BackWardButton else{
+                item = someBackWardButton
                 return item
             }
             
-        case let someSwitchModeButtom as SwitchModeButtom:
-            someSwitchModeButtom.switchTypeViewButtom.target = self
-            someSwitchModeButtom.switchTypeViewButtom.action = #selector(viewTypeSwitch)
-            guard let _ = item as? SwitchModeButtom else{
-                item = someSwitchModeButtom
+        case let someSwitchModeButton as SwitchModeButton:
+            someSwitchModeButton.switchTypeViewButton.target = self
+            someSwitchModeButton.switchTypeViewButton.action = #selector(viewTypeSwitch)
+            guard let _ = item as? SwitchModeButton else{
+                item = someSwitchModeButton
                 return item
             }
         default:

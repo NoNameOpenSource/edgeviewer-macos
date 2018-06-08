@@ -1,5 +1,5 @@
 //
-//  ForwardButtom.swift
+//  ButtonItem.swift
 //  EdgeViewer
 //
 //  Created by bmmkac on 6/7/18.
@@ -8,9 +8,8 @@
 
 import Cocoa
 
-class ForwardButtom: NSCollectionViewItem {
+class ButtonItem: NSCollectionViewItem {
     
-    @IBOutlet weak var forward: NSButton!
     
     override var isSelected: Bool {
         didSet {
@@ -18,13 +17,12 @@ class ForwardButtom: NSCollectionViewItem {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView?.frame.size = self.view.bounds.size
         // Do view setup here.
         view.wantsLayer = true
-        view.layer?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.layer?.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         
         // Sets white boarder when the width is greater than zero
         view.layer?.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
@@ -32,4 +30,6 @@ class ForwardButtom: NSCollectionViewItem {
         // Sets the boarders to 0.0
         view.layer?.borderWidth = 1.0
     }
+    
 }
+

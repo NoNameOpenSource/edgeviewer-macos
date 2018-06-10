@@ -9,19 +9,21 @@
 import Cocoa
 
 class Chapter {
-    var title : String
-    var coverImage : NSImage = NSImage()
-    var pages : [NSImage] = [NSImage()]
+    var title: String
+    var pageIndex: Int
     
     init() {
         title = ""
-        coverImage = NSImage()
-        pages = [NSImage()]
+        pageIndex = 0
     }
     
-    init(title : String) {
+    init(title: String) {
         self.title = title
-        coverImage = NSImage()
-        pages = [NSImage()]
+        pageIndex = 0
+    }
+    
+    init(title: String, pageIndex: Int) {
+        self.title = title
+        self.pageIndex = pageIndex
     }
 }

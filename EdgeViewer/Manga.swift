@@ -32,10 +32,8 @@ class Manga {
     
     func addNewPage(page: NSImage, chapterIndex : Int, pageIndex: Int?) {
         guard let pIndex = pageIndex else {
-            self.chapters[chapterIndex].pages.append(page)
             return
         }
-        self.chapters[chapterIndex].pages.insert(page, at: pIndex)
     }
     
     func addNewPage(image : NSImage){

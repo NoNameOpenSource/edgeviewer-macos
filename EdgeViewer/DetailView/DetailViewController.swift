@@ -27,39 +27,79 @@ class DetailViewController: NSViewController {
         ReadFromBeginningButton.isHidden = !ReadFromBeginningButton.isHidden
     }
     
-    // Create a Dummy Manga Object
-    var myManga : Manga = Manga(title: "The Best Manga")
+    // Create a Local Library Based on XML Parser
+    let local = LocalPluginXMLParser(identifier: )
+    lazy var book = local.book
+    
+    
     
     override func viewDidLoad() {
+        LocalPluginXMLStorer.storeBookData(ofBook: book)
         super.viewDidLoad()
-        _ = myManga.addNewChapters(howMany: 2) // there are now howMany + 1 chapters
-        
-        // Set up properties in Dummy Manga Object
-        myManga.rating = 3
-        myManga.author = "Steven"
-        myManga.genre = "Mystery"
-        myManga.releaseDate = "May 5, 2000"
-        myManga.coverImage = #imageLiteral(resourceName: "highlightedStar")
-        myManga.progress = 50
         
         // Set up Chapters in Dummy Manga Object
-        for i in 0 ..< myManga.chapters.count {
-            myManga.chapters[i].coverImage = #imageLiteral(resourceName: "emptyStar")
-            myManga.chapters[i].title = "\(i)"
-        }
+        
+//        for i in 0 ..< book.chapters!.count {
+//            book.chapters![i].title = "\(i)"
+//        }
         
         // Write to UI based on properties in Manga Object
-        ratingControl.rating = myManga.rating
-        self.mangaTitle.stringValue = myManga.title
-        self.mangaAuthor.stringValue = myManga.author
-        self.mangaGenre.stringValue = myManga.genre
-        self.mangaReleaseDate.stringValue = myManga.releaseDate
-        self.mangaImage.image = myManga.coverImage
-        self.mangaProgress.doubleValue = myManga.progress
-                
+        ratingControl.rating = Int(book.rating!)
+        self.mangaTitle.stringValue = book.title
+        self.mangaAuthor.stringValue = book.author!
+        self.mangaGenre.stringValue = book.genre!
+        let localizedDateFormatter = DateFormatter()
+        localizedDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        localizedDateFormatter.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())
+        localizedDateFormatter.dateFormat = "MMMM d, yyyy h:mm a"
+        if let date = book.lastUpdated {
+            self.mangaReleaseDate.stringValue = localizedDateFormatter.string(from: date)
+        } else {
+            print("date nil")
+            mangaReleaseDate.stringValue = "Unknown Release Date"
+        }
+        
+        self.mangaImage.image = book.coverImage
+        self.mangaProgress.doubleValue = book.progress
         configureCollectionView()
+        
+        
+        
+        
+        
+//        // MARK: Read Images
+//        let bookImageDirectory: URL? = LocalPlugin.getApplicationSupportDirectory()?.appendingPathComponent("EdgeViewer/Books/\(book.title)/Images")
+//        do {
+//            try FileManager.default.createDirectory(at: bookImageDirectory!, withIntermediateDirectories: true)
+//        }
+//        catch {
+//            print("Could not create directory: \(error)")
+//        }
+//
+//        let bookImageDirectoryString = bookImageDirectory?.absoluteString
+//
+//        var imagesOfPages = [NSImage]()
+//        let fileManager = FileManager.default
+//        do {
+//            let filePaths = try fileManager.contentsOfDirectory(at: bookImageDirectory!, includingPropertiesForKeys: [localizedNameKey], options: [])
+//            for filePath in filePaths {
+//                do {
+//                    NSURL.get
+//                    try print("filename: \(filePath.getResourceValue(forKeys: kCFURLNameKey) as NSString))")
+//                }
+//                catch {
+//                    print("Could not get resourceValue kCFURLNameKey")
+//                }
+//
+//                imagesOfPages.append(NSImage(contentsOf: filePath)!)
+//            }
+//        }
+//        catch {
+//            print("could not get file paths from \(bookImageDirectoryString ?? "") directory: \(error)")
+//        }
+//        print(imagesOfPages)
+        LocalPlugin.sharedInstance.page(ofBook: book, pageNumber: 5)
     }
-    
     
     // Set up Basic Collection View UI Settings
     private func configureCollectionView() {
@@ -73,6 +113,15 @@ class DetailViewController: NSViewController {
         view.wantsLayer = true
         chapterView.layer?.backgroundColor = NSColor.black.cgColor
     }
+    
+    private func getApplicationSupportDirectory() -> NSURL? {
+        let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
+        if paths.count >= 1 {
+            return NSURL(fileURLWithPath: paths[0], isDirectory: true)
+        }
+        print("Could not find application support directory.")
+        return nil
+    }
 }
 
 extension DetailViewController : NSCollectionViewDataSource {
@@ -81,11 +130,13 @@ extension DetailViewController : NSCollectionViewDataSource {
     
     // Returns the number of items in the section
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myManga.chapters.count
+        // TODO: get number of books in Local Library
+        return 1
     }
     
     // Return an NSCollectionView item for a given path
     // Is called once for each item in the NSCollectionView
+    // Don't need to check for "No books" because this should only run when there are more than 0 items
     func collectionView(_ itemForRepresentedObjectAtcollectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
                 
         // Instantiate an item from the ChapterViewItem nib
@@ -95,8 +146,8 @@ extension DetailViewController : NSCollectionViewDataSource {
         }
         
         // Set the textField and imageView of the current NSCollectionView item
-        item.textField!.stringValue = myManga.chapters[indexPath.item].title
-        item.imageView!.image = myManga.chapters[indexPath.item].coverImage
+        item.textField!.stringValue = book.chapters![indexPath.item].title
+        //item.imageView!.image = book.chapters[indexPath.item].coverImage
         
         return item
     }

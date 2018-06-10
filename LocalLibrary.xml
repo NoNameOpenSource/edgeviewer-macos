@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<book>
+    <identifier>1</identifier>
+    <title>Goku</title>
+    <author>Yun Lee</author>
+    <genre>Horror</genre>
+    <chapters>
+        <chapter>
+            <title>First Chapter</title>
+            <pageIndex>1</pageIndex>
+        </chapter>
+        <chapter>
+            <title>Second Chapter</title>
+            <pageIndex>5</pageIndex>
+        </chapter>
+    </chapters>
+    <type>manga</type>
+    <series>2</series>
+    <seriesName>Series Name 1</seriesName>
+    <rating>4.1</rating>
+    <lastUpdated>2018-06-04T01:14:03GMT</lastUpdated>
+    <bookmark>4</bookmark>
+    <currentPage>5</currentPage>
+    <numberOfPages>8</numberOfPages>
+</book>

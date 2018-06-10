@@ -78,7 +78,7 @@ class JSPlugin: Plugin {
            let length = items.forProperty("length")?.toInt32(),
            length > 0 {
             for i in 0..<length {
-                if let pageItem = pageItem(fromJabascriptObject: items.forProperty(String(i))) {
+                if let pageItem = pageItem(fromJavascriptObject: items.forProperty(String(i))) {
                     page.items.append(pageItem)
                 }
             }
@@ -87,7 +87,7 @@ class JSPlugin: Plugin {
         return page
     }
     
-    func pageItem(fromJabascriptObject object: JSValue) -> PageItem? {
+    func pageItem(fromJavascriptObject object: JSValue) -> PageItem? {
         guard let identifier = object.forProperty("identifier")?.toString() else {
             return nil
         }

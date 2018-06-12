@@ -26,14 +26,17 @@ class DetailViewController: NSViewController {
     @IBAction func showReadFromBeginningButton(_ sender: Any) {
         ReadFromBeginningButton.isHidden = !ReadFromBeginningButton.isHidden
     }
-    
+        
     // Create a Local Library Based on XML Parser
-    let local = LocalPluginXMLParser(identifier: )
+    let local = LocalPluginXMLParser(identifier: ("Marty Tester", "Goku"))
     lazy var book = local.book
     
     
-    
     override func viewDidLoad() {
+        
+        var localPlugin = LocalPlugin.sharedInstance
+        var libPage = localPlugin.page(withIdentifier: .homepage)
+        
         LocalPluginXMLStorer.storeBookData(ofBook: book)
         super.viewDidLoad()
         
@@ -98,7 +101,7 @@ class DetailViewController: NSViewController {
 //            print("could not get file paths from \(bookImageDirectoryString ?? "") directory: \(error)")
 //        }
 //        print(imagesOfPages)
-        LocalPlugin.sharedInstance.page(ofBook: book, pageNumber: 5)
+        // LocalPlugin.sharedInstance.page(ofBook: book, pageNumber: 5)
     }
     
     // Set up Basic Collection View UI Settings

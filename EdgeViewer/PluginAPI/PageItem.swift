@@ -35,6 +35,12 @@ class PageItem {
         self.type = type
     }
     
+    init(book: Book) {
+        self.type = .book
+        self.identifier = book.identifier
+        self.name = book.title
+    }
+    
     static func PageItemType(fromString type: String) -> PageItemType {
         switch type {
             case "book":

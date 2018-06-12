@@ -21,7 +21,7 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     private var currentChapterTitle: String
     private var currentChapterPageIndex: Int
     
-    init(identifier: UUID) {
+    init(identifier: (author: String, title:String)) {
         eName = String()
         book = Book(owner: LocalPlugin.sharedInstance, identifier: 0, type: .manga)
         chapters = [Chapter]()

@@ -93,14 +93,6 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
                 }
             } else {
                 switch eName {
-                    case "identifier":
-                        print("identifier: \(data)")
-                        if let data = Int(data) { book.identifier = data }
-                        else {
-                            book.identifier = 0
-                            print("identifier corrupt")
-                            print(data)
-                        }
                     case "title":
                         print(data)
                         book.title = data

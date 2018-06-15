@@ -64,11 +64,17 @@ class LocalPlugin: Plugin {
     
     func book(withIdentifier identifier: Any) -> Book? {
         let xmlParser = LocalPluginXMLParser(identifier: identifier as! (String, String))
+        xmlParser.book.identifier = (xmlParser.book.author, xmlParser.book.title)
         return xmlParser.book
     }
     
     func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
-        let bookImageDirectory: URL? = LocalPlugin.getBookDirectory(ofBookWithIdentifier: book.identifier as! (String, String))?.appendingPathComponent("Images")
+        guard let bookID = book.identifier as? (String, String) else {
+            print("identifier is incorrect type")
+            return nil
+        }
+
+        let bookImageDirectory: URL? = LocalPlugin.getBookDirectory(ofBookWithIdentifier: bookID)?.appendingPathComponent("Images")
         let fileManager = FileManager.default
         do {
             let filePaths = try fileManager.contentsOfDirectory(at: bookImageDirectory!, includingPropertiesForKeys: nil, options: [])

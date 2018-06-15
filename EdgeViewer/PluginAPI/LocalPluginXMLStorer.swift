@@ -45,7 +45,6 @@ final class LocalPluginXMLStorer { // pseudo-static class
         // root element
         let xmlDoc = XMLDocument(rootElement: XMLElement(name: "book"))
         
-        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "identifier", stringValue: String(book.identifier as! Int)) as! XMLNode)
         xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "title", stringValue: book.title) as! XMLNode)
         xmlDoc.rootElement()?.addChild(safeElement(withName: "author", withProperty: book.author))
         xmlDoc.rootElement()?.addChild(safeElement(withName: "genre", withProperty: book.genre))

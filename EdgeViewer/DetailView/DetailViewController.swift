@@ -35,7 +35,6 @@ class DetailViewController: NSViewController {
     override func viewDidLoad() {
         
         var localPlugin = LocalPlugin.sharedInstance
-        var libPage = localPlugin.page(withIdentifier: .homepage)
         
         LocalPluginXMLStorer.storeBookData(ofBook: book)
         super.viewDidLoad()
@@ -133,24 +132,32 @@ extension DetailViewController : NSCollectionViewDataSource {
     
     // Returns the number of items in the section
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        // TODO: get number of books in Local Library
-        return 1
+        guard let chapters = book.chapters else {
+            print("book chapters data is bad")
+            return 0
+        }
+        return chapters.count
     }
     
     // Return an NSCollectionView item for a given path
     // Is called once for each item in the NSCollectionView
-    // Don't need to check for "No books" because this should only run when there are more than 0 items
     func collectionView(_ itemForRepresentedObjectAtcollectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
                 
         // Instantiate an item from the ChapterViewItem nib
         let item = chapterView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ChapterViewItem"), for: indexPath)
+        
         guard item is ChapterViewItem else {
+            print("ChapterViewItem not given by chapterView.makeItem")
+            return item
+        }
+        guard let chapters = book.chapters else {
+            print("book chapters data is bad")
             return item
         }
         
         // Set the textField and imageView of the current NSCollectionView item
-        item.textField!.stringValue = book.chapters![indexPath.item].title
-        //item.imageView!.image = book.chapters[indexPath.item].coverImage
+        item.textField!.stringValue = chapters[indexPath.item].title
+        item.imageView!.image = book.page(atIndex: chapters[indexPath.item].pageIndex)
         
         return item
     }

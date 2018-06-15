@@ -62,10 +62,6 @@ class LocalPlugin: Plugin {
         return nil
     }
     
-    func pageItem() -> PageItem? {
-        return nil
-    }
-    
     func book(withIdentifier identifier: Any) -> Book? {
         let xmlParser = LocalPluginXMLParser(identifier: identifier as! (String, String))
         return xmlParser.book

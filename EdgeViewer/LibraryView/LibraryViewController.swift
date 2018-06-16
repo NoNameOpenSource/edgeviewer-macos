@@ -8,7 +8,11 @@
 
 import Cocoa
 
-class LibraryViewController: NSSplitViewController {
+protocol ShelfViewDelegate {
+    func shelf(_: ShelfViewController, selectedItem pageItem: PageItem)
+}
+
+class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
     
     var listViewController: LibraryListViewController? = nil
     var shelfViewController: ShelfViewController? = nil
@@ -39,6 +43,15 @@ class LibraryViewController: NSSplitViewController {
         
         let firstPlugin = JSPlugin(pluginName: "test.js")
         segue(toPage: firstPlugin.homePage)
+    }
+    
+    func shelf(_: ShelfViewController, selectedItem pageItem: PageItem) {
+        switch pageItem.type {
+        case .book:
+            return
+        case .link:
+            return
+        }
     }
     
     func segue(toPage page: LibraryPage) {

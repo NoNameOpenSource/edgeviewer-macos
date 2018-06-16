@@ -15,6 +15,8 @@ class ShelfViewController: NSViewController {
     let sectionB: [Manga] = [Manga(title: "DummyC"), Manga(title: "DummyD")]
     var  sections: [[Manga]] = []
     
+    var delegate: ShelfViewDelegate? = nil
+    
     var libraryPage: LibraryPage? = nil {
         didSet(oldValue) { // reject any changes after first set
             if oldValue != nil {
@@ -92,6 +94,15 @@ extension ShelfViewController : NSCollectionViewDataSource {
 extension ShelfViewController : NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
         return NSSize(width: 1000, height: 40)
+    }
+}
+
+extension ShelfViewController: NSCollectionViewDelegate {
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        if let delegate = delegate {
+            let pageItem = libraryPage!.items[1]
+            delegate.shelf(self, selectedItem: pageItem)
+        }
     }
 }
 

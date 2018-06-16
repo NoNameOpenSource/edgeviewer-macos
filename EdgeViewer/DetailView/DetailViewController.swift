@@ -30,6 +30,8 @@ class DetailViewController: NSViewController {
     // Create a Local Library Based on XML Parser
     lazy var unsafeBook = LocalPlugin.sharedInstance.book(withIdentifier: ("Marty Tester", "Goku"))
     
+    var book: Book? = nil;
+    
     override func viewDidLoad() {
         
         guard let book = unsafeBook else {

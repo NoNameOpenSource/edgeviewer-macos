@@ -14,6 +14,7 @@ enum PageItemType {
 }
 
 class PageItem {
+    let owner: Plugin
     let identifier: Any
     let type: PageItemType
     var thumbnailURL: String?
@@ -30,12 +31,20 @@ class PageItem {
         }
     }
     
-    init(identifier: Any, type: PageItemType) {
+    var content: Any {
+        get {
+            return self.owner.book(withIdentifier: self.identifier)
+        }
+    }
+    
+    init(owner: Plugin, identifier: Any, type: PageItemType) {
+        self.owner = owner
         self.identifier = identifier
         self.type = type
     }
     
-    init(book: Book) {
+    init(owner: Plugin, book: Book) {
+        self.owner = owner
         self.type = .book
         self.identifier = book.identifier
         self.name = book.title

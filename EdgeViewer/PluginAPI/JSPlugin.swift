@@ -94,7 +94,7 @@ class JSPlugin: Plugin {
         guard let type = object.forProperty("type")?.toString() else {
             return nil
         }
-        let pageItem = PageItem(identifier: identifier, type: PageItem.PageItemType(fromString: type))
+        let pageItem = PageItem(owner: self, identifier: identifier, type: PageItem.PageItemType(fromString: type))
         
         if let name = object.forProperty("name"),
            !name.isUndefined {

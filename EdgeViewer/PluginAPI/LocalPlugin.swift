@@ -40,7 +40,7 @@ class LocalPlugin: Plugin {
                                 do {
                                     let bookFolders = try fileManager.contentsOfDirectory(at: authorFolder, includingPropertiesForKeys: nil, options: [])
                                     for bookFolder in bookFolders {
-                                        var pageItem = PageItem(identifier: (authorFolder.lastPathComponent, bookFolder.lastPathComponent), type: .book)
+                                        var pageItem = PageItem(owner: self, identifier: (authorFolder.lastPathComponent, bookFolder.lastPathComponent), type: .book)
                                         pageItem.name = bookFolder.lastPathComponent
                                         page.items.append(pageItem)
                                     }

@@ -1107,7 +1107,7 @@
         <!--Detail View Controller-->
         <scene sceneID="H6j-57-43X">
             <objects>
-                <viewController id="ymU-Zp-kRl" customClass="DetailViewController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="ymU-Zp-kRl" customClass="DetailViewController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="0TQ-aj-gUl">
                         <rect key="frame" x="0.0" y="0.0" width="872" height="580"/>
                         <autoresizingMask key="autoresizingMask"/>

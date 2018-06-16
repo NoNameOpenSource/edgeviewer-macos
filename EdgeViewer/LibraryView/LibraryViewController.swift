@@ -41,16 +41,16 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
             }
         }
         
-        let firstPlugin = JSPlugin(pluginName: "test.js")
+        let firstPlugin = LocalPlugin.sharedInstance
         segue(toPage: firstPlugin.homePage)
     }
     
     func shelf(_: ShelfViewController, selectedItem pageItem: PageItem) {
         switch pageItem.type {
         case .book:
-            return
+            segueToDetailView(withBook: pageItem.content as! Book)
         case .link:
-            return
+            segue(toPage: pageItem.content as! LibraryPage)
         }
     }
     
@@ -69,5 +69,11 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
         shelfViewController = newShelf
+    }
+    
+    func segueToDetailView(withBook book: Book) {
+    }
+    
+    func segueToContentView(withBook book: Book) {
     }
 }

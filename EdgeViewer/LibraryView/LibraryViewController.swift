@@ -64,6 +64,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                                       performHandler: {
                                         self.removeSplitViewItem(self.splitViewItems[1])
                                         self.addSplitViewItem(NSSplitViewItem(viewController: newShelf))
+                                        newShelf.delegate = self
         })
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()

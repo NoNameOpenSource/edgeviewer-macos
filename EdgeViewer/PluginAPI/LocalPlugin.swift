@@ -11,6 +11,11 @@ import Cocoa
 class LocalPlugin: Plugin {
     var name = "LocalPlugin"
     var version = 0.1
+    var homePage: LibraryPage {
+        get {
+            return page(withIdentifier: .homepage)!
+        }
+    }
     
     private init(name: String, version: Double) {
         self.name = name

@@ -72,7 +72,7 @@ final class LocalPluginXMLStorer { // pseudo-static class
         }
         xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "type", stringValue: bookType) as! XMLNode)
         
-        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "series", stringValue: String(book.series as! Int)) as! XMLNode)
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "series", withProperty: book.series))
         xmlDoc.rootElement()?.addChild(safeElement(withName: "seriesName", withProperty: book.seriesName))
         xmlDoc.rootElement()?.addChild(safeElement(withName: "rating", withProperty: book.rating))
         
@@ -108,6 +108,8 @@ final class LocalPluginXMLStorer { // pseudo-static class
                     value = String(prop)
                 case let prop as String:
                     value = prop
+                case let prop as Int:
+                    value = String(prop)
                 default:
                     print("help me")
             }

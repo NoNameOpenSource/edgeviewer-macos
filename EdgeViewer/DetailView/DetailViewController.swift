@@ -28,11 +28,14 @@ class DetailViewController: NSViewController {
     }
         
     // Create a Local Library Based on XML Parser
-    let local = LocalPluginXMLParser(identifier: ("Marty Tester", "Goku"))
-    lazy var book = local.book
-    
+    lazy var unsafeBook = LocalPlugin.sharedInstance.book(withIdentifier: ("Marty Tester", "Goku"))
     
     override func viewDidLoad() {
+        
+        guard let book = unsafeBook else {
+            print("bad book identifier")
+            return
+        }
         
         var localPlugin = LocalPlugin.sharedInstance
         
@@ -62,7 +65,10 @@ class DetailViewController: NSViewController {
         }
         
         self.mangaImage.image = book.coverImage
+        self.mangaProgress.minValue = 0.0
+        self.mangaProgress.maxValue = 1.0
         self.mangaProgress.doubleValue = book.progress
+        print("mangaProgress.doubleValue: \(mangaProgress.doubleValue)")
         configureCollectionView()
         
         
@@ -132,6 +138,10 @@ extension DetailViewController : NSCollectionViewDataSource {
     
     // Returns the number of items in the section
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let book = unsafeBook else {
+            print("bad book identifier")
+            return 0
+        }
         guard let chapters = book.chapters else {
             print("book chapters data is bad")
             return 0
@@ -148,6 +158,10 @@ extension DetailViewController : NSCollectionViewDataSource {
         
         guard item is ChapterViewItem else {
             print("ChapterViewItem not given by chapterView.makeItem")
+            return item
+        }
+        guard let book = unsafeBook else {
+            print("bad book identifier")
             return item
         }
         guard let chapters = book.chapters else {

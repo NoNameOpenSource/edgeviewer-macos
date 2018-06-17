@@ -116,6 +116,15 @@ class LocalPlugin: Plugin {
         LocalPluginXMLStorer.storeBookData(ofBook: book)
     }
     
+    func update(book: Book) {
+        LocalPluginXMLStorer.storeBookData(ofBook: book)
+    }
+    
+    func update(rating: Double, ofBook book: Book) {
+        book.rating = rating
+        LocalPluginXMLStorer.storeBookData(ofBook: book)
+    }
+    
     static func getApplicationSupportAppDirectory() -> URL? {
         let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
         if paths.count >= 1 {

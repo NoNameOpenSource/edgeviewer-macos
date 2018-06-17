@@ -24,40 +24,34 @@ class LocalPlugin: Plugin {
     static var sharedInstance = LocalPlugin(name: "LocalPlugin", version: 0.1)
     
     func page(withIdentifier identifier: LocalPluginLibraryPageType) -> LibraryPage? {
-        print("here here here dude")
         let page = LibraryPage(owner: self, identifier: identifier, type: .regular)
         switch identifier {
             case .homepage:
                 let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
                 let fileManager = FileManager.default
-                if let booksDirectoryString = booksDirectory?.absoluteString.removingPercentEncoding {
-                    print("BooksDirectoryString: \(booksDirectoryString)")
-                    do {
-                        let authorFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
-                        print("Book Folder Contents: ")
-                        for (authorFolder) in authorFolders {
-                            if !authorFolder.absoluteString.hasSuffix(".DS_Store") {
-                                do {
-                                    let bookFolders = try fileManager.contentsOfDirectory(at: authorFolder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
-                                    for bookFolder in bookFolders {
-                                        var pageItem = PageItem(owner: self, identifier: (authorFolder.lastPathComponent, bookFolder.lastPathComponent), type: .book)
-                                        pageItem.name = bookFolder.lastPathComponent
-                                        page.items.append(pageItem)
-                                    }
-                                }
-                                catch {
-                                    print("cannot get author folders")
-                                    return nil
+                do {
+                    let authorFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
+                    for (authorFolder) in authorFolders {
+                        if !authorFolder.absoluteString.hasSuffix(".DS_Store") {
+                            do {
+                                let bookFolders = try fileManager.contentsOfDirectory(at: authorFolder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+                                for bookFolder in bookFolders {
+                                    let pageItem = PageItem(owner: self, identifier: (authorFolder.lastPathComponent, bookFolder.lastPathComponent), type: .book)
+                                    pageItem.name = bookFolder.lastPathComponent
+                                    page.items.append(pageItem)
                                 }
                             }
+                            catch {
+                                print("cannot get author folders")
+                                return nil
+                            }
                         }
-                        print(authorFolders)
-                    }
-                    catch {
-                        print("could not get contents of \(booksDirectory?.absoluteString ?? "")")
-                        return nil
                     }
                 }
+                catch {
+                    print("could not get contents of \(booksDirectory?.absoluteString ?? "")")
+                    return nil
+                    }
             default:
                 print("unhandled LibraryPageType: \(identifier)")
                 break

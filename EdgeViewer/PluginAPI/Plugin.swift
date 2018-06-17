@@ -16,6 +16,6 @@ protocol Plugin {
     func book(withIdentifier identifier: Any) -> Book?
     func page(ofBook book: Book, pageNumber: Int) -> NSImage?
     func update(book: Book)
-    func update(progress: Double, ofBook book: Book)
+    func update(currentPage: Int, ofBook book: Book)
     func update(rating: Double, ofBook book: Book)
 }

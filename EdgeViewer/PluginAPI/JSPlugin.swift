@@ -13,6 +13,18 @@ import JavaScriptCore
 let pluginFolder = Bundle.main.resourcePath! + "/"
 
 class JSPlugin: Plugin {
+    func update(book: Book) {
+        return
+    }
+    
+    func update(progress: Double, ofBook book: Book) {
+        return
+    }
+    
+    func update(rating: Double, ofBook book: Book) {
+        return
+    }
+    
     
     let name: String
     var version: Double

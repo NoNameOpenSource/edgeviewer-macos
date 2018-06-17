@@ -13,7 +13,11 @@ final class LocalPluginXMLStorer { // pseudo-static class
     private init() {}
     
     static func storeBookData(ofBook book: Book) {
-        let bookDirectoryURL: URL? = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books/\(book.identifier)")
+        guard let bookID = book.identifier as? (String, String) else {
+            return
+        }
+        let bookDirectoryURL = LocalPlugin.getBookDirectory(ofBookWithIdentifier: bookID )
+
         // Create Book directory in user's Application Support directory
         do {
             try FileManager.default.createDirectory(at: bookDirectoryURL!, withIntermediateDirectories: true)

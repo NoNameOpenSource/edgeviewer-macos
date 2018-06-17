@@ -17,7 +17,7 @@ class JSPlugin: Plugin {
         return
     }
     
-    func update(progress: Double, ofBook book: Book) {
+    func update(currentPage: Int, ofBook book: Book) {
         return
     }
     

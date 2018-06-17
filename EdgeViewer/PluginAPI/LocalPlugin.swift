@@ -38,7 +38,7 @@ class LocalPlugin: Plugin {
                         for (authorFolder) in authorFolders {
                             if !authorFolder.absoluteString.hasSuffix(".DS_Store") {
                                 do {
-                                    let bookFolders = try fileManager.contentsOfDirectory(at: authorFolder, includingPropertiesForKeys: nil, options: [])
+                                    let bookFolders = try fileManager.contentsOfDirectory(at: authorFolder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
                                     for bookFolder in bookFolders {
                                         var pageItem = PageItem(owner: self, identifier: (authorFolder.lastPathComponent, bookFolder.lastPathComponent), type: .book)
                                         pageItem.name = bookFolder.lastPathComponent

@@ -120,6 +120,11 @@ class LocalPlugin: Plugin {
         LocalPluginXMLStorer.storeBookData(ofBook: book)
     }
     
+    func update(currentPage: Int, ofBook book: Book) {
+        book.currentPage = currentPage
+        LocalPluginXMLStorer.storeBookData(ofBook: book)
+    }
+    
     func update(rating: Double, ofBook book: Book) {
         book.rating = rating
         LocalPluginXMLStorer.storeBookData(ofBook: book)

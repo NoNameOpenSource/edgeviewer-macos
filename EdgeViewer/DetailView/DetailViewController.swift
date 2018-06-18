@@ -43,12 +43,22 @@ class DetailViewController: NSViewController {
         //------------------------------------------------------------------------------------------------
         //MARK: Write to UI based on properties in Manga Object
         //------------------------------------------------------------------------------------------------
-        
-        ratingControl.rating = Int(book.rating!)
+        if let rating = book.rating {
+            ratingControl.rating = Int(rating)
+        } else {
+            print("book rating nil")
+        }
         self.mangaTitle.stringValue = book.title
-        self.mangaAuthor.stringValue = book.author!
-        self.mangaGenre.stringValue = book.genre!
-        
+        if let author = book.author {
+            self.mangaAuthor.stringValue = author
+        } else {
+            print("book author nil")
+        }
+        if let genre = book.genre {
+            self.mangaGenre.stringValue = genre
+        } else {
+            print("book genre nil")
+        }
         // Date Formatting
         let localizedDateFormatter = DateFormatter()
         localizedDateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -60,7 +70,6 @@ class DetailViewController: NSViewController {
             print("date nil")
             mangaReleaseDate.stringValue = "Unknown Release Date"
         }
-        
         self.mangaImage.image = book.coverImage
         self.mangaProgress.minValue = 0.0
         self.mangaProgress.maxValue = 1.0

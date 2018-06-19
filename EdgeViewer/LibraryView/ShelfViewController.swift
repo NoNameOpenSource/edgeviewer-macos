@@ -100,7 +100,7 @@ extension ShelfViewController : NSCollectionViewDelegateFlowLayout {
 extension ShelfViewController: NSCollectionViewDelegate {
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         if let delegate = delegate {
-            let pageItem = libraryPage!.items[1]
+            let pageItem = libraryPage!.items[indexPaths.first![1]]
             delegate.shelf(self, selectedItem: pageItem)
         }
     }

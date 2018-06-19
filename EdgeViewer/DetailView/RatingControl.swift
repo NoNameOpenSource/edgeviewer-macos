@@ -16,7 +16,10 @@ class RatingControl: NSStackView {
     
     var rating = 0 {
         didSet {
+            // update stars in UI according to new rating
             updateStars()
+            
+            // tell DetailViewController that user has updated book's rating
             if let ratingControlDelegate = ratingControlDelegate {
                 ratingControlDelegate.updateRating(self, rating: Double(rating))
             }

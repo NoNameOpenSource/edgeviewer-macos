@@ -9,6 +9,7 @@
 import Cocoa
 
 protocol RatingControlDelegate {
+    // allow RatingControl to tell DetailViewController when user has updated book's rating
     func updateRating(_: RatingControl, rating: Double)
 }
 
@@ -98,6 +99,9 @@ class DetailViewController: NSViewController, RatingControlDelegate {
         chapterView.layer?.backgroundColor = NSColor.black.cgColor
     }
     
+    //------------------------------------------------------------------------------------------------
+    //MARK: Update Rating Based on Information from RatingControl
+    //------------------------------------------------------------------------------------------------
     func updateRating(_: RatingControl, rating: Double) {
         if let book = book {
             LocalPlugin.sharedInstance.update(rating: rating, ofBook: book)

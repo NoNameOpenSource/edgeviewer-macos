@@ -10,11 +10,19 @@ import Cocoa
 
 class RatingControl: NSStackView {
     
+    var ratingControlDelegate: RatingControlDelegate? = nil
+    
     //MARK: Properties
     
     var rating = 0 {
         didSet {
             updateStars()
+            if let ratingControlDelegate = ratingControlDelegate {
+                ratingControlDelegate.updateRating(self, rating: Double(rating))
+            }
+            else {
+                print("rating control delegate is nil")
+            }
         }
     }
     

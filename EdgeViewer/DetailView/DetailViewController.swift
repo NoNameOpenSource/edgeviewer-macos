@@ -8,7 +8,11 @@
 
 import Cocoa
 
-class DetailViewController: NSViewController {
+protocol RatingControlDelegate {
+    func updateRating(_: RatingControl, rating: Double)
+}
+
+class DetailViewController: NSViewController, RatingControlDelegate {
     
     var book: Book? = nil;
     
@@ -33,6 +37,8 @@ class DetailViewController: NSViewController {
     }
 
     override func viewDidLoad() {
+        ratingControl.ratingControlDelegate = self
+        
         guard let book = book else {
             print("bad book identifier")
             return
@@ -90,6 +96,14 @@ class DetailViewController: NSViewController {
         chapterView.collectionViewLayout = flowLayout
         view.wantsLayer = true
         chapterView.layer?.backgroundColor = NSColor.black.cgColor
+    }
+    
+    func updateRating(_: RatingControl, rating: Double) {
+        if let book = book {
+            LocalPlugin.sharedInstance.update(rating: rating, ofBook: book)
+        } else {
+            print("unable to update rating of nil book")
+        }
     }
 }
 

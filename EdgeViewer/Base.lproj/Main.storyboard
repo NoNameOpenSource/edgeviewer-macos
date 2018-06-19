@@ -733,7 +733,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="CEg-mC-6aL">
                                 <rect key="frame" x="0.0" y="0.0" width="710" height="534"/>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel" customClass="UserPanelView" customModule="EdgeViewer" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel">
                                 <rect key="frame" x="20" y="20" width="670" height="60"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjX-6Q-4B2">
@@ -788,6 +788,9 @@
                     </view>
                     <connections>
                         <outlet property="pageView" destination="CEg-mC-6aL" id="WZ0-Yh-YkF"/>
+                        <outlet property="panelBorderedView" destination="WjX-6Q-4B2" id="vlW-bf-uu4"/>
+                        <outlet property="panelClipView" destination="Gca-b2-FJy" id="yxQ-yX-Glo"/>
+                        <outlet property="panelView" destination="cBX-50-cRv" id="fkw-uc-pwe"/>
                         <outlet property="userPanel" destination="jRe-qI-Sjm" id="ZMP-zB-A4N"/>
                     </connections>
                 </viewController>

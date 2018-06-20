@@ -17,6 +17,7 @@ enum ViewType {
 class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     var manga: Manga? = nil;
+    var book: Book? = nil
     var currentPage = 0 {
         didSet {
             // fix if the page number is out of range
@@ -52,7 +53,17 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         pageController.delegate = self
         
         // Dummy Data for testing purpose
-        setUpDummyData()
+        if let book = book {
+            let testManga = Manga(title: "Pandora Heart")
+            for i in 0..<book.numberOfPages {
+                if let page = book.page(atIndex: i) {
+                    testManga.addNewPage(image: page)
+                }
+            }
+            manga = testManga;
+        } else {
+            setUpDummyData()
+        }
         // Setup PageView
         pageController.arrangedObjects = manga!.pages
         updatePage()

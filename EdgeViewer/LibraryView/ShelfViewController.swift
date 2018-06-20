@@ -50,6 +50,15 @@ class ShelfViewController: NSViewController {
             // Fallback on earlier versions
         }
     }
+    
+    func collectionView(_ collectionView: NSCollectionView, didDoubleClick item: NSCollectionViewItem) {
+        if let delegate = delegate,
+           let indexPath = collectionView.indexPath(for: item) {
+            
+            let pageItem = libraryPage!.items[indexPath.item]
+            delegate.shelf(self, selectedItem: pageItem)
+        }
+    }
 }
 
 extension ShelfViewController : NSCollectionViewDataSource {
@@ -99,10 +108,6 @@ extension ShelfViewController : NSCollectionViewDelegateFlowLayout {
 
 extension ShelfViewController: NSCollectionViewDelegate {
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        if let delegate = delegate {
-            let pageItem = libraryPage!.items[indexPaths.first![1]]
-            delegate.shelf(self, selectedItem: pageItem)
-        }
     }
 }
 

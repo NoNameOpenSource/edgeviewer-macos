@@ -21,7 +21,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
     var displayedItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton"]
-    var notDisplayedItem : [String] = ["ButtomItem"]
+    var notDisplayedItem : [String] = ["ButtomItem","ButtomItem","ButtomItem","ButtomItem","ButtomItem",]
     var allItem : [[String]] = []
     
     @IBOutlet weak var panelView: NSView!
@@ -248,7 +248,7 @@ extension ContentViewController: NSCollectionViewDataSource{
         return 0
     }
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-       print(section)
+     
         if editMode {
             return allItem[section].count
         }
@@ -256,9 +256,9 @@ extension ContentViewController: NSCollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        print(allItem[indexPath.section][indexPath.item])
         var item : NSCollectionViewItem
         if editMode {
+            print(allItem[indexPath.section])
             item = userPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: allItem[indexPath.section][indexPath.item]), for: indexPath)
         }else{
             item = userPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: displayedItem[indexPath.item]), for: indexPath)
@@ -313,6 +313,9 @@ extension ContentViewController : NSCollectionViewDelegate{
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
         let pb = NSPasteboardItem()
         if editMode {
+            print(displayedItem)
+            print(notDisplayedItem)
+            print(allItem)
             pb.setString(allItem[indexPath.section][indexPath.item], forType: NSPasteboard.PasteboardType.string)
         }else{
             pb.setString(displayedItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
@@ -325,24 +328,36 @@ extension ContentViewController : NSCollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: NSCollectionView, acceptDrop draggingInfo: NSDraggingInfo, indexPath: IndexPath, dropOperation: NSCollectionView.DropOperation) -> Bool {
-        if editMode {
-            for i in draggingIndexPath{
-                let tmp = allItem[indexPath.section].remove(at: i.item)
-                allItem[indexPath.section].insert(tmp, at:
-                    (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
-                //NSAnimationContext.current.duration = 0.5
-                userPanel.animator().moveItem(at: i, to: indexPath)
+        userPanel.animator().performBatchUpdates({
+            if self.editMode {
+                for i in self.draggingIndexPath{
+                    print(indexPath.section)
+                    print(i.item)
+                    print(i.section)
+                    let tmp = self.allItem[indexPath.section].remove(at: i.item)
+                    self.allItem[indexPath.section].insert(tmp, at:
+                        (indexPath.item <= i.item) ? indexPath.item : (i.item - 1))
+                    //NSAnimationContext.current.duration = 0.5
+                    self.userPanel.animator().moveItem(at: i, to: indexPath)
+                }
+            }else{
+                for i in draggingIndexPath{
+                    let tmp = self.displayedItem.remove(at: i.item)
+                    self.displayedItem.insert(tmp, at:
+                        (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
+                    //NSAnimationContext.current.duration = 0.5
+                    self.userPanel.animator().moveItem(at: i, to: indexPath)
+                }
             }
-        }else{
-            for i in draggingIndexPath{
-                let tmp = displayedItem.remove(at: i.item)
-                displayedItem.insert(tmp, at:
-                    (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
-                //NSAnimationContext.current.duration = 0.5
-                userPanel.animator().moveItem(at: i, to: indexPath)
-            }
+        }) { (finished) in
+            self.userPanel.reloadData()
         }
         
+        
+        
+        print(displayedItem)
+        print(notDisplayedItem)
+        print(allItem)
         
 
         return true

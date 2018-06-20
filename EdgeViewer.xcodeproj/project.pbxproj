@@ -18,6 +18,7 @@
 		1C95803C20B91A0900D3AC9D /* LocalPluginXMLStorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */; };
 		8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */; };
 		8AAFCF22207C3C6C003C8605 /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */; };
+		8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB61A8D20DAFDDC00BFEC4A /* ProjectWindow.swift */; };
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
 		B1A894502073B612003A67AB /* UserPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8944F2073B612003A67AB /* UserPanelView.swift */; };
 		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
@@ -74,6 +75,7 @@
 		1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginXMLStorer.swift; sourceTree = "<group>"; };
 		8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
+		8AB61A8D20DAFDDC00BFEC4A /* ProjectWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindow.swift; sourceTree = "<group>"; };
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		B1A8944F2073B612003A67AB /* UserPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPanelView.swift; sourceTree = "<group>"; };
 		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				1C1A1CB520843486000074DC /* DetailView */,
 				B1A894482073B559003A67AB /* ContentView */,
 				E08E863A20731A7A0082723B /* AppDelegate.swift */,
+				8AB61A8D20DAFDDC00BFEC4A /* ProjectWindow.swift */,
 				E01ED2A82093266600CC805F /* Manga.swift */,
 				E08E863C20731A7A0082723B /* ViewController.swift */,
 				E08E863E20731A7A0082723B /* Assets.xcassets */,
@@ -424,6 +427,7 @@
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,
 				E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
+				8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */,
 				E0AEDFF120AD304300E72B6E /* LibraryPage.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 				B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */,

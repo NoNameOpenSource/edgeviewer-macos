@@ -54,7 +54,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-    var editMode : Bool = true {
+    var editMode : Bool = false {
         didSet {
             if oldValue {
                 configureCollectionView()
@@ -245,7 +245,7 @@ extension ContentViewController: NSCollectionViewDataSource{
         if editMode {
             return allItem.count
         }
-        return 0
+        return 1
     }
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
      
@@ -331,12 +331,10 @@ extension ContentViewController : NSCollectionViewDelegate{
         userPanel.animator().performBatchUpdates({
             if self.editMode {
                 for i in self.draggingIndexPath{
-                    print(indexPath.section)
-                    print(i.item)
-                    print(i.section)
+
                     let tmp = self.allItem[indexPath.section].remove(at: i.item)
                     self.allItem[indexPath.section].insert(tmp, at:
-                        (indexPath.item <= i.item) ? indexPath.item : (i.item - 1))
+                        (indexPath.item <= i.item) ? indexPath.item : ((i.item - 1 < 0) ? 0 : i.item - 1))
                     //NSAnimationContext.current.duration = 0.5
                     self.userPanel.animator().moveItem(at: i, to: indexPath)
                 }

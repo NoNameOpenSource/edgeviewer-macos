@@ -167,18 +167,26 @@
 			path = ContentView;
 			sourceTree = "<group>";
 		};
+		E01868D220DB1F55000D4672 /* LocalPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				1C95803920B918B100D3AC9D /* LocalPluginXMLParser.swift */,
+				1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */,
+				1C18FAD020C364620073886B /* LocalPlugin.swift */,
+			);
+			path = LocalPlugin;
+			sourceTree = "<group>";
+		};
 		E01ED2AE2093EB8F00CC805F /* PluginAPI */ = {
 			isa = PBXGroup;
 			children = (
+				E01868D220DB1F55000D4672 /* LocalPlugin */,
 				E01ED36E2095C8DB00CC805F /* JavaScript */,
 				E01ED2AF2093EBB700CC805F /* Plugin.swift */,
 				E01ED2B12093EC6400CC805F /* JSPlugin.swift */,
 				E0AEDFEE20AD304300E72B6E /* Book.swift */,
 				E0AEDFF020AD304300E72B6E /* LibraryPage.swift */,
 				E023917720C4F6C500A9489B /* PageItem.swift */,
-				1C95803920B918B100D3AC9D /* LocalPluginXMLParser.swift */,
-				1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */,
-				1C18FAD020C364620073886B /* LocalPlugin.swift */,
 			);
 			path = PluginAPI;
 			sourceTree = "<group>";

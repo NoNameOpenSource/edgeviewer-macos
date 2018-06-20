@@ -15,7 +15,8 @@ protocol RatingControlDelegate {
 
 class DetailViewController: NSViewController, RatingControlDelegate {
     
-    var book: Book? = nil;
+    var book: Book? = nil
+    var senderDelegate: LibraryViewController? = nil
     
     //------------------------------------------------------------------------------------------------
     //MARK: Set up UI Outlets
@@ -35,6 +36,14 @@ class DetailViewController: NSViewController, RatingControlDelegate {
     //------------------------------------------------------------------------------------------------
     @IBAction func showReadFromBeginningButton(_ sender: Any) {
         ReadFromBeginningButton.isHidden = !ReadFromBeginningButton.isHidden
+    }
+    @IBAction func readButton(_ sender: NSButton) {
+        if let senderDelegate = senderDelegate {
+            if let book = book {
+                senderDelegate.segueToContentView(withBook: book)
+            }
+        }
+        
     }
 
     override func viewDidLoad() {

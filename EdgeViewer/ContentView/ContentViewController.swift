@@ -348,7 +348,7 @@ extension ContentViewController : NSCollectionViewDelegate{
                     self.displayedItem.insert(tmp, at:
                         (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
                     //NSAnimationContext.current.duration = 0.5
-                    self.userPanel.animator().moveItem(at: i, to: indexPath)
+                  
                 }
             }
         }) { (finished) in

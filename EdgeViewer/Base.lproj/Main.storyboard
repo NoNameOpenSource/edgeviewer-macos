@@ -795,6 +795,13 @@
                     </connections>
                 </viewController>
                 <customObject id="pKP-WL-jQz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="hgU-K3-sIY">
+                    <items>
+                        <menuItem title="Customize Toolbar..." id="IQN-Bv-h2C">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="-356" y="1879"/>
         </scene>

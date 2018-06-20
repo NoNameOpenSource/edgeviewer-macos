@@ -752,6 +752,7 @@
                                                     <connections>
                                                         <outlet property="dataSource" destination="9sD-9f-o3V" id="WBi-Zm-28S"/>
                                                         <outlet property="delegate" destination="9sD-9f-o3V" id="GFP-bB-wjp"/>
+                                                        <outlet property="menu" destination="hgU-K3-sIY" id="P9B-e8-F6d"/>
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
@@ -795,10 +796,13 @@
                     </connections>
                 </viewController>
                 <customObject id="pKP-WL-jQz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <menu id="hgU-K3-sIY">
+                <menu autoenablesItems="NO" id="hgU-K3-sIY">
                     <items>
                         <menuItem title="Customize Toolbar..." id="IQN-Bv-h2C">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="enableEditMode:" target="9sD-9f-o3V" id="hnM-fw-TJR"/>
+                            </connections>
                         </menuItem>
                     </items>
                 </menu>

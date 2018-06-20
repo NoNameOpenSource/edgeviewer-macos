@@ -56,15 +56,19 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     var editMode : Bool = false {
         didSet {
-            if oldValue {
+            guard editMode != oldValue else { return }
+            if oldValue == true {
                 configureCollectionView()
                 configureCollectionView()
-            }else{
+            } else {
                 configureCollectionViewEditMode()
             }
         }
     }
     
+    @IBAction func enableEditMode(_ sender: NSMenuItem) {
+        editMode = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

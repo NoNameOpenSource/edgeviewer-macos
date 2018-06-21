@@ -118,6 +118,30 @@ class DetailViewController: NSViewController, RatingControlDelegate {
             print("unable to update rating of nil book")
         }
     }
+    
+    //------------------------------------------------------------------------------------------------
+    //MARK: Segue to Content View (with book's currentPage updated according to pageIndex of chapter that user double-clicked)
+    //------------------------------------------------------------------------------------------------
+    func chapterSegue(_ collectionView: NSCollectionView, didDoubleClick item: NSCollectionViewItem) {
+        if let book = book {
+            if let senderDelegate = senderDelegate {
+                // book.currentPage = indexPath
+                if let chapters = book.chapters,
+                   let indexPath = collectionView.indexPath(for: item) {
+                    let chapter = chapters[indexPath.item]
+                    book.currentPage = chapter.pageIndex
+                } else {
+                    print("unable to update book.currentPage when book.chapters or collectionView.indexPath(for: item) is nil")
+                }
+                senderDelegate.segueToContentView(withBook: book)
+            } else {
+                print("unable to segue to Content View without sender delegate")
+            }
+        } else {
+            print("unable to update currentPage of nil book")
+            print("unable to segue to Content View with nil book")
+        }
+    }
 }
 
 extension DetailViewController : NSCollectionViewDataSource {
@@ -164,5 +188,10 @@ extension DetailViewController : NSCollectionViewDataSource {
         item.imageView!.image = book.page(atIndex: chapters[indexPath.item].pageIndex)
         
         return item
+    }
+}
+
+extension DetailViewController: NSCollectionViewDelegate {
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
     }
 }

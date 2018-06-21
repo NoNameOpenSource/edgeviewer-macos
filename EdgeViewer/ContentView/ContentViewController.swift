@@ -30,7 +30,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
     var displayedItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton"]
-    var notDisplayedItem : [String] = ["ButtomItem"]
+    var notDisplayedItem : [String] = ["ButtonItem"]
     @objc dynamic var items : [EditButtom] = []
     
     
@@ -321,7 +321,7 @@ extension ContentViewController: NSCollectionViewDataSource{
                 item = someButton
                 return item
             }
-            
+            break
             
         case let someForwardButton as ForwardButton:
             someForwardButton.forward.target = self
@@ -330,7 +330,7 @@ extension ContentViewController: NSCollectionViewDataSource{
                 item = someForwardButton
                 return item
             }
-            
+            break
         case let someBackWardButton as BackWardButton:
             someBackWardButton.backward.target = self
             someBackWardButton.backward.action = #selector(pageBack)
@@ -338,7 +338,7 @@ extension ContentViewController: NSCollectionViewDataSource{
                 item = someBackWardButton
                 return item
             }
-            
+            break
         case let someSwitchModeButton as SwitchModeButton:
             someSwitchModeButton.switchTypeViewButton.target = self
             someSwitchModeButton.switchTypeViewButton.action = #selector(viewTypeSwitch)
@@ -346,6 +346,7 @@ extension ContentViewController: NSCollectionViewDataSource{
                 item = someSwitchModeButton
                 return item
             }
+            break
         default:
             break
         }

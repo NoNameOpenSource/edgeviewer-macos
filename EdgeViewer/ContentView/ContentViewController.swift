@@ -371,38 +371,37 @@ extension ContentViewController : NSCollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: NSCollectionView, acceptDrop draggingInfo: NSDraggingInfo, indexPath: IndexPath, dropOperation: NSCollectionView.DropOperation) -> Bool {
+        var movePassed : Bool = true
         switch collectionView {
         case userPanel:
             userPanel.animator().performBatchUpdates({
                 for i in draggingIndexPath{
-                    if i.item <= displayedItem.count - 1 {
+                    if draggingInfo.draggingSource() as! NSCollectionView == userPanel{
                         let tmp = self.displayedItem.remove(at: i.item)
                         self.displayedItem.insert(tmp, at:
                             (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
-                    }else {
-                        let tmp = self.allItem.remove(at: i.item)
-                        self.displayedItem.append(tmp)
-                        print(allItem)
+                    }else{
+                        let tmp = self.allItem[i.item]
+                        if (!(displayedItem.contains(tmp)) || tmp == "ButtonItem"){
+                            self.displayedItem.append(tmp)
+                        }else {
+                            movePassed = false
+                        }
                     }
                 }
             }) { (finished) in
                 self.userPanel.reloadData()
-                self.editPanel.reloadData()
             }
         case editPanel:
             editPanel.animator().performBatchUpdates({
                 for i in draggingIndexPath{
-                    if i.item <= allItem.count - 1 {
-                        let tmp = self.allItem.remove(at: i.item)
-                        self.allItem.insert(tmp, at:
-                            (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
+                    if draggingInfo.draggingSource() as! NSCollectionView == editPanel {
+                        movePassed = false
                     }else {
-                        let tmp = self.displayedItem.remove(at: i.item)
-                        self.allItem.append(tmp)
+                        self.displayedItem.remove(at: i.item)
                     }
                 }
             }) { (finished) in
-                self.editPanel.reloadData()
                 self.userPanel.reloadData()
             }
         default:
@@ -411,7 +410,7 @@ extension ContentViewController : NSCollectionViewDelegate{
         
 
         print(allItem)
-        return true
+        return movePassed
     }
 }
 

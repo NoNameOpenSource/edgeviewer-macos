@@ -14,7 +14,7 @@ enum ViewType {
     case verticalScroll
 }
 
-class EditButtom : NSObject{
+class EditButton : NSObject{
     @objc dynamic var type : String
     @objc dynamic var inList : Bool
     
@@ -31,7 +31,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var draggingIndexPath : Set<IndexPath> = []
     var displayedItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton"]
     var notDisplayedItem : [String] = ["ButtonItem"]
-    @objc dynamic var items : [EditButtom] = []
+    @objc dynamic var items : [EditButton] = []
     
     
 

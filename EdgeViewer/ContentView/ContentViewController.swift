@@ -20,14 +20,16 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var book: Book? = nil
     var currentPage = 0 {
         didSet {
-            // fix if the page number is out of range
-            if(currentPage < 0) {
-                currentPage = 0
-            } else if(currentPage >= manga!.numberOfPages) {
-                currentPage = manga!.numberOfPages - 1
+            if let book = book {
+                // fix if the page number is out of range
+                if(currentPage < 0) {
+                    currentPage = 0
+                } else if(currentPage >= book.numberOfPages) {
+                    currentPage = book.numberOfPages - 1
+                }
+                // update page
+                updatePage()
             }
-            // update page
-            updatePage()
         }
     }
     var viewType: ViewType = .singlePage {
@@ -54,7 +56,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
         // Dummy Data for testing purpose
         if let book = book {
-            let testManga = Manga(title: "Pandora Heart")
+            let testManga = Manga(title: book.title)
             for i in 0..<book.numberOfPages {
                 if let page = book.page(atIndex: i) {
                     testManga.addNewPage(image: page)

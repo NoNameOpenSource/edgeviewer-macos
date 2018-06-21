@@ -18,7 +18,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
     var displayedItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton"]
-    var notDisplayedItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton","ButtonItem"]
+    var allItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton","ButtonItem"]
     
     
 
@@ -27,9 +27,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     @IBOutlet weak var userPanel: NSCollectionView!
     @IBOutlet weak var panelClipView: NSClipView!
     @IBOutlet weak var panelBorderedView: NSScrollView!
-    @IBAction func addOrRemove(_ sender: Any) {
-        
-    }
+   
     
     var pageController: NSPageController = NSPageController()
     var manga: Manga? = nil;
@@ -88,13 +86,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         currentPage = (manga?.bookMark)!
         
         userPanel.isSelectable = true;
-        
+        editPanel.isSelectable = true;
         
         userPanel.backgroundColors = [NSColor.gray]
         configureCollectionView()
         configureCollectionView()
         userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
-        
+        editPanel.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
         updatePage()
     }
     
@@ -280,10 +278,8 @@ extension ContentViewController: NSCollectionViewDataSource{
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case editPanel:
-            print("editPanel", notDisplayedItem.count)
-            return notDisplayedItem.count
+            return allItem.count
         case userPanel:
-             print("userPanel", displayedItem.count)
             return displayedItem.count
         default:
             return 0
@@ -292,17 +288,13 @@ extension ContentViewController: NSCollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        print(collectionView)
-        print(indexPath)
         var item : NSCollectionViewItem
         switch collectionView {
         case userPanel:
-            print("userPaanel", displayedItem[indexPath.item])
             item = userPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: displayedItem[indexPath.item]), for: indexPath)
             break
         case editPanel:
-            print("editPanel", notDisplayedItem[indexPath.item])
-            item = editPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: notDisplayedItem[indexPath.item]), for: indexPath)
+            item = editPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: allItem[indexPath.item]), for: indexPath)
             break
         default:
             item = ButtonItem()
@@ -363,7 +355,7 @@ extension ContentViewController : NSCollectionViewDelegate{
         let pb = NSPasteboardItem()
         switch collectionView {
         case editPanel:
-            pb.setString(notDisplayedItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
+            pb.setString(allItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
         case userPanel:
             pb.setString(displayedItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
         default:
@@ -375,6 +367,7 @@ extension ContentViewController : NSCollectionViewDelegate{
     func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
 
         return .move
+
     }
     
     func collectionView(_ collectionView: NSCollectionView, acceptDrop draggingInfo: NSDraggingInfo, indexPath: IndexPath, dropOperation: NSCollectionView.DropOperation) -> Bool {
@@ -382,30 +375,42 @@ extension ContentViewController : NSCollectionViewDelegate{
         case userPanel:
             userPanel.animator().performBatchUpdates({
                 for i in draggingIndexPath{
-                    let tmp = self.displayedItem.remove(at: i.item)
-                    self.displayedItem.insert(tmp, at:
-                        (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
-                    //NSAnimationContext.current.duration = 0.5
+                    if i.item <= displayedItem.count - 1 {
+                        let tmp = self.displayedItem.remove(at: i.item)
+                        self.displayedItem.insert(tmp, at:
+                            (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
+                    }else {
+                        let tmp = self.allItem.remove(at: i.item)
+                        self.displayedItem.append(tmp)
+                        print(allItem)
+                    }
                 }
             }) { (finished) in
                 self.userPanel.reloadData()
+                self.editPanel.reloadData()
             }
-        case editPanel :
+        case editPanel:
             editPanel.animator().performBatchUpdates({
                 for i in draggingIndexPath{
-                    let tmp = self.displayedItem.remove(at: i.item)
-                    self.displayedItem.insert(tmp, at:
-                        (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
-                    //NSAnimationContext.current.duration = 0.5
-                    self.userPanel.animator().moveItem(at: i, to: indexPath)
+                    if i.item <= allItem.count - 1 {
+                        let tmp = self.allItem.remove(at: i.item)
+                        self.allItem.insert(tmp, at:
+                            (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
+                    }else {
+                        let tmp = self.displayedItem.remove(at: i.item)
+                        self.allItem.append(tmp)
+                    }
                 }
             }) { (finished) in
                 self.editPanel.reloadData()
+                self.userPanel.reloadData()
             }
         default:
-            break
+            break;
         }
         
+
+        print(allItem)
         return true
     }
 }

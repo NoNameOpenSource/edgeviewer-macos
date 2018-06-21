@@ -407,9 +407,6 @@ extension ContentViewController : NSCollectionViewDelegate{
         default:
             break;
         }
-        
-
-        print(allItem)
         return movePassed
     }
 }

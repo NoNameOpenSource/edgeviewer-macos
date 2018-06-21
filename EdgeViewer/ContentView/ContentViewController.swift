@@ -241,7 +241,14 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         userPanel.collectionViewLayout = flowLayout
-        editPanel.collectionViewLayout = flowLayout
+        
+        let flowLayoutB = NSCollectionViewFlowLayout()
+        flowLayoutB.itemSize = NSSize(width: 50.0, height: 50.0)
+        flowLayoutB.sectionInset = NSEdgeInsets(top: 5.0, left: 20.0, bottom: 5.0, right: 20.0)
+        flowLayoutB.minimumInteritemSpacing = 20.0
+        flowLayoutB.minimumLineSpacing = 20.0
+        editPanel.collectionViewLayout = flowLayoutB
+        
         view.wantsLayer = true
         userPanel.layer?.backgroundColor = NSColor.lightGray.cgColor
         if #available(OSX 10.12, *) {
@@ -342,9 +349,7 @@ extension ContentViewController: NSCollectionViewDataSource{
 }
 
 extension ContentViewController : NSCollectionViewDelegate{
-    func collectionView(_ collectionView: NSCollectionView, willDisplay item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
-        
-    }
+    
     
     func collectionView(_ collectionView: NSCollectionView, draggingSession session: NSDraggingSession, willBeginAt screenPoint: NSPoint, forItemsAt indexPaths: Set<IndexPath>) {
         draggingIndexPath = indexPaths
@@ -356,7 +361,15 @@ extension ContentViewController : NSCollectionViewDelegate{
     
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
         let pb = NSPasteboardItem()
-        pb.setString(displayedItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
+        switch collectionView {
+        case editPanel:
+            pb.setString(notDisplayedItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
+        case userPanel:
+            pb.setString(displayedItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
+        default:
+            break
+        }
+        
         return pb;
     }
     func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
@@ -373,7 +386,6 @@ extension ContentViewController : NSCollectionViewDelegate{
                     self.displayedItem.insert(tmp, at:
                         (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
                     //NSAnimationContext.current.duration = 0.5
-                    self.userPanel.animator().moveItem(at: i, to: indexPath)
                 }
             }) { (finished) in
                 self.userPanel.reloadData()

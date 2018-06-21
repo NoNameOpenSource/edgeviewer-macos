@@ -22,6 +22,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     
 
+    @IBOutlet weak var editToolBox: NSView!
     @IBOutlet weak var editPanel: NSCollectionView!
     @IBOutlet weak var panelView: NSView!
     @IBOutlet weak var userPanel: NSCollectionView!
@@ -54,24 +55,19 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-    var editMode : Bool = false {
-        didSet {
 
-            guard editMode != oldValue else { return }
-            if oldValue == true {
-                configureCollectionView()
-                configureCollectionView()
-            } else {
-                configureCollectionViewEditMode()
-                configureCollectionViewEditMode()
-            }
-        }
-    }
     
     @IBAction func enableEditMode(_ sender: NSMenuItem) {
-        editMode = true
+
+        editToolBox.isHidden = false
+        editPanel.isHidden = false
     }
-    
+    @IBAction func DisableEditMode(_ sender: Any) {
+
+        editToolBox.isHidden = true
+        editPanel.isHidden = true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -216,20 +212,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-    override func viewWillAppear() {
-        if editMode {
-            panelView.setFrameSize(NSSize(width: panelView.frame.size.width, height: 200))
-            panelBorderedView.setFrameSize(NSSize(width: panelView.frame.size.width, height: 200))
-            panelClipView.setFrameSize(NSSize(width: panelView.frame.size.width, height: 200))
-            userPanel.setFrameSize(NSSize(width: panelView.frame.size.width, height: 200))
-        }
-    }
-    
     override func viewWillLayout() {
-        if editMode {
-
-        }else {
-        }
+        editToolBox.isHidden = true
     }
     
     fileprivate func configureCollectionView() { // this one makes layout
@@ -256,10 +240,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-    fileprivate func configureCollectionViewEditMode() { // this one makes layout
-        
-        configureCollectionView()
-    }
+   
 
 }
 

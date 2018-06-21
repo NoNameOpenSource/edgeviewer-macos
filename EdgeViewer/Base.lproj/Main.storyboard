@@ -834,6 +834,7 @@
                     </view>
                     <connections>
                         <outlet property="editPanel" destination="b6H-Zc-etg" id="VvN-q2-Ef5"/>
+                        <outlet property="editToolBox" destination="iNA-2Q-WbO" id="5sf-dL-a77"/>
                         <outlet property="pageView" destination="CEg-mC-6aL" id="WZ0-Yh-YkF"/>
                         <outlet property="panelClipView" destination="Gca-b2-FJy" id="yxQ-yX-Glo"/>
                         <outlet property="panelView" destination="cBX-50-cRv" id="fkw-uc-pwe"/>
@@ -847,6 +848,12 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="enableEditMode:" target="9sD-9f-o3V" id="hnM-fw-TJR"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="End User Panel Edit" id="rh4-DV-R6z">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="DisableEditMode:" target="9sD-9f-o3V" id="eJo-7C-qSl"/>
                             </connections>
                         </menuItem>
                     </items>

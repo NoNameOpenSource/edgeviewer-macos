@@ -19,7 +19,7 @@ class ButtonItem: NSCollectionViewItem {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView?.frame.size = self.view.bounds.size
+        
         // Do view setup here.
         view.wantsLayer = true
         view.layer?.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)

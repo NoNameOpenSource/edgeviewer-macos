@@ -55,7 +55,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
             for (pluginFolder) in pluginFolders {
                 if fileManager.fileExists(atPath: pluginFolder.path + "/plugin.js") {
                     let plugin = JSPlugin(folder: pluginFolder)
-                    plugin.append(plugin)
+                    plugins.append(plugin)
                 }
             }
         }

@@ -16,7 +16,6 @@ enum ViewType {
 
 class ContentViewController: NSViewController, NSPageControllerDelegate {
     
-    var manga: Manga? = nil;
     var book: Book? = nil
     var currentPage = 0 {
         didSet {
@@ -62,17 +61,28 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                     testManga.addNewPage(image: page)
                 }
             }
-            manga = testManga;
         } else {
             setUpDummyData()
         }
         // Setup PageView
-        pageController.arrangedObjects = manga!.pages
+        guard let book = book else {
+            print("book nil")
+            return
+        }
+        pageController.arrangedObjects = [NSImage]()
+        var pages = pageController.arrangedObjects as! [NSImage]
+        for i in 0..<book.numberOfPages {
+            if let page = book.page(atIndex: i) {
+                pages.append(page)
+            }
+        }
         updatePage()
     }
     
     override func viewDidDisappear() {
-        manga!.bookMark = self.currentPage;
+        if let book = book {
+            book.bookmark = self.currentPage;
+        }
     }
     
     func setUpDummyData() {
@@ -87,12 +97,12 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                 testManga.addNewPage(image: page)
             }
         }
-        
-        manga = testManga
     }
     
     func updatePage() {
-        self.pageNumberLabel.stringValue = "\(currentPage + 1) / \(manga!.numberOfPages)"
+        if let book = book {
+            self.pageNumberLabel.stringValue = "\(currentPage + 1) / \(book.numberOfPages)"
+        }
         NSAnimationContext.runAnimationGroup({ context in
             self.pageController.animator().selectedIndex = currentPage
         }) {
@@ -167,15 +177,17 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
-        let image = self.manga!.pages
-        
+        guard let book = book else {
+            print("book nil")
+            return
+        }
         switch viewController {
             case let viewController as SinglePageViewController:
-                viewController.image = image[currentPage]
+                viewController.image = book.page(atIndex: currentPage)
                 break
             case let viewController as DoublePageViewController:
-                viewController.leftImage = image[self.currentPage]
-                viewController.rightImage = image[self.currentPage + 1]
+                viewController.leftImage = book.page(atIndex: currentPage)
+                viewController.rightImage = book.page(atIndex: currentPage + 1)
                 break
             default:
                 return

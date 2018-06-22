@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment version="101100" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -718,7 +718,7 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="KxQ-DW-RNo" kind="relationship" relationship="window.shadowedContentViewController" id="Esa-25-mMx"/>
+                        <segue destination="Q1g-Nu-kNu" kind="relationship" relationship="window.shadowedContentViewController" id="ZFE-Ah-Hos"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -939,6 +939,33 @@
                 <customObject id="pKP-WL-jQz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-356" y="1916"/>
+        </scene>
+        <!--File Reader Controller-->
+        <scene sceneID="c6N-Ry-8lf">
+            <objects>
+                <viewController id="Q1g-Nu-kNu" customClass="FileReaderController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="HcL-Jn-XAo">
+                        <rect key="frame" x="0.0" y="0.0" width="542" height="427"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="soj-kQ-WPg" customClass="DropView" customModule="EdgeViewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="542" height="427"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="soj-kQ-WPg" secondAttribute="trailing" id="7K1-G0-A3G"/>
+                            <constraint firstItem="soj-kQ-WPg" firstAttribute="top" secondItem="HcL-Jn-XAo" secondAttribute="top" id="bp9-yI-La9"/>
+                            <constraint firstItem="soj-kQ-WPg" firstAttribute="leading" secondItem="HcL-Jn-XAo" secondAttribute="leading" id="ggo-MP-fj2"/>
+                            <constraint firstAttribute="bottom" secondItem="soj-kQ-WPg" secondAttribute="bottom" id="nR4-kC-3z9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dropView" destination="soj-kQ-WPg" id="5ZN-5G-sIY"/>
+                    </connections>
+                </viewController>
+                <customObject id="NXk-eb-5GP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-414" y="2502.5"/>
         </scene>
         <!--Chapter View-->
         <scene sceneID="NKr-hU-teY">

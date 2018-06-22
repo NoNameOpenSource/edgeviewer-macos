@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ButtonItem" customModule="EdgeViewer" customModuleProvider="target">
             <connections>
+                <outlet property="button" destination="bfp-uA-VN5" id="HF8-Rc-t3i"/>
                 <outlet property="view" destination="QJB-l8-a1B" id="McL-hv-KXm"/>
             </connections>
         </customObject>

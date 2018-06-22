@@ -10,12 +10,15 @@ import Cocoa
 
 class ButtonItem: NSCollectionViewItem {
     
+    @IBOutlet weak var button: NSButton!
     
     override var isSelected: Bool {
         didSet {
             view.layer?.borderWidth = isSelected ? 5.0 : 1.0
         }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

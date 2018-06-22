@@ -13,7 +13,11 @@ protocol RatingControlDelegate {
     func updateRating(_: RatingControl, rating: Double)
 }
 
-class DetailViewController: NSViewController, RatingControlDelegate {
+protocol CoverImageDelegate {
+    func segueToContentView()
+}
+
+class DetailViewController: NSViewController, RatingControlDelegate, CoverImageDelegate {
     
     var book: Book? = nil
     var senderDelegate: LibraryViewController? = nil
@@ -28,7 +32,7 @@ class DetailViewController: NSViewController, RatingControlDelegate {
     @IBOutlet weak var mangaAuthor: NSTextField!
     @IBOutlet weak var mangaGenre: NSTextField!
     @IBOutlet weak var mangaReleaseDate: NSTextField!
-    @IBOutlet var mangaImage: NSImageView!
+    @IBOutlet weak var coverImage: CoverImage!
     @IBOutlet weak var mangaProgress: NSProgressIndicator!
     
     //------------------------------------------------------------------------------------------------
@@ -38,14 +42,9 @@ class DetailViewController: NSViewController, RatingControlDelegate {
         ReadFromBeginningButton.isHidden = !ReadFromBeginningButton.isHidden
     }
     @IBAction func readButton(_ sender: NSButton) {
-        if let senderDelegate = senderDelegate {
-            if let book = book {
-                senderDelegate.segueToContentView(withBook: book)
-            }
-        }
-        
+        segueToContentView()
     }
-
+    
     override func viewDidLoad() {
         ratingControl.ratingControlDelegate = self
         
@@ -86,7 +85,8 @@ class DetailViewController: NSViewController, RatingControlDelegate {
             print("date nil")
             mangaReleaseDate.stringValue = "Unknown Release Date"
         }
-        self.mangaImage.image = book.coverImage
+        self.coverImage.image = book.coverImage
+        self.coverImage.delegate = self
         self.mangaProgress.minValue = 0.0
         self.mangaProgress.maxValue = 1.0
         self.mangaProgress.doubleValue = book.progress
@@ -124,22 +124,31 @@ class DetailViewController: NSViewController, RatingControlDelegate {
     //------------------------------------------------------------------------------------------------
     func chapterSegue(_ collectionView: NSCollectionView, didDoubleClick item: NSCollectionViewItem) {
         if let book = book {
-            if let senderDelegate = senderDelegate {
-                // book.currentPage = indexPath
-                if let chapters = book.chapters,
-                   let indexPath = collectionView.indexPath(for: item) {
+            if let chapters = book.chapters {
+                if let indexPath = collectionView.indexPath(for: item) {
                     let chapter = chapters[indexPath.item]
                     book.currentPage = chapter.pageIndex
                 } else {
-                    print("unable to update book.currentPage when book.chapters or collectionView.indexPath(for: item) is nil")
+                    print("unable to update book.currentPage: nil collectionView.indexPath(for: item")
                 }
-                senderDelegate.segueToContentView(withBook: book)
             } else {
-                print("unable to segue to Content View without sender delegate")
+                print("unable to update book.currentPage: nil book.chapters")
             }
         } else {
-            print("unable to update currentPage of nil book")
-            print("unable to segue to Content View with nil book")
+            print("unable to update book.currentPage: nil book")
+        }
+        segueToContentView()
+    }
+    
+    func segueToContentView() {
+        if let book = book {
+            if let senderDelegate = senderDelegate {
+                senderDelegate.segueToContentView(withBook: book)
+            } else {
+                print("unable to segue to Content View: nil senderDelegate")
+            }
+        } else {
+            print("unable to segue to Content View: nil book")
         }
     }
 }
@@ -166,7 +175,7 @@ extension DetailViewController : NSCollectionViewDataSource {
     // Return an NSCollectionView item for a given path
     // Is called once for each item in the NSCollectionView
     func collectionView(_ itemForRepresentedObjectAtcollectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-                
+        
         // Instantiate an item from the ChapterViewItem nib
         let item = chapterView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ChapterViewItem"), for: indexPath)
         

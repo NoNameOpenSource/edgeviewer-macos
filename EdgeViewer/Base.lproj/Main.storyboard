@@ -1172,7 +1172,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NN9-2C-Rxb">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NN9-2C-Rxb" customClass="CoverImage" customModule="EdgeViewer" customModuleProvider="target">
                                 <rect key="frame" x="17" y="377" width="137" height="186"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="7NV-S5-p1E"/>
@@ -1299,6 +1299,7 @@
                     <connections>
                         <outlet property="ReadFromBeginningButton" destination="BdN-H7-7Lb" id="TKD-g5-qKw"/>
                         <outlet property="chapterView" destination="48C-KD-Wpa" id="g6A-mg-BLz"/>
+                        <outlet property="coverImage" destination="NN9-2C-Rxb" id="57P-Bi-3vI"/>
                         <outlet property="mangaAuthor" destination="7mB-RJ-UXb" id="ke9-el-Rqx"/>
                         <outlet property="mangaGenre" destination="gIj-sJ-v8P" id="AeV-7C-MUU"/>
                         <outlet property="mangaImage" destination="NN9-2C-Rxb" id="hUC-fN-3VX"/>

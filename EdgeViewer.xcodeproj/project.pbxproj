@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C03FA5320DC8E0D00FB298A /* CoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C03FA5220DC8E0D00FB298A /* CoverImage.swift */; };
 		1C18FAD120C364620073886B /* LocalPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C18FAD020C364620073886B /* LocalPlugin.swift */; };
 		1C1A1CBA20843CD1000074DC /* ChapterViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A1CB820843CD1000074DC /* ChapterViewItem.swift */; };
 		1C1A1CBB20843CD1000074DC /* ChapterViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C1A1CB920843CD1000074DC /* ChapterViewItem.xib */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C03FA5220DC8E0D00FB298A /* CoverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImage.swift; sourceTree = "<group>"; };
 		1C18FAD020C364620073886B /* LocalPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPlugin.swift; sourceTree = "<group>"; };
 		1C1A1CB820843CD1000074DC /* ChapterViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewItem.swift; sourceTree = "<group>"; };
 		1C1A1CB920843CD1000074DC /* ChapterViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChapterViewItem.xib; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				1C7BFFF1207C18FA00B61444 /* DetailViewController.swift */,
+				1C03FA5220DC8E0D00FB298A /* CoverImage.swift */,
 				1C7BFFF5207C282600B61444 /* RatingControl.swift */,
 				1C1A1CB820843CD1000074DC /* ChapterViewItem.swift */,
 				1C1A1CB920843CD1000074DC /* ChapterViewItem.xib */,
@@ -440,6 +443,7 @@
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 				B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */,
 				B1A894502073B612003A67AB /* UserPanelView.swift in Sources */,
+				1C03FA5320DC8E0D00FB298A /* CoverImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

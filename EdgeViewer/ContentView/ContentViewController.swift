@@ -26,8 +26,9 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                 } else if(currentPage >= book.numberOfPages) {
                     currentPage = book.numberOfPages - 1
                 }
-                // update page
-                updatePage()
+                if pageController.arrangedObjects.count >= currentPage {
+                    updatePage()
+                }
             }
         }
     }
@@ -53,19 +54,21 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         pageController.view = pageView
         pageController.delegate = self
         
-        // Setup PageView
         guard let book = book else {
             print("book nil")
             return
         }
-        pageController.arrangedObjects = [NSImage]()
-        var pages = pageController.arrangedObjects as! [NSImage]
+        
+        self.currentPage = book.currentPage
+        
+        // Setup PageView
+        var pages = [NSImage]()
         for i in 0..<book.numberOfPages {
             if let page = book.page(atIndex: i) {
                 pages.append(page)
             }
         }
-        print(pages)
+        pageController.arrangedObjects = pages
         updatePage()
     }
     

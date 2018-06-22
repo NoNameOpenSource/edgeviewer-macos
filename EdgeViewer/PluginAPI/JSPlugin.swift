@@ -28,6 +28,7 @@ class JSPlugin: Plugin {
     
     let name: String
     var version: Double
+    let folder: URL
     
     var homePage: LibraryPage {
         get {
@@ -65,6 +66,7 @@ class JSPlugin: Plugin {
     init(pluginName: String) {
         self.name = pluginName
         self.version = 0.1
+        self.folder = URL(fileURLWithPath: pluginFolder)
         let path = pluginFolder + pluginName
         let contentData = FileManager.default.contents(atPath: path)
         let content = String(data: contentData!, encoding: .utf8)
@@ -74,6 +76,19 @@ class JSPlugin: Plugin {
         context.setObject(request, forKeyedSubscript: "request" as NSCopying & NSObjectProtocol)
         context.evaluateScript(content)
         _ = homePage
+    }
+    
+    init(folder: URL) {
+        self.name = "test"
+        self.version = 0.1
+        self.folder = folder
+        let contentData = FileManager.default.contents(atPath: folder.path + "/plugin.js")
+        let content = String(data: contentData!, encoding: .utf8)
+        let consoleLog = unsafeBitCast(self.consoleLog, to: AnyObject.self)
+        let request = unsafeBitCast(self.request, to: AnyObject.self)
+        context.setObject(consoleLog, forKeyedSubscript: "consoleLog" as NSCopying & NSObjectProtocol)
+        context.setObject(request, forKeyedSubscript: "request" as NSCopying & NSObjectProtocol)
+        context.evaluateScript(content)
     }
     
     func page(fromJavascriptObject object:JSValue) -> LibraryPage? {

@@ -45,6 +45,23 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         segue(toPage: firstPlugin.homePage)
     }
     
+    func loadPlugins() {
+        guard let pluginDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Plugins") else { return }
+        do {
+            let fileManager = FileManager.default
+            let pluginFolders = try fileManager.contentsOfDirectory(at: pluginDirectory, includingPropertiesForKeys: nil, options: [])
+            for (pluginFolder) in pluginFolders {
+                if fileManager.fileExists(atPath: pluginFolder.path + "/plugin.js") {
+                    let plugin = JSPlugin(folder: pluginFolder)
+                }
+            }
+        }
+        catch {
+            print("could not get contents of \(pluginDirectory.absoluteString)")
+            return
+        }
+    }
+    
     func shelf(_: ShelfViewController, selectedItem pageItem: PageItem) {
         switch pageItem.type {
         case .book:

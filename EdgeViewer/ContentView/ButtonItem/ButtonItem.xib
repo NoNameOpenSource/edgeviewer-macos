@@ -17,17 +17,12 @@
             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zov-vJ-Cbf">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zov-vJ-Cbf">
                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="eco-xH-sET"/>
                 </imageView>
             </subviews>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="zov-vJ-Cbf" secondAttribute="bottom" id="D0w-mC-l3N"/>
-                <constraint firstItem="zov-vJ-Cbf" firstAttribute="leading" secondItem="QJB-l8-a1B" secondAttribute="leading" id="bjN-12-FC1"/>
-                <constraint firstItem="zov-vJ-Cbf" firstAttribute="top" secondItem="QJB-l8-a1B" secondAttribute="top" id="ijx-lC-JuQ"/>
-                <constraint firstAttribute="trailing" secondItem="zov-vJ-Cbf" secondAttribute="trailing" id="zPY-Hs-XDh"/>
-            </constraints>
             <point key="canvasLocation" x="-3062" y="81"/>
         </customView>
         <collectionViewItem id="0oH-Ge-K7W" customClass="ButtonItem" customModule="EdgeViewer" customModuleProvider="target"/>

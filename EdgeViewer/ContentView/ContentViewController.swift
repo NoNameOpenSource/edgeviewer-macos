@@ -80,7 +80,11 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     func updatePage() {
         if let book = book {
-            self.pageNumberLabel.stringValue = "\(currentPage + 1) / \(book.numberOfPages)"
+            var displayPage = "Cover"
+            if currentPage != 0 {
+                displayPage = "\(currentPage) / \(book.numberOfPages - 1)"
+            }
+            self.pageNumberLabel.stringValue = displayPage
         }
         NSAnimationContext.runAnimationGroup({ context in
             self.pageController.animator().selectedIndex = currentPage

@@ -53,17 +53,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         pageController.view = pageView
         pageController.delegate = self
         
-        // Dummy Data for testing purpose
-        if let book = book {
-            let testManga = Manga(title: book.title)
-            for i in 0..<book.numberOfPages {
-                if let page = book.page(atIndex: i) {
-                    testManga.addNewPage(image: page)
-                }
-            }
-        } else {
-            setUpDummyData()
-        }
         // Setup PageView
         guard let book = book else {
             print("book nil")
@@ -76,26 +65,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                 pages.append(page)
             }
         }
+        print(pages)
         updatePage()
     }
     
     override func viewDidDisappear() {
         if let book = book {
             book.bookmark = self.currentPage;
-        }
-    }
-    
-    func setUpDummyData() {
-        let testManga = Manga(title: "Pandora Heart")
-        let pages: [NSImage?] = [NSImage(named: NSImage.Name(rawValue: "images")),
-                                 NSImage(named: NSImage.Name(rawValue: "first")),
-                                 NSImage(named: NSImage.Name(rawValue: "Last")),
-                                 NSImage(named: NSImage.Name(rawValue: "download"))]
-        testManga.bookMark = 2
-        for page in pages {
-            if let page = page {
-                testManga.addNewPage(image: page)
-            }
         }
     }
     

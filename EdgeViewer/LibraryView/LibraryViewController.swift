@@ -16,6 +16,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
     
     var listViewController: LibraryListViewController? = nil
     var shelfViewController: ShelfViewController? = nil
+    var plugins: [Plugin] = [Plugin]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +42,9 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
             }
         }
         
-        let firstPlugin = LocalPlugin.sharedInstance
-        segue(toPage: firstPlugin.homePage)
+        plugins.append(LocalPlugin.sharedInstance)
+        loadPlugins()
+        segue(toPage: plugins[0].homePage)
     }
     
     func loadPlugins() {
@@ -53,6 +55,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
             for (pluginFolder) in pluginFolders {
                 if fileManager.fileExists(atPath: pluginFolder.path + "/plugin.js") {
                     let plugin = JSPlugin(folder: pluginFolder)
+                    plugin.append(plugin)
                 }
             }
         }

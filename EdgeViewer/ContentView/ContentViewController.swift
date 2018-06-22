@@ -364,7 +364,8 @@ extension ContentViewController : NSCollectionViewDelegate{
                     }else{
                         let tmp = self.allItem[i.item]
                         if (!(displayedItem.contains(tmp)) || tmp == "ButtonItem"){
-                            self.displayedItem.append(tmp)
+                            self.displayedItem.insert(tmp, at: indexPath.item)
+                            self.userPanel.reloadData()
                         }else {
                             movePassed = false
                         }

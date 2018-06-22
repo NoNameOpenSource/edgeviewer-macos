@@ -11,6 +11,7 @@ import Cocoa
 protocol Plugin {
     var name: String { get }
     var version: Double { get }
+    var homePage: LibraryPage { get }
     
     func page(withIdentifier identifier: Any) -> LibraryPage?
     func book(withIdentifier identifier: Any) -> Book?

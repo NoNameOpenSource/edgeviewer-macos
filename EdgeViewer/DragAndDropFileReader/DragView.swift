@@ -5,7 +5,7 @@ import Compression
 class DropView: NSView {
     
     var filePath: String?
-    let expectedExt = ["zip"]  //file extensions allowed for Drag&Drop (example: "jpg","png","docx", etc..)
+    let expectedExt = ["zip"]
     let expectedExtForImage = ["jpg","png"]
     @objc var isDir : ObjCBool = false
     
@@ -67,7 +67,7 @@ class DropView: NSView {
         
         let sourceFolderName = sourceComponent[sourceComponent.count - 1]
         
-        var desURL : URL = self.getApplicationSupportAppDirectory()!
+        var desURL : URL = LocalPlugin.getApplicationSupportAppDirectory()!
         desURL.appendPathComponent("Books/unKnowAuthor/\(sourceFolderName)")
         let destinationPath : String = desURL.path
         
@@ -129,14 +129,6 @@ class DropView: NSView {
         return "nil"
     }
     
-    fileprivate func getApplicationSupportAppDirectory() -> URL? {
-        let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
-        if paths.count >= 1 {
-            return NSURL(fileURLWithPath: paths[0], isDirectory: true).appendingPathComponent("EdgeViewer")
-        }
-        print("Could not find application support directory.")
-        return nil
-    }
     
     
     fileprivate func extractZip(atPath : String, toPath : String){
@@ -149,19 +141,45 @@ class DropView: NSView {
         var destinationURL = URL(fileURLWithPath: NSTemporaryDirectory() as String)
         destinationURL.appendPathComponent(String(sourceZipName))
         
-        if let data = NSData(contentsOfFile: atPath) {
-            let bytes = data.bytes.assumingMemoryBound(to: UInt8.self)
+        if let data = NSData(contentsOfFile: atPath){
+            let bytes = data.bytes.bindMemory(to: UInt8.self, capacity: data.length)
+            data.bytes.bindMemory(to: UInt8.self , capacity: data.length)
             
             let sourceBuffer: UnsafePointer<UInt8> = UnsafePointer<UInt8>(bytes)
             let sourceBufferSize: Int = data.length
             
             let destinationBuffer: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.allocate(capacity: sourceBufferSize)
-            let destinationBufferSize: Int = sourceBufferSize
+            let destinationBuffer1: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.allocate(capacity: sourceBufferSize)
+            let destinationBuffer2: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.allocate(capacity: sourceBufferSize)
+            let destinationBuffer3: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.allocate(capacity: sourceBufferSize)
+            let destinationBuffer5: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.allocate(capacity: sourceBufferSize)
             
-            if compression_decode_buffer(destinationBuffer, destinationBufferSize, sourceBuffer, sourceBufferSize, nil, COMPRESSION_LZFSE) == 1{
-                let resultData = NSData(bytes: destinationBuffer, length: destinationBufferSize)
-                print(resultData)
-            }
+            
+            let destinationBufferSize: Int = sourceBufferSize
+            print(sourceBuffer)
+            
+            let status = compression_decode_buffer(destinationBuffer, destinationBufferSize, sourceBuffer, sourceBufferSize, nil, COMPRESSION_LZ4)
+            let resultData = NSData(bytesNoCopy: destinationBuffer, length: status)
+            
+            let status1 = compression_decode_buffer(destinationBuffer1, destinationBufferSize, sourceBuffer, sourceBufferSize, nil, COMPRESSION_LZMA)
+            let resultData1 = NSData(bytesNoCopy: destinationBuffer1, length: status1)
+            
+            let status2 = compression_decode_buffer(destinationBuffer2, destinationBufferSize, sourceBuffer, sourceBufferSize, nil, COMPRESSION_ZLIB)
+            let resultData2 = NSData(bytesNoCopy: destinationBuffer2, length: status2)
+            
+            let status3 = compression_decode_buffer(destinationBuffer3, destinationBufferSize, sourceBuffer, sourceBufferSize, nil, COMPRESSION_LZFSE)
+            let resultData3 = NSData(bytesNoCopy: destinationBuffer3, length: status3)
+            
+            let status5 = compression_decode_buffer(destinationBuffer5, destinationBufferSize, sourceBuffer, sourceBufferSize, nil, COMPRESSION_LZ4_RAW)
+            let resultData5 = NSData(bytesNoCopy: destinationBuffer5, length: status5)
+            
+            
+            print(status, status1,status2,status3,status5)
+            print(resultData,resultData1,resultData2,resultData3,resultData5)
+            
+            
+            
+            print(resultData)
             
             do {
                 try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)

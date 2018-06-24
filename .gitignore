@@ -11,6 +11,5 @@ xcuserdata/
 *.bak
 *.d
 *.o
-*.swiftdeps
-*.pcm
+*.swiftdeps:
 *.swiftmodule

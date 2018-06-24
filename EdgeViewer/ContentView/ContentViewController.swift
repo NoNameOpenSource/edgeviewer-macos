@@ -58,12 +58,18 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
 
     
     @IBAction func enableEditMode(_ sender: NSMenuItem) {
-
+        for i in 0..<userPanel.numberOfItems(inSection: 0) {
+            let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
+            button.isEnabled = false
+        }
         editToolBox.isHidden = false
         editPanel.isHidden = false
     }
     @IBAction func DisableEditMode(_ sender: Any) {
-
+        for i in 0..<userPanel.numberOfItems(inSection: 0) {
+            let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
+            button.isEnabled = true
+        }
         editToolBox.isHidden = true
         editPanel.isHidden = true
     }

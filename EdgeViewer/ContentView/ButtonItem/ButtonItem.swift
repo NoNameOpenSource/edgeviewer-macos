@@ -34,6 +34,15 @@ class ButtonItem: NSCollectionViewItem {
         }
     }
     
+    var isEnabled: Bool {
+        get {
+            return button.isEnabled
+        }
+        set(newValue) {
+            button.isEnabled = newValue
+        }
+    }
+    
     var buttonType: ButtonType = .none
     
     override func viewDidLoad() {

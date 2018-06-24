@@ -704,7 +704,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="goBack:" target="IQv-IB-iLA" id="Xws-O4-d4o"/>
+                                            <action selector="goBack:" target="IQv-IB-iLA" id="rve-t3-bIw"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>

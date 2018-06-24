@@ -8,6 +8,13 @@
 
 import Cocoa
 
+enum ButtonType: String {
+    case backward = "Backward"
+    case forward = "Foward"
+    case custom = "Custom"
+    case none = "None"
+}
+
 class ButtonItem: NSCollectionViewItem {
     
     @IBOutlet weak var button: NSButton!
@@ -18,7 +25,16 @@ class ButtonItem: NSCollectionViewItem {
         }
     }
     
+    var image: NSImage? {
+        get {
+            return button.image
+        }
+        set(newValue) {
+            button.image = newValue
+        }
+    }
     
+    var buttonType: ButtonType = .none
     
     override func viewDidLoad() {
         super.viewDidLoad()

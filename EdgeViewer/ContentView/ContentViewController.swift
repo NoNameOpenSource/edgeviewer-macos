@@ -17,7 +17,7 @@ enum ViewType {
 class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
-    var displayedItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton"]
+    var displayedItem: [ButtonType] = [.forward, .backward]
     var allItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton","ButtonItem"]
     
     
@@ -87,7 +87,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         userPanel.backgroundColors = [NSColor.gray]
         configureCollectionView()
         configureCollectionView()
-        userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
+        userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar")])
         editPanel.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
         updatePage()
     }
@@ -272,7 +272,29 @@ extension ContentViewController: NSCollectionViewDataSource{
         var item : NSCollectionViewItem
         switch collectionView {
         case userPanel:
-            item = userPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: displayedItem[indexPath.item]), for: indexPath)
+            var item = userPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ButtonItem"), for: indexPath) as! ButtonItem
+            item.buttonType = displayedItem[indexPath.item]
+            switch(displayedItem[indexPath.item]) {
+                case .backward:
+                    if #available(OSX 10.12, *) {
+                        item.image = NSImage(named: .goForwardTemplate)
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                    item.button.target = self
+                    item.button.action = #selector(pageBack)
+                case .forward:
+                    if #available(OSX 10.12, *) {
+                        item.image = NSImage(named: .goBackTemplate)
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                    item.button.target = self
+                    item.button.action = #selector(pageForward)
+                default:
+                    break
+            }
+            return item
             break
         case editPanel:
             item = editPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: allItem[indexPath.item]), for: indexPath)
@@ -338,7 +360,7 @@ extension ContentViewController : NSCollectionViewDelegate{
         case editPanel:
             pb.setString(allItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
         case userPanel:
-            pb.setString(displayedItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
+            pb.setString(displayedItem[indexPath.item].rawValue, forType: NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar"))
         default:
             break
         }
@@ -362,13 +384,7 @@ extension ContentViewController : NSCollectionViewDelegate{
                         self.displayedItem.insert(tmp, at:
                             (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
                     }else{
-                        let tmp = self.allItem[i.item]
-                        if (!(displayedItem.contains(tmp)) || tmp == "ButtonItem"){
-                            self.displayedItem.insert(tmp, at: indexPath.item)
-                            self.userPanel.reloadData()
-                        }else {
-                            movePassed = false
-                        }
+                        // ignore any external source
                     }
                 }
             }) { (finished) in

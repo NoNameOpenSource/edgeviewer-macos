@@ -17,6 +17,7 @@ class ProjectWindow: NSWindow {
     }
 //    Action when button pressed
     @IBAction func goBack(_ sender: AnyObject?) {
-    print("Back")
+        guard let libraryViewController = self.contentViewController as? LibraryViewController else { return }
+        libraryViewController.navig()
     }
 }

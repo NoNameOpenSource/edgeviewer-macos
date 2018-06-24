@@ -17,6 +17,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
     var listViewController: LibraryListViewController? = nil
     var shelfViewController: ShelfViewController? = nil
     var plugins: [Plugin] = [Plugin]()
+    var navigation: [Any] = Array()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +90,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
         shelfViewController = newShelf
+        navigation.append(page)
     }
     
     func segueToDetailView(withBook book: Book) {
@@ -105,6 +107,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         detailViewController.book = book;
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
+        navigation.append(book)
     }
     
     func segueToContentView(withBook book: Book) {
@@ -120,5 +123,19 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         contentViewController.book = book;
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
+    }
+    
+    // return to previous view deleting the last element in array
+    func navig () {
+        switch(navigation.popLast()) {
+        case let book as Book:
+            segueToDetailView(withBook: book)
+            navigation.removeLast()
+        case let page as LibraryPage:
+            segue(toPage: page)
+            navigation.removeLast()
+        default:
+            break
+        }
     }
 }

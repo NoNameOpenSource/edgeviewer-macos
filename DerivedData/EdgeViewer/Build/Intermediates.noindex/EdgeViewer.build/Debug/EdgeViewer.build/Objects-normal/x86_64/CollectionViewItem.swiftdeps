@@ -1,0 +1,374 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "CollectionViewItem"
+provides-nominal:
+- "10EdgeViewer18CollectionViewItemC"
+provides-member:
+- ["10EdgeViewer18CollectionViewItemC", ""]
+provides-dynamic-lookup:
+- "isSelected"
+- "mouseDown"
+- "viewDidLoad"
+depends-top-level:
+- !private "=="
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "CastingPrecedence"
+- "CollectionViewItem"
+- "NSCollectionViewItem"
+- "NSEvent"
+- !private "ShelfViewController"
+- "TernaryPrecedence"
+- !private "_ColorLiteralType"
+depends-member:
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["So7CALayerC", "backgroundColor"]
+- !private ["So7CALayerC", "borderColor"]
+- !private ["So7CALayerC", "borderWidth"]
+- !private ["So13CAMediaTimingP", "backgroundColor"]
+- !private ["So13CAMediaTimingP", "borderColor"]
+- !private ["So13CAMediaTimingP", "borderWidth"]
+- ["s7CVarArgP", ""]
+- !private ["s7CVarArgP", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "backgroundColor"]
+- !private ["s7CVarArgP", "borderColor"]
+- !private ["s7CVarArgP", "borderWidth"]
+- !private ["s7CVarArgP", "clickCount"]
+- !private ["s7CVarArgP", "collectionView"]
+- !private ["s7CVarArgP", "delegate"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "isSelected"]
+- !private ["s7CVarArgP", "layer"]
+- !private ["s7CVarArgP", "mouseDown"]
+- !private ["s7CVarArgP", "view"]
+- !private ["s7CVarArgP", "viewDidLoad"]
+- !private ["s7CVarArgP", "wantsLayer"]
+- ["10EdgeViewer18CollectionViewItemC", "Bool"]
+- ["10EdgeViewer18CollectionViewItemC", "NSEvent"]
+- !private ["10EdgeViewer18CollectionViewItemC", "ShelfViewController"]
+- !private ["10EdgeViewer18CollectionViewItemC", "collectionView"]
+- ["10EdgeViewer18CollectionViewItemC", "deinit"]
+- ["10EdgeViewer18CollectionViewItemC", "init"]
+- ["10EdgeViewer18CollectionViewItemC", "isSelected"]
+- ["10EdgeViewer18CollectionViewItemC", "mouseDown"]
+- !private ["10EdgeViewer18CollectionViewItemC", "view"]
+- ["10EdgeViewer18CollectionViewItemC", "viewDidLoad"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "backgroundColor"]
+- !private ["s28CustomDebugStringConvertibleP", "borderColor"]
+- !private ["s28CustomDebugStringConvertibleP", "borderWidth"]
+- !private ["s28CustomDebugStringConvertibleP", "clickCount"]
+- !private ["s28CustomDebugStringConvertibleP", "collectionView"]
+- !private ["s28CustomDebugStringConvertibleP", "delegate"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "isSelected"]
+- !private ["s28CustomDebugStringConvertibleP", "layer"]
+- !private ["s28CustomDebugStringConvertibleP", "mouseDown"]
+- !private ["s28CustomDebugStringConvertibleP", "view"]
+- !private ["s28CustomDebugStringConvertibleP", "viewDidLoad"]
+- !private ["s28CustomDebugStringConvertibleP", "wantsLayer"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "backgroundColor"]
+- !private ["s23CustomStringConvertibleP", "borderColor"]
+- !private ["s23CustomStringConvertibleP", "borderWidth"]
+- !private ["s23CustomStringConvertibleP", "clickCount"]
+- !private ["s23CustomStringConvertibleP", "collectionView"]
+- !private ["s23CustomStringConvertibleP", "delegate"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "isSelected"]
+- !private ["s23CustomStringConvertibleP", "layer"]
+- !private ["s23CustomStringConvertibleP", "mouseDown"]
+- !private ["s23CustomStringConvertibleP", "view"]
+- !private ["s23CustomStringConvertibleP", "viewDidLoad"]
+- !private ["s23CustomStringConvertibleP", "wantsLayer"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- ["s9EquatableP", ""]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "backgroundColor"]
+- !private ["s9EquatableP", "borderColor"]
+- !private ["s9EquatableP", "borderWidth"]
+- !private ["s9EquatableP", "clickCount"]
+- !private ["s9EquatableP", "collectionView"]
+- !private ["s9EquatableP", "delegate"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "isSelected"]
+- !private ["s9EquatableP", "layer"]
+- !private ["s9EquatableP", "mouseDown"]
+- !private ["s9EquatableP", "view"]
+- !private ["s9EquatableP", "viewDidLoad"]
+- !private ["s9EquatableP", "wantsLayer"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- ["s8HashableP", ""]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "backgroundColor"]
+- !private ["s8HashableP", "borderColor"]
+- !private ["s8HashableP", "borderWidth"]
+- !private ["s8HashableP", "clickCount"]
+- !private ["s8HashableP", "collectionView"]
+- !private ["s8HashableP", "delegate"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "isSelected"]
+- !private ["s8HashableP", "layer"]
+- !private ["s8HashableP", "mouseDown"]
+- !private ["s8HashableP", "view"]
+- !private ["s8HashableP", "viewDidLoad"]
+- !private ["s8HashableP", "wantsLayer"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["So15NSAccessibilityP", "delegate"]
+- !private ["So15NSAccessibilityP", "layer"]
+- !private ["So15NSAccessibilityP", "wantsLayer"]
+- !private ["So30NSAccessibilityElementProtocolP", "delegate"]
+- !private ["So30NSAccessibilityElementProtocolP", "layer"]
+- !private ["So30NSAccessibilityElementProtocolP", "wantsLayer"]
+- !private ["So29NSAnimatablePropertyContainerP", "delegate"]
+- !private ["So29NSAnimatablePropertyContainerP", "layer"]
+- !private ["So29NSAnimatablePropertyContainerP", "wantsLayer"]
+- !private ["So25NSAppearanceCustomizationP", "delegate"]
+- !private ["So25NSAppearanceCustomizationP", "layer"]
+- !private ["So25NSAppearanceCustomizationP", "wantsLayer"]
+- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", "backgroundColor"]
+- !private ["So8NSCodingP", "borderColor"]
+- !private ["So8NSCodingP", "borderWidth"]
+- !private ["So8NSCodingP", "clickCount"]
+- !private ["So8NSCodingP", "collectionView"]
+- !private ["So8NSCodingP", "delegate"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "isSelected"]
+- !private ["So8NSCodingP", "layer"]
+- !private ["So8NSCodingP", "mouseDown"]
+- !private ["So8NSCodingP", "view"]
+- !private ["So8NSCodingP", "viewDidLoad"]
+- !private ["So8NSCodingP", "wantsLayer"]
+- !private ["So16NSCollectionViewC", "delegate"]
+- !private ["So26NSCollectionViewDataSourceP", "collectionView"]
+- !private ["So24NSCollectionViewDelegateP", "collectionView"]
+- !private ["So34NSCollectionViewDelegateFlowLayoutP", "collectionView"]
+- ["So23NSCollectionViewElementP", ""]
+- !private ["So23NSCollectionViewElementP", "collectionView"]
+- !private ["So23NSCollectionViewElementP", "init"]
+- !private ["So23NSCollectionViewElementP", "isSelected"]
+- !private ["So23NSCollectionViewElementP", "mouseDown"]
+- !private ["So23NSCollectionViewElementP", "view"]
+- !private ["So23NSCollectionViewElementP", "viewDidLoad"]
+- ["So20NSCollectionViewItemC", "Bool"]
+- ["So20NSCollectionViewItemC", "NSEvent"]
+- !private ["So20NSCollectionViewItemC", "ShelfViewController"]
+- ["So20NSCollectionViewItemC", ""]
+- !private ["So20NSCollectionViewItemC", "collectionView"]
+- ["So20NSCollectionViewItemC", "init"]
+- ["So20NSCollectionViewItemC", "isSelected"]
+- ["So20NSCollectionViewItemC", "mouseDown"]
+- !private ["So20NSCollectionViewItemC", "view"]
+- ["So20NSCollectionViewItemC", "viewDidLoad"]
+- ["So9NSCopyingP", ""]
+- !private ["So9NSCopyingP", "clickCount"]
+- !private ["So9NSCopyingP", "collectionView"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So9NSCopyingP", "isSelected"]
+- !private ["So9NSCopyingP", "mouseDown"]
+- !private ["So9NSCopyingP", "view"]
+- !private ["So9NSCopyingP", "viewDidLoad"]
+- !private ["So21NSDraggingDestinationP", "delegate"]
+- !private ["So21NSDraggingDestinationP", "layer"]
+- !private ["So21NSDraggingDestinationP", "wantsLayer"]
+- !private ["So16NSDraggingSourceP", "delegate"]
+- !private ["So7NSEventC", "clickCount"]
+- ["So26NSExtensionRequestHandlingP", ""]
+- !private ["So26NSExtensionRequestHandlingP", "collectionView"]
+- !private ["So26NSExtensionRequestHandlingP", "init"]
+- !private ["So26NSExtensionRequestHandlingP", "isSelected"]
+- !private ["So26NSExtensionRequestHandlingP", "mouseDown"]
+- !private ["So26NSExtensionRequestHandlingP", "view"]
+- !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
+- ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "NSEvent"]
+- !private ["So8NSObjectC", "ShelfViewController"]
+- !private ["So8NSObjectC", "backgroundColor"]
+- !private ["So8NSObjectC", "borderColor"]
+- !private ["So8NSObjectC", "borderWidth"]
+- !private ["So8NSObjectC", "clickCount"]
+- !private ["So8NSObjectC", "collectionView"]
+- !private ["So8NSObjectC", "delegate"]
+- ["So8NSObjectC", "init"]
+- ["So8NSObjectC", "isSelected"]
+- !private ["So8NSObjectC", "layer"]
+- ["So8NSObjectC", "mouseDown"]
+- !private ["So8NSObjectC", "view"]
+- ["So8NSObjectC", "viewDidLoad"]
+- !private ["So8NSObjectC", "wantsLayer"]
+- ["So16NSObjectProtocolP", ""]
+- !private ["So16NSObjectProtocolP", "backgroundColor"]
+- !private ["So16NSObjectProtocolP", "borderColor"]
+- !private ["So16NSObjectProtocolP", "borderWidth"]
+- !private ["So16NSObjectProtocolP", "clickCount"]
+- !private ["So16NSObjectProtocolP", "collectionView"]
+- !private ["So16NSObjectProtocolP", "delegate"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "isSelected"]
+- !private ["So16NSObjectProtocolP", "layer"]
+- !private ["So16NSObjectProtocolP", "mouseDown"]
+- !private ["So16NSObjectProtocolP", "view"]
+- !private ["So16NSObjectProtocolP", "viewDidLoad"]
+- !private ["So16NSObjectProtocolP", "wantsLayer"]
+- ["So11NSResponderC", "Bool"]
+- ["So11NSResponderC", "NSEvent"]
+- !private ["So11NSResponderC", "ShelfViewController"]
+- !private ["So11NSResponderC", "collectionView"]
+- !private ["So11NSResponderC", "delegate"]
+- ["So11NSResponderC", "init"]
+- ["So11NSResponderC", "isSelected"]
+- !private ["So11NSResponderC", "layer"]
+- ["So11NSResponderC", "mouseDown"]
+- !private ["So11NSResponderC", "view"]
+- ["So11NSResponderC", "viewDidLoad"]
+- !private ["So11NSResponderC", "wantsLayer"]
+- !private ["So14NSSecureCodingP", "backgroundColor"]
+- !private ["So14NSSecureCodingP", "borderColor"]
+- !private ["So14NSSecureCodingP", "borderWidth"]
+- ["So17NSSeguePerformingP", ""]
+- !private ["So17NSSeguePerformingP", "collectionView"]
+- !private ["So17NSSeguePerformingP", "init"]
+- !private ["So17NSSeguePerformingP", "isSelected"]
+- !private ["So17NSSeguePerformingP", "mouseDown"]
+- !private ["So17NSSeguePerformingP", "view"]
+- !private ["So17NSSeguePerformingP", "viewDidLoad"]
+- ["So18NSTouchBarProviderP", ""]
+- !private ["So18NSTouchBarProviderP", "collectionView"]
+- !private ["So18NSTouchBarProviderP", "delegate"]
+- !private ["So18NSTouchBarProviderP", "init"]
+- !private ["So18NSTouchBarProviderP", "isSelected"]
+- !private ["So18NSTouchBarProviderP", "layer"]
+- !private ["So18NSTouchBarProviderP", "mouseDown"]
+- !private ["So18NSTouchBarProviderP", "view"]
+- !private ["So18NSTouchBarProviderP", "viewDidLoad"]
+- !private ["So18NSTouchBarProviderP", "wantsLayer"]
+- ["So33NSUserInterfaceItemIdentificationP", ""]
+- !private ["So33NSUserInterfaceItemIdentificationP", "collectionView"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "delegate"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "init"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "isSelected"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "layer"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "mouseDown"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "view"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "viewDidLoad"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "wantsLayer"]
+- !private ["So6NSViewC", "delegate"]
+- !private ["So6NSViewC", "layer"]
+- !private ["So6NSViewC", "wantsLayer"]
+- ["So16NSViewControllerC", "Bool"]
+- ["So16NSViewControllerC", "NSEvent"]
+- !private ["So16NSViewControllerC", "ShelfViewController"]
+- !private ["So16NSViewControllerC", "collectionView"]
+- ["So16NSViewControllerC", "init"]
+- ["So16NSViewControllerC", "isSelected"]
+- ["So16NSViewControllerC", "mouseDown"]
+- !private ["So16NSViewControllerC", "view"]
+- ["So16NSViewControllerC", "viewDidLoad"]
+- !private ["10EdgeViewer19ShelfViewControllerC", "collectionView"]
+- !private ["10EdgeViewer19ShelfViewControllerC", "deinit"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "delegate"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "layer"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "wantsLayer"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "backgroundColor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "borderColor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "borderWidth"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "clickCount"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "collectionView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "delegate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "isSelected"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "layer"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "mouseDown"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "view"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "viewDidLoad"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "wantsLayer"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+depends-nominal:
+- !private "Sb"
+- !private "So7CALayerC"
+- !private "So13CAMediaTimingP"
+- "s7CVarArgP"
+- "10EdgeViewer18CollectionViewItemC"
+- "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "So15NSAccessibilityP"
+- !private "So30NSAccessibilityElementProtocolP"
+- !private "So29NSAnimatablePropertyContainerP"
+- !private "So25NSAppearanceCustomizationP"
+- "So8NSCodingP"
+- !private "So16NSCollectionViewC"
+- !private "So26NSCollectionViewDataSourceP"
+- !private "So24NSCollectionViewDelegateP"
+- !private "So34NSCollectionViewDelegateFlowLayoutP"
+- "So23NSCollectionViewElementP"
+- "So20NSCollectionViewItemC"
+- "So9NSCopyingP"
+- !private "So21NSDraggingDestinationP"
+- !private "So16NSDraggingSourceP"
+- !private "So7NSEventC"
+- "So26NSExtensionRequestHandlingP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- "So11NSResponderC"
+- !private "So14NSSecureCodingP"
+- "So17NSSeguePerformingP"
+- "So18NSTouchBarProviderP"
+- "So33NSUserInterfaceItemIdentificationP"
+- !private "So6NSViewC"
+- "So16NSViewControllerC"
+- !private "10EdgeViewer19ShelfViewControllerC"
+- !private "s37_DefaultCustomPlaygroundQuickLookableP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/AppKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Headers/Zip.h"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/xpc/XPC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "629f372e3d4275faedb72fe5f5677dce"

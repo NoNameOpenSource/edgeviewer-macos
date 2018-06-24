@@ -1,0 +1,419 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "LocalPluginXMLStorer"
+provides-nominal:
+- "10EdgeViewer20LocalPluginXMLStorerC"
+provides-member:
+- ["10EdgeViewer20LocalPluginXMLStorerC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- !private "Array"
+- "AssignmentPrecedence"
+- "Book"
+- !private "BooleanLiteralType"
+- "CastingPrecedence"
+- "Data"
+- !private "DateFormatter"
+- !private "Double"
+- !private "FileManager"
+- !private "Int"
+- !private "LocalPlugin"
+- "LocalPluginXMLStorer"
+- !private "Locale"
+- "String"
+- !private "StringLiteralType"
+- !private "TimeZone"
+- !private "URL"
+- !private "XMLDocument"
+- !private "XMLElement"
+- "XMLNode"
+- !private "print"
+depends-member:
+- !private ["Sa", "append"]
+- !private ["Sa", "init"]
+- !private ["s23BidirectionalCollectionP", "append"]
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s23BidirectionalCollectionP", "write"]
+- !private ["10EdgeViewer4BookC", "author"]
+- !private ["10EdgeViewer4BookC", "bookmark"]
+- !private ["10EdgeViewer4BookC", "chapters"]
+- !private ["10EdgeViewer4BookC", "currentPage"]
+- !private ["10EdgeViewer4BookC", "genre"]
+- !private ["10EdgeViewer4BookC", "identifier"]
+- !private ["10EdgeViewer4BookC", "lastUpdated"]
+- !private ["10EdgeViewer4BookC", "numberOfPages"]
+- !private ["10EdgeViewer4BookC", "rating"]
+- !private ["10EdgeViewer4BookC", "series"]
+- !private ["10EdgeViewer4BookC", "seriesName"]
+- !private ["10EdgeViewer4BookC", "title"]
+- !private ["10EdgeViewer4BookC", "type"]
+- ["10EdgeViewer8BookTypeO", "comic"]
+- ["10EdgeViewer8BookTypeO", "manga"]
+- ["10EdgeViewer8BookTypeO", "webManga"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "addChild"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "createDirectory"]
+- !private ["s7CVarArgP", "dateFormat"]
+- !private ["s7CVarArgP", "default"]
+- !private ["s7CVarArgP", "element"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "locale"]
+- !private ["s7CVarArgP", "rootElement"]
+- !private ["s7CVarArgP", "string"]
+- !private ["s7CVarArgP", "timeZone"]
+- !private ["s7CVarArgP", "version"]
+- !private ["s7CVarArgP", "xmlData"]
+- !private ["10EdgeViewer7ChapterC", "pageIndex"]
+- !private ["10EdgeViewer7ChapterC", "title"]
+- !private ["s10CollectionP", "append"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10CollectionP", "write"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "addChild"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "appendingPathComponent"]
+- !private ["s28CustomDebugStringConvertibleP", "createDirectory"]
+- !private ["s28CustomDebugStringConvertibleP", "dateFormat"]
+- !private ["s28CustomDebugStringConvertibleP", "default"]
+- !private ["s28CustomDebugStringConvertibleP", "element"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "locale"]
+- !private ["s28CustomDebugStringConvertibleP", "rootElement"]
+- !private ["s28CustomDebugStringConvertibleP", "string"]
+- !private ["s28CustomDebugStringConvertibleP", "timeZone"]
+- !private ["s28CustomDebugStringConvertibleP", "version"]
+- !private ["s28CustomDebugStringConvertibleP", "write"]
+- !private ["s28CustomDebugStringConvertibleP", "xmlData"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "appendingPathComponent"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "write"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "addChild"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "appendingPathComponent"]
+- !private ["s23CustomStringConvertibleP", "createDirectory"]
+- !private ["s23CustomStringConvertibleP", "dateFormat"]
+- !private ["s23CustomStringConvertibleP", "default"]
+- !private ["s23CustomStringConvertibleP", "element"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "locale"]
+- !private ["s23CustomStringConvertibleP", "rootElement"]
+- !private ["s23CustomStringConvertibleP", "string"]
+- !private ["s23CustomStringConvertibleP", "timeZone"]
+- !private ["s23CustomStringConvertibleP", "version"]
+- !private ["s23CustomStringConvertibleP", "write"]
+- !private ["s23CustomStringConvertibleP", "xmlData"]
+- !private ["10Foundation4DataV", "write"]
+- !private ["So13DateFormatterC", "dateFormat"]
+- !private ["So13DateFormatterC", "init"]
+- !private ["So13DateFormatterC", "locale"]
+- !private ["So13DateFormatterC", "string"]
+- !private ["So13DateFormatterC", "timeZone"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "append"]
+- !private ["s9DecodableP", "appendingPathComponent"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "write"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "append"]
+- !private ["s9EncodableP", "appendingPathComponent"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "write"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "addChild"]
+- !private ["s9EquatableP", "append"]
+- !private ["s9EquatableP", "appendingPathComponent"]
+- ["s9EquatableP", "comic"]
+- !private ["s9EquatableP", "createDirectory"]
+- !private ["s9EquatableP", "dateFormat"]
+- !private ["s9EquatableP", "default"]
+- !private ["s9EquatableP", "element"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "locale"]
+- ["s9EquatableP", "manga"]
+- !private ["s9EquatableP", "nodeCompactEmptyElement"]
+- !private ["s9EquatableP", "nodePrettyPrint"]
+- !private ["s9EquatableP", "rootElement"]
+- !private ["s9EquatableP", "string"]
+- !private ["s9EquatableP", "timeZone"]
+- !private ["s9EquatableP", "version"]
+- ["s9EquatableP", "webManga"]
+- !private ["s9EquatableP", "write"]
+- !private ["s9EquatableP", "xmlData"]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "nodeCompactEmptyElement"]
+- !private ["s25ExpressibleByArrayLiteralP", "nodePrettyPrint"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["So11FileManagerC", "createDirectory"]
+- !private ["So11FileManagerC", "default"]
+- !private ["So9FormatterC", "dateFormat"]
+- !private ["So9FormatterC", "init"]
+- !private ["So9FormatterC", "locale"]
+- !private ["So9FormatterC", "string"]
+- !private ["So9FormatterC", "timeZone"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "addChild"]
+- !private ["s8HashableP", "appendingPathComponent"]
+- ["s8HashableP", "comic"]
+- !private ["s8HashableP", "createDirectory"]
+- !private ["s8HashableP", "dateFormat"]
+- !private ["s8HashableP", "default"]
+- !private ["s8HashableP", "element"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "locale"]
+- ["s8HashableP", "manga"]
+- !private ["s8HashableP", "rootElement"]
+- !private ["s8HashableP", "string"]
+- !private ["s8HashableP", "timeZone"]
+- !private ["s8HashableP", "version"]
+- ["s8HashableP", "webManga"]
+- !private ["s8HashableP", "write"]
+- !private ["s8HashableP", "xmlData"]
+- !private ["10EdgeViewer11LocalPluginC", "getBookDirectory"]
+- ["10EdgeViewer20LocalPluginXMLStorerC", "Book"]
+- ["10EdgeViewer20LocalPluginXMLStorerC", "Data"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "DateFormatter"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "Double"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "FileManager"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "Int"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "LocalPlugin"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "Locale"]
+- ["10EdgeViewer20LocalPluginXMLStorerC", "String"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "TimeZone"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "URL"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "XMLDocument"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "XMLElement"]
+- ["10EdgeViewer20LocalPluginXMLStorerC", "XMLNode"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "createXMLDocumentData"]
+- ["10EdgeViewer20LocalPluginXMLStorerC", "deinit"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "init"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "print"]
+- !private ["10EdgeViewer20LocalPluginXMLStorerC", "safeElement"]
+- ["10EdgeViewer20LocalPluginXMLStorerC", "storeBookData"]
+- !private ["10Foundation6LocaleV", "init"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["s17MutableCollectionP", "append"]
+- !private ["s17MutableCollectionP", "init"]
+- !private ["s17MutableCollectionP", "write"]
+- !private ["So8NSCodingP", "dateFormat"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "locale"]
+- !private ["So8NSCodingP", "string"]
+- !private ["So8NSCodingP", "timeZone"]
+- !private ["So9NSCopyingP", "addChild"]
+- !private ["So9NSCopyingP", "dateFormat"]
+- !private ["So9NSCopyingP", "element"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So9NSCopyingP", "locale"]
+- !private ["So9NSCopyingP", "rootElement"]
+- !private ["So9NSCopyingP", "string"]
+- !private ["So9NSCopyingP", "timeZone"]
+- !private ["So9NSCopyingP", "version"]
+- !private ["So9NSCopyingP", "xmlData"]
+- !private ["So8NSObjectC", "addChild"]
+- !private ["So8NSObjectC", "createDirectory"]
+- !private ["So8NSObjectC", "dateFormat"]
+- !private ["So8NSObjectC", "default"]
+- !private ["So8NSObjectC", "element"]
+- !private ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "locale"]
+- !private ["So8NSObjectC", "rootElement"]
+- !private ["So8NSObjectC", "string"]
+- !private ["So8NSObjectC", "timeZone"]
+- !private ["So8NSObjectC", "version"]
+- !private ["So8NSObjectC", "xmlData"]
+- !private ["So16NSObjectProtocolP", "addChild"]
+- !private ["So16NSObjectProtocolP", "createDirectory"]
+- !private ["So16NSObjectProtocolP", "dateFormat"]
+- !private ["So16NSObjectProtocolP", "default"]
+- !private ["So16NSObjectProtocolP", "element"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "locale"]
+- !private ["So16NSObjectProtocolP", "rootElement"]
+- !private ["So16NSObjectProtocolP", "string"]
+- !private ["So16NSObjectProtocolP", "timeZone"]
+- !private ["So16NSObjectProtocolP", "version"]
+- !private ["So16NSObjectProtocolP", "xmlData"]
+- !private ["s9OptionSetP", "nodeCompactEmptyElement"]
+- !private ["s9OptionSetP", "nodePrettyPrint"]
+- !private ["So7XMLNodeC7OptionsV", "nodeCompactEmptyElement"]
+- !private ["So7XMLNodeC7OptionsV", "nodePrettyPrint"]
+- !private ["10EdgeViewer6PluginP", "getBookDirectory"]
+- !private ["s22RandomAccessCollectionP", "append"]
+- !private ["s22RandomAccessCollectionP", "init"]
+- !private ["s22RandomAccessCollectionP", "write"]
+- !private ["s26RangeReplaceableCollectionP", "append"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s26RangeReplaceableCollectionP", "write"]
+- !private ["s16RawRepresentableP", "nodeCompactEmptyElement"]
+- !private ["s16RawRepresentableP", "nodePrettyPrint"]
+- !private ["10Foundation20ReferenceConvertibleP", "appendingPathComponent"]
+- !private ["10Foundation20ReferenceConvertibleP", "init"]
+- !private ["10Foundation20ReferenceConvertibleP", "write"]
+- !private ["s8SequenceP", "append"]
+- !private ["s8SequenceP", "init"]
+- !private ["s8SequenceP", "write"]
+- !private ["s10SetAlgebraP", "nodeCompactEmptyElement"]
+- !private ["s10SetAlgebraP", "nodePrettyPrint"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["10Foundation8TimeZoneV", "init"]
+- !private ["10Foundation3URLV", "appendingPathComponent"]
+- !private ["So11XMLDocumentC", "init"]
+- !private ["So11XMLDocumentC", "rootElement"]
+- !private ["So11XMLDocumentC", "version"]
+- !private ["So11XMLDocumentC", "xmlData"]
+- !private ["So10XMLElementC", "addChild"]
+- !private ["So10XMLElementC", "init"]
+- !private ["So7XMLNodeC", "addChild"]
+- !private ["So7XMLNodeC", "element"]
+- !private ["So7XMLNodeC", "init"]
+- !private ["So7XMLNodeC", "rootElement"]
+- !private ["So7XMLNodeC", "version"]
+- !private ["So7XMLNodeC", "xmlData"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s14_ArrayProtocolP", "init"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s24_DestructorSafeContainerP", "init"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "appendingPathComponent"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "addChild"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "createDirectory"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dateFormat"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "default"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "element"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "locale"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "rootElement"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "string"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "timeZone"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "version"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "xmlData"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "appendingPathComponent"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "write"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "Sa"
+- !private "s23BidirectionalCollectionP"
+- !private "10EdgeViewer4BookC"
+- "10EdgeViewer8BookTypeO"
+- !private "Sb"
+- !private "s7CVarArgP"
+- !private "10EdgeViewer7ChapterC"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "10Foundation4DataV"
+- !private "So13DateFormatterC"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "So11FileManagerC"
+- !private "So9FormatterC"
+- "s8HashableP"
+- !private "10EdgeViewer11LocalPluginC"
+- "10EdgeViewer20LocalPluginXMLStorerC"
+- !private "10Foundation6LocaleV"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "s17MutableCollectionP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
+- !private "s9OptionSetP"
+- !private "So7XMLNodeC7OptionsV"
+- !private "10EdgeViewer6PluginP"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s16RawRepresentableP"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "s8SequenceP"
+- !private "s10SetAlgebraP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "10Foundation8TimeZoneV"
+- !private "10Foundation3URLV"
+- !private "So11XMLDocumentC"
+- !private "So10XMLElementC"
+- !private "So7XMLNodeC"
+- !private "s14_ArrayProtocolP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s34_ExpressibleByFileReferenceLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/AppKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Headers/Zip.h"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/xpc/XPC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "9fe1cdd4803432eeeb5b021a6b65c3d4"

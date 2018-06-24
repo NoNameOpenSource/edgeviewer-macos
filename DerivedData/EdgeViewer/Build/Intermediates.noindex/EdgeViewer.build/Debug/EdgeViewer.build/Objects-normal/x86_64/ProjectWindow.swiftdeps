@@ -1,0 +1,260 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ProjectWindow"
+provides-nominal:
+- "10EdgeViewer13ProjectWindowC"
+provides-member:
+- ["10EdgeViewer13ProjectWindowC", ""]
+provides-dynamic-lookup:
+- "goBack"
+depends-top-level:
+- "AnyObject"
+- "AssignmentPrecedence"
+- "Bool"
+- "NSRect"
+- "NSWindow"
+- "ProjectWindow"
+- !private "StringLiteralType"
+- !private "print"
+depends-member:
+- !private ["s23BidirectionalCollectionP", "init"]
+- ["s7CVarArgP", "BackingStoreType"]
+- ["s7CVarArgP", "StyleMask"]
+- ["s7CVarArgP", ""]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "titleVisibility"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "init"]
+- ["s28CustomDebugStringConvertibleP", "BackingStoreType"]
+- ["s28CustomDebugStringConvertibleP", "StyleMask"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "titleVisibility"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "init"]
+- ["s23CustomStringConvertibleP", "BackingStoreType"]
+- ["s23CustomStringConvertibleP", "StyleMask"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "titleVisibility"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "init"]
+- ["s9EquatableP", "BackingStoreType"]
+- ["s9EquatableP", "StyleMask"]
+- ["s9EquatableP", ""]
+- !private ["s9EquatableP", "hidden"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "print"]
+- !private ["s9EquatableP", "titleVisibility"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- ["s8HashableP", "BackingStoreType"]
+- ["s8HashableP", "StyleMask"]
+- ["s8HashableP", ""]
+- !private ["s8HashableP", "hidden"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "print"]
+- !private ["s8HashableP", "titleVisibility"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- ["So15NSAccessibilityP", "BackingStoreType"]
+- ["So15NSAccessibilityP", "StyleMask"]
+- ["So15NSAccessibilityP", ""]
+- !private ["So15NSAccessibilityP", "init"]
+- !private ["So15NSAccessibilityP", "print"]
+- !private ["So15NSAccessibilityP", "titleVisibility"]
+- ["So30NSAccessibilityElementProtocolP", "BackingStoreType"]
+- ["So30NSAccessibilityElementProtocolP", "StyleMask"]
+- ["So30NSAccessibilityElementProtocolP", ""]
+- !private ["So30NSAccessibilityElementProtocolP", "init"]
+- !private ["So30NSAccessibilityElementProtocolP", "print"]
+- !private ["So30NSAccessibilityElementProtocolP", "titleVisibility"]
+- ["So29NSAnimatablePropertyContainerP", "BackingStoreType"]
+- ["So29NSAnimatablePropertyContainerP", "StyleMask"]
+- ["So29NSAnimatablePropertyContainerP", ""]
+- !private ["So29NSAnimatablePropertyContainerP", "init"]
+- !private ["So29NSAnimatablePropertyContainerP", "print"]
+- !private ["So29NSAnimatablePropertyContainerP", "titleVisibility"]
+- ["So25NSAppearanceCustomizationP", "BackingStoreType"]
+- ["So25NSAppearanceCustomizationP", "StyleMask"]
+- ["So25NSAppearanceCustomizationP", ""]
+- !private ["So25NSAppearanceCustomizationP", "init"]
+- !private ["So25NSAppearanceCustomizationP", "print"]
+- !private ["So25NSAppearanceCustomizationP", "titleVisibility"]
+- ["So8NSCodingP", "BackingStoreType"]
+- ["So8NSCodingP", "StyleMask"]
+- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "print"]
+- !private ["So8NSCodingP", "titleVisibility"]
+- ["So8NSObjectC", "AnyObject"]
+- ["So8NSObjectC", "BackingStoreType"]
+- ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "NSRect"]
+- ["So8NSObjectC", "NSWindow"]
+- ["So8NSObjectC", "StyleMask"]
+- ["So8NSObjectC", "goBack"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "print"]
+- !private ["So8NSObjectC", "titleVisibility"]
+- ["So16NSObjectProtocolP", "BackingStoreType"]
+- ["So16NSObjectProtocolP", "StyleMask"]
+- ["So16NSObjectProtocolP", ""]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "print"]
+- !private ["So16NSObjectProtocolP", "titleVisibility"]
+- ["So11NSResponderC", "AnyObject"]
+- ["So11NSResponderC", "BackingStoreType"]
+- ["So11NSResponderC", "Bool"]
+- ["So11NSResponderC", "NSRect"]
+- ["So11NSResponderC", "NSWindow"]
+- ["So11NSResponderC", "StyleMask"]
+- ["So11NSResponderC", "goBack"]
+- ["So11NSResponderC", "init"]
+- !private ["So11NSResponderC", "print"]
+- !private ["So11NSResponderC", "titleVisibility"]
+- ["So18NSTouchBarProviderP", "BackingStoreType"]
+- ["So18NSTouchBarProviderP", "StyleMask"]
+- ["So18NSTouchBarProviderP", ""]
+- !private ["So18NSTouchBarProviderP", "init"]
+- !private ["So18NSTouchBarProviderP", "print"]
+- !private ["So18NSTouchBarProviderP", "titleVisibility"]
+- ["So33NSUserInterfaceItemIdentificationP", "BackingStoreType"]
+- ["So33NSUserInterfaceItemIdentificationP", "StyleMask"]
+- ["So33NSUserInterfaceItemIdentificationP", ""]
+- !private ["So33NSUserInterfaceItemIdentificationP", "init"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "print"]
+- !private ["So33NSUserInterfaceItemIdentificationP", "titleVisibility"]
+- ["So26NSUserInterfaceValidationsP", "BackingStoreType"]
+- ["So26NSUserInterfaceValidationsP", "StyleMask"]
+- ["So26NSUserInterfaceValidationsP", ""]
+- !private ["So26NSUserInterfaceValidationsP", "init"]
+- !private ["So26NSUserInterfaceValidationsP", "print"]
+- !private ["So26NSUserInterfaceValidationsP", "titleVisibility"]
+- ["So8NSWindowC", "AnyObject"]
+- ["So8NSWindowC", "BackingStoreType"]
+- ["So8NSWindowC", "Bool"]
+- ["So8NSWindowC", "NSRect"]
+- ["So8NSWindowC", "NSWindow"]
+- ["So8NSWindowC", "StyleMask"]
+- ["So8NSWindowC", ""]
+- ["So8NSWindowC", "goBack"]
+- ["So8NSWindowC", "init"]
+- !private ["So8NSWindowC", "print"]
+- !private ["So8NSWindowC", "titleVisibility"]
+- ["10EdgeViewer13ProjectWindowC", "AnyObject"]
+- ["10EdgeViewer13ProjectWindowC", "Bool"]
+- ["10EdgeViewer13ProjectWindowC", "NSRect"]
+- ["10EdgeViewer13ProjectWindowC", "NSWindow"]
+- ["10EdgeViewer13ProjectWindowC", "deinit"]
+- ["10EdgeViewer13ProjectWindowC", "goBack"]
+- ["10EdgeViewer13ProjectWindowC", "init"]
+- !private ["10EdgeViewer13ProjectWindowC", "print"]
+- !private ["10EdgeViewer13ProjectWindowC", "titleVisibility"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s16RawRepresentableP", "hidden"]
+- !private ["s8SequenceP", "init"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["So8NSWindowC15TitleVisibilityO", "hidden"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "BackingStoreType"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "StyleMask"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "titleVisibility"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- "So15NSAccessibilityP"
+- "So30NSAccessibilityElementProtocolP"
+- "So29NSAnimatablePropertyContainerP"
+- "So25NSAppearanceCustomizationP"
+- "So8NSCodingP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- "So11NSResponderC"
+- "So18NSTouchBarProviderP"
+- "So33NSUserInterfaceItemIdentificationP"
+- "So26NSUserInterfaceValidationsP"
+- "So8NSWindowC"
+- "10EdgeViewer13ProjectWindowC"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s16RawRepresentableP"
+- !private "s8SequenceP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "So8NSWindowC15TitleVisibilityO"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/AppKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Headers/Zip.h"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/bmmkac/EdgeViewer12345/Carthage/Build/Mac/Zip.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/xpc/XPC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "9971820ecbf7279d81a33ac8a3461ec5"

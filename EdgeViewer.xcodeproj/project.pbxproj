@@ -23,6 +23,9 @@
 		B111D3F520DD98140096ED6E /* FileReaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111D3F420DD98140096ED6E /* FileReaderController.swift */; };
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
 		B1A894502073B612003A67AB /* UserPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8944F2073B612003A67AB /* UserPanelView.swift */; };
+		B1FEFFB420E0590800D57A3C /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FEFFB320E0590800D57A3C /* Zip.framework */; };
+		B1FEFFB520E0590800D57A3C /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1FEFFB320E0590800D57A3C /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B1FEFFB920E0597A00D57A3C /* Zip.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = B1FEFFB820E0597A00D57A3C /* Zip.framework.dSYM */; };
 		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
 		E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */; };
 		E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */; };
@@ -65,6 +68,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B1FEFFB620E0590900D57A3C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B1FEFFB520E0590800D57A3C /* Zip.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FEFFB720E0594D00D57A3C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				B1FEFFB920E0597A00D57A3C /* Zip.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1C18FAD020C364620073886B /* LocalPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPlugin.swift; sourceTree = "<group>"; };
 		1C1A1CB820843CD1000074DC /* ChapterViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewItem.swift; sourceTree = "<group>"; };
@@ -82,6 +109,8 @@
 		B111D3F420DD98140096ED6E /* FileReaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderController.swift; sourceTree = "<group>"; };
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		B1A8944F2073B612003A67AB /* UserPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPanelView.swift; sourceTree = "<group>"; };
+		B1FEFFB320E0590800D57A3C /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/Mac/Zip.framework; sourceTree = "<group>"; };
+		B1FEFFB820E0597A00D57A3C /* Zip.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Zip.framework.dSYM; path = Carthage/Build/Mac/Zip.framework.dSYM; sourceTree = "<group>"; };
 		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
 		E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
@@ -119,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1FEFFB420E0590800D57A3C /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +260,8 @@
 		E08E862E20731A7A0082723B = {
 			isa = PBXGroup;
 			children = (
+				B1FEFFB820E0597A00D57A3C /* Zip.framework.dSYM */,
+				B1FEFFB320E0590800D57A3C /* Zip.framework */,
 				1C92690220960E0500ADF847 /* LocalLibrary.xml */,
 				E08E863920731A7A0082723B /* EdgeViewer */,
 				E08E864C20731A7A0082723B /* EdgeViewerTests */,
@@ -297,6 +329,8 @@
 				E08E863320731A7A0082723B /* Sources */,
 				E08E863420731A7A0082723B /* Frameworks */,
 				E08E863520731A7A0082723B /* Resources */,
+				B1FEFFB620E0590900D57A3C /* Embed Frameworks */,
+				B1FEFFB720E0594D00D57A3C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -620,6 +654,10 @@
 				CODE_SIGN_ENTITLEMENTS = EdgeViewer/EdgeViewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = EdgeViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -638,6 +676,10 @@
 				CODE_SIGN_ENTITLEMENTS = EdgeViewer/EdgeViewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = EdgeViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;

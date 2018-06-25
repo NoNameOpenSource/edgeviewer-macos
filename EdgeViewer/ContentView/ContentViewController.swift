@@ -340,8 +340,14 @@ extension ContentViewController : NSCollectionViewDelegate{
         return pb;
     }
     func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
-
-        return .move
+        switch(draggingInfo.draggingSource()) {
+            case _ as NSCollectionView:
+                return .move
+            case _ as PaletteItem:
+                return .copy
+            default:
+                return .generic
+        }
 
     }
     
@@ -357,12 +363,12 @@ extension ContentViewController : NSCollectionViewDelegate{
                     }
                 case let draggingSource as PaletteItem:
                     let tmp = ButtonType(rawValue: draggingInfo.draggingPasteboard().string(forType: NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar"))!)!
-                    if !(displayedItem.contains(tmp)){
+                    //if !(displayedItem.contains(tmp)){
                         self.displayedItem.insert(tmp, at: indexPath.item)
                         self.userPanel.reloadData()
-                    } else {
-                        movePassed = false
-                    }
+                    //} else {
+                    //    movePassed = false
+                    //}
                 default:
                     break // ignore any external source
             }

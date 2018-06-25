@@ -33,6 +33,8 @@
 		E01ED2AC2093E92F00CC805F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01ED2AA2093E92F00CC805F /* HeaderView.xib */; };
 		E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2AB2093E92F00CC805F /* HeaderView.swift */; };
 		E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */; };
+		E047C4D020E050C800E6BFEF /* CustomizationPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047C4CE20E050C800E6BFEF /* CustomizationPalette.swift */; };
+		E047C4D120E050C800E6BFEF /* CustomizationPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = E047C4CF20E050C800E6BFEF /* CustomizationPalette.xib */; };
 		E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */; };
 		E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E863A20731A7A0082723B /* AppDelegate.swift */; };
 		E08E863D20731A7A0082723B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E863C20731A7A0082723B /* ViewController.swift */; };
@@ -86,6 +88,8 @@
 		E01ED2AA2093E92F00CC805F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		E01ED2AB2093E92F00CC805F /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListViewController.swift; sourceTree = "<group>"; };
+		E047C4CE20E050C800E6BFEF /* CustomizationPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationPalette.swift; sourceTree = "<group>"; };
+		E047C4CF20E050C800E6BFEF /* CustomizationPalette.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationPalette.xib; sourceTree = "<group>"; };
 		E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewController.swift; sourceTree = "<group>"; };
 		E08E863720731A7A0082723B /* EdgeViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgeViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08E863A20731A7A0082723B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				B1D8A4B220C99BBA00F4683A /* ForwardButton.swift */,
 				B1D8A4A920C8281B00F4683A /* SwitchModeButton.xib */,
 				B1D8A4B020C99B6F00F4683A /* SwitchModeButton.swift */,
+				E047C4CE20E050C800E6BFEF /* CustomizationPalette.swift */,
+				E047C4CF20E050C800E6BFEF /* CustomizationPalette.xib */,
 			);
 			path = ButtonItem;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 				B1D8A4AB20C8281B00F4683A /* ButtonItem.xib in Resources */,
 				E01ED2AC2093E92F00CC805F /* HeaderView.xib in Resources */,
 				1C1A1CBB20843CD1000074DC /* ChapterViewItem.xib in Resources */,
+				E047C4D120E050C800E6BFEF /* CustomizationPalette.xib in Resources */,
 				E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */,
 				B1D8A4AC20C8281B00F4683A /* ForwardButton.xib in Resources */,
 				B1D8A4AD20C8281B00F4683A /* SwitchModeButton.xib in Resources */,
@@ -412,6 +419,7 @@
 				E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */,
 				E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,
+				E047C4D020E050C800E6BFEF /* CustomizationPalette.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
 				B1D8A4B120C99B6F00F4683A /* SwitchModeButton.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,

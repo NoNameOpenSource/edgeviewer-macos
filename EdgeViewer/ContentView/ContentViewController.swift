@@ -20,10 +20,9 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var displayedItem: [ButtonType] = [.forward, .backward]
     var allItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton","ButtonItem"]
     
-    
+    var customizationPalette: CustomizationPalette? = nil
 
     @IBOutlet weak var editToolBox: NSView!
-    @IBOutlet weak var editPanel: NSCollectionView!
     @IBOutlet weak var panelView: NSView!
     @IBOutlet weak var userPanel: NSCollectionView!
     @IBOutlet weak var panelClipView: NSClipView!
@@ -62,16 +61,119 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
             button.isEnabled = false
         }
-        editToolBox.isHidden = false
-        editPanel.isHidden = false
+        if customizationPalette != nil {
+            checkConstraintsOfSubview(view: self.view)
+        }
+        customizationPalette = CustomizationPalette(nibName: NSNib.Name(rawValue: "CustomizationPalette"), bundle: nil)
+        
+
+        let constraint = NSLayoutConstraint(item: customizationPalette!.view,
+                                       attribute: .centerX,
+                                       relatedBy: .equal,
+                                          toItem: self.view,
+                                       attribute: .centerX,
+                                      multiplier: 1.0,
+                                        constant: 0.0
+        )
+        
+        self.view.addSubview(customizationPalette!.view)
+        
+        let a = NSLayoutConstraint(item: customizationPalette!.view,
+                              attribute: .width,
+                              relatedBy: .equal,
+                                 toItem: nil,
+                              attribute: .width,
+                             multiplier: 1.0,
+                               constant: 480.0
+        )
+        
+        let b = NSLayoutConstraint(item: customizationPalette!.view,
+                                   attribute: .height,
+                                   relatedBy: .equal,
+                                   toItem: nil,
+                                   attribute: .height,
+                                   multiplier: 1.0,
+                                   constant: 272.0
+            )
+        
+        let c = NSLayoutConstraint(item: customizationPalette!.view,
+                                   attribute: .bottom,
+                                   relatedBy: .equal,
+                                   toItem: userPanel,
+                                   attribute: .top,
+                                   multiplier: 1.0,
+                                   constant: 0.0
+            )
+        
+        customizationPalette!.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addConstraints([a, b, constraint, c])
     }
+    
+    func checkConstraintsOfSubview(view: NSView) {
+        for view in view.subviews {
+            print("\(view.className) has \(view.constraints.count) constraints:")
+            for constraint in view.constraints {
+                if(constraint.secondItem != nil) {
+                    print("\t\(constraint.firstItem!.className!) \(nameOfAttribute(attribute: constraint.firstAttribute)) \(nameOfRelation(relation: constraint.relation)) \(constraint.secondItem!.className!) \(nameOfAttribute(attribute: constraint.firstAttribute))")
+                } else {
+                    print("\t\(constraint.firstItem!.className!) \(nameOfAttribute(attribute: constraint.firstAttribute)) \(nameOfRelation(relation: constraint.relation)) \(constraint.constant)")
+                }
+            }
+            checkConstraintsOfSubview(view: view)
+        }
+    }
+    
+    func nameOfAttribute(attribute: NSLayoutConstraint.Attribute) -> String {
+        switch(attribute) {
+        case .bottom:
+            return "bottom"
+        case .left:
+            return "left"
+        case .right:
+            return "right"
+        case .top:
+            return "top"
+        case .leading:
+            return "leading"
+        case .trailing:
+            return "trailing"
+        case .width:
+            return "width"
+        case .height:
+            return "height"
+        case .centerX:
+            return "centerX"
+        case .centerY:
+            return "centerY"
+        case .lastBaseline:
+            return "lastBaseline"
+        case .firstBaseline:
+            return "firstBaseline"
+        case .notAnAttribute:
+            return "notAnAttribute"
+        }
+    }
+    
+    func nameOfRelation(relation: NSLayoutConstraint.Relation) -> String {
+        switch(relation) {
+        case .lessThanOrEqual:
+            return "<="
+        case .equal:
+            return "=="
+        case .greaterThanOrEqual:
+            return ">="
+        }
+    }
+
+    
     @IBAction func DisableEditMode(_ sender: Any) {
         for i in 0..<userPanel.numberOfItems(inSection: 0) {
             let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
             button.isEnabled = true
         }
-        editToolBox.isHidden = true
-        editPanel.isHidden = true
+        customizationPalette!.view.removeFromSuperview()
+        customizationPalette = nil
     }
 
     override func viewDidLoad() {
@@ -88,13 +190,11 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         currentPage = (manga?.bookMark)!
         
         userPanel.isSelectable = true;
-        editPanel.isSelectable = true;
         
         userPanel.backgroundColors = [NSColor.gray]
         configureCollectionView()
         configureCollectionView()
         userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar")])
-        editPanel.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
         updatePage()
     }
     
@@ -219,7 +319,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     override func viewWillLayout() {
-        editToolBox.isHidden = true
+        //editToolBox.isHidden = true
     }
     
     fileprivate func configureCollectionView() { // this one makes layout
@@ -229,13 +329,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         userPanel.collectionViewLayout = flowLayout
-        
-        let flowLayoutB = NSCollectionViewFlowLayout()
-        flowLayoutB.itemSize = NSSize(width: 50.0, height: 50.0)
-        flowLayoutB.sectionInset = NSEdgeInsets(top: 5.0, left: 20.0, bottom: 5.0, right: 20.0)
-        flowLayoutB.minimumInteritemSpacing = 20.0
-        flowLayoutB.minimumLineSpacing = 20.0
-        editPanel.collectionViewLayout = flowLayoutB
         
         view.wantsLayer = true
         userPanel.layer?.backgroundColor = NSColor.lightGray.cgColor
@@ -254,96 +347,36 @@ extension ContentViewController: NSCollectionViewDataSource{
     
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        if collectionView == userPanel {
-            return 1
-        }else if collectionView == editPanel {
-            return 1
-        }
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView {
-        case editPanel:
-            return allItem.count
-        case userPanel:
-            return displayedItem.count
-        default:
-            return 0
-        }
+        return displayedItem.count
         
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        var item : NSCollectionViewItem
-        switch collectionView {
-        case userPanel:
-            var item = userPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ButtonItem"), for: indexPath) as! ButtonItem
-            item.buttonType = displayedItem[indexPath.item]
-            switch(displayedItem[indexPath.item]) {
-                case .backward:
-                    if #available(OSX 10.12, *) {
-                        item.image = NSImage(named: .goForwardTemplate)
-                    } else {
-                        // Fallback on earlier versions
-                    }
-                    item.button.target = self
-                    item.button.action = #selector(pageBack)
-                case .forward:
-                    if #available(OSX 10.12, *) {
-                        item.image = NSImage(named: .goBackTemplate)
-                    } else {
-                        // Fallback on earlier versions
-                    }
-                    item.button.target = self
-                    item.button.action = #selector(pageForward)
-                default:
-                    break
-            }
-            return item
-            break
-        case editPanel:
-            item = editPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: allItem[indexPath.item]), for: indexPath)
-            break
-        default:
-            item = ButtonItem()
-        }
-        
-        switch item {
-        case let someButton as ButtonItem:
-            
-            guard let _ = item as? ButtonItem else{
-                item = someButton
-                return item
-            }
-            break
-            
-        case let someForwardButton as ForwardButton:
-            someForwardButton.forward.target = self
-            someForwardButton.forward.action = #selector(pageForward)
-            guard let _ = item as? ForwardButton else{
-                item = someForwardButton
-                return item
-            }
-            break
-        case let someBackWardButton as BackWardButton:
-            someBackWardButton.backward.target = self
-            someBackWardButton.backward.action = #selector(pageBack)
-            guard let _ = item as? BackWardButton else{
-                item = someBackWardButton
-                return item
-            }
-            break
-        case let someSwitchModeButton as SwitchModeButton:
-            someSwitchModeButton.switchTypeViewButton.target = self
-            someSwitchModeButton.switchTypeViewButton.action = #selector(viewTypeSwitch)
-            guard let _ = item as? SwitchModeButton else{
-                item = someSwitchModeButton
-                return item
-            }
-            break
-        default:
-            break
+        var item = userPanel.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ButtonItem"), for: indexPath) as! ButtonItem
+        item.buttonType = displayedItem[indexPath.item]
+        switch(displayedItem[indexPath.item]) {
+            case .backward:
+                if #available(OSX 10.12, *) {
+                    item.image = NSImage(named: .goForwardTemplate)
+                } else {
+                    // Fallback on earlier versions
+                }
+                item.button.target = self
+                item.button.action = #selector(pageBack)
+            case .forward:
+                if #available(OSX 10.12, *) {
+                    item.image = NSImage(named: .goBackTemplate)
+                } else {
+                    // Fallback on earlier versions
+                }
+                item.button.target = self
+                item.button.action = #selector(pageForward)
+            default:
+                break
         }
         return item
     }
@@ -362,14 +395,7 @@ extension ContentViewController : NSCollectionViewDelegate{
     
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
         let pb = NSPasteboardItem()
-        switch collectionView {
-        case editPanel:
-            pb.setString(allItem[indexPath.item], forType: NSPasteboard.PasteboardType.string)
-        case userPanel:
-            pb.setString(displayedItem[indexPath.item].rawValue, forType: NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar"))
-        default:
-            break
-        }
+        pb.setString(displayedItem[indexPath.item].rawValue, forType: NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar"))
         
         return pb;
     }
@@ -381,35 +407,27 @@ extension ContentViewController : NSCollectionViewDelegate{
     
     func collectionView(_ collectionView: NSCollectionView, acceptDrop draggingInfo: NSDraggingInfo, indexPath: IndexPath, dropOperation: NSCollectionView.DropOperation) -> Bool {
         var movePassed : Bool = true
-        switch collectionView {
-        case userPanel:
-            userPanel.animator().performBatchUpdates({
-                for i in draggingIndexPath{
-                    if draggingInfo.draggingSource() as! NSCollectionView == userPanel{
+        userPanel.animator().performBatchUpdates({
+            switch(draggingInfo.draggingSource()) {
+                case let draggingSource as NSCollectionView:
+                    for i in draggingIndexPath{
                         let tmp = self.displayedItem.remove(at: i.item)
                         self.displayedItem.insert(tmp, at:
                             (indexPath.item <= i.item) ? indexPath.item : (indexPath.item - 1))
-                    }else{
-                        // ignore any external source
                     }
-                }
-            }) { (finished) in
-                self.userPanel.reloadData()
-            }
-        case editPanel:
-            editPanel.animator().performBatchUpdates({
-                for i in draggingIndexPath{
-                    if draggingInfo.draggingSource() as! NSCollectionView == editPanel {
+                case let draggingSource as PaletteItem:
+                    let tmp = ButtonType(rawValue: draggingInfo.draggingPasteboard().string(forType: NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar"))!)!
+                    if !(displayedItem.contains(tmp)){
+                        self.displayedItem.insert(tmp, at: indexPath.item)
+                        self.userPanel.reloadData()
+                    } else {
                         movePassed = false
-                    }else {
-                        self.displayedItem.remove(at: i.item)
                     }
-                }
-            }) { (finished) in
-                self.userPanel.reloadData()
+                default:
+                    break // ignore any external source
             }
-        default:
-            break;
+        }) { (finished) in
+            self.userPanel.reloadData()
         }
         return movePassed
     }

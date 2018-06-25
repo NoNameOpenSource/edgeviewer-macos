@@ -61,9 +61,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
             button.isEnabled = false
         }
-        if customizationPalette != nil {
-            checkConstraintsOfSubview(view: self.view)
-        }
         customizationPalette = CustomizationPalette(nibName: NSNib.Name(rawValue: "CustomizationPalette"), bundle: nil)
         
 
@@ -109,63 +106,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
         self.view.addConstraints([a, b, constraint, c])
     }
-    
-    func checkConstraintsOfSubview(view: NSView) {
-        for view in view.subviews {
-            print("\(view.className) has \(view.constraints.count) constraints:")
-            for constraint in view.constraints {
-                if(constraint.secondItem != nil) {
-                    print("\t\(constraint.firstItem!.className!) \(nameOfAttribute(attribute: constraint.firstAttribute)) \(nameOfRelation(relation: constraint.relation)) \(constraint.secondItem!.className!) \(nameOfAttribute(attribute: constraint.firstAttribute))")
-                } else {
-                    print("\t\(constraint.firstItem!.className!) \(nameOfAttribute(attribute: constraint.firstAttribute)) \(nameOfRelation(relation: constraint.relation)) \(constraint.constant)")
-                }
-            }
-            checkConstraintsOfSubview(view: view)
-        }
-    }
-    
-    func nameOfAttribute(attribute: NSLayoutConstraint.Attribute) -> String {
-        switch(attribute) {
-        case .bottom:
-            return "bottom"
-        case .left:
-            return "left"
-        case .right:
-            return "right"
-        case .top:
-            return "top"
-        case .leading:
-            return "leading"
-        case .trailing:
-            return "trailing"
-        case .width:
-            return "width"
-        case .height:
-            return "height"
-        case .centerX:
-            return "centerX"
-        case .centerY:
-            return "centerY"
-        case .lastBaseline:
-            return "lastBaseline"
-        case .firstBaseline:
-            return "firstBaseline"
-        case .notAnAttribute:
-            return "notAnAttribute"
-        }
-    }
-    
-    func nameOfRelation(relation: NSLayoutConstraint.Relation) -> String {
-        switch(relation) {
-        case .lessThanOrEqual:
-            return "<="
-        case .equal:
-            return "=="
-        case .greaterThanOrEqual:
-            return ">="
-        }
-    }
-
     
     @IBAction func DisableEditMode(_ sender: Any) {
         for i in 0..<userPanel.numberOfItems(inSection: 0) {

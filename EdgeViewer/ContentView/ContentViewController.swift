@@ -307,6 +307,9 @@ extension ContentViewController: NSCollectionViewDataSource{
                 }
                 item.button.target = self
                 item.button.action = #selector(pageBack)
+                if(customizationPalette != nil) {
+                    item.isEnabled = false
+                }
             case .forward:
                 if #available(OSX 10.12, *) {
                     item.image = NSImage(named: .goForwardTemplate)
@@ -315,6 +318,9 @@ extension ContentViewController: NSCollectionViewDataSource{
                 }
                 item.button.target = self
                 item.button.action = #selector(pageForward)
+                if(customizationPalette != nil) {
+                    item.isEnabled = false
+                }
             default:
                 break
         }

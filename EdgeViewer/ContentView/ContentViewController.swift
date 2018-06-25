@@ -19,7 +19,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var draggingIndexPath : Set<IndexPath> = []
     var displayedItem: [ButtonType] = [.backward, .forward, .chapter]
     var allItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton","ButtonItem"]
-    
+    var navigation: [Any] = Array()
     var customizationPalette: CustomizationPalette? = nil
 
     @IBOutlet weak var editToolBox: NSView!
@@ -232,7 +232,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-    func segueToChapterView(withBook book: Manga) {
+    @objc func segueToChapterView() {
         let chapterController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ChapterController")) as! ChapterController
         let oldView = self
         let segue = NSStoryboardSegue(identifier: NSStoryboardSegue.Identifier(rawValue: "LibraryPageSegue"),
@@ -242,13 +242,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                                         
         })
         var data: [String] = []
-        for chapter in book.chapter {
+        for chapter in manga!.chapter {
             data.append(String(chapter))
         }
         chapterController.data = data;
         oldView.prepare(for: segue, sender: user.self)
         segue.perform()
-        navigation.append(book)
+        navigation.append(manga!)
     }
     
     @objc public func pageBack(){
@@ -347,7 +347,7 @@ extension ContentViewController: NSCollectionViewDataSource{
                     // Fallback on earlier versions
                 }
                 item.button.target = self
-                
+                item.button.action = #selector(segueToChapterView)
                 if(customizationPalette != nil) {
                     item.isEnabled = false
                 }

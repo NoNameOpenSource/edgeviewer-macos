@@ -232,23 +232,28 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-    @objc func segueToChapterView() {
-        let chapterController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ChapterController")) as! ChapterController
-        let oldView = self
-        let segue = NSStoryboardSegue(identifier: NSStoryboardSegue.Identifier(rawValue: "LibraryPageSegue"),
-                                      source: oldView,
-                                      destination: chapterController,
-                                      performHandler: {
-                                        
-        })
-        var data: [String] = []
-        for chapter in manga!.chapter {
+ 
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        // Create a variable that you want to send
+        var data : [String] = []
+        for chapter in (manga?.chapter)! {
             data.append(String(chapter))
         }
-        chapterController.data = data;
-        oldView.prepare(for: segue, sender: user.self)
-        segue.perform()
-        navigation.append(manga!)
+    
+        switch segue.identifier?.rawValue {
+        case "ChapterViewSegue":
+            if let destinationVC = segue.destinationController as? ChapterController{
+                destinationVC.data = data
+            }
+        default:
+            break
+        }
+   
+    }
+    
+    @objc func segueToChapterView() {
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "ChapterViewSegue"), sender: (Any).self)
     }
     
     @objc public func pageBack(){

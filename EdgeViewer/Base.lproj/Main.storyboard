@@ -792,6 +792,7 @@
                         <outlet property="panelClipView" destination="Gca-b2-FJy" id="yxQ-yX-Glo"/>
                         <outlet property="panelView" destination="cBX-50-cRv" id="fkw-uc-pwe"/>
                         <outlet property="userPanel" destination="jRe-qI-Sjm" id="ZMP-zB-A4N"/>
+                        <segue destination="TPG-qV-Pii" kind="popover" identifier="ChapterViewSegue" popoverBehavior="t" preferredEdge="maxY" id="Hnk-Gb-V2G"/>
                     </connections>
                 </viewController>
                 <customObject id="pKP-WL-jQz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -905,7 +906,7 @@
                 </viewController>
                 <customObject id="hYy-b7-4TN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-442" y="2499"/>
+            <point key="canvasLocation" x="-356" y="2503"/>
         </scene>
         <!--Library List View Controller-->
         <scene sceneID="va9-aM-e0v">

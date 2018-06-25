@@ -61,10 +61,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
             button.isEnabled = false
         }
+        
         customizationPalette = CustomizationPalette(nibName: NSNib.Name(rawValue: "CustomizationPalette"), bundle: nil)
+        guard let customizationPalette = customizationPalette else { return }
+        customizationPalette.delegate = self
         
 
-        let constraint = NSLayoutConstraint(item: customizationPalette!.view,
+        let constraint = NSLayoutConstraint(item: customizationPalette.view,
                                        attribute: .centerX,
                                        relatedBy: .equal,
                                           toItem: self.view,
@@ -73,9 +76,9 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                                         constant: 0.0
         )
         
-        self.view.addSubview(customizationPalette!.view)
+        self.view.addSubview(customizationPalette.view)
         
-        let a = NSLayoutConstraint(item: customizationPalette!.view,
+        let a = NSLayoutConstraint(item: customizationPalette.view,
                               attribute: .width,
                               relatedBy: .equal,
                                  toItem: nil,
@@ -84,7 +87,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                                constant: 480.0
         )
         
-        let b = NSLayoutConstraint(item: customizationPalette!.view,
+        let b = NSLayoutConstraint(item: customizationPalette.view,
                                    attribute: .height,
                                    relatedBy: .equal,
                                    toItem: nil,
@@ -93,7 +96,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                                    constant: 272.0
             )
         
-        let c = NSLayoutConstraint(item: customizationPalette!.view,
+        let c = NSLayoutConstraint(item: customizationPalette.view,
                                    attribute: .bottom,
                                    relatedBy: .equal,
                                    toItem: userPanel,
@@ -102,12 +105,12 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                                    constant: 0.0
             )
         
-        customizationPalette!.view.translatesAutoresizingMaskIntoConstraints = false
+        customizationPalette.view.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addConstraints([a, b, constraint, c])
     }
     
-    @IBAction func DisableEditMode(_ sender: Any) {
+    func dismissCustomizationPalette() {
         for i in 0..<userPanel.numberOfItems(inSection: 0) {
             let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
             button.isEnabled = true
@@ -242,7 +245,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     
         switch segue.identifier?.rawValue {
-        case "ChapterViewSegue":
+        case "ChapterViewSegue"?:
             if let destinationVC = segue.destinationController as? ChapterController{
                 destinationVC.data = data
             }

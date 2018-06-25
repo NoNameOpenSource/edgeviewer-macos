@@ -10,6 +10,15 @@ import Cocoa
 
 class CustomizationPalette: NSViewController {
 
+    @IBOutlet weak var doneButton: NSButton!
+    
+    var delegate: ContentViewController?
+    
+    @IBAction func done(_ sender: Any) {
+        guard let delegate = delegate else { return }
+        delegate.dismissCustomizationPalette()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

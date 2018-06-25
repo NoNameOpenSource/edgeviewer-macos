@@ -804,12 +804,6 @@
                                 <action selector="enableEditMode:" target="9sD-9f-o3V" id="hnM-fw-TJR"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="End User Panel Edit" id="rh4-DV-R6z">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="DisableEditMode:" target="9sD-9f-o3V" id="eJo-7C-qSl"/>
-                            </connections>
-                        </menuItem>
                     </items>
                 </menu>
                 <userDefaultsController representsSharedInstance="YES" id="33W-jM-LQB"/>

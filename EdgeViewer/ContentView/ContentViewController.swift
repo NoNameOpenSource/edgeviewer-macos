@@ -17,7 +17,7 @@ enum ViewType {
 class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
-    var displayedItem: [ButtonType] = [.forward, .backward]
+    var displayedItem: [ButtonType] = [.backward, .forward]
     var allItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton","ButtonItem"]
     
     var customizationPalette: CustomizationPalette? = nil
@@ -301,7 +301,7 @@ extension ContentViewController: NSCollectionViewDataSource{
         switch(displayedItem[indexPath.item]) {
             case .backward:
                 if #available(OSX 10.12, *) {
-                    item.image = NSImage(named: .goForwardTemplate)
+                    item.image = NSImage(named: .goBackTemplate)
                 } else {
                     // Fallback on earlier versions
                 }
@@ -309,7 +309,7 @@ extension ContentViewController: NSCollectionViewDataSource{
                 item.button.action = #selector(pageBack)
             case .forward:
                 if #available(OSX 10.12, *) {
-                    item.image = NSImage(named: .goBackTemplate)
+                    item.image = NSImage(named: .goForwardTemplate)
                 } else {
                     // Fallback on earlier versions
                 }

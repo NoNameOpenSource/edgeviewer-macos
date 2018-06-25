@@ -14,6 +14,12 @@ class CustomizationPalette: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         view.wantsLayer = true
+        
+        var shadow = NSShadow()
+        shadow.shadowColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.7)
+        shadow.shadowBlurRadius = 5
+        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        self.view.shadow = shadow
     }
     
 }

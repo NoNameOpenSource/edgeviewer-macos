@@ -61,11 +61,32 @@
                         </textField>
                     </subviews>
                 </customView>
+                <customView identifier="ChapterButton" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XfM-CL-DYT" customClass="PaletteItem" customModule="EdgeViewer" customModuleProvider="target">
+                    <rect key="frame" x="136" y="182" width="50" height="70"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLL-aN-N2H">
+                            <rect key="frame" x="1" y="21" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSListViewTemplate" id="mcI-Gs-IDT"/>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufd-e5-4L2">
+                            <rect key="frame" x="-1" y="0.0" width="52" height="20"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Chapter" id="kS4-R9-dap">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                </customView>
             </subviews>
         </customView>
     </objects>
     <resources>
         <image name="NSGoBackTemplate" width="9" height="12"/>
         <image name="NSGoForwardTemplate" width="9" height="12"/>
+        <image name="NSListViewTemplate" width="14" height="10"/>
     </resources>
 </document>

@@ -232,18 +232,21 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-    @objc func segueToChapterView(withBook book: Manga) {
-        let contentViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ChapterController")) as! ChapterController
+    func segueToChapterView(withBook book: Manga) {
+        let chapterController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ChapterController")) as! ChapterController
         let oldView = self
         let segue = NSStoryboardSegue(identifier: NSStoryboardSegue.Identifier(rawValue: "LibraryPageSegue"),
-                                      source: oldShelf,
-                                      destination: contentViewController,
+                                      source: oldView,
+                                      destination: chapterController,
                                       performHandler: {
-                                        self.removeSplitViewItem(self.splitViewItems[1])
-                                        self.addSplitViewItem(NSSplitViewItem(viewController: contentViewController))
+                                        
         })
-        contentViewController.book = book;
-        oldShelf.prepare(for: segue, sender: user.self)
+        var data: [String] = []
+        for chapter in book.chapter {
+            data.append(String(chapter))
+        }
+        chapterController.data = data;
+        oldView.prepare(for: segue, sender: user.self)
         segue.perform()
         navigation.append(book)
     }

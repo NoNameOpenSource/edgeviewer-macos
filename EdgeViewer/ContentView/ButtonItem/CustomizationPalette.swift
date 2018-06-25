@@ -29,6 +29,8 @@ class PaletteItem: NSView, NSDraggingSource {
                 buttonType = .backward
             case "ForwardButton":
                 buttonType = .forward
+            case "ChapterButton":
+                buttonType = .chapter
             default:
                 break
             }

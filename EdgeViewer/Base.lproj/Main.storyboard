@@ -736,7 +736,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel">
                                 <rect key="frame" x="20" y="20" width="670" height="64"/>
                                 <subviews>
-                                    <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjX-6Q-4B2">
+                                    <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjX-6Q-4B2">
                                         <rect key="frame" x="0.0" y="0.0" width="670" height="64"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Gca-b2-FJy">
                                             <rect key="frame" x="1" y="1" width="668" height="62"/>
@@ -762,8 +762,8 @@
                                             <rect key="frame" x="-100" y="-100" width="233" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="SdN-Li-vsz">
-                                            <rect key="frame" x="653" y="1" width="16" height="62"/>
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="SdN-Li-vsz">
+                                            <rect key="frame" x="-100" y="-100" width="16" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>

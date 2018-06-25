@@ -718,7 +718,7 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="Q1g-Nu-kNu" kind="relationship" relationship="window.shadowedContentViewController" id="ZFE-Ah-Hos"/>
+                        <segue destination="KxQ-DW-RNo" kind="relationship" relationship="window.shadowedContentViewController" id="ZoP-oS-QP6"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1120,39 +1120,45 @@
         <scene sceneID="TFM-27-BAs">
             <objects>
                 <viewController storyboardIdentifier="ShelfViewController" id="BhN-Gf-Gzt" customClass="ShelfViewController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <scrollView key="view" wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="5hz-ky-35L">
+                    <customView key="view" id="1M1-Nz-N5s" customClass="DropView" customModule="EdgeViewer" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" drawsBackground="NO" id="G09-D5-Ajs">
-                            <rect key="frame" x="1" y="1" width="448" height="298"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <collectionView selectable="YES" id="x64-m2-pdu">
-                                    <rect key="frame" x="0.0" y="140" width="448" height="158"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="JUt-Pe-cnc">
-                                        <size key="itemSize" width="50" height="50"/>
-                                    </collectionViewFlowLayout>
-                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <connections>
-                                        <outlet property="dataSource" destination="BhN-Gf-Gzt" id="Vwg-V7-Upe"/>
-                                        <outlet property="delegate" destination="BhN-Gf-Gzt" id="Dv3-K6-Kr5"/>
-                                    </connections>
-                                </collectionView>
-                            </subviews>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="HJe-Lw-lat">
-                            <rect key="frame" x="1" y="144" width="233" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="duy-qg-gHd">
-                            <rect key="frame" x="234" y="1" width="15" height="143"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTp-T9-qal">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="TL5-Xp-oef">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView ambiguous="YES" selectable="YES" id="shq-1e-MTa">
+                                            <rect key="frame" x="0.0" y="140" width="448" height="158"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="QR4-i2-Y4c">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="BhN-Gf-Gzt" id="2gg-Zy-4yK"/>
+                                                <outlet property="delegate" destination="BhN-Gf-Gzt" id="g5V-76-7aq"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="MwV-VA-zZg">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yP2-mC-Xni">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                    </customView>
                     <connections>
-                        <outlet property="collectionView" destination="x64-m2-pdu" id="Brd-Jc-EAa"/>
+                        <outlet property="collectionView" destination="shq-1e-MTa" id="c8a-s1-a7q"/>
                     </connections>
                 </viewController>
                 <customObject id="kkj-RX-Kcc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

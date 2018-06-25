@@ -12,7 +12,9 @@ enum ButtonType: String {
     case backward = "Backward"
     case forward = "Foward"
     case custom = "Custom"
+    case chapter = "Chapter"
     case none = "None"
+    
 }
 
 class ButtonItem: NSCollectionViewItem {

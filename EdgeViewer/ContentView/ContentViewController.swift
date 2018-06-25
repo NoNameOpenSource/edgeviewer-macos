@@ -17,7 +17,7 @@ enum ViewType {
 class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
-    var displayedItem: [ButtonType] = [.backward, .forward]
+    var displayedItem: [ButtonType] = [.backward, .forward, .chapter]
     var allItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton","ButtonItem"]
     
     var customizationPalette: CustomizationPalette? = nil
@@ -318,6 +318,17 @@ extension ContentViewController: NSCollectionViewDataSource{
                 }
                 item.button.target = self
                 item.button.action = #selector(pageForward)
+                if(customizationPalette != nil) {
+                    item.isEnabled = false
+                }
+            case .chapter:
+                if #available(OSX 10.12, *) {
+                    item.image = NSImage(named: .listViewTemplate)
+                } else {
+                    // Fallback on earlier versions
+                }
+                item.button.target = self
+                
                 if(customizationPalette != nil) {
                     item.isEnabled = false
                 }

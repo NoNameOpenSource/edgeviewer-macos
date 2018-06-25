@@ -236,27 +236,19 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
  
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        // Create a variable that you want to send
+    @objc func segueToChapterView(sender : Any) {
         var data : [String] = []
         for chapter in (manga?.chapter)! {
             data.append(String(chapter))
         }
-    
-        switch segue.identifier?.rawValue {
-        case "ChapterViewSegue"?:
-            if let destinationVC = segue.destinationController as? ChapterController{
-                destinationVC.data = data
-            }
-        default:
-            break
+        let button: NSButton = sender as! NSButton
+        
+        if let popoverContent = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ChapterController")) as? ChapterController {
+            popoverContent.data = data
+            self.presentViewController(popoverContent, asPopoverRelativeTo: popoverContent.view.bounds, of: button, preferredEdge: .maxY, behavior: NSPopover.Behavior.semitransient)
+            
         }
-   
-    }
-    
-    @objc func segueToChapterView() {
-        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "ChapterViewSegue"), sender: (Any).self)
+        
     }
     
     @objc public func pageBack(){

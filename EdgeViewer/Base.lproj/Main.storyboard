@@ -813,7 +813,7 @@
         <!--Chapter Controller-->
         <scene sceneID="xoW-M4-KVn">
             <objects>
-                <viewController id="TPG-qV-Pii" customClass="ChapterController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChapterController" id="TPG-qV-Pii" customClass="ChapterController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="qnv-Su-kzL">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

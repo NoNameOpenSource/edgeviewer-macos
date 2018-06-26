@@ -18,7 +18,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
     var displayedItem: [ButtonType] = [.backward, .forward, .chapter]
-    var allItem : [String] = ["ForwardButton", "BackWardButton", "SwitchModeButton","ButtonItem"]
     var navigation: [Any] = Array()
     var customizationPalette: CustomizationPalette? = nil
 
@@ -27,7 +26,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     @IBOutlet weak var userPanel: NSCollectionView!
     @IBOutlet weak var panelClipView: NSClipView!
     @IBOutlet weak var panelBorderedView: NSScrollView!
-   
     
     var timer = Timer()
     var doNotHidePanelView = false
@@ -58,60 +56,54 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-
-    
     @IBAction func enableEditMode(_ sender: NSMenuItem) {
         for i in 0..<userPanel.numberOfItems(inSection: 0) {
             let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
             button.isEnabled = false
         }
-        
+        showCustomizationPalette()
+    }
+    
+    func showCustomizationPalette() {
         customizationPalette = CustomizationPalette(nibName: NSNib.Name(rawValue: "CustomizationPalette"), bundle: nil)
         guard let customizationPalette = customizationPalette else { return }
         customizationPalette.delegate = self
         
-
-        let constraint = NSLayoutConstraint(item: customizationPalette.view,
-                                       attribute: .centerX,
-                                       relatedBy: .equal,
-                                          toItem: self.view,
-                                       attribute: .centerX,
-                                      multiplier: 1.0,
-                                        constant: 0.0
+        let constraintA = NSLayoutConstraint(item: customizationPalette.view,
+                                        attribute: .centerX,
+                                        relatedBy: .equal,
+                                           toItem: self.view,
+                                        attribute: .centerX,
+                                       multiplier: 1.0,
+                                         constant: 0.0
         )
-        
-        self.view.addSubview(customizationPalette.view)
-        
-        let a = NSLayoutConstraint(item: customizationPalette.view,
-                              attribute: .width,
-                              relatedBy: .equal,
-                                 toItem: nil,
-                              attribute: .width,
-                             multiplier: 1.0,
-                               constant: 480.0
+        let constraintB = NSLayoutConstraint(item: customizationPalette.view,
+                                        attribute: .width,
+                                        relatedBy: .equal,
+                                           toItem: nil,
+                                        attribute: .width,
+                                       multiplier: 1.0,
+                                         constant: 480.0
         )
-        
-        let b = NSLayoutConstraint(item: customizationPalette.view,
-                                   attribute: .height,
-                                   relatedBy: .equal,
-                                   toItem: nil,
-                                   attribute: .height,
-                                   multiplier: 1.0,
-                                   constant: 272.0
-            )
-        
-        let c = NSLayoutConstraint(item: customizationPalette.view,
-                                   attribute: .bottom,
-                                   relatedBy: .equal,
-                                   toItem: userPanel,
-                                   attribute: .top,
-                                   multiplier: 1.0,
-                                   constant: 0.0
-            )
-        
+        let constraintC = NSLayoutConstraint(item: customizationPalette.view,
+                                        attribute: .height,
+                                        relatedBy: .equal,
+                                           toItem: nil,
+                                        attribute: .height,
+                                       multiplier: 1.0,
+                                         constant: 272.0
+        )
+        let constraintD = NSLayoutConstraint(item: customizationPalette.view,
+                                        attribute: .bottom,
+                                        relatedBy: .equal,
+                                           toItem: userPanel,
+                                        attribute: .top,
+                                       multiplier: 1.0,
+                                         constant: 0.0
+        )
         customizationPalette.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addConstraints([a, b, constraint, c])
+        self.view.addSubview(customizationPalette.view)
+        self.view.addConstraints([constraintA, constraintB, constraintC, constraintD])
     }
     
     func dismissCustomizationPalette() {
@@ -125,7 +117,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         // Do view setup here.
         pageController.view = pageView
         pageController.delegate = self
@@ -147,7 +139,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         //userPanel.wantsLayer = true
         userPanel.backgroundColors = [NSColor.clear]
         
-        configureCollectionView()
         configureCollectionView()
         userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar")])
         
@@ -174,8 +165,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         manga!.bookMark = currentPage;
     }
     
-
-    
     func setUpDummyData() {
         let testManga = Manga(title: "Pandora Heart")
         let pages: [NSImage?] = [NSImage(named: NSImage.Name(rawValue: "images")),
@@ -188,7 +177,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                 testManga.addNewPage(image: page)
             }
         }
-        
         manga = testManga
     }
     
@@ -201,11 +189,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
         pageController.selectedIndex = currentPage
     }
-    
-    //------------------------------------------------------------------------------------------------
-    //MARK: UI Action
-    //------------------------------------------------------------------------------------------------
-    
  
     //------------------------------------------------------------------------------------------------
     //MARK: PageControllerDelegate
@@ -249,8 +232,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         return pageController.view.frame
     }
     
-    // func used to change the view size when window size changed
-    
     @objc func pageForward(){
         switch viewType {
         case .singlePage:
@@ -264,7 +245,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
- 
     @objc func segueToChapterView(sender : Any) {
         doNotHidePanelView = true
         var data : [String] = []
@@ -307,10 +287,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
     }
     
-    override func viewWillLayout() {
-        //editToolBox.isHidden = true
-    }
-    
     fileprivate func configureCollectionView() { // this one makes layout
         let flowLayout = NSCollectionViewFlowLayout()
         flowLayout.itemSize = NSSize(width: 50.0, height: 50.0)
@@ -326,13 +302,9 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             // Fallback on earlier versions
         }
     }
-    
-   
-
 }
 
 extension ContentViewController: NSCollectionViewDataSource{
-    
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return 1
@@ -340,7 +312,6 @@ extension ContentViewController: NSCollectionViewDataSource{
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedItem.count
-        
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -389,7 +360,6 @@ extension ContentViewController: NSCollectionViewDataSource{
 
 extension ContentViewController : NSCollectionViewDelegate{
     
-    
     func collectionView(_ collectionView: NSCollectionView, draggingSession session: NSDraggingSession, willBeginAt screenPoint: NSPoint, forItemsAt indexPaths: Set<IndexPath>) {
         draggingIndexPath = indexPaths
     }
@@ -404,6 +374,7 @@ extension ContentViewController : NSCollectionViewDelegate{
         
         return pb;
     }
+    
     func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
         switch(draggingInfo.draggingSource()) {
             case _ as NSCollectionView:
@@ -413,7 +384,6 @@ extension ContentViewController : NSCollectionViewDelegate{
             default:
                 return .generic
         }
-
     }
     
     func collectionView(_ collectionView: NSCollectionView, acceptDrop draggingInfo: NSDraggingInfo, indexPath: IndexPath, dropOperation: NSCollectionView.DropOperation) -> Bool {
@@ -428,16 +398,16 @@ extension ContentViewController : NSCollectionViewDelegate{
                     }
                 case let draggingSource as PaletteItem:
                     let tmp = ButtonType(rawValue: draggingInfo.draggingPasteboard().string(forType: NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar"))!)!
-                    //if !(displayedItem.contains(tmp)){
+                    if !(displayedItem.contains(tmp)){
                         self.displayedItem.insert(tmp, at: indexPath.item)
                         self.userPanel.reloadData()
-                    //} else {
-                    //    movePassed = false
-                    //}
+                    } else {
+                        movePassed = false
+                    }
                 default:
                     break // ignore any external source
             }
-        }) { (finished) in
+        }) { finished in
             self.userPanel.reloadData()
         }
         return movePassed

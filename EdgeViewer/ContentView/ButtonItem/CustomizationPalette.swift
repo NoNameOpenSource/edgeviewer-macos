@@ -24,7 +24,7 @@ class CustomizationPalette: NSViewController {
         // Do view setup here.
         view.wantsLayer = true
         
-        var shadow = NSShadow()
+        let shadow = NSShadow()
         shadow.shadowColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.7)
         shadow.shadowBlurRadius = 5
         shadow.shadowOffset = CGSize(width: 0, height: 0)
@@ -62,12 +62,9 @@ class PaletteItem: NSView, NSDraggingSource {
     }
     
     override func mouseDown(with theEvent: NSEvent) {
-        
         let pasteboardItem = NSPasteboardItem()
         pasteboardItem.setString(buttonType.rawValue, forType: NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar"))
         let draggingItem = NSDraggingItem(pasteboardWriter: pasteboardItem)
-        
-        //draggingItem.setDraggingFrame(self.bounds, contents:self)
         
         guard let bitmap = self.bitmapImageRepForCachingDisplay(in: self.bounds) else { return }
         self.cacheDisplay(in: self.bounds, to: bitmap)
@@ -76,6 +73,5 @@ class PaletteItem: NSView, NSDraggingSource {
         draggingItem.setDraggingFrame(self.bounds, contents:image)
         
         beginDraggingSession(with: [draggingItem], event: theEvent, source: self)
-        
     }
 }

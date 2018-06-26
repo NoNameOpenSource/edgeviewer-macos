@@ -29,7 +29,6 @@ class SinglePageViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        
         if imageView.image != image {
             imageView.image = image
         }

@@ -33,6 +33,9 @@ class SinglePageViewController: NSViewController {
         if imageView.image != image {
             imageView.image = image
         }
+        
+        view.wantsLayer = true
+        view.layer?.backgroundColor = #colorLiteral(red: 0.1293984056, green: 0.1294192672, blue: 0.1293913424, alpha: 1)
     }
     
 }

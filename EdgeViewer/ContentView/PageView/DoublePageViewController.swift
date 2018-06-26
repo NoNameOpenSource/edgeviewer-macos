@@ -45,6 +45,9 @@ class DoublePageViewController: NSViewController {
         if rightImageView.image != rightImage {
             rightImageView.image = rightImage
         }
+        
+        view.wantsLayer = true
+        view.layer?.backgroundColor = #colorLiteral(red: 0.1293984056, green: 0.1294192672, blue: 0.1293913424, alpha: 1)
     }
     
 }

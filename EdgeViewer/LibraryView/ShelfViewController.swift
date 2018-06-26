@@ -26,6 +26,7 @@ class ShelfViewController: NSViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let libraryPage = libraryPage {

@@ -785,6 +785,7 @@
                     <connections>
                         <outlet property="pageView" destination="CEg-mC-6aL" id="WZ0-Yh-YkF"/>
                         <outlet property="panelClipView" destination="Gca-b2-FJy" id="yxQ-yX-Glo"/>
+                        <outlet property="panelView" destination="FaF-8p-psd" id="kMp-34-atq"/>
                         <outlet property="userPanel" destination="jRe-qI-Sjm" id="ZMP-zB-A4N"/>
                         <segue destination="TPG-qV-Pii" kind="popover" identifier="ChapterViewSegue" popoverBehavior="t" preferredEdge="maxY" id="Hnk-Gb-V2G"/>
                     </connections>

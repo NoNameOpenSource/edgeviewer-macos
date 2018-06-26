@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment version="101100" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -730,20 +730,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="710" height="534"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="CEg-mC-6aL">
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CEg-mC-6aL">
                                 <rect key="frame" x="0.0" y="0.0" width="710" height="534"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cBX-50-cRv" userLabel="User Panel">
+                            <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="FaF-8p-psd">
                                 <rect key="frame" x="20" y="20" width="670" height="64"/>
                                 <subviews>
-                                    <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjX-6Q-4B2">
+                                    <scrollView wantsLayer="YES" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjX-6Q-4B2">
                                         <rect key="frame" x="0.0" y="0.0" width="670" height="64"/>
-                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Gca-b2-FJy">
-                                            <rect key="frame" x="1" y="1" width="668" height="62"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Gca-b2-FJy">
+                                            <rect key="frame" x="0.0" y="0.0" width="670" height="64"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <collectionView identifier="userPanel" id="jRe-qI-Sjm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="668" height="62"/>
+                                                <collectionView identifier="userPanel" ambiguous="YES" id="jRe-qI-Sjm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="670" height="62"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="bxZ-je-0nt">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -769,28 +771,20 @@
                                     </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="WjX-6Q-4B2" secondAttribute="bottom" id="0Um-HP-k97"/>
-                                    <constraint firstItem="WjX-6Q-4B2" firstAttribute="top" secondItem="cBX-50-cRv" secondAttribute="top" id="FJl-d8-vn4"/>
-                                    <constraint firstAttribute="trailing" secondItem="WjX-6Q-4B2" secondAttribute="trailing" id="Ose-6N-0KE"/>
-                                    <constraint firstItem="WjX-6Q-4B2" firstAttribute="leading" secondItem="cBX-50-cRv" secondAttribute="leading" id="f95-6V-oI6"/>
-                                    <constraint firstAttribute="height" constant="64" id="lPb-F7-idb"/>
+                                    <constraint firstAttribute="height" constant="64" id="Mk7-ij-yrl"/>
                                 </constraints>
-                            </customView>
+                            </visualEffectView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="cBX-50-cRv" firstAttribute="centerX" secondItem="CEg-mC-6aL" secondAttribute="centerX" id="3Ge-SK-zMO"/>
-                            <constraint firstItem="CEg-mC-6aL" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" id="OEc-9r-zKU"/>
-                            <constraint firstAttribute="trailing" secondItem="cBX-50-cRv" secondAttribute="trailing" constant="20" id="iWn-6z-faJ"/>
-                            <constraint firstItem="cBX-50-cRv" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" constant="20" id="mwP-lT-enN"/>
-                            <constraint firstAttribute="bottom" secondItem="cBX-50-cRv" secondAttribute="bottom" constant="20" id="sDH-AZ-ouQ"/>
-                            <constraint firstItem="CEg-mC-6aL" firstAttribute="top" secondItem="9bA-nd-1hD" secondAttribute="top" id="yFi-DD-p3S"/>
-                            <constraint firstAttribute="bottom" secondItem="CEg-mC-6aL" secondAttribute="bottom" id="yvm-LK-3Dl"/>
+                            <constraint firstAttribute="bottom" secondItem="FaF-8p-psd" secondAttribute="bottom" constant="20" id="MIk-75-jcQ"/>
+                            <constraint firstItem="FaF-8p-psd" firstAttribute="leading" secondItem="9bA-nd-1hD" secondAttribute="leading" constant="20" id="PCU-gr-Aj6"/>
+                            <constraint firstItem="FaF-8p-psd" firstAttribute="centerX" secondItem="9bA-nd-1hD" secondAttribute="centerX" id="R95-5I-mC8"/>
+                            <constraint firstAttribute="trailing" secondItem="FaF-8p-psd" secondAttribute="trailing" constant="20" id="clQ-Eb-fD3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="pageView" destination="CEg-mC-6aL" id="WZ0-Yh-YkF"/>
                         <outlet property="panelClipView" destination="Gca-b2-FJy" id="yxQ-yX-Glo"/>
-                        <outlet property="panelView" destination="cBX-50-cRv" id="fkw-uc-pwe"/>
                         <outlet property="userPanel" destination="jRe-qI-Sjm" id="ZMP-zB-A4N"/>
                         <segue destination="TPG-qV-Pii" kind="popover" identifier="ChapterViewSegue" popoverBehavior="t" preferredEdge="maxY" id="Hnk-Gb-V2G"/>
                     </connections>

@@ -138,7 +138,15 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
         userPanel.isSelectable = true;
         
-        userPanel.backgroundColors = [NSColor.gray]
+        if let visualEffectView = userPanel.superview?.superview?.superview as? NSVisualEffectView {
+            visualEffectView.wantsLayer = true
+            visualEffectView.layer?.masksToBounds = true
+            visualEffectView.layer?.cornerRadius = 5.0
+        }
+        
+        //userPanel.wantsLayer = true
+        userPanel.backgroundColors = [NSColor.clear]
+        
         configureCollectionView()
         configureCollectionView()
         userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar")])
@@ -312,7 +320,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         userPanel.collectionViewLayout = flowLayout
         
         view.wantsLayer = true
-        userPanel.layer?.backgroundColor = NSColor.lightGray.cgColor
         if #available(OSX 10.12, *) {
             flowLayout.sectionHeadersPinToVisibleBounds = true
         } else {

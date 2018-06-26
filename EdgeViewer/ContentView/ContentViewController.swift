@@ -144,20 +144,27 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
         let pageViewTrackingArea = NSTrackingArea(rect: pageView.visibleRect, options: [.mouseMoved, .activeInKeyWindow], owner: self)
         pageView.addTrackingArea(pageViewTrackingArea)
-        panelView.isHidden = true
         
         updatePage()
     }
-    
+        
     override func mouseMoved(with event: NSEvent) {
         timer.invalidate()
-        panelView.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hidePanelView), userInfo: nil, repeats: true)
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 0.2
+            panelView.animator().alphaValue = 1
+        }, completionHandler: {
+        })
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.hidePanelView), userInfo: nil, repeats: true)
     }
     
     @objc func hidePanelView() {
         if (!doNotHidePanelView) {
-            panelView.isHidden = true
+            NSAnimationContext.runAnimationGroup({ (context) in
+                context.duration = 0.2
+                panelView.animator().alphaValue = 0
+            }, completionHandler: {
+            })
         }
     }
     

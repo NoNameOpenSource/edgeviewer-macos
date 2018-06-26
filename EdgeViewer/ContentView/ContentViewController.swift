@@ -29,6 +29,10 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     @IBOutlet weak var panelBorderedView: NSScrollView!
    
     
+    var timer = Timer()
+    var doNotHidePanelView = false
+    var animationDictionary = [[NSViewAnimation.Key : NSView]]()
+    
     var pageController: NSPageController = NSPageController()
     var manga: Manga? = nil;
     @IBOutlet weak var pageView: NSView!
@@ -138,7 +142,24 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         configureCollectionView()
         configureCollectionView()
         userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar")])
+        
+        let pageViewTrackingArea = NSTrackingArea(rect: pageView.visibleRect, options: [.mouseMoved, .activeInKeyWindow], owner: self)
+        pageView.addTrackingArea(pageViewTrackingArea)
+        panelView.isHidden = true
+        
         updatePage()
+    }
+    
+    override func mouseMoved(with event: NSEvent) {
+        timer.invalidate()
+        panelView.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hidePanelView), userInfo: nil, repeats: true)
+    }
+    
+    @objc func hidePanelView() {
+        if (!doNotHidePanelView) {
+            panelView.isHidden = true
+        }
     }
     
     override func viewDidDisappear() {
@@ -237,6 +258,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
  
     @objc func segueToChapterView(sender : Any) {
+        doNotHidePanelView = true
         var data : [String] = []
         for chapter in (manga?.chapter)! {
             data.append(String(chapter))

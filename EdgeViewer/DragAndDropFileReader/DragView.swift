@@ -25,29 +25,24 @@ class DropView: NSView {
     
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        print("File Entered")
         guard let board = sender.draggingPasteboard().propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray,
             let path = board[0] as? String else {
                 return NSDragOperation()
         }
         if checkFileExtention(path) {
-            print("File pass test")
             self.layer?.backgroundColor = NSColor.blue.cgColor
             return .copy
         }else{
-            print("not pass")
             self.layer?.backgroundColor = NSColor.red.cgColor
             return NSDragOperation()
         }
     }
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
-        print("file exit")
         self.layer?.backgroundColor = NSColor.gray.cgColor
     }
     
     override func draggingEnded(_ sender: NSDraggingInfo) {
-        print("file end")
         self.layer?.backgroundColor = NSColor.gray.cgColor
     }
     
@@ -73,15 +68,12 @@ class DropView: NSView {
         var type = fileTyp(path)
         switch type {
         case "folder":
-            print("is folder")
             createFolderForManga(sourcePath: path, destinationPath: destinationPath)
             break
         case "zip":
-            print("is zip")
             extractZip(atPath: path, toPath: path)
             break
         default:
-            print("not recognized")
             break
         }
         
@@ -90,7 +82,6 @@ class DropView: NSView {
     }
     
     fileprivate func checkFileExtention(_ drag : String) -> Bool{
-        print("Start Checking")
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: drag, isDirectory:&isDir) {
             if isDir.boolValue {
@@ -98,7 +89,6 @@ class DropView: NSView {
             }
         }
         let suffix = URL(fileURLWithPath: drag).pathExtension
-        print("IS" + suffix)
         if suffix == "zip" {
             return true
         }
@@ -141,7 +131,6 @@ class DropView: NSView {
         destinationURL.appendPathComponent(String(sourceZipName))
         
         do {
-            print(destinationURL.path)
             try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
             try Zip.unzipFile(URL(fileURLWithPath: atPath), destination: destinationURL, overwrite: true, password: nil)
             createFolderForManga(sourcePath: destinationURL.path, destinationPath: (LocalPlugin.getApplicationSupportAppDirectory()?.path)! + "/Books/UnknowAuthor/\(sourceZipName)")

@@ -142,7 +142,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         configureCollectionView()
         userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar")])
         
-        let pageViewTrackingArea = NSTrackingArea(rect: pageView.visibleRect, options: [.mouseMoved, .activeInKeyWindow], owner: self)
+        let pageViewTrackingArea = NSTrackingArea(rect: pageView.visibleRect, options: [.mouseMoved, .mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self)
         pageView.addTrackingArea(pageViewTrackingArea)
         
         updatePage()
@@ -150,21 +150,36 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
     override func mouseMoved(with event: NSEvent) {
         timer.invalidate()
+        NSCursor.unhide()
         NSAnimationContext.runAnimationGroup({ (context) in
             context.duration = 0.2
             panelView.animator().alphaValue = 1
         }, completionHandler: {
         })
-        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.hidePanelView), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hidePanelViewAndCursor), userInfo: nil, repeats: true)
     }
     
-    @objc func hidePanelView() {
+    override func mouseExited(with event: NSEvent) {
+        timer.invalidate()
+        hidePanelViewAndCursor()
+        NSCursor.unhide()
+    }
+    
+    @objc func hidePanelViewAndCursor() {
         if (!doNotHidePanelView) {
-            NSAnimationContext.runAnimationGroup({ (context) in
-                context.duration = 0.2
-                panelView.animator().alphaValue = 0
-            }, completionHandler: {
-            })
+//            let mouseLocation = NSEvent.mouseLocation
+//            panelView.frame.contains(mouseLocation)
+//            let viewInScreenCoords = panelView.convert(panelView.bounds, to: nil)
+//            print(viewInScreenCoords)
+//            panelView.mouse(mouseLocation, in: panelView.visibleRect)
+//            if  !viewInScreenCoords.contains(mouseLocation){
+                NSAnimationContext.runAnimationGroup({ (context) in
+                    context.duration = 0.2
+                    panelView.animator().alphaValue = 0
+                }, completionHandler: {
+                })
+                NSCursor.hide()
+//            }
         }
     }
     

@@ -12,6 +12,7 @@
 		1C4B5E5020856871002F0728 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4B5E4F20856871002F0728 /* Chapter.swift */; };
 		1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BFFF1207C18FA00B61444 /* DetailViewController.swift */; };
 		1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BFFF5207C282600B61444 /* RatingControl.swift */; };
+		8A40EF5120CE069C00A7B3CE /* ShelfViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40EF5020CE069C00A7B3CE /* ShelfViewFlowLayout.swift */; };
 		8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */; };
 		8AAFCF22207C3C6C003C8605 /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */; };
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
@@ -57,6 +58,7 @@
 		1C4B5E4F20856871002F0728 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		1C7BFFF1207C18FA00B61444 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1C7BFFF5207C282600B61444 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		8A40EF5020CE069C00A7B3CE /* ShelfViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewFlowLayout.swift; sourceTree = "<group>"; };
 		8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */,
 				8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */,
 				E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */,
+				8A40EF5020CE069C00A7B3CE /* ShelfViewFlowLayout.swift */,
 				E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */,
 			);
 			path = LibraryView;
@@ -355,6 +358,7 @@
 				1C1A1CBA20843CD1000074DC /* ChapterViewItem.swift in Sources */,
 				1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */,
 				E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */,
+				8A40EF5120CE069C00A7B3CE /* ShelfViewFlowLayout.swift in Sources */,
 				E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */,

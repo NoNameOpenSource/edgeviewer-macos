@@ -11,22 +11,24 @@ import Cocoa
 class ShelfViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
-    let sectionA: [Manga] = [Manga(title: "DummyA"), Manga(title: "DummyB")]
+    let sectionA: [Manga] = [Manga(title: "DummyA"), Manga(title: "DummyB"),Manga(title: "DummyC"), Manga(title: "DummyD"),Manga(title: "DummyD"),Manga(title: "DummyD"),Manga(title: "DummyD"),Manga(title: "DummyD"),Manga(title: "DummyD")]
     let sectionB: [Manga] = [Manga(title: "DummyC"), Manga(title: "DummyD")]
     var  sections: [[Manga]] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        configureCollectionView()
         sections.append(sectionA)
         sections.append(sectionB)
+        
     }
+   
     
     fileprivate func configureCollectionView() { // this one makes layout
-        let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
-        flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
+        let flowLayout = ShelfViewFlowLayout()
+        flowLayout.itemSize = NSSize(width: 140.0, height: 160.0)
+        flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         collectionView.collectionViewLayout = flowLayout
@@ -37,6 +39,7 @@ class ShelfViewController: NSViewController {
         } else {
             // Fallback on earlier versions
         }
+       
     }
 }
 

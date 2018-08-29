@@ -14,10 +14,17 @@ class ChapterController: NSViewController {
  
     var data = ["Chapter 1", "Chapter 2", "Chapter 3","Chapter 4"]
     
+    var delegate: ContentViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
         // Do view setup here.
+    }
+    
+    override func viewDidDisappear() {
+        guard let delegate = delegate else { return }
+        delegate.chapterViewDidDisappear()
     }
     
 }

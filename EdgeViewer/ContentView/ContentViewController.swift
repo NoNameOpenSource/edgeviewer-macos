@@ -20,6 +20,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var displayedItem: [ButtonType] = [.backward, .forward, .chapter]
     var navigation: [Any] = Array()
     var customizationPalette: CustomizationPalette? = nil
+    var chapterController: ChapterController? = nil
 
     @IBOutlet weak var editToolBox: NSView!
     @IBOutlet weak var panelView: NSView!
@@ -28,7 +29,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     @IBOutlet weak var panelBorderedView: NSScrollView!
     
     var timer = Timer()
-    var isCustomizationMode = false
     var animationDictionary = [[NSViewAnimation.Key : NSView]]()
     
     var pageController: NSPageController = NSPageController()
@@ -57,8 +57,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     @IBAction func enableEditMode(_ sender: NSMenuItem) {
-        guard !isCustomizationMode else { return }
-        isCustomizationMode = true
+        guard customizationPalette == nil else { return }
         for i in 0..<userPanel.numberOfItems(inSection: 0) {
             let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
             button.isEnabled = false
@@ -115,7 +114,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
         customizationPalette!.view.removeFromSuperview()
         customizationPalette = nil
-        isCustomizationMode = false
     }
 
     override func viewDidLoad() {
@@ -169,21 +167,15 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     @objc func hidePanelViewAndCursor() {
-        if (!isCustomizationMode) {
-//            let mouseLocation = NSEvent.mouseLocation
-//            panelView.frame.contains(mouseLocation)
-//            let viewInScreenCoords = panelView.convert(panelView.bounds, to: nil)
-//            print(viewInScreenCoords)
-//            panelView.mouse(mouseLocation, in: panelView.visibleRect)
-//            if  !viewInScreenCoords.contains(mouseLocation){
-                NSAnimationContext.runAnimationGroup({ (context) in
-                    context.duration = 0.2
-                    panelView.animator().alphaValue = 0
-                }, completionHandler: {
-                })
-                NSCursor.hide()
-//            }
-        }
+        guard customizationPalette == nil else { return }
+        guard chapterController == nil else { return }
+        
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 0.2
+            panelView.animator().alphaValue = 0
+        }, completionHandler: {
+        })
+        NSCursor.hide()
     }
     
     override func viewDidDisappear() {
@@ -271,19 +263,27 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     @objc func segueToChapterView(sender : Any) {
-        isCustomizationMode = true
+        guard chapterController == nil else {
+            chapterController?.dismiss(sender)
+            return
+        }
+        
         var data : [String] = []
         for chapter in (manga?.chapter)! {
             data.append(String(chapter))
         }
         let button: NSButton = sender as! NSButton
         
-        if let popoverContent = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ChapterController")) as? ChapterController {
-            popoverContent.data = data
-            self.presentViewController(popoverContent, asPopoverRelativeTo: popoverContent.view.bounds, of: button, preferredEdge: .maxY, behavior: NSPopover.Behavior.semitransient)
-            
-        }
+        chapterController = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ChapterController")) as? ChapterController
+        guard let chapterController = chapterController else { return }
+        chapterController.data = data
+        chapterController.delegate = self
+        self.presentViewController(chapterController, asPopoverRelativeTo: chapterController.view.bounds, of: button, preferredEdge: .maxY, behavior: NSPopover.Behavior.semitransient)
         
+    }
+    
+    func chapterViewDidDisappear() {
+        chapterController = nil
     }
     
     @objc public func pageBack(){

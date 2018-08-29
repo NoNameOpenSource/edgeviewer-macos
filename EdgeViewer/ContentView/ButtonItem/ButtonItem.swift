@@ -21,12 +21,6 @@ class ButtonItem: NSCollectionViewItem {
     
     @IBOutlet weak var button: NSButton!
     
-    override var isSelected: Bool {
-        didSet {
-            view.layer?.borderWidth = isSelected ? 5.0 : 1.0
-        }
-    }
-    
     var image: NSImage? {
         get {
             return button.image

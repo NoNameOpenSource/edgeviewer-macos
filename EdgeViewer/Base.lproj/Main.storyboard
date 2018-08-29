@@ -890,7 +890,6 @@
                     </view>
                     <connections>
                         <outlet property="outlineView" destination="oIK-83-43U" id="ePq-d9-FWm"/>
-                        <outlet property="tableView" destination="oIK-83-43U" id="5rP-HF-IMs"/>
                     </connections>
                 </viewController>
                 <customObject id="hYy-b7-4TN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

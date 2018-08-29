@@ -28,7 +28,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     @IBOutlet weak var panelBorderedView: NSScrollView!
     
     var timer = Timer()
-    var doNotHidePanelView = false
+    var isCustomizationMode = false
     var animationDictionary = [[NSViewAnimation.Key : NSView]]()
     
     var pageController: NSPageController = NSPageController()
@@ -57,6 +57,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     @IBAction func enableEditMode(_ sender: NSMenuItem) {
+        guard !isCustomizationMode else { return }
+        isCustomizationMode = true
         for i in 0..<userPanel.numberOfItems(inSection: 0) {
             let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
             button.isEnabled = false
@@ -113,6 +115,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
         customizationPalette!.view.removeFromSuperview()
         customizationPalette = nil
+        isCustomizationMode = false
     }
 
     override func viewDidLoad() {
@@ -166,7 +169,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     @objc func hidePanelViewAndCursor() {
-        if (!doNotHidePanelView) {
+        if (!isCustomizationMode) {
 //            let mouseLocation = NSEvent.mouseLocation
 //            panelView.frame.contains(mouseLocation)
 //            let viewInScreenCoords = panelView.convert(panelView.bounds, to: nil)
@@ -268,7 +271,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     @objc func segueToChapterView(sender : Any) {
-        doNotHidePanelView = true
+        isCustomizationMode = true
         var data : [String] = []
         for chapter in (manga?.chapter)! {
             data.append(String(chapter))

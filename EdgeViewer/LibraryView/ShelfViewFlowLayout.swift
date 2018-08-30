@@ -16,11 +16,13 @@ class ShelfViewFlowLayout: NSCollectionViewFlowLayout {
 //    Defining the attributes
     override func  layoutAttributesForElements(in rect: NSRect) -> [NSCollectionViewLayoutAttributes] {
         var attributes = [NSCollectionViewLayoutAttributes]()
-        let count = self.collectionView!.numberOfItems(inSection: 0)
-        for i in 0..<count{
-            if let attribute = layoutAttributesForItem(at: NSIndexPath(forItem: i, inSection: 0) as IndexPath) {
-                attributes.append(attribute)
-                
+        for j in 0..<self.collectionView!.numberOfSections {
+            let count = self.collectionView!.numberOfItems(inSection: 0)
+            for i in 0..<count{
+                if let attribute = layoutAttributesForItem(at: NSIndexPath(forItem: i, inSection: j) as IndexPath) {
+                    attributes.append(attribute)
+                    
+                }
             }
         }
         return attributes

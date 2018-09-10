@@ -190,6 +190,7 @@
 				E0AEDFEE20AD304300E72B6E /* Book.swift */,
 				E0AEDFF020AD304300E72B6E /* LibraryPage.swift */,
 				E023917720C4F6C500A9489B /* PageItem.swift */,
+				1C4B5E4F20856871002F0728 /* Chapter.swift */,
 			);
 			path = PluginAPI;
 			sourceTree = "<group>";
@@ -251,7 +252,6 @@
 				E08E863C20731A7A0082723B /* ViewController.swift */,
 				E08E863E20731A7A0082723B /* Assets.xcassets */,
 				E08E864020731A7A0082723B /* Main.storyboard */,
-				1C4B5E4F20856871002F0728 /* Chapter.swift */,
 				E08E864320731A7A0082723B /* Info.plist */,
 				E08E864420731A7A0082723B /* EdgeViewer.entitlements */,
 			);

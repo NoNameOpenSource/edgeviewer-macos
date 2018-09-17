@@ -30,19 +30,19 @@ class LocalPlugin: Plugin {
                 let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
                 let fileManager = FileManager.default
                 do {
-                    let authorFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
-                    for (authorFolder) in authorFolders {
-                        if !authorFolder.absoluteString.hasSuffix(".DS_Store") {
+                    let seriesFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
+                    for (seriesFolder) in seriesFolders {
+                        if !seriesFolder.absoluteString.hasSuffix(".DS_Store") {
                             do {
-                                let bookFolders = try fileManager.contentsOfDirectory(at: authorFolder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+                                let bookFolders = try fileManager.contentsOfDirectory(at: seriesFolder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
                                 for bookFolder in bookFolders {
-                                    let pageItem = PageItem(owner: self, identifier: (authorFolder.lastPathComponent, bookFolder.lastPathComponent), type: .book)
+                                    let pageItem = PageItem(owner: self, identifier: (seriesFolder.lastPathComponent, bookFolder.lastPathComponent), type: .book)
                                     pageItem.name = bookFolder.lastPathComponent
                                     page.items.append(pageItem)
                                 }
                             }
                             catch {
-                                print("cannot get author folders")
+                                print("cannot get series folders")
                                 return nil
                             }
                         }
@@ -65,7 +65,7 @@ class LocalPlugin: Plugin {
     
     func book(withIdentifier identifier: Any) -> Book? {
         let xmlParser = LocalPluginXMLParser(identifier: identifier as! (String, String))
-        xmlParser.book.identifier = (xmlParser.book.author, xmlParser.book.title)
+        xmlParser.book.identifier = (xmlParser.book.series, xmlParser.book.title)
         if let coverImage = xmlParser.book.page(atIndex: 0) {
             xmlParser.book.coverImage = coverImage
         }
@@ -133,8 +133,8 @@ class LocalPlugin: Plugin {
         return nil
     }
     
-    static func getBookDirectory(ofBookWithIdentifier identifier: (author: String, title: String)) -> URL? {
-        return LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books/\(identifier.author)/\(identifier.title)")
+    static func getBookDirectory(ofBookWithIdentifier identifier: (series: String, title: String)) -> URL? {
+        return LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books/\(identifier.series)/\(identifier.title)")
     }
     
     enum LocalPluginLibraryPageType {

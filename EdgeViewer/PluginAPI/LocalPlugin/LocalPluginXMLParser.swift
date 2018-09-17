@@ -21,7 +21,7 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
     private var currentChapterTitle: String
     private var currentChapterPageIndex: Int
     
-    init(identifier: (author: String, title:String)) {
+    init(identifier: (series: String, title:String)) {
         eName = String()
         book = Book(owner: LocalPlugin.sharedInstance, identifier: 0, type: .manga)
         chapters = [Chapter]()
@@ -104,11 +104,7 @@ class LocalPluginXMLParser: NSObject, XMLParserDelegate {
                         book.genre = data
                     case "series":
                         print("Series: \(data)")
-                        if let data = Int(data) { book.series = data}
-                        else {
-                            book.series = 0
-                            XMLCorrupt()
-                        }
+                        book.series = data
                     case "seriesName":
                         book.seriesName = data
                     case "numberOfPages":

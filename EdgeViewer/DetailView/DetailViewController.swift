@@ -14,13 +14,14 @@ protocol RatingControlDelegate {
 }
 
 protocol CoverImageDelegate {
-    func segueToContentView()
+    func segueToContentView(withBook book: Book)
 }
 
 class DetailViewController: NSViewController, RatingControlDelegate, CoverImageDelegate {
     
-    var book: Book? = nil
+    var series: Series? = nil
     var senderDelegate: LibraryViewController? = nil
+    var books: [Book]?
     
     //------------------------------------------------------------------------------------------------
     //MARK: Set up UI Outlets
@@ -41,15 +42,12 @@ class DetailViewController: NSViewController, RatingControlDelegate, CoverImageD
     @IBAction func showReadFromBeginningButton(_ sender: Any) {
         ReadFromBeginningButton.isHidden = !ReadFromBeginningButton.isHidden
     }
-    @IBAction func readButton(_ sender: NSButton) {
-        segueToContentView()
-    }
     
     override func viewDidLoad() {
         ratingControl.ratingControlDelegate = self
         
-        guard let book = book else {
-            print("bad book identifier")
+        guard let series = series else {
+            print("bad series identifier")
             return
         }
         
@@ -58,18 +56,18 @@ class DetailViewController: NSViewController, RatingControlDelegate, CoverImageD
         //------------------------------------------------------------------------------------------------
         //MARK: Write to UI based on properties in Manga Object
         //------------------------------------------------------------------------------------------------
-        if let rating = book.rating {
+        if let rating = series.rating {
             ratingControl.rating = Int(rating)
         } else {
             print("book rating nil")
         }
-        self.mangaTitle.stringValue = book.title
-        if let author = book.author {
+        self.mangaTitle.stringValue = series.title
+        if let author = series.author {
             self.mangaAuthor.stringValue = author
         } else {
-            print("book author nil")
+            print("series author nil")
         }
-        if let genre = book.genre {
+        if let genre = series.genre {
             self.mangaGenre.stringValue = genre
         } else {
             print("book genre nil")
@@ -79,17 +77,16 @@ class DetailViewController: NSViewController, RatingControlDelegate, CoverImageD
         localizedDateFormatter.locale = Locale(identifier: "en_US_POSIX")
         localizedDateFormatter.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())
         localizedDateFormatter.dateFormat = "MMMM d, yyyy h:mm a"
-        if let date = book.lastUpdated {
+        if let date = series.lastUpdated {
             self.mangaReleaseDate.stringValue = localizedDateFormatter.string(from: date)
         } else {
             print("date nil")
             mangaReleaseDate.stringValue = "Unknown Release Date"
         }
-        self.coverImage.image = book.coverImage
-        self.coverImage.delegate = self
+        self.coverImage.image = series.coverImage
         self.mangaProgress.minValue = 0.0
         self.mangaProgress.maxValue = 1.0
-        self.mangaProgress.doubleValue = book.progress
+        self.mangaProgress.doubleValue = 0
         configureCollectionView()
     }
     
@@ -112,8 +109,8 @@ class DetailViewController: NSViewController, RatingControlDelegate, CoverImageD
     //MARK: Update Rating Based on Information from RatingControl
     //------------------------------------------------------------------------------------------------
     func updateRating(_: RatingControl, rating: Double) {
-        if let book = book {
-            LocalPlugin.sharedInstance.update(rating: rating, ofBook: book)
+        if let series = series {
+            LocalPlugin.sharedInstance.update(rating: rating, ofSeries: series)
         } else {
             print("unable to update rating of nil book")
         }
@@ -122,12 +119,12 @@ class DetailViewController: NSViewController, RatingControlDelegate, CoverImageD
     //------------------------------------------------------------------------------------------------
     //MARK: Segue to Content View (with book's currentPage updated according to pageIndex of chapter that user double-clicked)
     //------------------------------------------------------------------------------------------------
-    func chapterSegue(_ collectionView: NSCollectionView, didDoubleClick item: NSCollectionViewItem) {
-        if let book = book {
-            if let chapters = book.chapters {
+    func bookSegue(_ collectionView: NSCollectionView, didDoubleClick item: NSCollectionViewItem) {
+        if series != nil {
+            if let books = books {
                 if let indexPath = collectionView.indexPath(for: item) {
-                    let chapter = chapters[indexPath.item]
-                    book.currentPage = chapter.pageIndex
+                    let book = books[indexPath.item]
+                    segueToContentView(withBook: book)
                 } else {
                     print("unable to update book.currentPage: nil collectionView.indexPath(for: item")
                 }
@@ -137,18 +134,13 @@ class DetailViewController: NSViewController, RatingControlDelegate, CoverImageD
         } else {
             print("unable to update book.currentPage: nil book")
         }
-        segueToContentView()
     }
     
-    func segueToContentView() {
-        if let book = book {
-            if let senderDelegate = senderDelegate {
-                senderDelegate.segueToContentView(withBook: book)
-            } else {
-                print("unable to segue to Content View: nil senderDelegate")
-            }
+    func segueToContentView(withBook book: Book) {
+        if let senderDelegate = senderDelegate {
+            senderDelegate.segueToContentView(withBook: book)
         } else {
-            print("unable to segue to Content View: nil book")
+            print("unable to segue to Content View: nil senderDelegate")
         }
     }
 }
@@ -161,15 +153,11 @@ extension DetailViewController : NSCollectionViewDataSource {
     
     // Returns the number of items in the section
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let book = book else {
-            print("bad book identifier")
+        guard let books = books else {
+            print("bad books data")
             return 0
         }
-        guard let chapters = book.chapters else {
-            print("bad book chapters data")
-            return 0
-        }
-        return chapters.count
+        return books.count
     }
     
     // Return an NSCollectionView item for a given path
@@ -183,18 +171,14 @@ extension DetailViewController : NSCollectionViewDataSource {
             print("ChapterViewItem not given by chapterView.makeItem")
             return item
         }
-        guard let book = book else {
-            print("bad book identifier")
-            return item
-        }
-        guard let chapters = book.chapters else {
-            print("book chapters data is bad")
+        guard let books = books else {
+            print("bad books array")
             return item
         }
         
         // Set the textField and imageView of the current NSCollectionView item
-        item.textField!.stringValue = chapters[indexPath.item].title
-        item.imageView!.image = book.page(atIndex: chapters[indexPath.item].pageIndex)
+        item.textField!.stringValue = books[indexPath.item].title
+        item.imageView!.image = books[indexPath.item].page(atIndex: 0)
         
         return item
     }

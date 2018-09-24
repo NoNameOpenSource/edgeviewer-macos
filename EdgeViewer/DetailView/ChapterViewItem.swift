@@ -18,7 +18,7 @@ class ChapterViewItem: NSCollectionViewItem {
     override func mouseDown(with event: NSEvent) {
         if event.clickCount == 2 { // user did double-click
             if let chapterViewController = collectionView?.delegate as? DetailViewController {
-                chapterViewController.chapterSegue(collectionView!, didDoubleClick: self)
+                chapterViewController.bookSegue(collectionView!, didDoubleClick: self)
             } else {
                 print("could not get DetailViewController from collectionView.delegate")
             }

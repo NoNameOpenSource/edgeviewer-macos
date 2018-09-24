@@ -33,18 +33,9 @@ class LocalPlugin: Plugin {
                     let seriesFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
                     for (seriesFolder) in seriesFolders {
                         if !seriesFolder.absoluteString.hasSuffix(".DS_Store") {
-                            do {
-                                let bookFolders = try fileManager.contentsOfDirectory(at: seriesFolder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
-                                for bookFolder in bookFolders {
-                                    let pageItem = PageItem(owner: self, identifier: (seriesFolder.lastPathComponent, bookFolder.lastPathComponent), type: .book)
-                                    pageItem.name = bookFolder.lastPathComponent
-                                    page.items.append(pageItem)
-                                }
-                            }
-                            catch {
-                                print("cannot get series folders")
-                                return nil
-                            }
+                            let pageItem = PageItem(owner: self, identifier: seriesFolder.lastPathComponent, type: .book)
+                            pageItem.name = seriesFolder.lastPathComponent
+                            page.items.append(pageItem)
                         }
                     }
                 }
@@ -70,6 +61,39 @@ class LocalPlugin: Plugin {
             xmlParser.book.coverImage = coverImage
         }
         return xmlParser.book
+    }
+    
+//    func series(withIdentifier identifier: Any) ->
+    
+    func books(ofSeries series: Series) -> [Book]? {
+        let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
+        let fileManager = FileManager.default
+        var books = [Book]()
+        do {
+            let seriesFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
+            for (seriesFolder) in seriesFolders {
+                if !seriesFolder.absoluteString.hasSuffix(".DS_Store") {
+                    do {
+                        let bookFolders = try fileManager.contentsOfDirectory(at: seriesFolder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+                        for bookFolder in bookFolders {
+                            let bookIdentifier = (seriesFolder.lastPathComponent, bookFolder.lastPathComponent)
+                            if let book = book(withIdentifier: (seriesFolder.lastPathComponent, bookFolder.lastPathComponent)) {
+                                books.append(book)
+                            }
+                        }
+                    }
+                    catch {
+                        print("cannot get book folders")
+                        return nil
+                    }
+                }
+            }
+        }
+        catch {
+            print("cannot get series folders")
+            return nil
+        }
+        return books
     }
     
     func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
@@ -114,6 +138,10 @@ class LocalPlugin: Plugin {
         LocalPluginXMLStorer.storeBookData(ofBook: book)
     }
     
+    func update(series: Series) {
+        LocalPluginXMLStorer.storeSeriesData(ofSeries: series)
+    }
+    
     func update(currentPage: Int, ofBook book: Book) {
         book.currentPage = currentPage
         LocalPluginXMLStorer.storeBookData(ofBook: book)
@@ -122,6 +150,11 @@ class LocalPlugin: Plugin {
     func update(rating: Double, ofBook book: Book) {
         book.rating = rating
         LocalPluginXMLStorer.storeBookData(ofBook: book)
+    }
+    
+    func update(rating: Double, ofSeries series: Series) {
+        series.rating = rating
+        LocalPluginXMLStorer.storeSeriesData(ofSeries: series)
     }
     
     static func getApplicationSupportAppDirectory() -> URL? {

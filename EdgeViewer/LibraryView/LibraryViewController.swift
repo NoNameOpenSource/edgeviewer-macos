@@ -69,7 +69,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
     func shelf(_: ShelfViewController, selectedItem pageItem: PageItem) {
         switch pageItem.type {
         case .book:
-            segueToDetailView(withBook: pageItem.content as! Book)
+            segueToDetailView(withSeries: pageItem.content as! Series)
         case .link:
             segue(toPage: pageItem.content as! LibraryPage)
         }
@@ -93,7 +93,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         navigation.append(page)
     }
     
-    func segueToDetailView(withBook book: Book) {
+    func segueToDetailView(withSeries series: Series) {
         let detailViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DetailViewController")) as! DetailViewController
         let oldShelf = self.splitViewItems[1].viewController
         let segue = NSStoryboardSegue(identifier: NSStoryboardSegue.Identifier(rawValue: "LibraryPageSegue"),
@@ -104,7 +104,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                                         self.addSplitViewItem(NSSplitViewItem(viewController: detailViewController))
         })
         detailViewController.senderDelegate = self
-        detailViewController.book = book;
+        detailViewController.series = series;
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
         navigation.append(navigation[0])
@@ -131,8 +131,8 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
     // return to previous view deleting the last element in array
     func navig () {
         switch(navigation.popLast()) {
-        case let book as Book:
-            segueToDetailView(withBook: book)
+        case let series as Series:
+            segueToDetailView(withSeries: series)
             navigation.removeLast()
 
         case let page as LibraryPage:

@@ -43,6 +43,12 @@ final class LocalPluginXMLStorer { // pseudo-static class
         }
     }
     
+    static func storeSeriesData(ofSeries series: Series) {
+        guard let seriesID = series.identifier as? (String, String) else {
+            return
+        }
+    }
+    
     private static func createXMLDocumentData(book: Book) -> Data {
         // Set up XMLDocument element with new values
         

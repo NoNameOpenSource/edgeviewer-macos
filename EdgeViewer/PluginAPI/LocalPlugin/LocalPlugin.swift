@@ -63,7 +63,33 @@ class LocalPlugin: Plugin {
         return xmlParser.book
     }
     
-//    func series(withIdentifier identifier: Any) ->
+    func series(withIdentifier identifier: Any) -> Series? {
+        var xmlParser: LocalPluginSeriesXMLParser?
+        if let identifier = identifier as? String {
+            let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
+            let fileManager = FileManager.default
+            do {
+                let seriesFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
+                for (seriesFolder) in seriesFolders {
+                    if seriesFolder.lastPathComponent == identifier {
+                        let seriesXMLFile = seriesFolder.appendingPathComponent("SeriesData.xml")
+                        xmlParser = LocalPluginSeriesXMLParser(contentsOf: seriesXMLFile)
+                    }
+                }
+            }
+            catch {
+                print("cannot get series folders")
+                return nil
+            }
+        }
+        if let xmlParser = xmlParser {
+            return xmlParser.series
+        }
+        else {
+            print("cannot get series object")
+            return nil
+        }
+    }
     
     func books(ofSeries series: Series) -> [Book]? {
         let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
@@ -166,8 +192,12 @@ class LocalPlugin: Plugin {
         return nil
     }
     
+    static func getBooksDirectory() -> URL? {
+        return LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books/")
+    }
+    
     static func getBookDirectory(ofBookWithIdentifier identifier: (series: String, title: String)) -> URL? {
-        return LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books/\(identifier.series)/\(identifier.title)")
+        return LocalPlugin.getBooksDirectory()?.appendingPathComponent("\(identifier.series)/\(identifier.title)")
     }
     
     enum LocalPluginLibraryPageType {

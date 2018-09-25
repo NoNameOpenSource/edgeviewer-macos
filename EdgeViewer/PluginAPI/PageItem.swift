@@ -33,7 +33,8 @@ class PageItem {
     
     var content: Any {
         get {
-            return self.owner.book(withIdentifier: self.identifier)
+            print(self.identifier)
+            return self.owner.series(withIdentifier: self.identifier)
         }
     }
     

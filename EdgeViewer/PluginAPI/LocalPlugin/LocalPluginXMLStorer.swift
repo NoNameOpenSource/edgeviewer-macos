@@ -44,9 +44,66 @@ final class LocalPluginXMLStorer { // pseudo-static class
     }
     
     static func storeSeriesData(ofSeries series: Series) {
-        guard let seriesID = series.identifier as? (String, String) else {
+        guard let seriesID = series.identifier as? String else {
+            print("series is not a String")
             return
         }
+        guard let booksDirectory = LocalPlugin.getBooksDirectory() else {
+            print("cannot get books directory")
+            return
+        }
+        let seriesDirectory = booksDirectory.appendingPathComponent(seriesID)
+        
+        // Create directory for this series in Books directory within Application\ Support/EdgeViewer
+        do {
+            try FileManager.default.createDirectory(at: seriesDirectory, withIntermediateDirectories: true)
+        }
+        catch {
+            print("Could not create directory: \(error)")
+        }
+        
+        if let xmlDocumentLocation: URL = seriesDirectory.appendingPathComponent("SeriesData.xml") {
+            let xmlDataString = createXMLDocumentData(forSeries: series)
+            // Write XMLDocument contents to LocalLibrary.xml (overwrites, doesn't append)
+            do {
+                print(xmlDocumentLocation)
+                try xmlDataString.write(to: xmlDocumentLocation)
+            } catch {
+                print(error)
+            }
+        }
+        else { // if let xmlDocumentLocation
+            print("Could not find \(series.title) folder in user's Application Support Directory")
+        }
+    }
+    
+    private static func createXMLDocumentData(forSeries series: Series) -> Data {
+        let xmlDoc = XMLDocument(rootElement: XMLElement(name: "series"))
+        
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "title", withProperty: series.title))
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "author", withProperty: series.author))
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "rating", withProperty: series.rating))
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "genre", withProperty: series.genre))
+        
+        // lastUpdated
+        var lastUpdated: String
+        let RFC3339DateFormatter = DateFormatter()
+        RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
+        RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        if let lastUpdatedDate = series.lastUpdated {
+            lastUpdated = RFC3339DateFormatter.string(from: lastUpdatedDate)
+        } else {
+            print("date nil")
+            lastUpdated = "Unknown Release Date"
+        }
+        xmlDoc.rootElement()?.addChild(safeElement(withName: "lastUpdated", withProperty: lastUpdated))
+        
+        // XML version
+        xmlDoc.version = "1.0"
+        
+        // return the XMLDocument that has been assembled by the preceding code in this function
+        return xmlDoc.xmlData(options:[.nodePrettyPrint, .nodeCompactEmptyElement])
     }
     
     private static func createXMLDocumentData(book: Book) -> Data {

@@ -13,6 +13,10 @@ import JavaScriptCore
 let pluginFolder = Bundle.main.resourcePath! + "/"
 
 class JSPlugin: Plugin {
+    func series(withIdentifier identifier: Any) -> Series? {
+        return nil
+    }
+    
     func update(book: Book) {
         return
     }

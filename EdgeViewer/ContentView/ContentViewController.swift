@@ -41,7 +41,15 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             if(currentPage < 0) {
                 currentPage = 0
             } else if(currentPage >= manga!.numberOfPages) {
-                currentPage = manga!.numberOfPages - 1
+                if (viewType == .singlePage){
+                    currentPage = manga!.numberOfPages - 1
+                    print("last page")
+                }else if (viewType == .doublePage){
+                    currentPage = manga!.numberOfPages - 2
+                    print("last two page")
+                }
+            }else if (currentPage == manga!.numberOfPages - 1 && viewType == .doublePage){
+                self.viewType = .singlePage;
             }
             // update page
             updatePage()
@@ -51,8 +59,18 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var viewType: ViewType = .singlePage {
         didSet {
             // there could be a better way, but this works
-            pageController.selectedIndex = currentPage + 1;
-            pageController.selectedIndex = currentPage;
+            if (oldValue == .singlePage){
+                if (currentPage == manga!.numberOfPages - 1){
+                    viewType = .singlePage
+                    pageController.view = pageView
+                }else{
+                    viewType = .doublePage;
+                }
+            }else if (oldValue == .doublePage){
+                viewType = .singlePage
+                currentPage += 1;
+                pageController.view = pageView
+            }
         }
     }
     
@@ -188,7 +206,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                                  NSImage(named: NSImage.Name(rawValue: "first")),
                                  NSImage(named: NSImage.Name(rawValue: "Last")),
                                  NSImage(named: NSImage.Name(rawValue: "download"))]
-        testManga.bookMark = 2
+        testManga.bookMark = 1
         for page in pages {
             if let page = page {
                 testManga.addNewPage(image: page)
@@ -260,6 +278,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         default:
             return
         }
+        
+        print(viewType)
     }
     
     @objc func segueToChapterView(sender : Any) {
@@ -310,6 +330,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         default:
             return
         }
+        print("type switched")
+        print(viewType);
     }
     
     fileprivate func configureCollectionView() { // this one makes layout
@@ -372,7 +394,7 @@ extension ContentViewController: NSCollectionViewDataSource{
                     // Fallback on earlier versions
                 }
                 item.button.target = self
-                item.button.action = #selector(segueToChapterView)
+                item.button.action = #selector(viewTypeSwitch)
                 if(customizationPalette != nil) {
                     item.isEnabled = false
                 }

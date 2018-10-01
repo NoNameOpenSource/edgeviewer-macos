@@ -14,7 +14,16 @@ let pluginFolder = Bundle.main.resourcePath! + "/"
 
 class JSPlugin: Plugin {
     func series(withIdentifier identifier: Any) -> Series? {
-        return nil
+        guard let function = context.objectForKeyedSubscript("loadSeries") else {
+            return nil
+        }
+        guard let seriesJS = function.call(withArguments: [identifier]) else {
+            return nil
+        }
+        let title = seriesJS.forProperty("title")!.toString()!
+        let series = Series(owner: self, identifier: identifier)
+        series.title = title
+        return series
     }
     
     func update(book: Book) {

@@ -48,8 +48,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                     currentPage = manga!.numberOfPages - 2
                     print("last two page")
                 }
-            }else if (currentPage == manga!.numberOfPages - 1 && viewType == .doublePage){
-                self.viewType = .singlePage;
             }
             // update page
             updatePage()
@@ -58,19 +56,15 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     var viewType: ViewType = .singlePage {
         didSet {
-            // there could be a better way, but this works
-            if (oldValue == .singlePage){
-                if (currentPage == manga!.numberOfPages - 1){
-                    viewType = .singlePage
-                    pageController.view = pageView
-                }else{
-                    viewType = .doublePage;
-                }
-            }else if (oldValue == .doublePage){
-                viewType = .singlePage
-                currentPage += 1;
-                pageController.view = pageView
+            if(viewType == .doublePage && currentPage % 2 != 0) {
+                // doublePage only wants even page numbers
+                currentPage -= 1
             }
+            // there could be a better way, but this works
+            // to refresh the pageController for the switched view
+            pageController.selectedIndex = currentPage + 1
+            pageController.selectedIndex = currentPage
+
         }
     }
     
@@ -234,6 +228,11 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         case .singlePage:
             return NSPageController.ObjectIdentifier("SinglePageViewController")
         default:
+            guard currentPage + 1 != manga!.numberOfPages else {
+                // there is only one page left
+                // therefore double page view cannot be used
+                return NSPageController.ObjectIdentifier("SinglePageViewController")
+            }
             return NSPageController.ObjectIdentifier("DoublePageViewController")
         }
     }

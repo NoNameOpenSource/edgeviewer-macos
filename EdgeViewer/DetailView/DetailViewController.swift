@@ -54,7 +54,7 @@ class DetailViewController: NSViewController, RatingControlDelegate, CoverImageD
         super.viewDidLoad()
         
         //------------------------------------------------------------------------------------------------
-        //MARK: Write to UI based on properties in Manga Object
+        //MARK: Write to UI based on properties in Series Object
         //------------------------------------------------------------------------------------------------
         if let rating = series.rating {
             ratingControl.rating = Int(rating)
@@ -153,6 +153,11 @@ extension DetailViewController : NSCollectionViewDataSource {
     
     // Returns the number of items in the section
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let series = series else {
+            print("bad series")
+            return 0
+        }
+        books = series.books
         guard let books = books else {
             print("bad books data")
             return 0

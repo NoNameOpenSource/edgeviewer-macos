@@ -1141,7 +1141,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HWi-Jl-N00">
-                                <rect key="frame" x="157" y="525" width="58" height="35"/>
+                                <rect key="frame" x="157" y="525" width="56" height="35"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Title" id="Su8-qD-bLc">
                                     <font key="font" metaFont="system" size="29"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

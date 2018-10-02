@@ -65,6 +65,7 @@ class LocalPlugin: Plugin {
     
     func series(withIdentifier identifier: Any) -> Series? {
         var xmlParser: LocalPluginSeriesXMLParser?
+        var seriesImage: NSImage?
         if let identifier = identifier as? String {
             let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
             let fileManager = FileManager.default
@@ -74,6 +75,12 @@ class LocalPlugin: Plugin {
                     if seriesFolder.lastPathComponent == identifier {
                         let seriesXMLFile = seriesFolder.appendingPathComponent("SeriesData.xml")
                         xmlParser = LocalPluginSeriesXMLParser(contentsOf: seriesXMLFile)
+                        let filePaths = try fileManager.contentsOfDirectory(at: seriesFolder, includingPropertiesForKeys: nil, options: [])
+                        for filePath in filePaths {
+                            if filePath.lastPathComponent.hasPrefix("SeriesImage.") {
+                                seriesImage = NSImage(contentsOf: filePath)
+                            }
+                        }
                     }
                 }
             }
@@ -83,7 +90,13 @@ class LocalPlugin: Plugin {
             }
         }
         if let xmlParser = xmlParser {
-            return xmlParser.series
+            let series =  xmlParser.series
+            if let series = series {
+                if let seriesImage = seriesImage {
+                    series.coverImage = seriesImage
+                }
+            }
+            return series
         }
         else {
             print("cannot get series object")

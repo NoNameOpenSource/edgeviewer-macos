@@ -107,7 +107,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         detailViewController.series = series;
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
-        navigation.append(navigation[0])
+        navigation.append(series)
     }
     
     func segueToContentView(withBook book: Book) {
@@ -130,14 +130,13 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
     
     // return to previous view deleting the last element in array
     func navig () {
+        navigation.removeLast()
         switch(navigation.popLast()) {
         case let series as Series:
             segueToDetailView(withSeries: series)
-            navigation.removeLast()
 
         case let page as LibraryPage:
             segue(toPage: page)
-            navigation.removeLast()
         default:
             break
         }

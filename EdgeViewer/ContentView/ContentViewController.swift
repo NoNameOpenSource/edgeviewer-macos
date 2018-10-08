@@ -228,6 +228,11 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         case .singlePage:
             return NSPageController.ObjectIdentifier("SinglePageViewController")
         default:
+            if currentPage == 0 {
+                // the first page is cover page
+                // it should be displayed with singlepage view
+                return NSPageController.ObjectIdentifier("SinglePageViewController")
+            }
             guard currentPage + 1 != manga!.numberOfPages else {
                 // there is only one page left
                 // therefore double page view cannot be used
@@ -272,7 +277,11 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             currentPage += 1;
             break
         case .doublePage:
-            currentPage += 2;
+            if(currentPage == 0) {
+                currentPage += 1;
+            } else {
+                currentPage += 2;
+            }
             break
         default:
             return

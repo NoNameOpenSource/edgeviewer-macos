@@ -23,8 +23,12 @@
 		8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB61A8D20DAFDDC00BFEC4A /* ProjectWindow.swift */; };
 		99E3551021599F7C001E12EC /* LocalPluginSeriesXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E3550F21599F7C001E12EC /* LocalPluginSeriesXMLParser.swift */; };
 		99E355122159B632001E12EC /* SeriesData.xml in Resources */ = {isa = PBXBuildFile; fileRef = 99E355112159B632001E12EC /* SeriesData.xml */; };
+		B111D3F320DD975E0096ED6E /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111D3F220DD975E0096ED6E /* DragView.swift */; };
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
 		B1A894502073B612003A67AB /* UserPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8944F2073B612003A67AB /* UserPanelView.swift */; };
+		B1E409E020E1AB6F00F65DE8 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E409DF20E1AB6F00F65DE8 /* Zip.framework */; };
+		B1E409E220E1AB6F00F65DE8 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1E409DF20E1AB6F00F65DE8 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B1E409E420E1AB8A00F65DE8 /* Zip.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */; };
 		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
 		E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */; };
 		E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */; };
@@ -67,6 +71,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B1E409E120E1AB6F00F65DE8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B1E409E220E1AB6F00F65DE8 /* Zip.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FEFFB720E0594D00D57A3C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				B1E409E420E1AB8A00F65DE8 /* Zip.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1C03FA5220DC8E0D00FB298A /* CoverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImage.swift; sourceTree = "<group>"; };
 		1C18FAD020C364620073886B /* LocalPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPlugin.swift; sourceTree = "<group>"; };
@@ -82,10 +110,11 @@
 		8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
 		8AB61A8D20DAFDDC00BFEC4A /* ProjectWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindow.swift; sourceTree = "<group>"; };
-		99E3550F21599F7C001E12EC /* LocalPluginSeriesXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginSeriesXMLParser.swift; sourceTree = "<group>"; };
-		99E355112159B632001E12EC /* SeriesData.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SeriesData.xml; path = "../../../../../../Library/Containers/com.ggomong.EdgeViewer/Data/Library/Application Support/EdgeViewer/Books/series1/SeriesData.xml"; sourceTree = "<group>"; };
+		B111D3F220DD975E0096ED6E /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		B1A8944F2073B612003A67AB /* UserPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPanelView.swift; sourceTree = "<group>"; };
+		B1E409DF20E1AB6F00F65DE8 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/Mac/Zip.framework; sourceTree = "<group>"; };
+		B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Zip.framework.dSYM; path = Carthage/Build/Mac/Zip.framework.dSYM; sourceTree = "<group>"; };
 		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
 		E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
@@ -123,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1E409E020E1AB6F00F65DE8 /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +194,14 @@
 				E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */,
 			);
 			path = PageView;
+			sourceTree = "<group>";
+		};
+		B111D3F120DD973F0096ED6E /* DragAndDropFileReader */ = {
+			isa = PBXGroup;
+			children = (
+				B111D3F220DD975E0096ED6E /* DragView.swift */,
+			);
+			path = DragAndDropFileReader;
 			sourceTree = "<group>";
 		};
 		B1A894482073B559003A67AB /* ContentView */ = {
@@ -229,7 +267,8 @@
 		E08E862E20731A7A0082723B = {
 			isa = PBXGroup;
 			children = (
-				99E355112159B632001E12EC /* SeriesData.xml */,
+				B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */,
+				B1E409DF20E1AB6F00F65DE8 /* Zip.framework */,
 				1C92690220960E0500ADF847 /* LocalLibrary.xml */,
 				E08E863920731A7A0082723B /* EdgeViewer */,
 				E08E864C20731A7A0082723B /* EdgeViewerTests */,
@@ -251,6 +290,7 @@
 		E08E863920731A7A0082723B /* EdgeViewer */ = {
 			isa = PBXGroup;
 			children = (
+				B111D3F120DD973F0096ED6E /* DragAndDropFileReader */,
 				E01ED2AE2093EB8F00CC805F /* PluginAPI */,
 				E029CFDE2081E564008EC2A7 /* LibraryView */,
 				1C1A1CB520843486000074DC /* DetailView */,
@@ -295,6 +335,8 @@
 				E08E863320731A7A0082723B /* Sources */,
 				E08E863420731A7A0082723B /* Frameworks */,
 				E08E863520731A7A0082723B /* Resources */,
+				B1FEFFB720E0594D00D57A3C /* CopyFiles */,
+				B1E409E120E1AB6F00F65DE8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -439,6 +481,7 @@
 				1C95803C20B91A0900D3AC9D /* LocalPluginXMLStorer.swift in Sources */,
 				1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */,
 				1C4B5E5020856871002F0728 /* Chapter.swift in Sources */,
+				B111D3F320DD975E0096ED6E /* DragView.swift in Sources */,
 				E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */,
 				8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */,
 				E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */,
@@ -620,6 +663,10 @@
 				CODE_SIGN_ENTITLEMENTS = EdgeViewer/EdgeViewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = EdgeViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -638,6 +685,10 @@
 				CODE_SIGN_ENTITLEMENTS = EdgeViewer/EdgeViewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = EdgeViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;

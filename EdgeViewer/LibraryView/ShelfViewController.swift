@@ -11,6 +11,7 @@ import Cocoa
 class ShelfViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
+    
     let sectionA: [Manga] = [Manga(title: "DummyA"), Manga(title: "DummyB")]
     let sectionB: [Manga] = [Manga(title: "DummyC"), Manga(title: "DummyD")]
     var  sections: [[Manga]] = []
@@ -24,6 +25,7 @@ class ShelfViewController: NSViewController {
             }
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -70,9 +70,14 @@
                     </customView>
                     <connections>
                         <outlet property="AppName" destination="Wh1-4W-6v3" id="hwg-ev-ffb"/>
-                        <outlet property="appIcon" destination="9zy-NI-HGO" id="agH-ZA-xDF"/>
-                        <outlet property="appName" destination="Wh1-4W-6v3" id="cB1-Z8-YdS"/>
+                        <outlet property="appCopyright" destination="4RP-d6-5q4" id="XFx-kq-czM"/>
+                        <outlet property="appIcon" destination="9zy-NI-HGO" id="LRK-TO-ecG"/>
+                        <outlet property="appName" destination="Wh1-4W-6v3" id="gK1-uv-CkB"/>
+                        <outlet property="appVersion" destination="R3f-Cl-Txf" id="tFl-YF-YyA"/>
+                        <outlet property="backgorundView" destination="zcQ-xN-ucm" id="0tA-Wu-OLo"/>
+                        <outlet property="backgoundView" destination="zcQ-xN-ucm" id="mZP-Sl-Qjm"/>
                         <outlet property="background" destination="zcQ-xN-ucm" id="IYI-dl-43V"/>
+                        <outlet property="backgroundView" destination="zcQ-xN-ucm" id="x6b-ih-PVh"/>
                         <outlet property="copyRight" destination="4RP-d6-5q4" id="f2i-oi-E2V"/>
                         <outlet property="copyright" destination="4RP-d6-5q4" id="ghY-aL-EwY"/>
                         <outlet property="licenseAgreement" destination="Hwc-ie-Vpg" id="8D2-Wt-QPo"/>
@@ -129,8 +134,9 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="appSupport" destination="GhN-w8-dGV" id="M98-v8-GqA"/>
                         <outlet property="finder" destination="GhN-w8-dGV" id="WwS-EZ-EWb"/>
-                        <outlet property="info" destination="ZRh-zC-ic5" id="Yff-Og-J7D"/>
+                        <outlet property="info" destination="9JA-fL-Jgk" id="d4a-DE-SPl"/>
                     </connections>
                 </viewController>
                 <customObject id="Qax-al-qUk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

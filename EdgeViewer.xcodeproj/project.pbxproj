@@ -12,10 +12,12 @@
 		1C4B5E5020856871002F0728 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4B5E4F20856871002F0728 /* Chapter.swift */; };
 		1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BFFF1207C18FA00B61444 /* DetailViewController.swift */; };
 		1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BFFF5207C282600B61444 /* RatingControl.swift */; };
-		8A40EF5120CE069C00A7B3CE /* ShelfViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40EF5020CE069C00A7B3CE /* ShelfViewFlowLayout.swift */; };
 		8A34150220A8B84A0075D779 /* ChapterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34150120A8B84A0075D779 /* ChapterController.swift */; };
+		8A40EF5120CE069C00A7B3CE /* ShelfViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40EF5020CE069C00A7B3CE /* ShelfViewFlowLayout.swift */; };
 		8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */; };
 		8AAFCF22207C3C6C003C8605 /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */; };
+		B1245EF12176D077008DAB45 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1245EF02176D077008DAB45 /* AboutScreen.swift */; };
+		B1245EF32176D1EF008DAB45 /* Acknowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1245EF22176D1EF008DAB45 /* Acknowledge.swift */; };
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
 		B1D8A4AB20C8281B00F4683A /* ButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A4A720C8281B00F4683A /* ButtonItem.xib */; };
 		B1D8A4B520C99CCA00F4683A /* ButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */; };
@@ -62,10 +64,12 @@
 		1C4B5E4F20856871002F0728 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		1C7BFFF1207C18FA00B61444 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1C7BFFF5207C282600B61444 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
-		8A40EF5020CE069C00A7B3CE /* ShelfViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewFlowLayout.swift; sourceTree = "<group>"; };
 		8A34150120A8B84A0075D779 /* ChapterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterController.swift; sourceTree = "<group>"; };
+		8A40EF5020CE069C00A7B3CE /* ShelfViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewFlowLayout.swift; sourceTree = "<group>"; };
 		8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
+		B1245EF02176D077008DAB45 /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutScreen.swift; path = EdgeViewer/Acknowledge/AboutScreen.swift; sourceTree = SOURCE_ROOT; };
+		B1245EF22176D1EF008DAB45 /* Acknowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Acknowledge.swift; path = EdgeViewer/Acknowledge/Acknowledge.swift; sourceTree = SOURCE_ROOT; };
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		B1D8A4A720C8281B00F4683A /* ButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonItem.xib; sourceTree = "<group>"; };
 		B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
@@ -143,6 +147,16 @@
 			path = PageView;
 			sourceTree = "<group>";
 		};
+		B1245EEB2176CF09008DAB45 /* Acknowledge */ = {
+			isa = PBXGroup;
+			children = (
+				B1245EF02176D077008DAB45 /* AboutScreen.swift */,
+				B1245EF22176D1EF008DAB45 /* Acknowledge.swift */,
+			);
+			name = Acknowledge;
+			path = "New Group1";
+			sourceTree = "<group>";
+		};
 		B1A894482073B559003A67AB /* ContentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +217,7 @@
 		E08E863920731A7A0082723B /* EdgeViewer */ = {
 			isa = PBXGroup;
 			children = (
+				B1245EEB2176CF09008DAB45 /* Acknowledge */,
 				E029CFDE2081E564008EC2A7 /* LibraryView */,
 				1C1A1CB520843486000074DC /* DetailView */,
 				B1A894482073B559003A67AB /* ContentView */,
@@ -388,6 +403,7 @@
 				1C1A1CBA20843CD1000074DC /* ChapterViewItem.swift in Sources */,
 				1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */,
 				E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */,
+				B1245EF12176D077008DAB45 /* AboutScreen.swift in Sources */,
 				8A40EF5120CE069C00A7B3CE /* ShelfViewFlowLayout.swift in Sources */,
 				E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
@@ -401,6 +417,7 @@
 				E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,
 				E047C4D020E050C800E6BFEF /* CustomizationPalette.swift in Sources */,
+				B1245EF32176D1EF008DAB45 /* Acknowledge.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 				B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */,

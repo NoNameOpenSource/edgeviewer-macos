@@ -51,6 +51,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
             listViewController!.data.append(plugin.name)
         }
         listViewController!.outlineView.reloadData()
+        listViewController!.outlineView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
         
         segue(toPage: plugins[0].homePage)
     }

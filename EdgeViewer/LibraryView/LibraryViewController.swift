@@ -45,6 +45,13 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         
         plugins.append(LocalPlugin.sharedInstance)
         loadPlugins()
+        
+        // update list view with plugins
+        for plugin in plugins {
+            listViewController!.data.append(plugin.name)
+        }
+        listViewController!.outlineView.reloadData()
+        
         segue(toPage: plugins[0].homePage)
     }
     

@@ -13,7 +13,7 @@ class LibraryListViewController: NSViewController, NSOutlineViewDelegate, NSOutl
     @IBOutlet weak var outlineView: NSOutlineView!
     
     // dummy model
-    let data = ["Cell 1", "Cell 2", "Cell 3"]
+    var data: [String] = []
     var librarySelectionHandler: ((Int) -> Void)?
 
     override func viewDidLoad() {

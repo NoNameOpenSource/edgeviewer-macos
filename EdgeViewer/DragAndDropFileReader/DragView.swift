@@ -2,7 +2,7 @@ import Cocoa
 import Zip
 
 class DropView: NSView {
-    
+    var plugin = LocalPlugin.self
     var filePath: String?
     let expectedExt = ["zip"]
     let expectedExtForImage = ["jpg","png"]
@@ -12,8 +12,11 @@ class DropView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
+
         self.wantsLayer = true
         self.layer?.backgroundColor = NSColor.gray.cgColor
+        
+        
         
         if #available(OSX 10.13, *) {
             registerForDraggedTypes([NSPasteboard.PasteboardType.URL, NSPasteboard.PasteboardType.fileURL])
@@ -148,9 +151,10 @@ class DropView: NSView {
         var count = 0
         do {
             let files = try fileManager.contentsOfDirectory(atPath: sourcePath)
-            let newBook : Book = Book(owner: LocalPlugin.self as! Plugin, identifier: ("UnknowAuthor",bookName), type: .manga)
+        
+            let newBook : Book = Book(owner: LocalPlugin.sharedInstance , identifier: ("UnknowAuthor",bookName), type: BookType.manga)
             newBook.title = bookName
-            newBook.coverImage = NSImage(contentsOfFile: files[0])!
+            
             newBook.currentPage = 0
             newBook.bookmark = 0
             
@@ -167,11 +171,15 @@ class DropView: NSView {
             }
             newBook.numberOfPages = count
             LocalPluginXMLStorer.storeBookData(ofBook: newBook)
-            
-            
+            guard let _ = NSImage(contentsOf: URL(fileURLWithPath: sourcePath + "/" + files[0], isDirectory: false)) else {
+                return
+            }
+            newBook.coverImage =  NSImage(contentsOf: URL(fileURLWithPath: sourcePath + "/" + files[0], isDirectory: false))!
         }catch{
             print("Error: \(error.localizedDescription)")
         }
         
     }
 }
+
+

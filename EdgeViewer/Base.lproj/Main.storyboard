@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="-180" y="-290"/>
         </scene>
-        <!--  -->
+        <!--View Controller-->
         <scene sceneID="CN4-ds-4d4">
             <objects>
-                <viewController title="  " id="Ej8-KM-5GG" customClass="Acknowledge" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ej8-KM-5GG" sceneMemberID="viewController">
                     <view key="view" id="W4q-4a-hL9">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="384"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -100,14 +100,14 @@
                                 <rect key="frame" x="20" y="52" width="410" height="312"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" ambiguous="YES" id="jOR-2j-1i7">
-                                    <rect key="frame" x="1" y="1" width="408" height="310"/>
+                                    <rect key="frame" x="1" y="1" width="393" height="310"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="ZRh-zC-ic5">
-                                            <rect key="frame" x="0.0" y="0.0" width="408" height="310"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="310"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="408" height="310"/>
+                                            <size key="minSize" width="393" height="310"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </textView>
@@ -119,16 +119,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Def-Kl-i14">
-                                    <rect key="frame" x="393" y="1" width="16" height="310"/>
+                                    <rect key="frame" x="394" y="1" width="15" height="310"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhN-w8-dGV">
-                                <rect key="frame" x="364" y="4" width="63" height="32"/>
+                                <rect key="frame" x="359" y="4" width="73" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="info" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W0G-5P-5Ax">
+                                <buttonCell key="cell" type="push" title="close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W0G-5P-5Ax">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="dismissController:" target="Ej8-KM-5GG" id="7g3-tA-D6v"/>
+                                    </connections>
                                 </buttonCell>
                             </button>
                         </subviews>

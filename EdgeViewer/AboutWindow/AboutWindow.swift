@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class AboutScreen: NSViewController {
+class AboutWindow: NSViewController {
     @IBOutlet weak var appIcon: NSImageView!
     @IBOutlet weak var appName: NSTextField!
     @IBOutlet weak var appVersion: NSTextField!

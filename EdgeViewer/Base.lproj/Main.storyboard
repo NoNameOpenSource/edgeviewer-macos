@@ -7,10 +7,10 @@
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
-        <!-- -->
+        <!--About Window-->
         <scene sceneID="RZk-ZE-hs7">
             <objects>
-                <viewController title=" " showSeguePresentationStyle="single" id="H7W-VI-ozW" customClass="AboutScreen" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="H7W-VI-ozW" customClass="AboutWindow" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <customView key="view" id="zcQ-xN-ucm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

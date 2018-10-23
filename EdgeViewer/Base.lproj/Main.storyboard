@@ -46,7 +46,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="Ej8-KM-5GG" kind="modal" id="ew3-lM-Jdu"/>
+                                    <segue destination="Ej8-KM-5GG" kind="sheet" id="ew3-lM-Jdu"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwc-ie-Vpg">

@@ -55,12 +55,11 @@ class LocalPlugin: Plugin {
     }
     
     func book(withIdentifier identifier: Any) -> Book? {
-        let xmlParser = LocalPluginXMLParser(identifier: identifier as! (String, String))
-        xmlParser.book.identifier = (xmlParser.book.series, xmlParser.book.title)
-        if let coverImage = xmlParser.book.page(atIndex: 0) {
-            xmlParser.book.coverImage = coverImage
+        let book = LocalPluginBook(identifier: identifier as! (String, String))
+        if let coverImage = book.page(atIndex: 0) {
+            book.coverImage = coverImage
         }
-        return xmlParser.book
+        return book
     }
     
     func series(withIdentifier identifier: Any) -> Series? {

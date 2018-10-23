@@ -9,8 +9,6 @@
 import Cocoa
 
 class LocalPluginBook: Book {
-    public var book: Book?
-    
     init(identifier: (series: String, title: String)) {
         super.init(owner: LocalPlugin.sharedInstance, identifier: 0, type: .manga)
         parse(identifier: identifier)
@@ -34,53 +32,45 @@ class LocalPluginBook: Book {
                 print("cannot get title element value")
                 return
             }
-            book = Book(owner: LocalPlugin.sharedInstance, identifier: 0, type: .manga)
-            guard let book = book else {
-                print("cannot initialize book object with owner LocalPlugin.sharedInstance and identifier \(titleElementValue)")
-                return
-            }
-            book.title = titleElementValue
+            self.title = titleElementValue
             
             // TODO: consider using switch statement
-            if let authorElementValue = rootElement.elements(forName: "title")[0].stringValue {
-                book.title = authorElementValue
-            }
             if let authorElementValue = rootElement.elements(forName: "author")[0].stringValue {
-                book.author = authorElementValue
+                self.author = authorElementValue
             }
             if let genreElementValue = rootElement.elements(forName: "genre")[0].stringValue {
-                book.genre = genreElementValue
+                self.genre = genreElementValue
             }
             if let seriesElementValue = rootElement.elements(forName: "series")[0].stringValue {
-                book.series = seriesElementValue
+                self.series = seriesElementValue
             }
             if let seriesNameElementValue = rootElement.elements(forName: "seriesName")[0].stringValue {
-                book.seriesName = seriesNameElementValue
+                self.seriesName = seriesNameElementValue
             }
             if let numberOfPagesElementValue = rootElement.elements(forName: "numberOfPages")[0].stringValue {
                 if let numberOfPagesElementValue = Int(numberOfPagesElementValue) {
-                    book.numberOfPages = numberOfPagesElementValue
+                    self.numberOfPages = numberOfPagesElementValue
                 }
                 else {
-                    book.numberOfPages = 0
+                    self.numberOfPages = 0
                     XMLCorrupt()
                 }
             }
             if let bookmarkElementValue = rootElement.elements(forName: "bookmark")[0].stringValue {
                 if let bookmarkElementValue = Int(bookmarkElementValue) {
-                    book.bookmark = bookmarkElementValue
+                    self.bookmark = bookmarkElementValue
                 }
                 else {
-                    book.bookmark = 0
+                    self.bookmark = 0
                     print("XML Parsing Error: Could not retrieve saved bookmark.")
                 }
             }
             if let ratingElementValue = rootElement.elements(forName: "rating")[0].stringValue {
                 if let ratingElementValue = Double(ratingElementValue) {
-                    book.rating = ratingElementValue
+                    self.rating = ratingElementValue
                 }
                 else {
-                    book.rating = 0
+                    self.rating = 0
                     XMLCorrupt()
                 }
             }
@@ -90,29 +80,29 @@ class LocalPluginBook: Book {
                 RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
                 RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
                 if let time = RFC3339DateFormatter.date(from: lastUpdatedElementValue) {
-                    book.lastUpdated = time
+                    self.lastUpdated = time
                 } else {
-                    book.lastUpdated = nil
+                    self.lastUpdated = nil
                     print("Unable to retrieve date. Check formatting of date string.")
                 }
             }
             if let currentPageElementValue = rootElement.elements(forName: "currentPage")[0].stringValue {
                 if let currentPageElementValue = Int(currentPageElementValue) {
-                    book.currentPage = currentPageElementValue
+                    self.currentPage = currentPageElementValue
                 }
                 else {
-                    book.bookmark = 0
+                    self.bookmark = 0
                     print("XML Parsing Error: Could not retrieve saved bookmark.")
                 }
             }
             if let typeElementValue = rootElement.elements(forName: "type")[0].stringValue {
                 switch typeElementValue {
                 case "manga":
-                    book.type = .manga
+                    self.type = .manga
                 case "comic":
-                    book.type = .comic
+                    self.type = .comic
                 case "webManga":
-                    book.type = .webManga
+                    self.type = .webManga
                 default:
                     XMLCorrupt()
                 }
@@ -123,7 +113,7 @@ class LocalPluginBook: Book {
                 if let titleElementValue = chapterElement.elements(forName: "title")[0].stringValue {
                     if let pageIndexElementValueString = chapterElement.elements(forName: "pageIndex")[0].stringValue {
                         if let pageIndexElementValueInt = Int(pageIndexElementValueString) {
-                            book.chapters!.append(Chapter(title: titleElementValue, pageIndex: pageIndexElementValueInt))
+                            self.chapters!.append(Chapter(title: titleElementValue, pageIndex: pageIndexElementValueInt))
                         }
                     }
                 }

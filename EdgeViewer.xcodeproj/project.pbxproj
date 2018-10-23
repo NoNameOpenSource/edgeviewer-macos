@@ -21,6 +21,7 @@
 		8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */; };
 		8AAFCF22207C3C6C003C8605 /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */; };
 		8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB61A8D20DAFDDC00BFEC4A /* ProjectWindow.swift */; };
+		99346664217EC57A006460A6 /* LocalPluginBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99346663217EC57A006460A6 /* LocalPluginBook.swift */; };
 		995281A8216EC5AC00FE65C5 /* LocalPluginSeriesXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */; };
 		99E3551021599F7C001E12EC /* (null) in Sources */ = {isa = PBXBuildFile; };
 		99E355122159B632001E12EC /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -111,6 +112,7 @@
 		8AAFCF1F207C3C6C003C8605 /* CollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		8AAFCF20207C3C6C003C8605 /* CollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
 		8AB61A8D20DAFDDC00BFEC4A /* ProjectWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindow.swift; sourceTree = "<group>"; };
+		99346663217EC57A006460A6 /* LocalPluginBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalPluginBook.swift; path = EdgeViewer/PluginAPI/LocalPlugin/LocalPluginBook.swift; sourceTree = SOURCE_ROOT; };
 		995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPluginSeriesXMLParser.swift; sourceTree = "<group>"; };
 		B111D3F220DD975E0096ED6E /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				1C95803920B918B100D3AC9D /* LocalPluginXMLParser.swift */,
+				99346663217EC57A006460A6 /* LocalPluginBook.swift */,
 				995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */,
 				1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */,
 				1C18FAD020C364620073886B /* LocalPlugin.swift */,
@@ -473,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99E3551021599F7C001E12EC /* (null) in Sources */,
+				99346664217EC57A006460A6 /* LocalPluginBook.swift in Sources */,
 				1C95803A20B918B100D3AC9D /* LocalPluginXMLParser.swift in Sources */,
 				1C1A1CBA20843CD1000074DC /* ChapterViewItem.swift in Sources */,
 				1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */,

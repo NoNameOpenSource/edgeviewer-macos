@@ -27,7 +27,6 @@
 		99E355122159B632001E12EC /* (null) in Resources */ = {isa = PBXBuildFile; };
 		B111D3F320DD975E0096ED6E /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111D3F220DD975E0096ED6E /* DragView.swift */; };
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
-		B1A894502073B612003A67AB /* UserPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A8944F2073B612003A67AB /* UserPanelView.swift */; };
 		B1D8A4AB20C8281B00F4683A /* ButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A4A720C8281B00F4683A /* ButtonItem.xib */; };
 		B1D8A4B520C99CCA00F4683A /* ButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */; };
 		B1E409E020E1AB6F00F65DE8 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E409DF20E1AB6F00F65DE8 /* Zip.framework */; };
@@ -121,7 +120,6 @@
 		995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPluginSeriesXMLParser.swift; sourceTree = "<group>"; };
 		B111D3F220DD975E0096ED6E /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
-		B1A8944F2073B612003A67AB /* UserPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPanelView.swift; sourceTree = "<group>"; };
 		B1D8A4A720C8281B00F4683A /* ButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonItem.xib; sourceTree = "<group>"; };
 		B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
 		B1E409DF20E1AB6F00F65DE8 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/Mac/Zip.framework; sourceTree = "<group>"; };
@@ -238,14 +236,6 @@
 				E047C4CF20E050C800E6BFEF /* CustomizationPalette.xib */,
 			);
 			path = ButtonItem;
-			sourceTree = "<group>";
-		};
-		E016E3982180D1EC00D14EEA /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				B1A8944F2073B612003A67AB /* UserPanelView.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		E01868D220DB1F55000D4672 /* LocalPlugin */ = {
@@ -548,7 +538,6 @@
 				E0AEDFF120AD304300E72B6E /* LibraryPage.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 				B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */,
-				B1A894502073B612003A67AB /* UserPanelView.swift in Sources */,
 				1C03FA5320DC8E0D00FB298A /* CoverImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

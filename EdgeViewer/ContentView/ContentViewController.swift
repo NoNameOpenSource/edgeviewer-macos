@@ -32,7 +32,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var animationDictionary = [[NSViewAnimation.Key : NSView]]()
     
     var pageController: NSPageController = NSPageController()
-    var manga: Manga? = nil;
+    var book: Book?
+    
     @IBOutlet weak var pageView: NSView!
     
     var currentPage = 0 {
@@ -40,12 +41,12 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             // fix if the page number is out of range
             if(currentPage < 0) {
                 currentPage = 0
-            } else if(currentPage >= manga!.numberOfPages) {
+            } else if(currentPage >= book!.numberOfPages) {
                 if (viewType == .singlePage){
-                    currentPage = manga!.numberOfPages - 1
+                    currentPage = book!.numberOfPages - 1
                     print("last page")
                 }else if (viewType == .doublePage){
-                    currentPage = manga!.numberOfPages - 2
+                    currentPage = book!.numberOfPages - 2
                     print("last two page")
                 }
             }
@@ -140,10 +141,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         
         self.currentPage = book.currentPage
         
-        // Setup PageView
-        pageController.arrangedObjects = manga!.pages
-        currentPage = (manga?.bookMark)!
-        
         userPanel.isSelectable = true;
         
         if let visualEffectView = userPanel.superview?.superview?.superview as? NSVisualEffectView {
@@ -168,6 +165,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             }
         }
         pageController.arrangedObjects = pages
+        //currentPage = book?.bookMark
         updatePage()
     }
         
@@ -212,7 +210,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             if currentPage != 0 {
                 displayPage = "\(currentPage) / \(book.numberOfPages - 1)"
             }
-            self.pageNumberLabel.stringValue = displayPage
+            //self.pageNumberLabel.stringValue = displayPage
         }
         NSAnimationContext.runAnimationGroup({ context in
             self.pageController.animator().selectedIndex = currentPage
@@ -237,7 +235,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                 // it should be displayed with singlepage view
                 return NSPageController.ObjectIdentifier("SinglePageViewController")
             }
-            guard currentPage + 1 != manga!.numberOfPages else {
+            guard currentPage + 1 != book!.numberOfPages else {
                 // there is only one page left
                 // therefore double page view cannot be used
                 return NSPageController.ObjectIdentifier("SinglePageViewController")
@@ -256,15 +254,18 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
-        let image = manga!.pages
+        guard let book = book else {
+            print("book nil")
+            return
+        }
         
         switch viewController {
             case let viewController as SinglePageViewController:
-                viewController.image = image[currentPage]
+                viewController.image = book.page(atIndex: currentPage)
                 break
             case let viewController as DoublePageViewController:
-                viewController.leftImage = image[currentPage]
-                viewController.rightImage = image[currentPage + 1]
+                viewController.leftImage = book.page(atIndex: currentPage)
+                viewController.rightImage = book.page(atIndex: currentPage + 1)
                 break
             default:
                 return
@@ -301,8 +302,10 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
         
         var data : [String] = []
-        for chapter in (manga?.chapter)! {
-            data.append(String(chapter))
+        if let chapters = book?.chapters {
+            for chapter in chapters {
+                data.append(chapter.title)
+            }
         }
         let button: NSButton = sender as! NSButton
         

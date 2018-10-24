@@ -732,7 +732,7 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="Q1g-Nu-kNu" kind="relationship" relationship="window.shadowedContentViewController" id="0iZ-lu-euw"/>
+                        <segue destination="KxQ-DW-RNo" kind="relationship" relationship="window.shadowedContentViewController" id="0iZ-lu-euw"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

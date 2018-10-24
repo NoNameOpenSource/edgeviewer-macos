@@ -55,7 +55,12 @@ class LocalPlugin: Plugin {
     }
     
     func book(withIdentifier identifier: Any) -> Book? {
-        let book = LocalPluginBook(identifier: identifier as! (String, String))
+        print(identifier)
+        guard let identifier = identifier as? (String, String) else {
+            print("identifier is bad 1")
+            return nil
+        }
+        let book = LocalPluginBook(identifier: identifier)
         if let coverImage = book.page(atIndex: 0) {
             book.coverImage = coverImage
         }
@@ -137,6 +142,7 @@ class LocalPlugin: Plugin {
     }
     
     func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
+        print(book.identifier)
         guard let bookID = book.identifier as? (String, String) else {
             print("identifier is incorrect type")
             return nil

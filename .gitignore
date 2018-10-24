@@ -8,3 +8,9 @@
 *.xcuserstate
 project.xcworkspace/
 xcuserdata/
+*.bak
+*.d
+*.o
+*.swiftdeps
+*.swiftmodule
+DerivedData/

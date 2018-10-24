@@ -9,6 +9,7 @@
 import Cocoa
 
 class CollectionViewItem: NSCollectionViewItem {
+    
     override var isSelected: Bool {
         didSet {
             view.layer?.borderWidth = isSelected ? 5.0 : 0.0
@@ -27,5 +28,15 @@ class CollectionViewItem: NSCollectionViewItem {
         
         // Sets the boarders to 0.0
         view.layer?.borderWidth = 0.0
+    }
+    
+    override func mouseDown(with event: NSEvent) {
+        if event.clickCount == 2 {
+            if let shelfViewController = collectionView?.delegate as? ShelfViewController {
+                shelfViewController.collectionView(collectionView!, didDoubleClick: self)
+            }
+        } else {
+            super.mouseDown(with: event)
+        }
     }
 }

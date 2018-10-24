@@ -49,8 +49,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                     print("last two page")
                 }
             }
-            // update page
-            updatePage()
         }
     }
     
@@ -135,8 +133,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         pageController.view = pageView
         pageController.delegate = self
         
-        // Dummy Data for testing purpose
-        setUpDummyData()
+        guard let book = book else {
+            print("book nil")
+            return
+        }
+        
+        self.currentPage = book.currentPage
+        
         // Setup PageView
         pageController.arrangedObjects = manga!.pages
         currentPage = (manga?.bookMark)!
@@ -158,6 +161,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         let pageViewTrackingArea = NSTrackingArea(rect: pageView.visibleRect, options: [.mouseMoved, .mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self)
         pageView.addTrackingArea(pageViewTrackingArea)
         
+        var pages = [NSImage]()
+        for i in 0..<book.numberOfPages {
+            if let page = book.page(atIndex: i) {
+                pages.append(page)
+            }
+        }
+        pageController.arrangedObjects = pages
         updatePage()
     }
         
@@ -191,25 +201,19 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     override func viewDidDisappear() {
-        manga!.bookMark = currentPage;
-    }
-    
-    func setUpDummyData() {
-        let testManga = Manga(title: "Pandora Heart")
-        let pages: [NSImage?] = [NSImage(named: NSImage.Name(rawValue: "images")),
-                                 NSImage(named: NSImage.Name(rawValue: "first")),
-                                 NSImage(named: NSImage.Name(rawValue: "Last")),
-                                 NSImage(named: NSImage.Name(rawValue: "download"))]
-        testManga.bookMark = 1
-        for page in pages {
-            if let page = page {
-                testManga.addNewPage(image: page)
-            }
+        if let book = book {
+            book.bookmark = self.currentPage;
         }
-        manga = testManga
     }
     
     func updatePage() {
+        if let book = book {
+            var displayPage = "Cover"
+            if currentPage != 0 {
+                displayPage = "\(currentPage) / \(book.numberOfPages - 1)"
+            }
+            self.pageNumberLabel.stringValue = displayPage
+        }
         NSAnimationContext.runAnimationGroup({ context in
             self.pageController.animator().selectedIndex = currentPage
         }) {

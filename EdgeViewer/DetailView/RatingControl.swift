@@ -10,11 +10,22 @@ import Cocoa
 
 class RatingControl: NSStackView {
     
+    var ratingControlDelegate: RatingControlDelegate? = nil
+    
     //MARK: Properties
     
     var rating = 0 {
         didSet {
+            // update stars in UI according to new rating
             updateStars()
+            
+            // tell DetailViewController that user has updated book's rating
+            if let ratingControlDelegate = ratingControlDelegate {
+                ratingControlDelegate.updateRating(self, rating: Double(rating))
+            }
+            else {
+                print("rating control delegate is nil")
+            }
         }
     }
     

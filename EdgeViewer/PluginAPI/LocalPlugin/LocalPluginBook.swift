@@ -24,10 +24,10 @@ class LocalPluginBook: Book {
         let els = rootElement.elements(forName: elName)
         if (els.count == 1) {
             if let el = els[0].stringValue {
-                if let el = Double(el) {
+                if let el = Int(el) {
                     return el
                 }
-                else if let el = Int(el) {
+                else if let el = Double(el) {
                     return el
                 }
                 else {

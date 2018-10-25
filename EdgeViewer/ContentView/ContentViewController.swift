@@ -291,8 +291,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         default:
             return
         }
-        
-        print(viewType)
+        updatePage()
     }
     
     @objc func segueToChapterView(sender : Any) {
@@ -332,6 +331,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         default:
             return
         }
+        updatePage()
     }
     
     @objc public func viewTypeSwitch(){

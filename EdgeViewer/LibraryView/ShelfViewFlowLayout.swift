@@ -45,6 +45,12 @@ class ShelfViewFlowLayout: NSCollectionViewFlowLayout {
             currentY = ypos
         }
         
+        if let collectionView = collectionView,
+            (CGFloat(collectionView.numberOfItems(inSection: indexPath.section)) * (width + margin)) + margin < collectionView.frame.width {
+            // there is only one row in this section
+            currentX = (CGFloat(indexPath.item) * (margin + width)) + margin
+        }
+        
         attributes.frame = NSMakeRect(currentX, currentY, width, height)
         
         currentX += width + margin

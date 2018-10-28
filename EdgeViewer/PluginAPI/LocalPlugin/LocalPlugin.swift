@@ -28,26 +28,32 @@ class LocalPlugin: Plugin {
         switch identifier {
             case .homepage:
                 let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
-                let fileManager = FileManager.default
-                do {
-                    let seriesFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
-                    for (seriesFolder) in seriesFolders {
-                        if !seriesFolder.absoluteString.hasSuffix(".DS_Store") {
-                            let pageItem = PageItem(owner: self, identifier: seriesFolder.lastPathComponent, type: .book)
-                            pageItem.name = seriesFolder.lastPathComponent
-                            page.items.append(pageItem)
-                        }
-                    }
+                let series = loadSeries(inFolder: booksDirectory!)
+                for series in series {
+                    let pageItem = PageItem(owner: self, series: series)
+                    page.items.append(pageItem)
                 }
-                catch {
-                    print("could not get contents of \(booksDirectory?.absoluteString ?? "")")
-                    return nil
-                    }
             default:
                 print("unhandled LibraryPageType: \(identifier)")
                 break
         }
         return page
+    }
+    
+    func loadSeries(inFolder folder: URL) -> [LocalPluginSeries] {
+        var returnSeries: [LocalPluginSeries] = []
+        guard let files = try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: []) else {
+            return returnSeries
+        }
+        
+        for file in files {
+            if FileManager.default.fileExists(atPath: file.appendingPathComponent("SeriesData.xml").path) {
+                let series = LocalPluginSeries(url: file)
+                returnSeries.append(series)
+            }
+        }
+        
+        return returnSeries
     }
     
     func page(withIdentifier identifier: Any) -> LibraryPage? {

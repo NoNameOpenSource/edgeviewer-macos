@@ -19,11 +19,8 @@ class ShelfViewFlowLayout: NSCollectionViewFlowLayout {
         guard let collectionView = collectionView else {
             return attributes
         }
-        guard let exampleItem = collectionView.item(at: 0) else {
-            return attributes
-        }
-        let width = exampleItem.view.frame.width
-        let height = exampleItem.view.frame.height
+        let width = itemSize.width
+        let height = itemSize.height
         let numberOfItemsInRow = Int((CGFloat(collectionView.frame.width) - margin) / (width + margin))
         guard numberOfItemsInRow != 0 else {
             return attributes

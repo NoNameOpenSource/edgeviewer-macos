@@ -1164,7 +1164,7 @@
                                     <constraint firstAttribute="height" constant="180" id="7NV-S5-p1E"/>
                                     <constraint firstAttribute="width" constant="131" id="k9D-d9-ri0"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageFrameStyle="photo" id="I0A-Xf-QtB"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="photo" id="I0A-Xf-QtB"/>
                             </imageView>
                             <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="q0e-5w-N1Z">
                                 <rect key="frame" x="159" y="423" width="138" height="20"/>
@@ -1301,15 +1301,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackIcon" width="720" height="720"/>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSBookmarksTemplate" width="17" height="18"/>
-        <image name="NSEnterFullScreenTemplate" width="15" height="15"/>
-        <image name="NSExitFullScreenTemplate" width="15" height="15"/>
         <image name="NSGoBackTemplate" width="9" height="12"/>
-        <image name="NSGoLeftTemplate" width="9" height="12"/>
-        <image name="NSGoRightTemplate" width="9" height="12"/>
-        <image name="NSListViewTemplate" width="14" height="10"/>
         <image name="buttonCell:3Nf-0g-gtJ:image" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGVVZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEgcI

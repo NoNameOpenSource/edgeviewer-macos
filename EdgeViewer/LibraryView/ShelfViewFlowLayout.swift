@@ -15,46 +15,27 @@ class ShelfViewFlowLayout: NSCollectionViewFlowLayout {
     var currentY: CGFloat = 0
 //    Defining the attributes
     override func  layoutAttributesForElements(in rect: NSRect) -> [NSCollectionViewLayoutAttributes] {
-        var attributes = [NSCollectionViewLayoutAttributes]()
-        for j in 0..<self.collectionView!.numberOfSections {
-            let count = self.collectionView!.numberOfItems(inSection: 0)
-            for i in 0..<count{
-                if let attribute = layoutAttributesForItem(at: NSIndexPath(forItem: i, inSection: j) as IndexPath) {
-                    attributes.append(attribute)
-                    
-                }
+        var attributes = super.layoutAttributesForElements(in: rect)
+        guard let collectionView = collectionView else {
+            return attributes
+        }
+        guard let exampleItem = collectionView.item(at: 0) else {
+            return attributes
+        }
+        let width = exampleItem.view.frame.width
+        let height = exampleItem.view.frame.height
+        let numberOfItemsInRow = Int((CGFloat(collectionView.frame.width) - margin) / (width + margin))
+        guard numberOfItemsInRow != 0 else {
+            return attributes
+        }
+        for attribute in attributes {
+            if attribute.representedElementCategory == .item,
+               let indexPath = attribute.indexPath {
+                let ypos = attribute.frame.minY
+                let xpos = margin + (CGFloat(indexPath.item % numberOfItemsInRow) * (margin + width))
+                attribute.frame = NSMakeRect(xpos, ypos, width, height)
             }
         }
-        return attributes
-    }
-    
-//    Defining the position of the frames and creating them
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> NSCollectionViewLayoutAttributes? {
-        guard let attributes = super.layoutAttributesForItem(at: indexPath) else {
-            return nil
-        }
-        
-//        Not used
-//        let x = attr.frame.minX
-
-        let ypos = attributes.frame.minY
-        let width = attributes.frame.width
-        let height = attributes.frame.height
-        if ypos != currentY {
-            currentX = margin
-            currentY = ypos
-        }
-        
-        if let collectionView = collectionView,
-            (CGFloat(collectionView.numberOfItems(inSection: indexPath.section)) * (width + margin)) + margin < collectionView.frame.width {
-            // there is only one row in this section
-            currentX = (CGFloat(indexPath.item) * (margin + width)) + margin
-        }
-        
-        attributes.frame = NSMakeRect(currentX, currentY, width, height)
-        
-        currentX += width + margin
-        
         return attributes
     }
 }

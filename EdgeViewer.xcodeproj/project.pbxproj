@@ -38,6 +38,7 @@
 		E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */; };
 		E002F12D208AA77700AACCC0 /* DoublePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */; };
 		E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E3992180DBB800D14EEA /* Chapter.swift */; };
+		E016E39C2185DF9B00D14EEA /* LocalPluginSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */; };
 		E01ED2A92093266600CC805F /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2A82093266600CC805F /* Manga.swift */; };
 		E01ED2AC2093E92F00CC805F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01ED2AA2093E92F00CC805F /* HeaderView.xib */; };
 		E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2AB2093E92F00CC805F /* HeaderView.swift */; };
@@ -130,6 +131,7 @@
 		E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePageViewController.swift; sourceTree = "<group>"; };
 		E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoublePageViewController.xib; sourceTree = "<group>"; };
 		E016E3992180DBB800D14EEA /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginSeries.swift; sourceTree = "<group>"; };
 		E01ED2A82093266600CC805F /* Manga.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
 		E01ED2AA2093E92F00CC805F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		E01ED2AB2093E92F00CC805F /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */,
 				1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */,
 				1C18FAD020C364620073886B /* LocalPlugin.swift */,
+				E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */,
 			);
 			path = LocalPlugin;
 			sourceTree = "<group>";
@@ -299,7 +302,6 @@
 				E08E864C20731A7A0082723B /* EdgeViewerTests */,
 				E08E865720731A7A0082723B /* EdgeViewerUITests */,
 				E08E863820731A7A0082723B /* Products */,
-				E016E3982180D1EC00D14EEA /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -533,6 +535,7 @@
 				E047C4D020E050C800E6BFEF /* CustomizationPalette.swift in Sources */,
 				E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
+				E016E39C2185DF9B00D14EEA /* LocalPluginSeries.swift in Sources */,
 				8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */,
 				995281A8216EC5AC00FE65C5 /* LocalPluginSeriesXMLParser.swift in Sources */,
 				E0AEDFF120AD304300E72B6E /* LibraryPage.swift in Sources */,

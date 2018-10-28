@@ -31,6 +31,7 @@ class LocalPlugin: Plugin {
                 let series = loadSeries(inFolder: booksDirectory!)
                 for series in series {
                     let pageItem = PageItem(owner: self, series: series)
+                    pageItem.thumbnail = series.coverImage
                     page.items.append(pageItem)
                 }
             default:
@@ -50,6 +51,12 @@ class LocalPlugin: Plugin {
             if FileManager.default.fileExists(atPath: file.appendingPathComponent("SeriesData.xml").path) {
                 let series = LocalPluginSeries(url: file)
                 returnSeries.append(series)
+                for ext in ["jpg", "png"] {
+                    if let image = NSImage.init(contentsOf: file.appendingPathComponent("SeriesImage").appendingPathExtension(ext)) {
+                        series.coverImage = image
+                        break
+                    }
+                }
             }
         }
         

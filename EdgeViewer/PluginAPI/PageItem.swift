@@ -22,6 +22,7 @@ class PageItem {
     var name = ""
     var thumbnail: NSImage? {
         get {
+            if let thumbnail = _thumbnail { return thumbnail }
             guard let thumbnailURL = thumbnailURL else {
                 return nil
             }
@@ -30,7 +31,12 @@ class PageItem {
             }
             return NSImage(contentsOf: url)
         }
+        set {
+            _thumbnail = newValue
+        }
     }
+    
+    var _thumbnail: NSImage?
     
     private var _content: Any?
     

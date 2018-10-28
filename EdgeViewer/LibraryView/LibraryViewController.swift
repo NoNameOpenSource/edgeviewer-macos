@@ -76,6 +76,8 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
     
     func shelf(_: ShelfViewController, selectedItem pageItem: PageItem) {
         switch pageItem.type {
+        case .series:
+            segueToDetailView(withSeries: pageItem.content as! Series)
         case .book:
             segueToDetailView(withSeries: pageItem.content as! Series)
         case .link:

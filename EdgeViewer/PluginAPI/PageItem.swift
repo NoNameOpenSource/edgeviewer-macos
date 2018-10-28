@@ -10,6 +10,7 @@ import Cocoa
 
 enum PageItemType {
     case book
+    case series
     case link
 }
 
@@ -31,9 +32,13 @@ class PageItem {
         }
     }
     
+    private var _content: Any?
+    
     var content: Any {
         get {
-            print(self.identifier)
+            if let content = _content {
+                return content
+            }
             return self.owner.series(withIdentifier: self.identifier)
         }
     }
@@ -49,6 +54,15 @@ class PageItem {
         self.type = .book
         self.identifier = book.identifier
         self.name = book.title
+        self._content = book
+    }
+    
+    init(owner: Plugin, series: Series) {
+        self.owner = owner
+        self.type = .series
+        self.identifier = series.identifier
+        self.name = series.title
+        self._content = series
     }
     
     static func PageItemType(fromString type: String) -> PageItemType {

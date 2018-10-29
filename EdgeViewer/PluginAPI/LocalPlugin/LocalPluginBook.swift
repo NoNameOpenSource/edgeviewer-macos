@@ -55,7 +55,7 @@ class LocalPluginBook: Book {
     
     func parse() {
         var xmlDocument: XMLDocument
-        let xmlLocation: URL = self.url.appendingPathComponent("SeriesData.xml")
+        let xmlLocation: URL = self.url.appendingPathComponent("BookData.xml")
         do {
             xmlDocument = try XMLDocument(contentsOf: xmlLocation, options: [])
             

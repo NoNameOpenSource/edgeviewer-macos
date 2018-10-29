@@ -24,30 +24,46 @@ class LocalPlugin: Plugin {
     static var sharedInstance = LocalPlugin(name: "LocalPlugin", version: 0.1)
     
     func page(withIdentifier identifier: LocalPluginLibraryPageType) -> LibraryPage? {
-        let page = LibraryPage(owner: self, identifier: identifier, type: .regular)
+        
         switch identifier {
             case .homepage:
                 let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
-                let series = loadSeries(inFolder: booksDirectory!)
-                for series in series {
-                    let pageItem = PageItem(owner: self, series: series)
-                    pageItem.thumbnail = series.coverImage
-                    page.items.append(pageItem)
-                }
+                let page = LibraryPage(owner: self, identifier: identifier, type: .regular)
+                let pageItems = loadSeries(inFolder: booksDirectory!)
+                page.items += pageItems
+                return page
             default:
                 print("unhandled LibraryPageType: \(identifier)")
                 break
         }
-        return page
+        return nil
     }
     
-    func loadSeries(inFolder folder: URL) -> [LocalPluginSeries] {
-        var returnSeries: [LocalPluginSeries] = []
+    func loadSeries(inFolder folder: URL) -> [PageItem] {
+        var pageItems: [PageItem] = []
+        
         guard let files = try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: []) else {
-            return returnSeries
+            return pageItems
         }
         
+        var returnSeries: [LocalPluginSeries] = []
+        let unknownSeriesIdentifier = "--Unknown Series--"
         for file in files {
+            if (file.lastPathComponent == unknownSeriesIdentifier) {
+                if let books = try? FileManager.default.contentsOfDirectory(at: file, includingPropertiesForKeys: nil, options: []) {
+                    for bookFolder in books {
+                        for ext in ["jpg", "png"] {
+                            if let image = NSImage.init(contentsOf: bookFolder.appendingPathComponent("Images").appendingPathComponent("0").appendingPathExtension(ext)) {
+                                let book = LocalPluginBook(identifier: (unknownSeriesIdentifier, bookFolder.lastPathComponent))
+                                let pageItem = PageItem(owner: self, book: book)
+                                pageItem.thumbnail = image
+                                pageItems.append(pageItem)
+                            }
+                        }
+                    }
+                    
+                }
+            }
             if FileManager.default.fileExists(atPath: file.appendingPathComponent("SeriesData.xml").path) {
                 let series = LocalPluginSeries(url: file)
                 returnSeries.append(series)
@@ -60,7 +76,13 @@ class LocalPlugin: Plugin {
             }
         }
         
-        return returnSeries
+        for series in returnSeries {
+            let pageItem = PageItem(owner: self, series: series)
+            pageItem.thumbnail = series.coverImage
+            pageItems.append(pageItem)
+        }
+        
+        return pageItems
     }
     
     func page(withIdentifier identifier: Any) -> LibraryPage? {

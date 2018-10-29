@@ -79,7 +79,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         case .series:
             segueToDetailView(withSeries: pageItem.content as! Series)
         case .book:
-            segueToDetailView(withSeries: pageItem.content as! Series)
+            segueToContentView(withBook: pageItem.content as! Book)
         case .link:
             segue(toPage: pageItem.content as! LibraryPage)
         }

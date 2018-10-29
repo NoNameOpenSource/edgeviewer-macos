@@ -66,7 +66,7 @@ class DropView: NSView {
         let bookTitle = sourceFolderName
         
         var desURL : URL = LocalPlugin.getApplicationSupportAppDirectory()!
-        desURL.appendPathComponent("Books/UnknowAuthor/\(sourceFolderName)")
+        desURL.appendPathComponent("Books/--Unknown Series--/\(sourceFolderName)")
         let destinationPath : String = desURL.path
         
         var type = fileTyp(path)
@@ -138,7 +138,7 @@ class DropView: NSView {
         do {
             try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
             try Zip.unzipFile(URL(fileURLWithPath: atPath), destination: destinationURL, overwrite: true, password: nil)
-            createFolderForManga(sourcePath: destinationURL.path, destinationPath: (LocalPlugin.getApplicationSupportAppDirectory()?.path)! + "/Books/UnknowAuthor/\(sourceZipName)", bookName:  bookName)
+            createFolderForManga(sourcePath: destinationURL.path, destinationPath: (LocalPlugin.getApplicationSupportAppDirectory()?.path)! + "/Books/--Unknown Series--/\(sourceZipName)", bookName:  bookName)
             try fileManager.removeItem(at: destinationURL)
         } catch {
             print("Extraction of ZIP archive failed with error:\(error)")
@@ -152,7 +152,7 @@ class DropView: NSView {
         do {
             let files = try fileManager.contentsOfDirectory(atPath: sourcePath)
         
-            let newBook : Book = Book(owner: LocalPlugin.sharedInstance , identifier: ("UnknowAuthor",bookName), type: BookType.manga)
+            let newBook : Book = Book(owner: LocalPlugin.sharedInstance , identifier: ("--Unknown Series--",bookName), type: BookType.manga)
             newBook.title = bookName
             
             newBook.currentPage = 0

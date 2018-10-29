@@ -16,6 +16,12 @@ class LocalPluginBook: Book {
         self.url = url
         super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
         parse()
+        for ext in LocalPlugin.supportedImageExtensions {
+            if let image = NSImage.init(contentsOf: url.appendingPathComponent("Images/0").appendingPathExtension(ext)) {
+                coverImage = image
+                break
+            }
+        }
     }
     
     func XMLCorrupt() {

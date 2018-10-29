@@ -76,12 +76,6 @@ class LocalPlugin: Plugin {
             if FileManager.default.fileExists(atPath: file.appendingPathComponent("BookData.xml").path) {
                 let book = LocalPluginBook(url: file)
                 books.append(book)
-                for ext in ["jpg", "png"] {
-                    if let image = NSImage.init(contentsOf: file.appendingPathComponent("Images/0").appendingPathExtension(ext)) {
-                        book.coverImage = image
-                        break
-                    }
-                }
             }
         }
         

@@ -147,35 +147,9 @@ class LocalPlugin: Plugin {
     }
     
     func books(ofSeries series: Series) -> [Book]? {
-        let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
-        let fileManager = FileManager.default
-        var books = [Book]()
-        do {
-            let seriesFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
-            for (seriesFolder) in seriesFolders {
-                if seriesFolder.lastPathComponent == series.title {
-                    do {
-                        let bookFolders = try fileManager.contentsOfDirectory(at: seriesFolder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
-                        for bookFolder in bookFolders {
-                            if(fileManager.fileExists(atPath: bookFolder.path + "/BookData.xml")){
-                                let bookIdentifier = (seriesFolder.lastPathComponent, bookFolder.lastPathComponent)
-                                if let book = book(withIdentifier: bookIdentifier) {
-                                    books.append(book)
-                                }
-                            }
-                        }
-                    }
-                    catch {
-                        print("cannot get book folders")
-                        return nil
-                    }
-                }
-            }
-        }
-        catch {
-            print("cannot get series folders")
-            return nil
-        }
+        guard let series = series as? LocalPluginSeries else { return nil }
+        let books = loadBooks(inFolder: series.url)
+        
         return books
     }
     

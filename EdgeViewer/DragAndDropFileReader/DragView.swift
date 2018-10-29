@@ -3,7 +3,7 @@ import Zip
 
 class DropView: NSView {
     var plugin = LocalPlugin.self
-    var filePath: String?
+    var filePath: [String]?
     let expectedExt = ["zip"]
     let expectedExtForImage = ["jpg","png"]
     @objc var isDir : ObjCBool = false
@@ -28,17 +28,27 @@ class DropView: NSView {
     
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        guard let board = sender.draggingPasteboard().propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray,
-            let path = board[0] as? String else {
+        guard let board = sender.draggingPasteboard().propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray else {
                 return NSDragOperation()
         }
-        if checkFileExtention(path) {
-            self.layer?.backgroundColor = NSColor.blue.cgColor
-            return .copy
-        }else{
-            self.layer?.backgroundColor = NSColor.red.cgColor
-            return NSDragOperation()
+        
+        for path in board {
+            if let pathName = path as? String {
+                if checkFileExtention(pathName) {
+                    self.layer?.backgroundColor = NSColor.blue.cgColor
+                    print("Check Pass")
+                    return .copy
+                }else{
+                    self.layer?.backgroundColor = NSColor.red.cgColor
+                    print("Check Fail")
+                    return NSDragOperation()
+                }
+            }else{
+                return NSDragOperation()
+            }
         }
+        
+        return NSDragOperation()
     }
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
@@ -50,37 +60,38 @@ class DropView: NSView {
     }
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        guard let pasteboard = sender.draggingPasteboard().propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray,
-            let path = pasteboard[0] as? String
+        guard let pasteboard = sender.draggingPasteboard().propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray
             else { return false }
         
         
         
         
         //GET YOUR FILE PATH !!!
-        self.filePath = path
-        
-        let sourceComponent = URL(fileURLWithPath: path).pathComponents
-        
-        let sourceFolderName = sourceComponent[sourceComponent.count - 1]
-        let bookTitle = sourceFolderName
-        
-        var desURL : URL = LocalPlugin.getApplicationSupportAppDirectory()!
-        desURL.appendPathComponent("Books/--Unknown Series--/\(sourceFolderName)")
-        let destinationPath : String = desURL.path
-        
-        var type = fileTyp(path)
-        switch type {
-        case "folder":
-            createFolderForManga(sourcePath: path, destinationPath: destinationPath, bookName: bookTitle)
-            break
-        case "zip":
-            extractZip(atPath: path, toPath: path, bookName: bookTitle)
-            break
-        default:
-            break
+        for path in pasteboard {
+            if let pathName = path as? String {
+                self.filePath?.append(pathName)
+                let sourceComponent = URL(fileURLWithPath: pathName).pathComponents
+                
+                let sourceFolderName = sourceComponent[sourceComponent.count - 1]
+                let bookTitle = sourceFolderName
+                
+                var desURL : URL = LocalPlugin.getApplicationSupportAppDirectory()!
+                desURL.appendPathComponent("Books/--Unknown Series--/\(sourceFolderName)")
+                let destinationPath : String = desURL.path
+                
+                let type = fileTyp(pathName)
+                switch type {
+                case "folder":
+                    createFolderForManga(sourcePath: pathName, destinationPath: destinationPath, bookName: bookTitle)
+                    break
+                case "zip":
+                    extractZip(atPath: pathName, toPath: destinationPath, bookName: bookTitle)
+                    break
+                default:
+                    break
+                }
+            }
         }
-        
         
         return true
     }

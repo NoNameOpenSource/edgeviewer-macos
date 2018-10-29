@@ -78,7 +78,7 @@ class LocalPlugin: Plugin {
         
         for file in files {
             if FileManager.default.fileExists(atPath: file.appendingPathComponent("BookData.xml").path) {
-                let book = LocalPluginBook(identifier: (unknownSeriesIdentifier, file.lastPathComponent))
+                let book = LocalPluginBook(url: file)
                 books.append(book)
                 for ext in ["jpg", "png"] {
                     if let image = NSImage.init(contentsOf: file.appendingPathComponent("Images/0").appendingPathExtension(ext)) {
@@ -97,15 +97,11 @@ class LocalPlugin: Plugin {
     }
     
     func book(withIdentifier identifier: Any) -> Book? {
-        print(identifier)
-        guard let identifier = identifier as? (String, String) else {
-            print("identifier is bad 1")
+        guard let url = identifier as? URL else {
+            print("identifier is bad")
             return nil
         }
-        let book = LocalPluginBook(identifier: identifier)
-        if let coverImage = book.page(atIndex: 0) {
-            book.coverImage = coverImage
-        }
+        let book = LocalPluginBook(url: url)
         return book
     }
     
@@ -184,13 +180,10 @@ class LocalPlugin: Plugin {
     }
     
     func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
-        print(book.identifier)
-        guard let bookID = book.identifier as? (String, String) else {
-            print("identifier is incorrect type")
+        guard let book = book as? LocalPluginBook else {
             return nil
         }
-
-        let bookImageDirectory: URL? = LocalPlugin.getBookDirectory(ofBookWithIdentifier: bookID)?.appendingPathComponent("Images")
+        let bookImageDirectory: URL? = book.url.appendingPathComponent("Images")
         let fileManager = FileManager.default
         do {
             let filePaths = try fileManager.contentsOfDirectory(at: bookImageDirectory!, includingPropertiesForKeys: nil, options: [])

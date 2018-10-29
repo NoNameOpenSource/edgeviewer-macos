@@ -9,11 +9,13 @@
 import Cocoa
 
 class LocalPluginBook: Book {
+    let url: URL
     lazy var rootElement: XMLElement = XMLElement(kind: .element)
     
-    init(identifier: (String, String)) {
-        super.init(owner: LocalPlugin.sharedInstance, identifier: identifier, type: .manga)
-        parse(identifier: identifier)
+    init(url: URL) {
+        self.url = url
+        super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
+        parse()
     }
     
     func XMLCorrupt() {
@@ -45,15 +47,14 @@ class LocalPluginBook: Book {
         return nil
     }
     
-    func parse(identifier: (String, String)) {
+    func parse() {
         var xmlDocument: XMLDocument
-        let bookDirectory = LocalPlugin.getBookDirectory(ofBookWithIdentifier: identifier)
-        let url: URL = (bookDirectory?.appendingPathComponent("BookData.xml"))!
+        let xmlLocation: URL = self.url.appendingPathComponent("SeriesData.xml")
         do {
-            xmlDocument = try XMLDocument(contentsOf: url, options: [])
+            xmlDocument = try XMLDocument(contentsOf: xmlLocation, options: [])
             
             guard let localRootElement = xmlDocument.rootElement() else {
-                print("cannot get root element of series xml file: \(url)")
+                print("cannot get root element of series xml file: \(xmlLocation)")
                 return
             }
             rootElement = localRootElement
@@ -152,7 +153,7 @@ class LocalPluginBook: Book {
             }
         }
         catch {
-            print("cannot initialize XMLDocument from series xml file: \(url)")
+            print("cannot initialize XMLDocument from series xml file: \(xmlLocation)")
         }
     }
 }

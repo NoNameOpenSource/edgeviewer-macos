@@ -1105,9 +1105,6 @@
                                 </scroller>
                             </scrollView>
                         </subviews>
-                        <connections>
-                            <outlet property="collectionView" destination="shq-1e-MTa" id="Na7-rS-E8u"/>
-                        </connections>
                     </customView>
                     <connections>
                         <outlet property="collectionView" destination="shq-1e-MTa" id="c8a-s1-a7q"/>

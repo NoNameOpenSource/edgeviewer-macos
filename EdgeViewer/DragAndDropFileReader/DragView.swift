@@ -1,8 +1,11 @@
 import Cocoa
 import Zip
+import UserNotifications
 
 class DropView: NSView {
     var plugin = LocalPlugin.self
+    var success : [String] = []
+    var fail : [String] = []
     var filePath: [String]?
     let expectedExt = ["zip"]
     let expectedExtForImage = ["jpg","png"]
@@ -16,7 +19,11 @@ class DropView: NSView {
         self.wantsLayer = true
         self.layer?.backgroundColor = NSColor.gray.cgColor
         
-        
+        if #available(OSX 10.14, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound, .badge], completionHandler: {didAllow, error in})
+        } else {
+            // Fallback on earlier versions
+        }
         
         if #available(OSX 10.13, *) {
             registerForDraggedTypes([NSPasteboard.PasteboardType.URL, NSPasteboard.PasteboardType.fileURL])
@@ -92,6 +99,30 @@ class DropView: NSView {
                 }
             }
         }
+        
+        if #available(OSX 10.14, *) {
+            let context = UNMutableNotificationContent()
+            context.title = "EdgeViewer Local File Import Result"
+            context.body = "Success: \n"
+            for successFile in success {
+                context.body += successFile
+                context.body += "\n"
+            }
+            context.body += "Fail: \n"
+            for failure in fail {
+                context.body += failure
+                context.body += "\n"
+            }
+            context.badge = 1
+            
+            let triggle = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+            let notification = UNNotificationRequest(identifier: "Import", content: context, trigger: triggle)
+            
+            UNUserNotificationCenter.current().add(notification, withCompletionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
+        
         
         return true
     }
@@ -189,7 +220,9 @@ class DropView: NSView {
                 return
             }
             newBook.coverImage =  NSImage(contentsOf: URL(fileURLWithPath: sourcePath + "/" + files[0], isDirectory: false))!
+            success.append(bookName)
         }catch{
+            fail.append(bookName)
             print("Error: \(error.localizedDescription)")
         }
         

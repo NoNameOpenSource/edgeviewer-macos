@@ -76,7 +76,7 @@ class DropView: NSView {
                 let bookTitle = sourceFolderName
                 
                 var desURL : URL = LocalPlugin.getApplicationSupportAppDirectory()!
-                desURL.appendPathComponent("Books/--Unknown Series--/\(sourceFolderName)")
+                desURL.appendPathComponent("Books/\(sourceFolderName)/\(sourceFolderName)")
                 let destinationPath : String = desURL.path
                 
                 let type = fileTyp(pathName)
@@ -149,7 +149,7 @@ class DropView: NSView {
         do {
             try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
             try Zip.unzipFile(URL(fileURLWithPath: atPath), destination: destinationURL, overwrite: true, password: nil)
-            createFolderForManga(sourcePath: destinationURL.path, destinationPath: (LocalPlugin.getApplicationSupportAppDirectory()?.path)! + "/Books/--Unknown Series--/\(sourceZipName)", bookName:  String(sourceZipName))
+            createFolderForManga(sourcePath: destinationURL.path, destinationPath: (LocalPlugin.getApplicationSupportAppDirectory()?.path)! + "/Books/\(sourceZipName)/\(sourceZipName)", bookName:  String(sourceZipName))
             try fileManager.removeItem(at: destinationURL)
         } catch {
             print("Extraction of ZIP archive failed with error:\(error)")
@@ -163,19 +163,22 @@ class DropView: NSView {
         do {
             let files = try fileManager.contentsOfDirectory(atPath: sourcePath)
         
-            let newBook : Book = Book(owner: LocalPlugin.sharedInstance , identifier: ("--Unknown Series--",bookName), type: BookType.manga)
+            let newBook : Book = Book(owner: LocalPlugin.sharedInstance , identifier: (bookName,bookName), type: BookType.manga)
             newBook.title = bookName
             
             newBook.currentPage = 0
             newBook.bookmark = 0
             
             try fileManager.createDirectory(atPath: destinationPath, withIntermediateDirectories: true, attributes: nil)
+            
+            try fileManager.createDirectory(atPath: destinationPath + "/Images", withIntermediateDirectories: true, attributes: nil)
+            
             for file in files {
                 let suffix = URL(fileURLWithPath: (sourcePath + "/" + file)).pathExtension
                 for ext in expectedExtForImage {
                     if ext.lowercased() == suffix {
                         let fileName = String(count) + "." + suffix
-                        try fileManager.copyItem(atPath: (sourcePath + "/" + file), toPath: (destinationPath + "/" + fileName))
+                        try fileManager.copyItem(atPath: (sourcePath + "/" + file), toPath: (destinationPath + "/Images/" + fileName))
                         count += 1
                     }
                 }

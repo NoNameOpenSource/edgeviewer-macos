@@ -229,4 +229,22 @@ class DropView: NSView {
     }
 }
 
+extension DropView : UNUserNotificationCenterDelegate {
+    @available(OSX 10.14, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound])
+    }
+    
+    
+    @available(OSX 10.14, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print(response.notification.request.identifier)
+        if response.notification.request.identifier == "Import" {
+            print("detail")
+        }
+        
+        completionHandler()
+    }
+    
+}
 

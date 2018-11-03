@@ -6,6 +6,7 @@ class DropView: NSView {
     var plugin = LocalPlugin.self
     var success : [String] = []
     var fail : [String] = []
+    var failReason : [String] = []
     var filePath: [String]?
     let expectedExt = ["zip"]
     let expectedExtForImage = ["jpg","png"]
@@ -24,6 +25,18 @@ class DropView: NSView {
         } else {
             // Fallback on earlier versions
             registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")])
+        }
+        
+        if #available(OSX 10.14, *) {
+            UNUserNotificationCenter.current().delegate = self
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound, .badge], completionHandler: {allowed, error in
+                
+                if allowed {
+                    print("Authorization is \(allowed)")
+                }
+            })
+        } else {
+            // Fallback on earlier versions
         }
     }
     
@@ -98,9 +111,10 @@ class DropView: NSView {
             print("osx 10.14")
             let context = UNMutableNotificationContent()
             context.title = "EdgeViewer Local File Import Result"
-            
+            context.body = ""
             if (success.count > 0){
-                context.body = "Success: \n"
+                
+                context.body += "Success: \n"
                 for successFile in success {
                     context.body += successFile
                     context.body += "\n"
@@ -109,18 +123,21 @@ class DropView: NSView {
             if (fail.count > 0){
                 context.body += "Fail: \n"
                 for failure in fail {
-                    context.body += failure
-                    context.body += "\n"
+                    let failItem = failure + "\n"
+                    context.body += failItem
+                
                 }
             }
             
             context.sound = UNNotificationSound.default()
             context.badge = 1
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let notification = UNNotificationRequest(identifier: "import", content: context, trigger: trigger)
             
             UNUserNotificationCenter.current().add(notification, withCompletionHandler: nil)
+            fail = []
+            success = []
         } else {
             // Fallback on earlier versions
         }
@@ -225,9 +242,34 @@ class DropView: NSView {
             success.append(bookName)
         }catch{
             fail.append(bookName)
+            failReason.append(error.localizedDescription)
             print("Error: \(error.localizedDescription)")
         }
         
+    }
+}
+
+extension DropView : UNUserNotificationCenterDelegate {
+    @available(OSX 10.14, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound])
+    }
+    
+    
+    @available(OSX 10.14, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print(response)
+        if response.notification.request.identifier == "import" {
+            print("imported")
+            let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! NSWindowController
+            
+            importNotification.showWindow(self)
+            
+            
+            
+            
+        }
     }
 }
 

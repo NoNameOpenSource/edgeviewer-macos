@@ -19,6 +19,11 @@ class LocalPlugin: Plugin {
         }
     }
     
+    enum ParsingError: Error {
+        case missingDataFile
+        case missingDataField(String)
+    }
+    
     private init(name: String, version: Double) {
         self.name = name
         self.version = version
@@ -74,8 +79,12 @@ class LocalPlugin: Plugin {
         
         for file in files {
             if FileManager.default.fileExists(atPath: file.appendingPathComponent("BookData.xml").path) {
-                let book = LocalPluginBook(url: file)
-                books.append(book)
+                if let book = try? LocalPluginBook(url: file) {
+                    books.append(book)
+                } else {
+                    // file curropted or missing
+                    // this is not handled at this moment
+                }
             }
         }
         
@@ -91,7 +100,7 @@ class LocalPlugin: Plugin {
             print("identifier is bad")
             return nil
         }
-        let book = LocalPluginBook(url: url)
+        let book = try? LocalPluginBook(url: url)
         return book
     }
     

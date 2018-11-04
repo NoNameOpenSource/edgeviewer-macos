@@ -62,8 +62,12 @@ class LocalPlugin: Plugin {
         
         for file in files {
             if FileManager.default.fileExists(atPath: file.appendingPathComponent("SeriesData.xml").path) {
-                let series = LocalPluginSeries(url: file)
-                returnSeries.append(series)
+                if let series = try? LocalPluginSeries(url: file) {
+                    returnSeries.append(series)
+                } else {
+                    // file curropted or missing
+                    // this is not handled at this moment
+                }
             }
         }
         

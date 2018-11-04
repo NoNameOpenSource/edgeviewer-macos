@@ -12,10 +12,10 @@ class LocalPluginSeries: Series {
     let url: URL
     lazy var rootElement: XMLElement = XMLElement(kind: .element)
     
-    init(url: URL) {
+    init(url: URL) throws {
         self.url = url
         super.init(owner: LocalPlugin.sharedInstance, identifier: url)
-        parse()
+        try parse()
         for ext in LocalPlugin.supportedImageExtensions {
             if let image = NSImage.init(contentsOf: url.appendingPathComponent("SeriesImage").appendingPathExtension(ext)) {
                 coverImage = image
@@ -53,21 +53,19 @@ class LocalPluginSeries: Series {
         return nil
     }
     
-    func parse() {
+    func parse() throws {
         var xmlDocument: XMLDocument
         let xmlLocation: URL = self.url.appendingPathComponent("SeriesData.xml")
         do {
             xmlDocument = try XMLDocument(contentsOf: xmlLocation, options: [])
             
             guard let rootElement = xmlDocument.rootElement() else {
-                print("cannot get root element of series xml file: \(xmlLocation)")
-                return
+                throw LocalPlugin.ParsingError.missingDataFile
             }
             self.rootElement = rootElement
             
             guard let titleElementValue = rootElement.elements(forName: "title")[0].stringValue else {
-                print("cannot get title element value")
-                return
+                throw LocalPlugin.ParsingError.missingDataField("title")
             }
             self.title = titleElementValue
             

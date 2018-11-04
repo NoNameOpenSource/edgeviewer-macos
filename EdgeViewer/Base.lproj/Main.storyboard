@@ -759,10 +759,10 @@
             </objects>
             <point key="canvasLocation" x="-420" y="675"/>
         </scene>
-        <!--Import Notification-->
+        <!--View Controller-->
         <scene sceneID="gc6-ih-m42">
             <objects>
-                <viewController storyboardIdentifier="ImportNotification" id="D3Z-L2-nyc" customClass="ImportNotification" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImportNotification" id="D3Z-L2-nyc" sceneMemberID="viewController">
                     <scrollView key="view" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="YGF-bo-fIz">
                         <rect key="frame" x="0.0" y="0.0" width="449" height="317"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -771,7 +771,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="8qc-gH-qEB" viewBased="YES" id="5Ef-JB-Y34">
-                                    <rect key="frame" x="0.0" y="0.0" width="451" height="291"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="451" height="276"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

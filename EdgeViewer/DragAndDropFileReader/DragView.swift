@@ -75,7 +75,7 @@ class DropView: NSView {
         guard let pasteboard = sender.draggingPasteboard().propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray
             else { return false }
         
-        
+        self.failMessage = []
         
         
         //GET YOUR FILE PATH !!!
@@ -167,14 +167,10 @@ class DropView: NSView {
             context.informativeText = contextText
             context.soundName = NSUserNotificationDefaultSoundName
             center.deliver(context)
-            print(center)
-            print(context)
+        
 
             fail = []
             success = []
-        
-        
-        
             
         }
         
@@ -323,11 +319,14 @@ extension DropView: NSUserNotificationCenterDelegate {
             
             let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! ImportFailDetailViewController
             
+            print(self.failMessage)
             importNotification.failMessage = self.failMessage
             
             notification.contentViewController = importNotification
             
             notification.showWindow(self)
+            
+            
         }
     }
 }

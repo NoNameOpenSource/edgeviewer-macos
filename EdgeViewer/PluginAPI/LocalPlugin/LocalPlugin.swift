@@ -24,6 +24,11 @@ class LocalPlugin: Plugin {
         case missingDataField(String)
     }
     
+    enum SerializationError: Error {
+        case missingDirectory
+        case xmlSerializationError
+    }
+    
     private init(name: String, version: Double) {
         self.name = name
         self.version = version

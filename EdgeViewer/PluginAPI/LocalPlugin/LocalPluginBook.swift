@@ -156,4 +156,70 @@ class LocalPluginBook: Book {
             }
         }
     }
+    
+    func serialize() throws {
+        var isDirectory:ObjCBool = ObjCBool(false)
+        guard FileManager.default.fileExists(atPath: url.path, isDirectory: &isDirectory) else {
+            throw LocalPlugin.SerializationError.missingDirectory
+        }
+        guard isDirectory.boolValue == true else {
+            throw LocalPlugin.SerializationError.missingDirectory
+        }
+        
+        let xmlDocument: XMLDocument = XMLDocument(rootElement: XMLElement(name: "book"))
+        let xmlLocation: URL = self.url.appendingPathComponent("BookData.xml")
+        guard let localRootElement = xmlDocument.rootElement() else {
+            throw LocalPlugin.SerializationError.xmlSerializationError
+        }
+        
+        // XML version
+        xmlDocument.version = "1.0"
+        
+        localRootElement.addChild(XMLNode.element(withName: "title", stringValue: title) as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "author", stringValue: author ?? "") as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "genre", stringValue: genre ?? "") as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "seriesName", stringValue: seriesName ?? "") as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "rating", stringValue: String(rating!)) as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "bookmark", stringValue: String(bookmark)) as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "currentPage", stringValue: String(currentPage)) as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "numberOfPages", stringValue: String(numberOfPages)) as! XMLNode)
+        
+        // chapters
+        var chapterNodes = [XMLNode]()
+        if let chapters = chapters {
+            for chapter in chapters {
+                let chapterTitle = XMLNode.element(withName: "title", stringValue: chapter.title)
+                let chapterPageIndex = XMLNode.element(withName: "pageIndex", stringValue: String(chapter.pageIndex))
+                chapterNodes.append(XMLNode.element(withName: "chapter", children: [chapterTitle as! XMLNode, chapterPageIndex as! XMLNode], attributes: nil) as! XMLNode)
+            }
+        }
+        localRootElement.addChild(XMLNode.element(withName: "chapters", children: chapterNodes, attributes: nil) as! XMLNode)
+        
+        // bookType
+        let bookType: String
+        switch type {
+        case .manga:
+            bookType = "manga"
+        case .comic:
+            bookType = "comic"
+        case .webManga:
+            bookType = "webManga"
+        }
+        localRootElement.addChild(XMLNode.element(withName: "type", stringValue: bookType) as! XMLNode)
+        
+        // lastUpdated
+        if let lastUpdated = lastUpdated {
+            let RFC3339DateFormatter = DateFormatter()
+            RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
+            RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            localRootElement.addChild(XMLNode.element(withName: "lastUpdated", stringValue: RFC3339DateFormatter.string(from: lastUpdated)) as! XMLNode)
+        } else {
+            localRootElement.addChild(XMLNode.element(withName: "lastUpdated", stringValue: "Unknown Release Date") as! XMLNode)
+        }
+        
+        let xmlDataString = xmlDocument.xmlData(options:[.nodePrettyPrint, .nodeCompactEmptyElement])
+        
+        try xmlDataString.write(to: xmlLocation)
+    }
 }

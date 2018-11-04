@@ -759,10 +759,10 @@
             </objects>
             <point key="canvasLocation" x="-420" y="675"/>
         </scene>
-        <!--View Controller-->
+        <!--Import Fail Detail View Controller-->
         <scene sceneID="gc6-ih-m42">
             <objects>
-                <viewController storyboardIdentifier="ImportNotification" id="D3Z-L2-nyc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImportNotification" id="D3Z-L2-nyc" customClass="ImportFailDetailViewController" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="YGF-bo-fIz">
                         <rect key="frame" x="0.0" y="0.0" width="449" height="317"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -771,7 +771,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="8qc-gH-qEB" viewBased="YES" id="5Ef-JB-Y34">
-                                    <rect key="frame" x="0.0" y="0.0" width="451" height="276"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="451" height="291"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -802,6 +802,9 @@
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <binding destination="s3J-N9-i5W" name="value" keyPath="objectValue.failFileName" id="XSi-1u-Kqb"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <connections>
@@ -835,6 +838,9 @@
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <binding destination="xSE-NX-6xG" name="value" keyPath="objectValue.failMessage" id="5gT-xi-Upn"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <connections>
@@ -844,6 +850,9 @@
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <binding destination="jML-oI-hA9" name="content" keyPath="arrangedObjects" id="BG9-Os-94z"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                         </clipView>
@@ -851,7 +860,7 @@
                             <rect key="frame" x="1" y="300" width="447" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="paW-Fe-WCs">
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="paW-Fe-WCs">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -861,11 +870,11 @@
                         </tableHeaderView>
                     </scrollView>
                     <connections>
-                        <outlet property="importFail" destination="jML-oI-hA9" id="tna-Rt-UVp"/>
+                        <outlet property="importFail" destination="jML-oI-hA9" id="zsI-pN-GXs"/>
                     </connections>
                 </viewController>
                 <customObject id="0va-2j-09O" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController objectClassName="ImporFail" editable="NO" id="jML-oI-hA9"/>
+                <arrayController objectClassName="ImporFailDetail" id="jML-oI-hA9"/>
             </objects>
             <point key="canvasLocation" x="-435.5" y="1032.5"/>
         </scene>

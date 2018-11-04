@@ -7,11 +7,13 @@ class DropView: NSView {
     var plugin = LocalPlugin.self
     var success : [String] = []
     var fail : [String] = []
-    var failReason : [String] = []
+    var failMessage : [[String]] = []
+    
+    
     var filePath: [String]?
     let expectedExt = ["zip"]
     let expectedExtForImage = ["jpg","png"]
-    let nCenter = NSUserNotificationCenter.default
+    
 
     @objc var isDir : ObjCBool = false
     
@@ -34,18 +36,6 @@ class DropView: NSView {
             registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")])
         }
         
-        /*if #available(OSX 10.14, *) {
-            UNUserNotificationCenter.current().delegate = self
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound, .badge], completionHandler: {allowed, error in
-                
-                if allowed {
-                    print("Authorization is \(allowed)")
-                }
-            })
-        } else {*/
-            nCenter.delegate = self
-        
-        //}
     }
     
     
@@ -115,7 +105,11 @@ class DropView: NSView {
             }
         }
         
-       /* if #available(OSX 10.14, *) {
+       if #available(OSX 10.14, *) {
+            let nCenter = UNUserNotificationCenter.current()
+            nCenter.delegate = self
+        
+        
             let context = UNMutableNotificationContent()
             context.title = "EdgeViewer Local File Import Result"
             context.body = ""
@@ -142,11 +136,12 @@ class DropView: NSView {
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let notification = UNNotificationRequest(identifier: "import", content: context, trigger: trigger)
             
-            UNUserNotificationCenter.current().add(notification, withCompletionHandler: nil)
+            nCenter.add(notification, withCompletionHandler: nil)
             fail = []
             success = []
-        } else {*/
-            
+        } else {
+            let nCenter = NSUserNotificationCenter.default
+            nCenter.delegate = self
             let context = NSUserNotification();
             context.title = "EdgeViewer Local File Import Result"
             context.informativeText = ""
@@ -179,10 +174,12 @@ class DropView: NSView {
             nCenter.scheduleNotification(context)
             nCenter.deliver(context)
         
+            fail = []
+            success = []
             print(nCenter.deliveredNotifications)
             print(nCenter.scheduledNotifications)
             
-        //}
+        }
         
         
         return true
@@ -284,14 +281,14 @@ class DropView: NSView {
             success.append(bookName)
         }catch{
             fail.append(bookName)
-            failReason.append(error.localizedDescription)
+            failMessage.append([bookName,error.localizedDescription])
             print("Error: \(error.localizedDescription)")
         }
         
     }
 }
 
-/*@available(OSX 10.14, *)
+@available(OSX 10.14, *)
 extension DropView : UNUserNotificationCenterDelegate {
    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -305,16 +302,21 @@ extension DropView : UNUserNotificationCenterDelegate {
             print("imported")
             let notification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Notification")) as! NSWindowController
             
-            let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! ImportNotification
+            let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! ImportFailDetailViewController
             
-            notification.showWindow(importNotification)
+            importNotification.failMessage = self.failMessage
             
+            notification.contentViewController = importNotification
+            
+            notification.showWindow(self)
+            
+    
             
             
             
         }
     }
-}*/
+}
 
 extension DropView: NSUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: NSUserNotificationCenter, didDeliver notification: NSUserNotification) {
@@ -324,13 +326,15 @@ extension DropView: NSUserNotificationCenterDelegate {
     
     
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
-        if notification.identifier == "Import" {
-            let iNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Notification")) as! NSWindowController
-            
-            let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! NSWindowController
-            
-            iNotification.showWindow(importNotification)
-        }
+        let notification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Notification")) as! NSWindowController
+        
+        let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! ImportFailDetailViewController
+        
+        importNotification.failMessage = self.failMessage
+        
+        notification.contentViewController = importNotification
+        
+        notification.showWindow(self)
     }
     
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {

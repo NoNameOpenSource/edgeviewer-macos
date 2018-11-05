@@ -88,14 +88,23 @@
             </objects>
             <point key="canvasLocation" x="-180" y="-290"/>
         </scene>
-        <!--View Controller-->
+        <!--Acknowledge-->
         <scene sceneID="CN4-ds-4d4">
             <objects>
-                <viewController id="Ej8-KM-5GG" sceneMemberID="viewController">
+                <viewController id="Ej8-KM-5GG" customClass="Acknowledge" customModule="EdgeViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="W4q-4a-hL9">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="384"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgf-Gk-ZIO">
+                                <rect key="frame" x="206" y="184" width="37" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="yfh-Kd-YWa">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JA-fL-Jgk">
                                 <rect key="frame" x="20" y="52" width="410" height="312"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -124,9 +133,9 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhN-w8-dGV">
-                                <rect key="frame" x="359" y="4" width="73" height="32"/>
+                                <rect key="frame" x="358" y="4" width="75" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W0G-5P-5Ax">
+                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W0G-5P-5Ax">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <connections>
@@ -137,6 +146,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="acknowledgementsTextView" destination="ZRh-zC-ic5" id="SXk-ae-8Dr"/>
                         <outlet property="appSupport" destination="GhN-w8-dGV" id="M98-v8-GqA"/>
                         <outlet property="finder" destination="GhN-w8-dGV" id="WwS-EZ-EWb"/>
                         <outlet property="info" destination="9JA-fL-Jgk" id="d4a-DE-SPl"/>
@@ -1189,7 +1199,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HWi-Jl-N00">
-                                <rect key="frame" x="157" y="525" width="58" height="35"/>
+                                <rect key="frame" x="157" y="525" width="56" height="35"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Title" id="Su8-qD-bLc">
                                     <font key="font" metaFont="system" size="29"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

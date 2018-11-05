@@ -11,14 +11,17 @@ import Cocoa
 class Acknowledge: NSViewController {
     @IBOutlet weak var info: NSScrollView!
     
-    @IBOutlet weak var appSupport: NSButton!
-    
+    @IBOutlet var acknowledgementsTextView: NSTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do view setup here.
-        appSupport.target = self;
-        appSupport.action = #selector(openFolder);
+        acknowledgementsTextView.textStorage?.append(NSAttributedString(string: """
+            https://github.com/marmelroy/Zip
+            https://github.com/ZipArchive/ZipArchive
+            """))
+        acknowledgementsTextView.isEditable = false
     }
     
     @objc func openFolder(){
@@ -26,5 +29,4 @@ class Acknowledge: NSViewController {
         let folderURL = URL(fileURLWithPath: folderPath);
         NSWorkspace.shared.open(folderURL);
     }
-    
 }

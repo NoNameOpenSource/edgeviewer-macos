@@ -44,6 +44,8 @@ class PaletteItem: NSView, NSDraggingSource {
                 buttonType = .backward
             case "ForwardButton":
                 buttonType = .forward
+            case "PageViewSelector":
+                buttonType = .pageViewSelector
             case "ChapterButton":
                 buttonType = .chapter
             default:

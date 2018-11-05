@@ -17,7 +17,7 @@ enum ViewType {
 class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
-    var displayedItem: [ButtonType] = [.backward, .forward, .chapter]
+    var displayedItem: [ButtonType] = [.backward, .forward, .chapter, .pageViewSelector]
     var navigation: [Any] = Array()
     var customizationPalette: CustomizationPalette? = nil
     var chapterController: ChapterController? = nil
@@ -345,6 +345,23 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         default:
             return
         }
+        
+        if (userPanel.numberOfItems(inSection: 0) > 0) {
+            for i in 0..<userPanel.numberOfItems(inSection: 0) {
+                if let item = userPanel.item(at: i) as? ButtonItem,
+                item.buttonType == .pageViewSelector {
+                    switch viewType {
+                    case .singlePage:
+                        item.image = #imageLiteral(resourceName: "DoublePageViewSelector")
+                    case .doublePage:
+                        item.image = #imageLiteral(resourceName: "SinglePageViewSelector")
+                    default:
+                        return
+                    }
+                }
+            }
+        }
+        
         print("type switched")
         print(viewType);
     }
@@ -402,6 +419,17 @@ extension ContentViewController: NSCollectionViewDataSource{
                 if(customizationPalette != nil) {
                     item.isEnabled = false
                 }
+            case .pageViewSelector:
+                if #available(OSX 10.12, *) {
+                    item.image = #imageLiteral(resourceName: "SinglePageViewSelector")
+                } else {
+                    // Fallback on earlier versions
+                }
+                item.button.target = self
+                item.button.action = #selector(viewTypeSwitch)
+                if(customizationPalette != nil) {
+                    item.isEnabled = false
+                }
             case .chapter:
                 if #available(OSX 10.12, *) {
                     item.image = NSImage(named: .listViewTemplate)
@@ -409,7 +437,7 @@ extension ContentViewController: NSCollectionViewDataSource{
                     // Fallback on earlier versions
                 }
                 item.button.target = self
-                item.button.action = #selector(viewTypeSwitch)
+                item.button.action = #selector(segueToChapterView)
                 if(customizationPalette != nil) {
                     item.isEnabled = false
                 }

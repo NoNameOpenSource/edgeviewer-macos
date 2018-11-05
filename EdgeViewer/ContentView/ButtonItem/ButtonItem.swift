@@ -13,8 +13,8 @@ enum ButtonType: String {
     case forward = "Foward"
     case custom = "Custom"
     case chapter = "Chapter"
+    case pageViewSelector = "PageViewSelector"
     case none = "None"
-    
 }
 
 class ButtonItem: NSCollectionViewItem {

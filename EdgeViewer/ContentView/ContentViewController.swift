@@ -164,6 +164,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
                 pages.append(page)
             }
         }
+        
+        // set up event handling for left/right arrow keys (for changing pages)
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
+            self.keyDown(with: $0)
+            return $0
+        }
+        
         pageController.arrangedObjects = pages
         //currentPage = book?.bookMark
         updatePage()
@@ -332,6 +339,19 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             return
         }
         updatePage()
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        let leftArrowKey: UInt16 = 123
+        let rightArrowKey: UInt16 = 124
+        switch event.keyCode {
+        case leftArrowKey:
+            pageBack()
+        case rightArrowKey:
+            pageForward()
+        default:
+            break
+        }
     }
     
     @objc public func viewTypeSwitch(){

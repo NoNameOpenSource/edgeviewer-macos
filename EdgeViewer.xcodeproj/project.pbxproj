@@ -32,6 +32,7 @@
 		B1E409E020E1AB6F00F65DE8 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E409DF20E1AB6F00F65DE8 /* Zip.framework */; };
 		B1E409E220E1AB6F00F65DE8 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1E409DF20E1AB6F00F65DE8 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B1E409E420E1AB8A00F65DE8 /* Zip.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */; };
+		B1F5435E21913AEA001D1104 /* ImportFailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */; };
 		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
 		E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */; };
 		E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */; };
@@ -125,6 +126,7 @@
 		B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
 		B1E409DF20E1AB6F00F65DE8 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/Mac/Zip.framework; sourceTree = "<group>"; };
 		B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Zip.framework.dSYM; path = Carthage/Build/Mac/Zip.framework.dSYM; sourceTree = "<group>"; };
+		B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportFailDetailViewController.swift; sourceTree = "<group>"; };
 		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
 		E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
@@ -240,6 +242,14 @@
 			path = ButtonItem;
 			sourceTree = "<group>";
 		};
+		B1F5435C21913AEA001D1104 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		E01868D220DB1F55000D4672 /* LocalPlugin */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +328,7 @@
 		E08E863920731A7A0082723B /* EdgeViewer */ = {
 			isa = PBXGroup;
 			children = (
+				B1F5435C21913AEA001D1104 /* Notification */,
 				B111D3F120DD973F0096ED6E /* DragAndDropFileReader */,
 				E01ED2AE2093EB8F00CC805F /* PluginAPI */,
 				E029CFDE2081E564008EC2A7 /* LibraryView */,
@@ -508,6 +519,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F5435E21913AEA001D1104 /* ImportFailDetailViewController.swift in Sources */,
 				99E3551021599F7C001E12EC /* (null) in Sources */,
 				E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */,
 				99346664217EC57A006460A6 /* LocalPluginBook.swift in Sources */,

@@ -295,25 +295,31 @@ extension DropView : UNUserNotificationCenterDelegate {
             print("imported")
             let notification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Notification")) as! NSWindowController
             
+            let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! ImportFailDetailViewController
+            
+            importNotification.failMessage = self.failMessage
+            
+            notification.contentViewController = importNotification
+            
             notification.showWindow(self)
-            
-    
-            
-            
-            
         }
     }
 }
 
 extension DropView: NSUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        
         if notification.identifier == "import" {
             print("imported")
             let notification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Notification")) as! NSWindowController
             
+            let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! ImportFailDetailViewController
+            
+            importNotification.failMessage = self.failMessage
+            
+            notification.contentViewController = importNotification
+            
             notification.showWindow(self)
-            
-            
         }
     }
 }

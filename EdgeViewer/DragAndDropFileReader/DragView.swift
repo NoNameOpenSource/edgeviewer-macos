@@ -300,9 +300,10 @@ class DropView: NSView {
             }
             newBook.coverImage =  NSImage(contentsOf: URL(fileURLWithPath: sourcePath + "/" + files[0], isDirectory: false))!
             success.append(bookName)
+            failMessage.append([bookName,"Success",""])
         }catch{
             fail.append(bookName)
-            failMessage.append([bookName,error.localizedDescription])
+            failMessage.append([bookName,"Fail",error.localizedDescription])
             
         }
         

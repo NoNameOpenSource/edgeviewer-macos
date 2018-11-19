@@ -12,9 +12,10 @@ import Cocoa
 @objc class ImportFailDetail : NSObject{
     @objc var failFileName : String
     @objc var failMessage : String
-    
-    init(name:String,message:String) {
+    @objc var ifFail : String
+    init(name:String,success : String, message:String) {
         self.failFileName = name
+        self.ifFail = success
         self.failMessage = message
     }
 }
@@ -27,7 +28,7 @@ class ImportFailDetailViewController: NSViewController {
         super.viewDidLoad()
         
         for fails in failMessage {
-            self.importFail.addObject(ImportFailDetail(name: fails[0],message: fails[1]))
+            self.importFail.addObject(ImportFailDetail(name: fails[0], success : fails[1], message: fails[2]))
         }
         
         print(importFail.arrangedObjects)

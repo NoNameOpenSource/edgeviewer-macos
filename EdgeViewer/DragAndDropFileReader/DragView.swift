@@ -158,8 +158,10 @@ class DropView: NSView {
             }
         }
         
+        if (fail.count > 0){
+            showDetailErrorInfo()
+        }
         
-        sendImportResultNotification(contextText: contextText)
         
 
         
@@ -173,12 +175,24 @@ class DropView: NSView {
         return true
     }
     
+    fileprivate func showDetailErrorInfo(){
+        let notification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Notification")) as! NSWindowController
+        
+        let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! ImportFailDetailViewController
+        
+        importNotification.failMessage = self.failMessage
+        
+        notification.contentViewController = importNotification
+        
+        notification.showWindow(self)
+    }
+    
     fileprivate func sendImportResultNotification(contextText : String){
         
         let center = NSUserNotificationCenter.default
-        center.delegate = AppDelegate()
+        center.delegate = self
         
-        let context = NSUserNotification()
+        let context = NSUserNotification.init()
         context.title = "EdgeViewer Local File Import Result"
         context.identifier = "import"
         context.informativeText = contextText
@@ -190,7 +204,6 @@ class DropView: NSView {
         
         center.deliver(context)
         print(center.deliveredNotifications,context.isRemote)
-        print("m")
     }
     
     fileprivate func checkFileExtention(_ drag : String) -> Bool{
@@ -290,7 +303,7 @@ class DropView: NSView {
         }catch{
             fail.append(bookName)
             failMessage.append([bookName,error.localizedDescription])
-            print("Error: \(error.localizedDescription)")
+            
         }
         
     }
@@ -329,10 +342,14 @@ extension DropView: NSUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
-        return true
+        if notification.isPresented == false {
+            print(notification)
+            return true
+        }
+        return notification.isPresented
     }
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
-        
+    
         if notification.identifier == "import" {
             print("imported")
             let notification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Notification")) as! NSWindowController

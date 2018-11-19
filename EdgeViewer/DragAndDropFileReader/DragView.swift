@@ -105,7 +105,7 @@ class DropView: NSView {
             }
         }
         
-       if #available(OSX 10.14, *) {
+       /*if #available(OSX 10.14, *) {
         
             let nCenter = UNUserNotificationCenter.current()
             nCenter.delegate = self
@@ -140,42 +140,57 @@ class DropView: NSView {
             nCenter.add(notification, withCompletionHandler: nil)
             fail = []
             success = []
-        } else {
-            var contextText : String = ""
-            if (success.count > 0){
-                
-                contextText += "Success: \n"
-                for successFile in success {
-                    contextText += successFile
-                    contextText += " "
-                }
-            }
-            if (fail.count > 0){
-                contextText += "Fail:  "
-                for failure in fail {
-                    contextText += failure
-                    contextText += " "
-                }
-            }
-        
-        
-            let center = NSUserNotificationCenter.default
-            center.delegate = self
-        
-            let context = NSUserNotification.init()
-            context.title = "EdgeViewer Local File Import Result"
-            context.informativeText = contextText
-            context.soundName = NSUserNotificationDefaultSoundName
-            center.deliver(context)
-        
-
-            fail = []
-            success = []
+        } else {*/
+        var contextText : String = ""
+        if (success.count > 0){
             
+            contextText += "Success: \n"
+            for successFile in success {
+                contextText += successFile
+                contextText += " "
+            }
+        }
+        if (fail.count > 0){
+            contextText += "Fail:  "
+            for failure in fail {
+                contextText += failure
+                contextText += " "
+            }
         }
         
         
+        sendImportResultNotification(contextText: contextText)
+        
+
+        
+
+        fail = []
+        success = []
+            
+        //}
+        
+        
         return true
+    }
+    
+    fileprivate func sendImportResultNotification(contextText : String){
+        
+        let center = NSUserNotificationCenter.default
+        center.delegate = AppDelegate()
+        
+        let context = NSUserNotification()
+        context.title = "EdgeViewer Local File Import Result"
+        context.identifier = "import"
+        context.informativeText = contextText
+        context.deliveryDate = Date.init(timeIntervalSinceNow: 1)
+        context.soundName = NSUserNotificationDefaultSoundName
+        context.actionButtonTitle = "Detail"
+        
+        
+        
+        center.deliver(context)
+        print(center.deliveredNotifications,context.isRemote)
+        print("m")
     }
     
     fileprivate func checkFileExtention(_ drag : String) -> Bool{
@@ -281,7 +296,7 @@ class DropView: NSView {
     }
 }
 
-@available(OSX 10.14, *)
+/*@available(OSX 10.14, *)
 extension DropView : UNUserNotificationCenterDelegate {
    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -304,9 +319,18 @@ extension DropView : UNUserNotificationCenterDelegate {
             notification.showWindow(self)
         }
     }
-}
+}*/
 
 extension DropView: NSUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didDeliver notification: NSUserNotification) {
+        if notification.identifier == "import" {
+            print("recieve")
+        }
+    }
+    
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
+    }
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
         
         if notification.identifier == "import" {

@@ -158,9 +158,8 @@ class DropView: NSView {
             }
         }
         
-        if (fail.count > 0){
-            showDetailErrorInfo()
-        }
+        
+        showDetailErrorInfo()
         
         
 
@@ -296,6 +295,7 @@ class DropView: NSView {
             newBook.numberOfPages = count
             LocalPluginXMLStorer.storeBookData(ofBook: newBook)
             guard let _ = NSImage(contentsOf: URL(fileURLWithPath: sourcePath + "/" + files[0], isDirectory: false)) else {
+                failMessage.append([bookName,"Success","But Missing Cover Page"])
                 return
             }
             newBook.coverImage =  NSImage(contentsOf: URL(fileURLWithPath: sourcePath + "/" + files[0], isDirectory: false))!
@@ -336,6 +336,7 @@ extension DropView : UNUserNotificationCenterDelegate {
 }*/
 
 extension DropView: NSUserNotificationCenterDelegate {
+    
     func userNotificationCenter(_ center: NSUserNotificationCenter, didDeliver notification: NSUserNotification) {
         if notification.identifier == "import" {
             print("recieve")

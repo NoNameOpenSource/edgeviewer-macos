@@ -294,11 +294,8 @@ class DropView: NSView {
             }
             newBook.numberOfPages = count
             LocalPluginXMLStorer.storeBookData(ofBook: newBook)
-            guard let _ = NSImage(contentsOf: URL(fileURLWithPath: sourcePath + "/" + files[0], isDirectory: false)) else {
-                failMessage.append([bookName,"Success","But Missing Cover Page"])
-                return
-            }
-            newBook.coverImage =  NSImage(contentsOf: URL(fileURLWithPath: sourcePath + "/" + files[0], isDirectory: false))!
+           
+            newBook.coverImage =  NSImage(contentsOf: URL(fileURLWithPath: destinationPath + "/Images/0.jpg" , isDirectory: false))!
             success.append(bookName)
             failMessage.append([bookName,"Success",""])
         }catch{

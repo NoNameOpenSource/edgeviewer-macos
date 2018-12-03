@@ -23,10 +23,4 @@ class Acknowledge: NSViewController {
             """))
         acknowledgementsTextView.isEditable = false
     }
-    
-    @objc func openFolder(){
-        let folderPath = "/Users/bmmkac/Library/Containers/com.ggomong.EdgeViewer/Data/Library/Application Support";
-        let folderURL = URL(fileURLWithPath: folderPath);
-        NSWorkspace.shared.open(folderURL);
-    }
 }

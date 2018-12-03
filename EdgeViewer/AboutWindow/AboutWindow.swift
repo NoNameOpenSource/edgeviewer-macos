@@ -15,6 +15,16 @@ class AboutWindow: NSViewController {
     @IBOutlet weak var appCopyright: NSTextField!
     @IBOutlet var backgroundView: NSView!
     
+    @IBAction func openApplicationSupportFolder(_ sender: NSButton) {
+        let folderURL = getApplicationSupportBooksDirectory()
+        if let folderURL = folderURL {
+            NSWorkspace.shared.open(folderURL)
+        }
+        else {
+            print("Could not get Books Folder")
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +51,20 @@ class AboutWindow: NSViewController {
             
         }
         
+    }
+    
+    func getApplicationSupportBooksDirectory() -> URL? {
+        return getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
+    }
+    
+    // after merge, use static function from LocalPlugin instead of this repeated function
+    func getApplicationSupportAppDirectory() -> URL? {
+        let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
+        if paths.count >= 1 {
+            return NSURL(fileURLWithPath: paths[0], isDirectory: true).appendingPathComponent("EdgeViewer")
+        }
+        print("Could not find application support directory.")
+        return nil
     }
     
 }

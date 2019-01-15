@@ -8,13 +8,13 @@ class DropView: NSView {
     var success : [String] = []
     var fail : [String] = []
     var failMessage : [[String]] = []
-    
+    var contextText : String = ""
     
     var filePath: [String]?
     let expectedExt = ["zip"]
     let expectedExtForImage = ["jpg","png"]
     
-
+    
     @objc var isDir : ObjCBool = false
     
     required init?(coder: NSCoder) {super.init(coder: coder)}
@@ -25,7 +25,7 @@ class DropView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-
+        
         self.wantsLayer = true
         self.layer?.backgroundColor = NSColor.gray.cgColor
         
@@ -41,7 +41,7 @@ class DropView: NSView {
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         guard let board = sender.draggingPasteboard().propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray else {
-                return NSDragOperation()
+            return NSDragOperation()
         }
         
         for path in board {
@@ -68,7 +68,9 @@ class DropView: NSView {
     }
     
     override func draggingEnded(_ sender: NSDraggingInfo) {
+        
         self.layer?.backgroundColor = NSColor.gray.cgColor
+        sendImportResultNotification()
     }
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
@@ -76,7 +78,8 @@ class DropView: NSView {
             else { return false }
         
         self.failMessage = []
-        
+        fail = []
+        success = []
         
         //GET YOUR FILE PATH !!!
         for path in pasteboard {
@@ -105,43 +108,13 @@ class DropView: NSView {
             }
         }
         
-       /*if #available(OSX 10.14, *) {
+        /*if #available(OSX 10.14, *) {
+         
+         
+         fail = []
+         success = []
+         } else {*/
         
-            let nCenter = UNUserNotificationCenter.current()
-            nCenter.delegate = self
-        
-        
-            let context = UNMutableNotificationContent()
-            context.title = "EdgeViewer Local File Import Result"
-            context.body = ""
-            if (success.count > 0){
-                
-                context.body += "Success: \n"
-                for successFile in success {
-                    context.body += successFile
-                    context.body += "\n"
-                }
-            }
-            if (fail.count > 0){
-                context.body += "Fail: \n"
-                for failure in fail {
-                    let failItem = failure + "\n"
-                    context.body += failItem
-                
-                }
-            }
-            
-            context.sound = UNNotificationSound.default()
-            context.badge = 1
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let notification = UNNotificationRequest(identifier: "import", content: context, trigger: trigger)
-            
-            nCenter.add(notification, withCompletionHandler: nil)
-            fail = []
-            success = []
-        } else {*/
-        var contextText : String = ""
         if (success.count > 0){
             
             contextText += "Success: \n"
@@ -159,15 +132,7 @@ class DropView: NSView {
         }
         
         
-        showDetailErrorInfo()
         
-        
-
-        
-
-        fail = []
-        success = []
-            
         //}
         
         
@@ -186,23 +151,41 @@ class DropView: NSView {
         notification.showWindow(self)
     }
     
-    fileprivate func sendImportResultNotification(contextText : String){
+    fileprivate func sendImportResultNotification(){
+        if #available(OSX 10.14, *) {
+            let nCenter = UNUserNotificationCenter.current()
+            nCenter.delegate = self
+            
+            
+            let context = UNMutableNotificationContent()
+            context.title = "EdgeViewer Local File Import Result"
+            context.body = contextText
+            context.sound = UNNotificationSound.default()
+            context.badge = 1
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let notification = UNNotificationRequest(identifier: "import", content: context, trigger: trigger)
+            
+            nCenter.add(notification, withCompletionHandler: nil)
+        } else {
+            let center = NSUserNotificationCenter.default
+            center.delegate = self
+            
+            let context = NSUserNotification.init()
+            context.title = "EdgeViewer Local File Import Result"
+            context.identifier = "import"
+            context.informativeText = contextText
+            
+            context.actionButtonTitle = "Detail"
+            center.deliver(context)
+            
+            if (center.deliveredNotifications[center.deliveredNotifications.count - 1] != context){
+                showDetailErrorInfo()
+            }
+            
+            
+        }
         
-        let center = NSUserNotificationCenter.default
-        center.delegate = self
-        
-        let context = NSUserNotification.init()
-        context.title = "EdgeViewer Local File Import Result"
-        context.identifier = "import"
-        context.informativeText = contextText
-        context.deliveryDate = Date.init(timeIntervalSinceNow: 1)
-        context.soundName = NSUserNotificationDefaultSoundName
-        context.actionButtonTitle = "Detail"
-        
-        
-        
-        center.deliver(context)
-        print(center.deliveredNotifications,context.isRemote)
     }
     
     fileprivate func checkFileExtention(_ drag : String) -> Bool{
@@ -271,7 +254,7 @@ class DropView: NSView {
         var count = 0
         do {
             let files = try fileManager.contentsOfDirectory(atPath: sourcePath)
-        
+            
             let newBook : Book = Book(owner: LocalPlugin.sharedInstance , identifier: (bookName,bookName), type: BookType.manga)
             newBook.title = bookName
             
@@ -294,7 +277,7 @@ class DropView: NSView {
             }
             newBook.numberOfPages = count
             LocalPluginXMLStorer.storeBookData(ofBook: newBook)
-           
+            
             newBook.coverImage =  NSImage(contentsOf: URL(fileURLWithPath: destinationPath + "/Images/0.jpg" , isDirectory: false))!
             success.append(bookName)
             failMessage.append([bookName,"Success",""])
@@ -303,13 +286,12 @@ class DropView: NSView {
             failMessage.append([bookName,"Fail",error.localizedDescription])
             
         }
-        
     }
 }
 
-/*@available(OSX 10.14, *)
+@available(OSX 10.14, *)
 extension DropView : UNUserNotificationCenterDelegate {
-   
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert,.sound])
     }
@@ -318,19 +300,10 @@ extension DropView : UNUserNotificationCenterDelegate {
         
         print(response)
         if response.notification.request.identifier == "import" {
-            print("imported")
-            let notification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Notification")) as! NSWindowController
-            
-            let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! ImportFailDetailViewController
-            
-            importNotification.failMessage = self.failMessage
-            
-            notification.contentViewController = importNotification
-            
-            notification.showWindow(self)
+            showDetailErrorInfo()
         }
     }
-}*/
+}
 
 extension DropView: NSUserNotificationCenterDelegate {
     
@@ -348,18 +321,9 @@ extension DropView: NSUserNotificationCenterDelegate {
         return notification.isPresented
     }
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
-    
+        
         if notification.identifier == "import" {
-            print("imported")
-            let notification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Notification")) as! NSWindowController
-            
-            let importNotification = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ImportNotification")) as! ImportFailDetailViewController
-            
-            importNotification.failMessage = self.failMessage
-            
-            notification.contentViewController = importNotification
-            
-            notification.showWindow(self)
+            showDetailErrorInfo()
         }
     }
 }

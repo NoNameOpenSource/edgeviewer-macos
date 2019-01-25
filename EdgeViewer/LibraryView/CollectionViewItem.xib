@@ -14,15 +14,26 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="275"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sRw-mL-Hbk">
-                    <rect key="frame" x="0.0" y="30" width="480" height="242"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="275"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="94l-Pl-jPX"/>
                 </imageView>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" verifyAmbiguity="ignoreSizes" translatesAutoresizingMaskIntoConstraints="NO" id="9eX-74-yUM">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Scn-NH-yGF"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" drawsBackground="YES" id="Zif-OQ-iOB">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="0.75" colorSpace="calibratedRGB"/>
+                    </textFieldCell>
+                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oNC-7B-AVJ">
-                    <rect key="frame" x="-2" y="0.0" width="484" height="30"/>
+                    <rect key="frame" x="220" y="7" width="41" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="eWz-Ns-Vio">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -31,14 +42,15 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="oNC-7B-AVJ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="4mm-sI-e8S"/>
-                <constraint firstAttribute="bottom" secondItem="sRw-mL-Hbk" secondAttribute="bottom" constant="30" id="7n3-pQ-Ycj"/>
-                <constraint firstAttribute="bottom" secondItem="oNC-7B-AVJ" secondAttribute="bottom" id="8vF-x7-cGl"/>
-                <constraint firstItem="oNC-7B-AVJ" firstAttribute="top" secondItem="sRw-mL-Hbk" secondAttribute="bottom" id="Evi-6D-yxy"/>
+                <constraint firstAttribute="bottom" secondItem="sRw-mL-Hbk" secondAttribute="bottom" id="7n3-pQ-Ycj"/>
+                <constraint firstAttribute="trailing" secondItem="9eX-74-yUM" secondAttribute="trailing" id="8b9-Cs-Thi"/>
+                <constraint firstItem="9eX-74-yUM" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="CLY-HC-eMk"/>
                 <constraint firstItem="sRw-mL-Hbk" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="FLG-aw-bMe"/>
+                <constraint firstAttribute="bottom" secondItem="9eX-74-yUM" secondAttribute="bottom" id="Fre-Pi-gfU"/>
+                <constraint firstItem="oNC-7B-AVJ" firstAttribute="centerY" secondItem="9eX-74-yUM" secondAttribute="centerY" id="PNG-7z-Rpf"/>
                 <constraint firstAttribute="trailing" secondItem="sRw-mL-Hbk" secondAttribute="trailing" id="PhQ-jq-cKR"/>
+                <constraint firstItem="oNC-7B-AVJ" firstAttribute="centerX" secondItem="9eX-74-yUM" secondAttribute="centerX" id="ZNL-RL-cRR"/>
                 <constraint firstItem="sRw-mL-Hbk" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="dZR-Bx-4JP"/>
-                <constraint firstAttribute="trailing" secondItem="oNC-7B-AVJ" secondAttribute="trailing" id="q3V-U1-LoO"/>
             </constraints>
         </customView>
         <collectionViewItem id="ndb-wj-sLB" customClass="CollectionViewItem" customModule="EdgeViewer" customModuleProvider="target">

@@ -18,11 +18,22 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7KI-aq-ZAx">
-                    <rect key="frame" x="0.0" y="30" width="480" height="242"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="5gA-P1-nV6"/>
                 </imageView>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" verifyAmbiguity="ignoreSizes" translatesAutoresizingMaskIntoConstraints="NO" id="efc-l1-MUO">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="7Fr-o0-sMc"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" drawsBackground="YES" id="3j1-XI-A3u">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="0.75" colorSpace="calibratedRGB"/>
+                    </textFieldCell>
+                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g4r-3y-bEX">
-                    <rect key="frame" x="-2" y="0.0" width="484" height="30"/>
+                    <rect key="frame" x="220" y="7" width="41" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="IN8-JX-Sm4">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -32,13 +43,14 @@
             </subviews>
             <constraints>
                 <constraint firstItem="7KI-aq-ZAx" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="2Mh-Q3-8qm"/>
-                <constraint firstItem="g4r-3y-bEX" firstAttribute="top" secondItem="7KI-aq-ZAx" secondAttribute="bottom" id="HLW-mf-gfi"/>
-                <constraint firstItem="g4r-3y-bEX" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="acA-h2-5y6"/>
-                <constraint firstAttribute="trailing" secondItem="g4r-3y-bEX" secondAttribute="trailing" id="cx9-9g-Vw2"/>
+                <constraint firstAttribute="trailing" secondItem="efc-l1-MUO" secondAttribute="trailing" id="5VN-Og-hcP"/>
+                <constraint firstAttribute="bottom" secondItem="7KI-aq-ZAx" secondAttribute="bottom" id="IX6-qO-x4o"/>
+                <constraint firstItem="efc-l1-MUO" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="N34-ar-qvm"/>
+                <constraint firstAttribute="bottom" secondItem="efc-l1-MUO" secondAttribute="bottom" id="Qog-yt-P0M"/>
+                <constraint firstItem="g4r-3y-bEX" firstAttribute="centerY" secondItem="efc-l1-MUO" secondAttribute="centerY" id="RvP-PO-W7h"/>
                 <constraint firstAttribute="trailing" secondItem="7KI-aq-ZAx" secondAttribute="trailing" id="gr9-KW-MHr"/>
                 <constraint firstItem="7KI-aq-ZAx" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="qVz-Vl-FG4"/>
-                <constraint firstAttribute="bottom" secondItem="7KI-aq-ZAx" secondAttribute="bottom" constant="30" id="up5-PK-lcv"/>
-                <constraint firstAttribute="bottom" secondItem="g4r-3y-bEX" secondAttribute="bottom" id="zYM-sv-VBk"/>
+                <constraint firstItem="g4r-3y-bEX" firstAttribute="centerX" secondItem="efc-l1-MUO" secondAttribute="centerX" id="xxe-xj-Xhh"/>
             </constraints>
         </customView>
         <collectionViewItem id="W7o-OM-TY8" customClass="ChapterViewItem" customModule="EdgeViewer" customModuleProvider="target">

@@ -1,6 +1,5 @@
 import Cocoa
 import Zip
-import UserNotifications
 
 
 class DropView: NSView {
@@ -152,40 +151,20 @@ class DropView: NSView {
     }
     
     fileprivate func sendImportResultNotification(){
-        if #available(OSX 10.14, *) {
-            let nCenter = UNUserNotificationCenter.current()
-            nCenter.delegate = self
-            
-            
-            let context = UNMutableNotificationContent()
-            context.title = "EdgeViewer Local File Import Result"
-            context.body = contextText
-            context.sound = UNNotificationSound.default()
-            context.badge = 1
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let notification = UNNotificationRequest(identifier: "import", content: context, trigger: trigger)
-            
-            nCenter.add(notification, withCompletionHandler: nil)
-        } else {
-            let center = NSUserNotificationCenter.default
-            center.delegate = self
-            
-            let context = NSUserNotification.init()
-            context.title = "EdgeViewer Local File Import Result"
-            context.identifier = "import"
-            context.informativeText = contextText
-            
-            context.actionButtonTitle = "Detail"
-            center.deliver(context)
-            
-            if (center.deliveredNotifications[center.deliveredNotifications.count - 1] != context){
-                showDetailErrorInfo()
-            }
-            
-            
-        }
+        let center = NSUserNotificationCenter.default
+        center.delegate = self
         
+        let context = NSUserNotification.init()
+        context.title = "EdgeViewer Local File Import Result"
+        context.identifier = "import"
+        context.informativeText = contextText
+        
+        context.actionButtonTitle = "Detail"
+        center.deliver(context)
+        
+        if (center.deliveredNotifications[center.deliveredNotifications.count - 1] != context){
+            showDetailErrorInfo()
+        }
     }
     
     fileprivate func checkFileExtention(_ drag : String) -> Bool{
@@ -285,22 +264,6 @@ class DropView: NSView {
             fail.append(bookName)
             failMessage.append([bookName,"Fail",error.localizedDescription])
             
-        }
-    }
-}
-
-@available(OSX 10.14, *)
-extension DropView : UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert,.sound])
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        print(response)
-        if response.notification.request.identifier == "import" {
-            showDetailErrorInfo()
         }
     }
 }

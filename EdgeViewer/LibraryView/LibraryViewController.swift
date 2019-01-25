@@ -165,10 +165,9 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
     
     // return to previous view deleting the last element in array
     func navig () {
-        var navigation = navigations[currentIndex]
-        if (navigation.count > 1){
-            navigation.removeLast()
-            switch(navigation.popLast()) {
+        if (navigations[currentIndex].count > 1){
+            navigations[currentIndex].removeLast()
+            switch(navigations[currentIndex].popLast()) {
             case let series as Series:
                 segueToDetailView(withSeries: series)
                 

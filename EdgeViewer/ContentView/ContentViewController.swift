@@ -158,11 +158,9 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         let pageViewTrackingArea = NSTrackingArea(rect: pageView.visibleRect, options: [.mouseMoved, .mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self)
         pageView.addTrackingArea(pageViewTrackingArea)
         
-        var pages = [NSImage]()
+        var pages = [Int]()
         for i in 0..<book.numberOfPages {
-            if let page = book.page(atIndex: i) {
-                pages.append(page)
-            }
+            pages.append(i);
         }
         
         // set up event handling for left/right arrow keys (for changing pages)
@@ -219,13 +217,14 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             }
             //self.pageNumberLabel.stringValue = displayPage
         }
+        
         NSAnimationContext.runAnimationGroup({ context in
             self.pageController.animator().selectedIndex = currentPage
         }) {
             self.pageController.completeTransition()
-            
         }
-        pageController.selectedIndex = currentPage
+        
+        //pageController.selectedIndex = currentPage
     }
  
     //------------------------------------------------------------------------------------------------
@@ -263,6 +262,10 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
         guard let book = book else {
             print("book nil")
+            return
+        }
+        
+        guard let currentPage = object as? Int else {
             return
         }
         

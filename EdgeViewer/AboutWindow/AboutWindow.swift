@@ -14,6 +14,7 @@ class AboutWindow: NSViewController {
     @IBOutlet weak var appVersion: NSTextField!
     @IBOutlet weak var appCopyright: NSTextField!
     @IBOutlet var backgroundView: NSView!
+    @IBOutlet weak var licenseInfo: NSTextField!
     
     @IBAction func openApplicationSupportFolder(_ sender: NSButton) {
         let folderURL = getApplicationSupportBooksDirectory()
@@ -51,6 +52,11 @@ class AboutWindow: NSViewController {
             
         }
         
+        licenseInfo.stringValue = """
+            Acknowledgements:
+            https://github.com/marmelroy/Zip
+            https://github.com/ZipArchive/ZipArchive
+        """
     }
     
     func getApplicationSupportBooksDirectory() -> URL? {

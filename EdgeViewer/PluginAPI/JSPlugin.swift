@@ -17,8 +17,19 @@ class JSPlugin: Plugin {
         guard let function = context.objectForKeyedSubscript("loadSeries") else {
             return nil
         }
-        guard let seriesJS = function.call(withArguments: [identifier]) else {
+        guard var seriesJS = function.call(withArguments: [identifier]) else {
             return nil
+        }
+        if let promise = JSPromise(withJSValue: seriesJS) {
+            let group = DispatchGroup()
+            let callBack: @convention(block) (JSValue) -> Void = { jsValue in
+                seriesJS = jsValue
+                group.leave()
+            }
+            let castedFunction = unsafeBitCast(callBack, to: AnyObject.self)
+            promise.then(onFulfilled: castedFunction)
+            group.enter()
+            group.wait(timeout: .distantFuture)
         }
         let title = seriesJS.forProperty("title")!.toString()!
         let series = Series(owner: self, identifier: identifier)

@@ -179,12 +179,25 @@ class JSPlugin: Plugin {
         guard let function = context.objectForKeyedSubscript("loadBook") else {
             return nil
         }
-        guard let bookJS = function.call(withArguments: [identifier]) else {
+        guard var bookJS = function.call(withArguments: [identifier]) else {
             return nil
         }
+        if let promise = JSPromise(withJSValue: bookJS) {
+            let group = DispatchGroup()
+            let callBack: @convention(block) (JSValue) -> Void = { jsValue in
+                bookJS = jsValue
+                group.leave()
+            }
+            let castedFunction = unsafeBitCast(callBack, to: AnyObject.self)
+            promise.then(onFulfilled: castedFunction)
+            group.enter()
+            group.wait(timeout: .distantFuture)
+        }
         let title = bookJS.forProperty("title")!.toString()!
-        let numberOfPages: Int = Int(bookJS.forProperty("identifier")!.toInt32())
+        let numberOfPages: Int = Int(bookJS.forProperty("numberOfPages")!.toInt32())
         let book = Book(owner: self, identifier: identifier, type: .manga)
+        book.title = title
+        book.numberOfPages = numberOfPages
         return book
     }
     

@@ -57,6 +57,7 @@ class AboutWindow: NSViewController {
             https://github.com/marmelroy/Zip
             https://github.com/ZipArchive/ZipArchive
         """
+        title = ""
     }
     
     func getApplicationSupportBooksDirectory() -> URL? {

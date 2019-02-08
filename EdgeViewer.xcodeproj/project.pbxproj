@@ -38,6 +38,7 @@
 		E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */; };
 		E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */; };
 		E002F12D208AA77700AACCC0 /* DoublePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */; };
+		E00DEE2F220D6D1300850066 /* JSPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DEE2E220D6D1300850066 /* JSPromise.swift */; };
 		E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E3992180DBB800D14EEA /* Chapter.swift */; };
 		E016E39C2185DF9B00D14EEA /* LocalPluginSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */; };
 		E01ED2A92093266600CC805F /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2A82093266600CC805F /* Manga.swift */; };
@@ -132,6 +133,7 @@
 		E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
 		E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePageViewController.swift; sourceTree = "<group>"; };
 		E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoublePageViewController.xib; sourceTree = "<group>"; };
+		E00DEE2E220D6D1300850066 /* JSPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPromise.swift; sourceTree = "<group>"; };
 		E016E3992180DBB800D14EEA /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginSeries.swift; sourceTree = "<group>"; };
 		E01ED2A82093266600CC805F /* Manga.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				E0AEDFF020AD304300E72B6E /* LibraryPage.swift */,
 				E023917720C4F6C500A9489B /* PageItem.swift */,
 				1CC6E60C21506ADA00DCF7DB /* Series.swift */,
+				E00DEE2E220D6D1300850066 /* JSPromise.swift */,
 			);
 			path = PluginAPI;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				E0AEDFF120AD304300E72B6E /* LibraryPage.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 				B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */,
+				E00DEE2F220D6D1300850066 /* JSPromise.swift in Sources */,
 				1C03FA5320DC8E0D00FB298A /* CoverImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

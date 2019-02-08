@@ -48,12 +48,13 @@ class JSPlugin: Plugin {
             let group = DispatchGroup()
             var page = context.evaluateScript("loadHomePage();")!
             if page.toString() == "[object Promise]"  {
+                let promise = JSPromise(withJSValue: page)!
                 let callBack: @convention(block) (JSValue) -> Void = { jsValue in
                     page = jsValue
                     group.leave()
                 }
                 let castedFunction = unsafeBitCast(callBack, to: AnyObject.self)
-                page.context.globalObject.forProperty("callWithBinding").call(withArguments: [page, page.forProperty("then"), castedFunction])
+                promise.then(onFulfilled: castedFunction)
                 group.enter()
                 group.wait(timeout: .distantFuture)
             }
@@ -114,9 +115,8 @@ class JSPlugin: Plugin {
         context.setObject(consoleLog, forKeyedSubscript: "consoleLog" as NSCopying & NSObjectProtocol)
         context.setObject(request, forKeyedSubscript: "request" as NSCopying & NSObjectProtocol)
         context.evaluateScript("""
-            function callWithBinding(obj, func, ...args) {
-                let funcBinded = func.bind(obj);
-                return funcBinded(...args);
+            function callMethod(obj, func, ...args) {
+                return obj[func](...args);
             }
         """)
         context.evaluateScript(content)

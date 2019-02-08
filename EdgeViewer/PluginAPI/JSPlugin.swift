@@ -205,7 +205,7 @@ class JSPlugin: Plugin {
         guard let function = context.objectForKeyedSubscript("loadPageOfBook") else {
             return nil
         }
-        guard let pageURL = function.call(withArguments: [book.identifier, 0]).toString() else {
+        guard let pageURL = function.call(withArguments: [book.identifier, pageNumber]).toString() else {
             return nil
         }
         print(pageURL)

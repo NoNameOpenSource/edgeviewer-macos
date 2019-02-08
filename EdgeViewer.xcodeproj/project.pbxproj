@@ -38,6 +38,8 @@
 		E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */; };
 		E002F12D208AA77700AACCC0 /* DoublePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */; };
 		E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E3992180DBB800D14EEA /* Chapter.swift */; };
+		E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E392217F967B00D14EEA /* Acknowledge.swift */; };
+		E016E396217F9A0B00D14EEA /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E395217F9A0B00D14EEA /* AboutWindow.swift */; };
 		E01ED2A92093266600CC805F /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2A82093266600CC805F /* Manga.swift */; };
 		E01ED2AC2093E92F00CC805F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01ED2AA2093E92F00CC805F /* HeaderView.xib */; };
 		E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2AB2093E92F00CC805F /* HeaderView.swift */; };
@@ -130,6 +132,8 @@
 		E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePageViewController.swift; sourceTree = "<group>"; };
 		E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoublePageViewController.xib; sourceTree = "<group>"; };
 		E016E3992180DBB800D14EEA /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		E016E392217F967B00D14EEA /* Acknowledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledge.swift; sourceTree = "<group>"; };
+		E016E395217F9A0B00D14EEA /* AboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 		E01ED2A82093266600CC805F /* Manga.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
 		E01ED2AA2093E92F00CC805F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		E01ED2AB2093E92F00CC805F /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -274,6 +278,15 @@
 			path = JavaScript;
 			sourceTree = "<group>";
 		};
+		E016E38F217F932600D14EEA /* AboutWindow */ = {
+			isa = PBXGroup;
+			children = (
+				E016E395217F9A0B00D14EEA /* AboutWindow.swift */,
+				E016E392217F967B00D14EEA /* Acknowledge.swift */,
+			);
+			path = AboutWindow;
+			sourceTree = "<group>";
+		};
 		E029CFDE2081E564008EC2A7 /* LibraryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +331,7 @@
 			children = (
 				B111D3F120DD973F0096ED6E /* DragAndDropFileReader */,
 				E01ED2AE2093EB8F00CC805F /* PluginAPI */,
+				E016E38F217F932600D14EEA /* AboutWindow */,
 				E029CFDE2081E564008EC2A7 /* LibraryView */,
 				1C1A1CB520843486000074DC /* DetailView */,
 				B1A894482073B559003A67AB /* ContentView */,
@@ -514,6 +528,7 @@
 				E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */,
 				8A40EF5120CE069C00A7B3CE /* ShelfViewFlowLayout.swift in Sources */,
 				E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */,
+				E016E396217F9A0B00D14EEA /* AboutWindow.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				1C18FAD120C364620073886B /* LocalPlugin.swift in Sources */,
 				1C95803C20B91A0900D3AC9D /* LocalPluginXMLStorer.swift in Sources */,
@@ -532,6 +547,7 @@
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,
 				E047C4D020E050C800E6BFEF /* CustomizationPalette.swift in Sources */,
 				E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */,
+				E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
 				8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */,
 				995281A8216EC5AC00FE65C5 /* LocalPluginSeriesXMLParser.swift in Sources */,

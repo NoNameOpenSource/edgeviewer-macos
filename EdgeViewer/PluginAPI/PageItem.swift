@@ -45,7 +45,11 @@ class PageItem {
             if let content = _content {
                 return content
             }
-            return self.owner.series(withIdentifier: self.identifier)
+            if self.type == .series {
+                return self.owner.series(withIdentifier: self.identifier)
+            } else {
+                return self.owner.book(withIdentifier: self.identifier)
+            }
         }
     }
     

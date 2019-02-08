@@ -17,8 +17,19 @@ class JSPlugin: Plugin {
         guard let function = context.objectForKeyedSubscript("loadSeries") else {
             return nil
         }
-        guard let seriesJS = function.call(withArguments: [identifier]) else {
+        guard var seriesJS = function.call(withArguments: [identifier]) else {
             return nil
+        }
+        if let promise = JSPromise(withJSValue: seriesJS) {
+            let group = DispatchGroup()
+            let callBack: @convention(block) (JSValue) -> Void = { jsValue in
+                seriesJS = jsValue
+                group.leave()
+            }
+            let castedFunction = unsafeBitCast(callBack, to: AnyObject.self)
+            promise.then(onFulfilled: castedFunction)
+            group.enter()
+            group.wait(timeout: .distantFuture)
         }
         let title = seriesJS.forProperty("title")!.toString()!
         let series = Series(owner: self, identifier: identifier)
@@ -45,7 +56,19 @@ class JSPlugin: Plugin {
     
     var homePage: LibraryPage {
         get {
-            let page = context.evaluateScript("loadHomePage();")!
+            let group = DispatchGroup()
+            var page = context.evaluateScript("loadHomePage();")!
+            if page.toString() == "[object Promise]"  {
+                let promise = JSPromise(withJSValue: page)!
+                let callBack: @convention(block) (JSValue) -> Void = { jsValue in
+                    page = jsValue
+                    group.leave()
+                }
+                let castedFunction = unsafeBitCast(callBack, to: AnyObject.self)
+                promise.then(onFulfilled: castedFunction)
+                group.enter()
+                group.wait(timeout: .distantFuture)
+            }
             return self.page(fromJavascriptObject: page)!
         }
     }
@@ -61,7 +84,8 @@ class JSPlugin: Plugin {
                 // request failed
                 return
             }
-            if let mimeType = httpResponse.mimeType, mimeType == "text/html",
+            if let mimeType = httpResponse.mimeType,
+                mimeType == "text/html" || mimeType == "application/json",
                 let data = data,
                 let string = String(data: data, encoding: .utf8) {
                 if let callback = callback {
@@ -101,6 +125,11 @@ class JSPlugin: Plugin {
         let request = unsafeBitCast(self.request, to: AnyObject.self)
         context.setObject(consoleLog, forKeyedSubscript: "consoleLog" as NSCopying & NSObjectProtocol)
         context.setObject(request, forKeyedSubscript: "request" as NSCopying & NSObjectProtocol)
+        context.evaluateScript("""
+            function callMethod(obj, func, ...args) {
+                return obj[func](...args);
+            }
+        """)
         context.evaluateScript(content)
     }
     
@@ -161,12 +190,25 @@ class JSPlugin: Plugin {
         guard let function = context.objectForKeyedSubscript("loadBook") else {
             return nil
         }
-        guard let bookJS = function.call(withArguments: [identifier]) else {
+        guard var bookJS = function.call(withArguments: [identifier]) else {
             return nil
         }
+        if let promise = JSPromise(withJSValue: bookJS) {
+            let group = DispatchGroup()
+            let callBack: @convention(block) (JSValue) -> Void = { jsValue in
+                bookJS = jsValue
+                group.leave()
+            }
+            let castedFunction = unsafeBitCast(callBack, to: AnyObject.self)
+            promise.then(onFulfilled: castedFunction)
+            group.enter()
+            group.wait(timeout: .distantFuture)
+        }
         let title = bookJS.forProperty("title")!.toString()!
-        let numberOfPages: Int = Int(bookJS.forProperty("identifier")!.toInt32())
+        let numberOfPages: Int = Int(bookJS.forProperty("numberOfPages")!.toInt32())
         let book = Book(owner: self, identifier: identifier, type: .manga)
+        book.title = title
+        book.numberOfPages = numberOfPages
         return book
     }
     
@@ -174,7 +216,7 @@ class JSPlugin: Plugin {
         guard let function = context.objectForKeyedSubscript("loadPageOfBook") else {
             return nil
         }
-        guard let pageURL = function.call(withArguments: [book.identifier, 0]).toString() else {
+        guard let pageURL = function.call(withArguments: [book.identifier, pageNumber]).toString() else {
             return nil
         }
         print(pageURL)

@@ -72,7 +72,8 @@ class JSPlugin: Plugin {
                 // request failed
                 return
             }
-            if let mimeType = httpResponse.mimeType, mimeType == "text/html",
+            if let mimeType = httpResponse.mimeType,
+                mimeType == "text/html" || mimeType == "application/json",
                 let data = data,
                 let string = String(data: data, encoding: .utf8) {
                 if let callback = callback {

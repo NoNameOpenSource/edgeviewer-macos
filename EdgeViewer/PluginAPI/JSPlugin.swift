@@ -45,7 +45,18 @@ class JSPlugin: Plugin {
     
     var homePage: LibraryPage {
         get {
-            let page = context.evaluateScript("loadHomePage();")!
+            let group = DispatchGroup()
+            var page = context.evaluateScript("loadHomePage();")!
+            if page.toString() == "[object Promise]"  {
+                let callBack: @convention(block) (JSValue) -> Void = { jsValue in
+                    page = jsValue
+                    group.leave()
+                }
+                let castedFunction = unsafeBitCast(callBack, to: AnyObject.self)
+                page.context.globalObject.forProperty("callWithBinding").call(withArguments: [page, page.forProperty("then"), castedFunction])
+                group.enter()
+                group.wait(timeout: .distantFuture)
+            }
             return self.page(fromJavascriptObject: page)!
         }
     }

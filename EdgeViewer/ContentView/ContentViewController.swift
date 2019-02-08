@@ -14,6 +14,11 @@ enum ViewType {
     case verticalScroll
 }
 
+enum ReadingMode {
+    case leftToRight
+    case rightToLeft
+}
+
 class ContentViewController: NSViewController, NSPageControllerDelegate {
    
     var draggingIndexPath : Set<IndexPath> = []
@@ -33,6 +38,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     var pageController: NSPageController = NSPageController()
     var book: Book?
+    
+    var readingMode: ReadingMode = .rightToLeft
     
     @IBOutlet weak var pageView: NSView!
     
@@ -159,9 +166,18 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         pageView.addTrackingArea(pageViewTrackingArea)
         
         var pages = [Int]()
-        for i in 0..<book.numberOfPages {
-            pages.append(i);
+        
+        if readingMode == .leftToRight {
+            for i in 0..<book.numberOfPages {
+                pages.append(i);
+            }
         }
+        else {
+            for i in (0..<book.numberOfPages).reversed() {
+                pages.append(i);
+            }
+        }
+        
         
         // set up event handling for left/right arrow keys (for changing pages)
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) {

@@ -112,6 +112,12 @@ class JSPlugin: Plugin {
         let request = unsafeBitCast(self.request, to: AnyObject.self)
         context.setObject(consoleLog, forKeyedSubscript: "consoleLog" as NSCopying & NSObjectProtocol)
         context.setObject(request, forKeyedSubscript: "request" as NSCopying & NSObjectProtocol)
+        context.evaluateScript("""
+            function callWithBinding(obj, func, ...args) {
+                let funcBinded = func.bind(obj);
+                return funcBinded(...args);
+            }
+        """)
         context.evaluateScript(content)
     }
     

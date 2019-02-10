@@ -53,9 +53,7 @@ class AboutWindow: NSViewController {
         }
         
         licenseInfo.stringValue = """
-            Acknowledgements:
-            https://github.com/marmelroy/Zip
-            https://github.com/ZipArchive/ZipArchive
+            Licensed under The GNU Lesser General Public License (LGPL)
         """
         title = ""
     }

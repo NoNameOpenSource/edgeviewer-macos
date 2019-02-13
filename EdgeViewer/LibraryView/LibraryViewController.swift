@@ -121,6 +121,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                                         self.removeSplitViewItem(self.splitViewItems[1])
                                         self.addSplitViewItem(NSSplitViewItem(viewController: newShelf))
                                         newShelf.delegate = self
+                                        self.splitViewItems[0].isCollapsed = false
         })
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
@@ -137,6 +138,8 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                                       performHandler: {
                                         self.removeSplitViewItem(self.splitViewItems[1])
                                         self.addSplitViewItem(NSSplitViewItem(viewController: detailViewController))
+                                        self.splitViewItems[0].isCollapsed = true
+                                        
         })
         detailViewController.senderDelegate = self
         detailViewController.series = series;
@@ -154,6 +157,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                                       performHandler: {
                                         self.removeSplitViewItem(self.splitViewItems[1])
                                         self.addSplitViewItem(NSSplitViewItem(viewController: contentViewController))
+                                        self.splitViewItems[0].isCollapsed = true
         })
         contentViewController.book = book;
         oldShelf.prepare(for: segue, sender: user.self)

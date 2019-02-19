@@ -139,6 +139,17 @@ final class LocalPluginXMLStorer { // pseudo-static class
         }
         xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "type", stringValue: bookType) as! XMLNode)
         
+        if let readingMode = book.readingMode {
+            let readingModeString: String
+            switch readingMode {
+            case .leftToRight:
+                readingModeString = "leftToRight"
+            case .rightToLeft:
+                readingModeString = "rightToLeft"
+            }
+            xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "readingMode", stringValue: readingModeString) as! XMLNode)
+        }
+        
         xmlDoc.rootElement()?.addChild(safeElement(withName: "series", withProperty: book.series))
         xmlDoc.rootElement()?.addChild(safeElement(withName: "seriesName", withProperty: book.seriesName))
         xmlDoc.rootElement()?.addChild(safeElement(withName: "rating", withProperty: book.rating))

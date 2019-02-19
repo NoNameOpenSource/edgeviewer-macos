@@ -14,6 +14,11 @@ enum BookType {
     case webManga
 }
 
+enum ReadingMode {
+    case leftToRight
+    case rightToLeft
+}
+
 class Book {
     
     let owner: Plugin
@@ -26,6 +31,7 @@ class Book {
     var coverImage : NSImage
     var chapters: [Chapter]?
     var type: BookType
+    var readingMode: ReadingMode?
 
     var series: Any?
     var seriesName: String?

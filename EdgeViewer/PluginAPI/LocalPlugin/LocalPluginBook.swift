@@ -127,6 +127,16 @@ class LocalPluginBook: Book {
                     XMLCorrupt()
                 }
             }
+            if let readingMode = elementValue(ofElementWithName: "readingMode") as? String {
+                switch readingMode {
+                case "leftToRight":
+                    self.readingMode = .leftToRight
+                case "rightToLeft":
+                    self.readingMode = .rightToLeft
+                default:
+                    XMLCorrupt()
+                }
+            }
             let chaptersElements = rootElement.elements(forName: "chapters")
             if (chaptersElements.count == 1) {
                 let chaptersElement = chaptersElements[0]

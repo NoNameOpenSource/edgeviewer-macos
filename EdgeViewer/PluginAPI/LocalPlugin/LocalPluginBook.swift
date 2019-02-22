@@ -202,10 +202,12 @@ class LocalPluginBook: Book {
         localRootElement.addChild(XMLNode.element(withName: "author", stringValue: author ?? "") as! XMLNode)
         localRootElement.addChild(XMLNode.element(withName: "genre", stringValue: genre ?? "") as! XMLNode)
         localRootElement.addChild(XMLNode.element(withName: "seriesName", stringValue: seriesName ?? "") as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "rating", stringValue: String(rating!)) as! XMLNode)
         localRootElement.addChild(XMLNode.element(withName: "bookmark", stringValue: String(bookmark)) as! XMLNode)
         localRootElement.addChild(XMLNode.element(withName: "currentPage", stringValue: String(currentPage)) as! XMLNode)
         localRootElement.addChild(XMLNode.element(withName: "numberOfPages", stringValue: String(numberOfPages)) as! XMLNode)
+        if let rating = rating {
+            localRootElement.addChild(XMLNode.element(withName: "rating", stringValue: String(rating)) as! XMLNode)
+        }
         
         // chapters
         var chapterNodes = [XMLNode]()

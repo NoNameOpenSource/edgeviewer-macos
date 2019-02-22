@@ -33,7 +33,8 @@ class LocalPluginBook: Book {
     }
     
     func loadCoverImage() {
-        for possibleCover in ["cover", "0", "1"] {
+        // swift will check "cover" first and "1" last
+        for possibleCover in ["1", "0", "cover"] {
             for ext in LocalPlugin.supportedImageExtensions {
                 if let image = NSImage.init(contentsOf: url.appendingPathComponent("Images/\(possibleCover)").appendingPathExtension(ext)) {
                     coverImage = image

@@ -11,10 +11,22 @@ import Cocoa
 class LocalPlugin: Plugin {
     var name = "LocalPlugin"
     var version = 0.1
+    static let supportedImageExtensions = ["jpg", "png"]
+    
     var homePage: LibraryPage {
         get {
             return page(withIdentifier: .homepage)!
         }
+    }
+    
+    enum ParsingError: Error {
+        case missingDataFile
+        case missingDataField(String)
+    }
+    
+    enum SerializationError: Error {
+        case missingDirectory
+        case xmlSerializationError
     }
     
     private init(name: String, version: Double) {
@@ -26,28 +38,66 @@ class LocalPlugin: Plugin {
     func page(withIdentifier identifier: LocalPluginLibraryPageType) -> LibraryPage? {
         let page = LibraryPage(owner: self, identifier: identifier, type: .regular)
         switch identifier {
-            case .homepage:
-                let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
-                let fileManager = FileManager.default
-                do {
-                    let seriesFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
-                    for (seriesFolder) in seriesFolders {
-                        if !seriesFolder.absoluteString.hasSuffix(".DS_Store") {
-                            let pageItem = PageItem(owner: self, identifier: seriesFolder.lastPathComponent, type: .book)
-                            pageItem.name = seriesFolder.lastPathComponent
-                            page.items.append(pageItem)
-                        }
-                    }
-                }
-                catch {
-                    print("could not get contents of \(booksDirectory?.absoluteString ?? "")")
-                    return nil
-                    }
-            default:
-                print("unhandled LibraryPageType: \(identifier)")
-                break
+        case .homepage:
+            let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
+            let series = loadSeries(inFolder: booksDirectory!)
+            for series in series {
+                let pageItem = PageItem(owner: self, series: series)
+                pageItem.thumbnail = series.coverImage
+                page.items.append(pageItem)
+            }
+            let books = loadBooks(inFolder: booksDirectory!)
+            for book in books {
+                let pageItem = PageItem(owner: self, book: book)
+                pageItem.thumbnail = book.coverImage
+                page.items.append(pageItem)
+            }
+        default:
+            print("unhandled LibraryPageType: \(identifier)")
+            break
         }
         return page
+    }
+    
+    func loadSeries(inFolder folder: URL) -> [LocalPluginSeries] {
+        var returnSeries: [LocalPluginSeries] = []
+        guard let files = try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: []) else {
+            return returnSeries
+        }
+        
+        for file in files {
+            if FileManager.default.fileExists(atPath: file.appendingPathComponent("SeriesData.xml").path) {
+                if let series = try? LocalPluginSeries(url: file) {
+                    returnSeries.append(series)
+                } else {
+                    // file curropted or missing
+                    // this is not handled at this moment
+                }
+            }
+        }
+        
+        return returnSeries
+    }
+    
+    func loadBooks(inFolder folder: URL) -> [LocalPluginBook] {
+        let unknownSeriesIdentifier = "--Unknown Series--"
+        var books: [LocalPluginBook] = []
+        guard let files = try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: []) else {
+            return books
+        }
+        
+        for file in files {
+            if FileManager.default.fileExists(atPath: file.appendingPathComponent("BookData.xml").path) {
+                if let book = try? LocalPluginBook(url: file) {
+                    books.append(book)
+                } else {
+                    // file curropted or missing
+                    // this is not handled at this moment
+                }
+            }
+        }
+        
+        return books
     }
     
     func page(withIdentifier identifier: Any) -> LibraryPage? {
@@ -55,15 +105,11 @@ class LocalPlugin: Plugin {
     }
     
     func book(withIdentifier identifier: Any) -> Book? {
-        print(identifier)
-        guard let identifier = identifier as? (String, String) else {
-            print("identifier is bad 1")
+        guard let url = identifier as? URL else {
+            print("identifier is bad")
             return nil
         }
-        let book = LocalPluginBook(identifier: identifier)
-        if let coverImage = book.page(atIndex: 0) {
-            book.coverImage = coverImage
-        }
+        let book = try? LocalPluginBook(url: url)
         return book
     }
     
@@ -109,46 +155,17 @@ class LocalPlugin: Plugin {
     }
     
     func books(ofSeries series: Series) -> [Book]? {
-        let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
-        let fileManager = FileManager.default
-        var books = [Book]()
-        do {
-            let seriesFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
-            for (seriesFolder) in seriesFolders {
-                if seriesFolder.lastPathComponent == series.title {
-                    do {
-                        let bookFolders = try fileManager.contentsOfDirectory(at: seriesFolder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
-                        for bookFolder in bookFolders {
-                            if(fileManager.fileExists(atPath: bookFolder.path + "/BookData.xml")){
-                                let bookIdentifier = (seriesFolder.lastPathComponent, bookFolder.lastPathComponent)
-                                if let book = book(withIdentifier: bookIdentifier) {
-                                    books.append(book)
-                                }
-                            }
-                        }
-                    }
-                    catch {
-                        print("cannot get book folders")
-                        return nil
-                    }
-                }
-            }
-        }
-        catch {
-            print("cannot get series folders")
-            return nil
-        }
+        guard let series = series as? LocalPluginSeries else { return nil }
+        let books = loadBooks(inFolder: series.url)
+        
         return books
     }
     
     func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
-        print(book.identifier)
-        guard let bookID = book.identifier as? (String, String) else {
-            print("identifier is incorrect type")
+        guard let book = book as? LocalPluginBook else {
             return nil
         }
-
-        let bookImageDirectory: URL? = LocalPlugin.getBookDirectory(ofBookWithIdentifier: bookID)?.appendingPathComponent("Images")
+        let bookImageDirectory: URL? = book.url.appendingPathComponent("Images")
         let fileManager = FileManager.default
         do {
             let filePaths = try fileManager.contentsOfDirectory(at: bookImageDirectory!, includingPropertiesForKeys: nil, options: [])

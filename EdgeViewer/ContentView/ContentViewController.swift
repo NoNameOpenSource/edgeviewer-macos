@@ -190,7 +190,18 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             panelView.animator().alphaValue = 1
         }, completionHandler: {
         })
+        checkMouseLocationAndSetTimer(with: event)
+    }
+    
+    func setTimer() {
         timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hidePanelViewAndCursor), userInfo: nil, repeats: true)
+    }
+    
+    func checkMouseLocationAndSetTimer(with event: NSEvent) {
+        let mouseInPanelViewCoordinates = panelView.convert(event.locationInWindow, from: nil)
+        guard !NSMouseInRect(mouseInPanelViewCoordinates, panelView.bounds, false) else { return }
+        timer.invalidate()
+        setTimer()
     }
     
     override func mouseExited(with event: NSEvent) {

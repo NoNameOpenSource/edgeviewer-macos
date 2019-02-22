@@ -32,14 +32,17 @@
 		B1E409E020E1AB6F00F65DE8 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E409DF20E1AB6F00F65DE8 /* Zip.framework */; };
 		B1E409E220E1AB6F00F65DE8 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1E409DF20E1AB6F00F65DE8 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B1E409E420E1AB8A00F65DE8 /* Zip.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */; };
+		B1F5435E21913AEA001D1104 /* ImportFailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */; };
 		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
 		E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */; };
 		E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */; };
 		E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */; };
 		E002F12D208AA77700AACCC0 /* DoublePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */; };
+		E00DEE2F220D6D1300850066 /* JSPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DEE2E220D6D1300850066 /* JSPromise.swift */; };
 		E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E3992180DBB800D14EEA /* Chapter.swift */; };
 		E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E392217F967B00D14EEA /* Acknowledge.swift */; };
 		E016E396217F9A0B00D14EEA /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E395217F9A0B00D14EEA /* AboutWindow.swift */; };
+		E016E39C2185DF9B00D14EEA /* LocalPluginSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */; };
 		E01ED2A92093266600CC805F /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2A82093266600CC805F /* Manga.swift */; };
 		E01ED2AC2093E92F00CC805F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01ED2AA2093E92F00CC805F /* HeaderView.xib */; };
 		E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2AB2093E92F00CC805F /* HeaderView.swift */; };
@@ -126,14 +129,17 @@
 		B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
 		B1E409DF20E1AB6F00F65DE8 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/Mac/Zip.framework; sourceTree = "<group>"; };
 		B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Zip.framework.dSYM; path = Carthage/Build/Mac/Zip.framework.dSYM; sourceTree = "<group>"; };
+		B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportFailDetailViewController.swift; sourceTree = "<group>"; };
 		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
 		E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
 		E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePageViewController.swift; sourceTree = "<group>"; };
 		E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoublePageViewController.xib; sourceTree = "<group>"; };
+		E00DEE2E220D6D1300850066 /* JSPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPromise.swift; sourceTree = "<group>"; };
 		E016E3992180DBB800D14EEA /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		E016E392217F967B00D14EEA /* Acknowledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledge.swift; sourceTree = "<group>"; };
 		E016E395217F9A0B00D14EEA /* AboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
+		E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginSeries.swift; sourceTree = "<group>"; };
 		E01ED2A82093266600CC805F /* Manga.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
 		E01ED2AA2093E92F00CC805F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		E01ED2AB2093E92F00CC805F /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -242,6 +248,14 @@
 			path = ButtonItem;
 			sourceTree = "<group>";
 		};
+		B1F5435C21913AEA001D1104 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		E01868D220DB1F55000D4672 /* LocalPlugin */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +263,7 @@
 				995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */,
 				1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */,
 				1C18FAD020C364620073886B /* LocalPlugin.swift */,
+				E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */,
 			);
 			path = LocalPlugin;
 			sourceTree = "<group>";
@@ -265,6 +280,7 @@
 				E0AEDFF020AD304300E72B6E /* LibraryPage.swift */,
 				E023917720C4F6C500A9489B /* PageItem.swift */,
 				1CC6E60C21506ADA00DCF7DB /* Series.swift */,
+				E00DEE2E220D6D1300850066 /* JSPromise.swift */,
 			);
 			path = PluginAPI;
 			sourceTree = "<group>";
@@ -312,7 +328,6 @@
 				E08E864C20731A7A0082723B /* EdgeViewerTests */,
 				E08E865720731A7A0082723B /* EdgeViewerUITests */,
 				E08E863820731A7A0082723B /* Products */,
-				E016E3982180D1EC00D14EEA /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -329,6 +344,7 @@
 		E08E863920731A7A0082723B /* EdgeViewer */ = {
 			isa = PBXGroup;
 			children = (
+				B1F5435C21913AEA001D1104 /* Notification */,
 				B111D3F120DD973F0096ED6E /* DragAndDropFileReader */,
 				E01ED2AE2093EB8F00CC805F /* PluginAPI */,
 				E016E38F217F932600D14EEA /* AboutWindow */,
@@ -520,6 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F5435E21913AEA001D1104 /* ImportFailDetailViewController.swift in Sources */,
 				99E3551021599F7C001E12EC /* (null) in Sources */,
 				E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */,
 				99346664217EC57A006460A6 /* LocalPluginBook.swift in Sources */,
@@ -549,11 +566,13 @@
 				E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */,
 				E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
+				E016E39C2185DF9B00D14EEA /* LocalPluginSeries.swift in Sources */,
 				8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */,
 				995281A8216EC5AC00FE65C5 /* LocalPluginSeriesXMLParser.swift in Sources */,
 				E0AEDFF120AD304300E72B6E /* LibraryPage.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 				B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */,
+				E00DEE2F220D6D1300850066 /* JSPromise.swift in Sources */,
 				1C03FA5320DC8E0D00FB298A /* CoverImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

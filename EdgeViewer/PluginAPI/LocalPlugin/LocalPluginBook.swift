@@ -9,11 +9,19 @@
 import Cocoa
 
 class LocalPluginBook: Book {
+    let url: URL
     lazy var rootElement: XMLElement = XMLElement(kind: .element)
     
-    init(identifier: (String, String)) {
-        super.init(owner: LocalPlugin.sharedInstance, identifier: identifier, type: .manga)
-        parse(identifier: identifier)
+    init(url: URL) throws {
+        self.url = url
+        super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
+        try parse()
+        for ext in LocalPlugin.supportedImageExtensions {
+            if let image = NSImage.init(contentsOf: url.appendingPathComponent("Images/0").appendingPathExtension(ext)) {
+                coverImage = image
+                break
+            }
+        }
     }
     
     func XMLCorrupt() {
@@ -45,87 +53,83 @@ class LocalPluginBook: Book {
         return nil
     }
     
-    func parse(identifier: (String, String)) {
+    func parse() throws {
         var xmlDocument: XMLDocument
-        let bookDirectory = LocalPlugin.getBookDirectory(ofBookWithIdentifier: identifier)
-        let url: URL = (bookDirectory?.appendingPathComponent("BookData.xml"))!
-        do {
-            xmlDocument = try XMLDocument(contentsOf: url, options: [])
-            
-            guard let localRootElement = xmlDocument.rootElement() else {
-                print("cannot get root element of series xml file: \(url)")
-                return
+        let xmlLocation: URL = self.url.appendingPathComponent("BookData.xml")
+        xmlDocument = try XMLDocument(contentsOf: xmlLocation, options: [])
+        
+        guard let localRootElement = xmlDocument.rootElement() else {
+            throw LocalPlugin.ParsingError.missingDataFile
+        }
+        
+        rootElement = localRootElement
+        
+        guard let titleElementValue = rootElement.elements(forName: "title")[0].stringValue else {
+            throw LocalPlugin.ParsingError.missingDataField("title")
+        }
+        self.title = titleElementValue
+        
+        // TODO: consider using switch statement
+        if let author = elementValue(ofElementWithName: "author") as? String {
+            self.author = author
+        }
+        if let genre = elementValue(ofElementWithName: "genre") as? String {
+            self.genre = genre
+        }
+        if let series = elementValue(ofElementWithName: "series") as? String {
+            self.series = series
+        }
+        if let seriesName = elementValue(ofElementWithName: "seriesName") as? String {
+            self.seriesName = seriesName
+        }
+        if let numberOfPages = elementValue(ofElementWithName: "numberOfPages") as? Int {
+            self.numberOfPages = numberOfPages
+        }
+        if let bookmark = elementValue(ofElementWithName: "bookmark") as? Int {
+            self.bookmark = bookmark
+        }
+        else {
+            self.bookmark = 0
+            XMLCorrupt()
+            print("XML Parsing Error: Could not retrieve saved bookmark")
+        }
+        if let rating = elementValue(ofElementWithName: "rating") as? Double {
+            self.rating = rating
+        }
+        else {
+            self.rating = 0
+            XMLCorrupt()
+            print("XML Parsing Error: Could not retrieve saved rating")
+        }
+        if let lastUpdated = elementValue(ofElementWithName: "lastUpdated") as? String {
+            let RFC3339DateFormatter = DateFormatter()
+            RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
+            RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            if let time = RFC3339DateFormatter.date(from: lastUpdated) {
+                self.lastUpdated = time
+            } else {
+                self.lastUpdated = nil
+                print("Unable to retrieve date. Check formatting of date string.")
             }
-            rootElement = localRootElement
-            
-            guard let titleElementValue = rootElement.elements(forName: "title")[0].stringValue else {
-                print("cannot get title element value")
-                return
-            }
-            self.title = titleElementValue
-            
-            // TODO: consider using switch statement
-            if let author = elementValue(ofElementWithName: "author") as? String {
-                self.author = author
-            }
-            if let genre = elementValue(ofElementWithName: "genre") as? String {
-                self.genre = genre
-            }
-            if let series = elementValue(ofElementWithName: "series") as? String {
-                self.series = series
-            }
-            if let seriesName = elementValue(ofElementWithName: "seriesName") as? String {
-                self.seriesName = seriesName
-            }
-            if let numberOfPages = elementValue(ofElementWithName: "numberOfPages") as? Int {
-                self.numberOfPages = numberOfPages
-            }
-            if let bookmark = elementValue(ofElementWithName: "bookmark") as? Int {
-                self.bookmark = bookmark
-            }
-            else {
-                self.bookmark = 0
+        }
+        if let currentPage = elementValue(ofElementWithName: "currentPage") as? Int {
+            self.currentPage = currentPage
+        }
+        else {
+            self.currentPage = 0
+            print("XML Parsing Error: Could not retrieve saved currentPage.")
+        }
+        if let type = elementValue(ofElementWithName: "type") as? String {
+            switch type {
+            case "manga":
+                self.type = .manga
+            case "comic":
+                self.type = .comic
+            case "webManga":
+                self.type = .webManga
+            default:
                 XMLCorrupt()
-                print("XML Parsing Error: Could not retrieve saved bookmark")
-            }
-            if let rating = elementValue(ofElementWithName: "rating") as? Double {
-                self.rating = rating
-            }
-            else {
-                self.rating = 0
-                XMLCorrupt()
-                print("XML Parsing Error: Could not retrieve saved rating")
-            }
-            if let lastUpdated = elementValue(ofElementWithName: "lastUpdated") as? String {
-                let RFC3339DateFormatter = DateFormatter()
-                RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
-                RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                if let time = RFC3339DateFormatter.date(from: lastUpdated) {
-                    self.lastUpdated = time
-                } else {
-                    self.lastUpdated = nil
-                    print("Unable to retrieve date. Check formatting of date string.")
-                }
-            }
-            if let currentPage = elementValue(ofElementWithName: "currentPage") as? Int {
-                self.currentPage = currentPage
-            }
-            else {
-                self.currentPage = 0
-                print("XML Parsing Error: Could not retrieve saved currentPage.")
-            }
-            if let type = elementValue(ofElementWithName: "type") as? String {
-                switch type {
-                case "manga":
-                    self.type = .manga
-                case "comic":
-                    self.type = .comic
-                case "webManga":
-                    self.type = .webManga
-                default:
-                    XMLCorrupt()
-                }
             }
             if let readingMode = elementValue(ofElementWithName: "readingMode") as? String {
                 switch readingMode {
@@ -161,8 +165,71 @@ class LocalPluginBook: Book {
                 }
             }
         }
-        catch {
-            print("cannot initialize XMLDocument from series xml file: \(url)")
+    }
+    
+    func serialize() throws {
+        var isDirectory:ObjCBool = ObjCBool(false)
+        guard FileManager.default.fileExists(atPath: url.path, isDirectory: &isDirectory) else {
+            throw LocalPlugin.SerializationError.missingDirectory
         }
+        guard isDirectory.boolValue == true else {
+            throw LocalPlugin.SerializationError.missingDirectory
+        }
+        
+        let xmlDocument: XMLDocument = XMLDocument(rootElement: XMLElement(name: "book"))
+        let xmlLocation: URL = self.url.appendingPathComponent("BookData.xml")
+        guard let localRootElement = xmlDocument.rootElement() else {
+            throw LocalPlugin.SerializationError.xmlSerializationError
+        }
+        
+        // XML version
+        xmlDocument.version = "1.0"
+        
+        localRootElement.addChild(XMLNode.element(withName: "title", stringValue: title) as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "author", stringValue: author ?? "") as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "genre", stringValue: genre ?? "") as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "seriesName", stringValue: seriesName ?? "") as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "rating", stringValue: String(rating!)) as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "bookmark", stringValue: String(bookmark)) as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "currentPage", stringValue: String(currentPage)) as! XMLNode)
+        localRootElement.addChild(XMLNode.element(withName: "numberOfPages", stringValue: String(numberOfPages)) as! XMLNode)
+        
+        // chapters
+        var chapterNodes = [XMLNode]()
+        if let chapters = chapters {
+            for chapter in chapters {
+                let chapterTitle = XMLNode.element(withName: "title", stringValue: chapter.title)
+                let chapterPageIndex = XMLNode.element(withName: "pageIndex", stringValue: String(chapter.pageIndex))
+                chapterNodes.append(XMLNode.element(withName: "chapter", children: [chapterTitle as! XMLNode, chapterPageIndex as! XMLNode], attributes: nil) as! XMLNode)
+            }
+        }
+        localRootElement.addChild(XMLNode.element(withName: "chapters", children: chapterNodes, attributes: nil) as! XMLNode)
+        
+        // bookType
+        let bookType: String
+        switch type {
+        case .manga:
+            bookType = "manga"
+        case .comic:
+            bookType = "comic"
+        case .webManga:
+            bookType = "webManga"
+        }
+        localRootElement.addChild(XMLNode.element(withName: "type", stringValue: bookType) as! XMLNode)
+        
+        // lastUpdated
+        if let lastUpdated = lastUpdated {
+            let RFC3339DateFormatter = DateFormatter()
+            RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
+            RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            localRootElement.addChild(XMLNode.element(withName: "lastUpdated", stringValue: RFC3339DateFormatter.string(from: lastUpdated)) as! XMLNode)
+        } else {
+            localRootElement.addChild(XMLNode.element(withName: "lastUpdated", stringValue: "Unknown Release Date") as! XMLNode)
+        }
+        
+        let xmlDataString = xmlDocument.xmlData(options:[.nodePrettyPrint, .nodeCompactEmptyElement])
+        
+        try xmlDataString.write(to: xmlLocation)
     }
 }

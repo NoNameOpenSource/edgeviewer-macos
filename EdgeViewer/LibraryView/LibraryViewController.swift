@@ -17,7 +17,8 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
     var listViewController: LibraryListViewController? = nil
     var shelfViewController: ShelfViewController? = nil
     var plugins: [Plugin] = [Plugin]()
-    var navigation: [Any] = Array()
+    var navigations: [[Any]] = Array()
+    var currentIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         }
         
         plugins.append(LocalPlugin.sharedInstance)
+        navigations.append(Array())
         loadPlugins()
         
         // update list view with plugins
@@ -53,7 +55,10 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         listViewController!.outlineView.reloadData()
         listViewController!.outlineView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
         
-        segue(toPage: plugins[0].homePage)
+        listViewController!.librarySelectionHandler = switchToPlugin
+        
+        currentIndex = 0
+        segue(toPage: plugins[currentIndex].homePage)
     }
     
     func loadPlugins() {
@@ -65,6 +70,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                 if fileManager.fileExists(atPath: pluginFolder.path + "/plugin.js") {
                     let plugin = JSPlugin(folder: pluginFolder)
                     plugins.append(plugin)
+                    navigations.append(Array())
                 }
             }
         }
@@ -74,10 +80,31 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         }
     }
     
+    @objc func switchToPlugin(withIndex index: Int) {
+        currentIndex = index
+        if let item = navigations[currentIndex].last {
+            switch(item) {
+                case let page as LibraryPage:
+                    segue(toPage: page)
+                case let series as Series:
+                    segueToDetailView(withSeries: series)
+                case let book as Book:
+                    segueToContentView(withBook: book)
+                default:
+                    // error
+                    return
+            }
+        } else {
+            segue(toPage: plugins[currentIndex].homePage)
+        }
+    }
+    
     func shelf(_: ShelfViewController, selectedItem pageItem: PageItem) {
         switch pageItem.type {
-        case .book:
+        case .series:
             segueToDetailView(withSeries: pageItem.content as! Series)
+        case .book:
+            segueToContentView(withBook: pageItem.content as! Book)
         case .link:
             segue(toPage: pageItem.content as! LibraryPage)
         }
@@ -94,11 +121,12 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                                         self.removeSplitViewItem(self.splitViewItems[1])
                                         self.addSplitViewItem(NSSplitViewItem(viewController: newShelf))
                                         newShelf.delegate = self
+                                        self.splitViewItems[0].isCollapsed = false
         })
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
         shelfViewController = newShelf
-        navigation.append(page)
+        navigations[currentIndex].append(page)
     }
     
     func segueToDetailView(withSeries series: Series) {
@@ -110,12 +138,14 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                                       performHandler: {
                                         self.removeSplitViewItem(self.splitViewItems[1])
                                         self.addSplitViewItem(NSSplitViewItem(viewController: detailViewController))
+                                        self.splitViewItems[0].isCollapsed = true
+                                        
         })
         detailViewController.senderDelegate = self
         detailViewController.series = series;
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
-        navigation.append(series)
+        navigations[currentIndex].append(series)
     }
     
     func segueToContentView(withBook book: Book) {
@@ -127,26 +157,29 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                                       performHandler: {
                                         self.removeSplitViewItem(self.splitViewItems[1])
                                         self.addSplitViewItem(NSSplitViewItem(viewController: contentViewController))
+                                        self.splitViewItems[0].isCollapsed = true
         })
         contentViewController.book = book;
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()
-        navigation.append(book)
+        navigations[currentIndex].append(book)
         
         
     }
     
     // return to previous view deleting the last element in array
     func navig () {
-        navigation.removeLast()
-        switch(navigation.popLast()) {
-        case let series as Series:
-            segueToDetailView(withSeries: series)
-
-        case let page as LibraryPage:
-            segue(toPage: page)
-        default:
-            break
+        if (navigations[currentIndex].count > 1){
+            navigations[currentIndex].removeLast()
+            switch(navigations[currentIndex].popLast()) {
+            case let series as Series:
+                segueToDetailView(withSeries: series)
+                
+            case let page as LibraryPage:
+                segue(toPage: page)
+            default:
+                break
+            }
         }
     }
 }

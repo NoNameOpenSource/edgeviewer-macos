@@ -10,6 +10,7 @@ import Cocoa
 
 enum PageItemType {
     case book
+    case series
     case link
 }
 
@@ -21,6 +22,7 @@ class PageItem {
     var name = ""
     var thumbnail: NSImage? {
         get {
+            if let thumbnail = _thumbnail { return thumbnail }
             guard let thumbnailURL = thumbnailURL else {
                 return nil
             }
@@ -29,12 +31,25 @@ class PageItem {
             }
             return NSImage(contentsOf: url)
         }
+        set {
+            _thumbnail = newValue
+        }
     }
+    
+    var _thumbnail: NSImage?
+    
+    private var _content: Any?
     
     var content: Any {
         get {
-            print(self.identifier)
-            return self.owner.series(withIdentifier: self.identifier)
+            if let content = _content {
+                return content
+            }
+            if self.type == .series {
+                return self.owner.series(withIdentifier: self.identifier)
+            } else {
+                return self.owner.book(withIdentifier: self.identifier)
+            }
         }
     }
     
@@ -49,6 +64,15 @@ class PageItem {
         self.type = .book
         self.identifier = book.identifier
         self.name = book.title
+        self._content = book
+    }
+    
+    init(owner: Plugin, series: Series) {
+        self.owner = owner
+        self.type = .series
+        self.identifier = series.identifier
+        self.name = series.title
+        self._content = series
     }
     
     static func PageItemType(fromString type: String) -> PageItemType {

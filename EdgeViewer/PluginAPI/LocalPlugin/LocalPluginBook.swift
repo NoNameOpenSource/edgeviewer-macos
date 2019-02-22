@@ -24,6 +24,19 @@ class LocalPluginBook: Book {
         }
     }
     
+    init(withCreatingBookAt url: URL, title: String) throws {
+        let fileManager = FileManager.default
+        guard fileManager.fileExists(atPath: url.path) == false else {
+            // directory already exist
+            throw ImportingBookError.directoryAlreadyExist
+        }
+        
+        try fileManager.createDirectory(atPath: url.path, withIntermediateDirectories: true, attributes: nil)
+        
+        self.url = url
+        super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
+    }
+    
     func XMLCorrupt() {
         print("XML book file is corrupt")
     }

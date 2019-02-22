@@ -1,6 +1,10 @@
 import Cocoa
 import Zip
 
+enum ImportingBookError: Error {
+    case directoryAlreadyExist
+}
+
 
 class DropView: NSView {
     var plugin = LocalPlugin.self
@@ -233,14 +237,12 @@ class DropView: NSView {
         var count = 0
         do {
             let files = try fileManager.contentsOfDirectory(atPath: sourcePath)
+            let url = URL(fileURLWithPath: destinationPath)
             
-            let newBook : Book = Book(owner: LocalPlugin.sharedInstance , identifier: (bookName,bookName), type: BookType.manga)
-            newBook.title = bookName
+            let newBook = try LocalPluginBook(withCreatingBookAt: url, title: bookName)
             
             newBook.currentPage = 0
             newBook.bookmark = 0
-            
-            try fileManager.createDirectory(atPath: destinationPath, withIntermediateDirectories: true, attributes: nil)
             
             try fileManager.createDirectory(atPath: destinationPath + "/Images", withIntermediateDirectories: true, attributes: nil)
             
@@ -255,9 +257,10 @@ class DropView: NSView {
                 }
             }
             newBook.numberOfPages = count
-            LocalPluginXMLStorer.storeBookData(ofBook: newBook)
-            
             newBook.coverImage =  NSImage(contentsOf: URL(fileURLWithPath: destinationPath + "/Images/0.jpg" , isDirectory: false))!
+            
+            try newBook.serialize()
+            
             success.append(bookName)
             failMessage.append([bookName,"Success",""])
         }catch{

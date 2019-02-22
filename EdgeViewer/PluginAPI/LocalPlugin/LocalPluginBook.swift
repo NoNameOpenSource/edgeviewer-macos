@@ -16,12 +16,7 @@ class LocalPluginBook: Book {
         self.url = url
         super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
         try parse()
-        for ext in LocalPlugin.supportedImageExtensions {
-            if let image = NSImage.init(contentsOf: url.appendingPathComponent("Images/0").appendingPathExtension(ext)) {
-                coverImage = image
-                break
-            }
-        }
+        loadCoverImage()
     }
     
     init(withCreatingBookAt url: URL, title: String) throws {
@@ -35,6 +30,17 @@ class LocalPluginBook: Book {
         
         self.url = url
         super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
+    }
+    
+    func loadCoverImage() {
+        for possibleCover in ["cover", "0", "1"] {
+            for ext in LocalPlugin.supportedImageExtensions {
+                if let image = NSImage.init(contentsOf: url.appendingPathComponent("Images/\(possibleCover)").appendingPathExtension(ext)) {
+                    coverImage = image
+                    break
+                }
+            }
+        }
     }
     
     func XMLCorrupt() {

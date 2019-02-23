@@ -34,6 +34,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var pageController: NSPageController = NSPageController()
     var book: Book?
     
+    var useAnimation: Bool = false
+    
     @IBOutlet weak var pageView: NSView!
     
     var currentPage = 0 {
@@ -180,6 +182,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         pageController.arrangedObjects = pages
         //currentPage = book?.bookMark
         updatePage()
+        
+        useAnimation = true
     }
         
     override func mouseMoved(with event: NSEvent) {
@@ -237,10 +241,14 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             //self.pageNumberLabel.stringValue = displayPage
         }
         
-        NSAnimationContext.runAnimationGroup({ context in
-            self.pageController.animator().selectedIndex = currentPage
-        }) {
-            self.pageController.completeTransition()
+        if(useAnimation) {
+            NSAnimationContext.runAnimationGroup({ context in
+                self.pageController.animator().selectedIndex = currentPage
+            }) {
+                self.pageController.completeTransition()
+            }
+        } else {
+            pageController.selectedIndex = currentPage
         }
         
         //pageController.selectedIndex = currentPage

@@ -35,13 +35,14 @@ class LocalPluginBook: Book {
     }
     
     func loadCoverImage() {
-        // swift will check "cover" first and "1" last
-        for possibleCover in ["1", "0", "cover"] {
+        let possibleCovers = ["cover", "0", "1"]
+        for i in 0..<possibleCovers.count {
+            let possibleCover = possibleCovers[i]
             for ext in LocalPlugin.supportedImageExtensions {
                 if let image = NSImage.init(contentsOf: url.appendingPathComponent("Images/\(possibleCover)").appendingPathExtension(ext)) {
                     coverImage = image
                     page.append("\(possibleCover).\(ext)")
-                    break
+                    return
                 }
             }
         }
@@ -62,13 +63,18 @@ class LocalPluginBook: Book {
             }
         }
         names.sort(by: { a, b in
-            if let a = Int(a.1) {
-                guard let b = Int(b.1) else { return false }
-                return a < b
-            } else {
-                guard Int(b.1) != nil else { return true }
+            let aInt = Int(a.1) ?? Int(a.1.split(separator: "-")[0])
+            let bInt = Int(b.1) ?? Int(b.1.split(separator: "-")[0])
+            if let aInt = aInt, let bInt = bInt {
+                return aInt < bInt
+            }
+            if aInt == nil, bInt == nil {
                 return a.1 < b.1
             }
+            if aInt == nil { // and bInt != nil
+                return true
+            }
+            return false // aInt != nil, bInt == nil
         })
         for i in 0..<names.count {
             page.append(names[i].0)

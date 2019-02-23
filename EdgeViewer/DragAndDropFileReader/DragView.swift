@@ -257,7 +257,8 @@ class DropView: NSView {
                 }
             }
             newBook.numberOfPages = count
-            newBook.coverImage =  NSImage(contentsOf: URL(fileURLWithPath: destinationPath + "/Images/0.jpg" , isDirectory: false))!
+            newBook.loadCoverImage()
+            try newBook.indexPages()
             
             try newBook.serialize()
             

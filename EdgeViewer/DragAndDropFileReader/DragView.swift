@@ -5,6 +5,9 @@ enum ImportingBookError: Error {
     case directoryAlreadyExist
 }
 
+protocol DropViewDelegate {
+    func dropView(_: DropView, didRecieveBook: LocalPluginBook)
+}
 
 class DropView: NSView {
     var plugin = LocalPlugin.self
@@ -16,6 +19,8 @@ class DropView: NSView {
     var filePath: [String]?
     let expectedExt = ["zip"]
     let expectedExtForImage = ["jpg","png"]
+    
+    var delegate: DropViewDelegate?
     
     
     @objc var isDir : ObjCBool = false
@@ -263,6 +268,10 @@ class DropView: NSView {
             
             success.append(bookName)
             failMessage.append([bookName,"Success",""])
+            
+            if let delegate = delegate {
+                delegate.dropView(self, didRecieveBook: newBook)
+            }
         }catch{
             fail.append(bookName)
             failMessage.append([bookName,"Fail",error.localizedDescription])

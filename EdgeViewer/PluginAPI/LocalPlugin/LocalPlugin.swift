@@ -101,7 +101,8 @@ class LocalPlugin: Plugin {
     }
     
     func page(withIdentifier identifier: Any) -> LibraryPage? {
-        return nil
+        guard let identifier = identifier as? LocalPluginLibraryPageType else { return nil }
+        return page(withIdentifier: identifier)
     }
     
     func book(withIdentifier identifier: Any) -> Book? {

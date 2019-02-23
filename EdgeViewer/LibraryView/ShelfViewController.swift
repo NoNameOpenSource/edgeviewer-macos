@@ -8,22 +8,18 @@
 
 import Cocoa
 
-class ShelfViewController: NSViewController {
+class ShelfViewController: NSViewController, DropViewDelegate {
     
     @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var dropView: DropView!
+    
     let sectionA: [Manga] = [Manga(title: "DummyA"), Manga(title: "DummyB"),Manga(title: "DummyC"), Manga(title: "DummyD"),Manga(title: "DummyD"),Manga(title: "DummyD"),Manga(title: "DummyD"),Manga(title: "DummyD"),Manga(title: "DummyD")]
     let sectionB: [Manga] = [Manga(title: "DummyC"), Manga(title: "DummyD")]
     var  sections: [[Manga]] = []
     
     var delegate: ShelfViewDelegate? = nil
     
-    var libraryPage: LibraryPage? = nil {
-        didSet(oldValue) { // reject any changes after first set
-            if oldValue != nil {
-                libraryPage = oldValue
-            }
-        }
-    }
+    var libraryPage: LibraryPage? = nil
     
     
     override func viewDidLoad() {
@@ -34,6 +30,8 @@ class ShelfViewController: NSViewController {
             sections.append(sectionA)
             sections.append(sectionB)
         }
+        
+        dropView.delegate = self
     }
    
     
@@ -60,6 +58,12 @@ class ShelfViewController: NSViewController {
             
             let pageItem = libraryPage!.items[indexPath.item]
             delegate.shelf(self, selectedItem: pageItem)
+        }
+    }
+    
+    func dropView(_: DropView, didRecieveBook newBook: LocalPluginBook) {
+        if let delegate = delegate {
+            delegate.shelf(self, didRecieveBook: newBook)
         }
     }
 }

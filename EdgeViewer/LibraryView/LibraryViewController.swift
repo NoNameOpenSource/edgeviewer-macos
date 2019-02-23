@@ -10,6 +10,7 @@ import Cocoa
 
 protocol ShelfViewDelegate {
     func shelf(_: ShelfViewController, selectedItem pageItem: PageItem)
+    func shelf(_: ShelfViewController, didRecieveBook newBook: LocalPluginBook)
 }
 
 class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
@@ -97,6 +98,12 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         } else {
             segue(toPage: plugins[currentIndex].homePage)
         }
+    }
+    
+    func shelf(_ shelfViewController: ShelfViewController, didRecieveBook newBook: LocalPluginBook) {
+        guard let libraryPage = shelfViewController.libraryPage else { return }
+        shelfViewController.libraryPage = LocalPlugin.sharedInstance.page(withIdentifier: libraryPage.identifier)
+        shelfViewController.collectionView.reloadData()
     }
     
     func shelf(_: ShelfViewController, selectedItem pageItem: PageItem) {

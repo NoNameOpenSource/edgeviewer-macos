@@ -73,6 +73,8 @@ class LocalPluginBook: Book {
         for i in 0..<names.count {
             page.append(names[i].0)
         }
+        
+        numberOfPages = page.count
     }
     
     override func page(atIndex index: Int) -> NSImage? {
@@ -146,9 +148,6 @@ class LocalPluginBook: Book {
         }
         if let seriesName = elementValue(ofElementWithName: "seriesName") as? String {
             self.seriesName = seriesName
-        }
-        if let numberOfPages = elementValue(ofElementWithName: "numberOfPages") as? Int {
-            self.numberOfPages = numberOfPages
         }
         if let bookmark = elementValue(ofElementWithName: "bookmark") as? Int {
             self.bookmark = bookmark
@@ -256,7 +255,6 @@ class LocalPluginBook: Book {
         localRootElement.addChild(XMLNode.element(withName: "seriesName", stringValue: seriesName ?? "") as! XMLNode)
         localRootElement.addChild(XMLNode.element(withName: "bookmark", stringValue: String(bookmark)) as! XMLNode)
         localRootElement.addChild(XMLNode.element(withName: "currentPage", stringValue: String(currentPage)) as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "numberOfPages", stringValue: String(numberOfPages)) as! XMLNode)
         if let rating = rating {
             localRootElement.addChild(XMLNode.element(withName: "rating", stringValue: String(rating)) as! XMLNode)
         }

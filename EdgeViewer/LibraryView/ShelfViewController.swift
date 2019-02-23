@@ -98,7 +98,6 @@ extension ShelfViewController : NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView,viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        
         let view = collectionView.makeSupplementaryView(ofKind: NSCollectionView.SupplementaryElementKind.sectionHeader, withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderView"), for: indexPath) as? HeaderView
         view?.sectionTitle.stringValue = "Section \(indexPath.section)"
         let numberOfItemsInSection = self.sections[indexPath.section].count
@@ -109,7 +108,8 @@ extension ShelfViewController : NSCollectionViewDataSource {
 
 extension ShelfViewController : NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
-        return NSSize(width: 1000, height: 40)
+        //return NSSize(width: 1000, height: 40)
+        return NSSize(width: 1000, height: 0)
     }
 }
 

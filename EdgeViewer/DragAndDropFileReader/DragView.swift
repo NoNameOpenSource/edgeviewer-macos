@@ -98,8 +98,8 @@ class DropView: NSView {
                 let sourceFolderName = sourceComponent[sourceComponent.count - 1]
                 let bookTitle = sourceFolderName
                 
-                var desURL : URL = LocalPlugin.getApplicationSupportAppDirectory()!
-                desURL.appendPathComponent("Books/\(sourceFolderName)")
+                var desURL : URL = LocalPlugin.getBooksDirectory()!
+                desURL.appendPathComponent("\(sourceFolderName)")
                 let destinationPath : String = desURL.path
                 
                 let type = fileTyp(pathName)

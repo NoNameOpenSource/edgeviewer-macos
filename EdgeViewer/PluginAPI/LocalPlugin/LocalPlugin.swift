@@ -39,7 +39,7 @@ class LocalPlugin: Plugin {
         let page = LibraryPage(owner: self, identifier: identifier, type: .regular)
         switch identifier {
         case .homepage:
-            let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
+            let booksDirectory = LocalPlugin.getBooksDirectory()
             let series = loadSeries(inFolder: booksDirectory!)
             for series in series {
                 let pageItem = PageItem(owner: self, series: series)
@@ -118,7 +118,7 @@ class LocalPlugin: Plugin {
         var xmlParser: LocalPluginSeriesXMLParser?
         var seriesImage: NSImage?
         if let identifier = identifier as? String {
-            let booksDirectory = LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
+            let booksDirectory = LocalPlugin.getBooksDirectory()
             let fileManager = FileManager.default
             do {
                 let seriesFolders = try fileManager.contentsOfDirectory(at: booksDirectory!, includingPropertiesForKeys: nil, options: [])
@@ -218,7 +218,7 @@ class LocalPlugin: Plugin {
     }
     
     static func getBooksDirectory() -> URL? {
-        return LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books/")
+        return LocalPlugin.getApplicationSupportAppDirectory()?.appendingPathComponent("Books")
     }
     
     static func getBookDirectory(ofBookWithIdentifier identifier: (series: String, title: String)) -> URL? {

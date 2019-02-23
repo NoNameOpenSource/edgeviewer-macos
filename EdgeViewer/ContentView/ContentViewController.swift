@@ -35,6 +35,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var book: Book?
     
     var useAnimation: Bool = false
+    var inTransition: Int = 0
     
     @IBOutlet weak var pageView: NSView!
     
@@ -242,10 +243,16 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
         
         if(useAnimation) {
+            if inTransition > 0 {
+                self.pageController.completeTransition()
+                print("compeleted transition")
+            }
             NSAnimationContext.runAnimationGroup({ context in
                 self.pageController.animator().selectedIndex = currentPage
+                inTransition += 1
             }) {
-                self.pageController.completeTransition()
+                //self.pageController.completeTransition()
+                self.inTransition -= 1
             }
         } else {
             pageController.selectedIndex = currentPage

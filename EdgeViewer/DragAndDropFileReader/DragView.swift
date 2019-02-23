@@ -250,8 +250,7 @@ class DropView: NSView {
                 let suffix = URL(fileURLWithPath: (sourcePath + "/" + file)).pathExtension
                 for ext in expectedExtForImage {
                     if ext.lowercased() == suffix {
-                        let fileName = String(count) + "." + suffix
-                        try fileManager.copyItem(atPath: (sourcePath + "/" + file), toPath: (destinationPath + "/Images/" + fileName))
+                        try fileManager.copyItem(atPath: ("\(sourcePath)/\(file)"), toPath: (destinationPath + "/Images/\(file)"))
                         count += 1
                     }
                 }

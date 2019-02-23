@@ -32,6 +32,7 @@ class LocalPluginBook: Book {
         
         self.url = url
         super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
+        self.title = title
     }
     
     func loadCoverImage() {
@@ -51,10 +52,12 @@ class LocalPluginBook: Book {
     func indexPages() throws {
         let fileManager = FileManager.default
         var files = try fileManager.contentsOfDirectory(atPath: url.appendingPathComponent("Images").path)
+        var coverExist = false
         if page.count == 1 { // the cover exist
+            files.remove(at: files.firstIndex(of: page[0]) as! Int)
+            coverExist = true
         }
         var names: [(String, String)] = []
-        files.remove(at: files.firstIndex(of: page[0]) as! Int)
         for i in 0..<files.count {
             let url = URL(string: files[i])
             if let url = url,
@@ -78,6 +81,11 @@ class LocalPluginBook: Book {
         })
         for i in 0..<names.count {
             page.append(names[i].0)
+        }
+        
+        if !coverExist && page.count > 0,
+           let coverImage = NSImage.init(contentsOf: url.appendingPathComponent("Images/\(page.first!)")) {
+            self.coverImage = coverImage
         }
         
         numberOfPages = page.count

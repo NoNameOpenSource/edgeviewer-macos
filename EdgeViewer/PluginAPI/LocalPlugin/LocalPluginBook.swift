@@ -44,6 +44,23 @@ class LocalPluginBook: Book {
         }
     }
     
+    override func page(atIndex index: Int) -> NSImage? {
+        let bookImageDirectory: URL? = url.appendingPathComponent("Images")
+        let fileManager = FileManager.default
+        do {
+            let filePaths = try fileManager.contentsOfDirectory(at: bookImageDirectory!, includingPropertiesForKeys: nil, options: [])
+            for filePath in filePaths {
+                if filePath.lastPathComponent.hasPrefix("\(index).") {
+                    return NSImage(contentsOf: filePath)
+                }
+            }
+        }
+        catch {
+            print("Could not get file paths: \(bookImageDirectory?.absoluteString ?? "the directory could not be found")")
+        }
+        return nil
+    }
+    
     func XMLCorrupt() {
         print("XML book file is corrupt")
     }

@@ -165,20 +165,7 @@ class LocalPlugin: Plugin {
         guard let book = book as? LocalPluginBook else {
             return nil
         }
-        let bookImageDirectory: URL? = book.url.appendingPathComponent("Images")
-        let fileManager = FileManager.default
-        do {
-            let filePaths = try fileManager.contentsOfDirectory(at: bookImageDirectory!, includingPropertiesForKeys: nil, options: [])
-            for filePath in filePaths {
-                if filePath.lastPathComponent.hasPrefix("\(pageNumber).") {
-                    return NSImage(contentsOf: filePath)
-                }
-            }
-        }
-        catch {
-            print("Could not get file paths: \(bookImageDirectory?.absoluteString ?? "the directory could not be found")")
-        }
-        return nil
+        return book.page(atIndex: pageNumber)
     }
     
     func addBook(book: Book) {

@@ -1,5 +1,6 @@
 import Cocoa
 import Zip
+import UserNotifications
 
 enum ImportingBookError: Error {
     case directoryAlreadyExist
@@ -40,7 +41,7 @@ class DropView: NSView {
         if #available(OSX 10.13, *) {
             registerForDraggedTypes([NSPasteboard.PasteboardType.URL, NSPasteboard.PasteboardType.fileURL])
         } else {
-            // Fallback on earlier versions
+
             registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")])
         }
         
@@ -88,8 +89,6 @@ class DropView: NSView {
         self.failMessage = []
         fail = []
         success = []
-        
-        //GET YOUR FILE PATH !!!
         for path in pasteboard {
             if let pathName = path as? String {
                 self.filePath?.append(pathName)
@@ -116,12 +115,6 @@ class DropView: NSView {
             }
         }
         
-        /*if #available(OSX 10.14, *) {
-         
-         
-         fail = []
-         success = []
-         } else {*/
         
         if (success.count > 0){
             
@@ -138,12 +131,6 @@ class DropView: NSView {
                 contextText += " "
             }
         }
-        
-        
-        
-        //}
-        
-        
         return true
     }
     
@@ -160,20 +147,39 @@ class DropView: NSView {
     }
     
     fileprivate func sendImportResultNotification(){
-        let center = NSUserNotificationCenter.default
-        center.delegate = self
-        
-        let context = NSUserNotification.init()
-        context.title = "EdgeViewer Local File Import Result"
-        context.identifier = "import"
-        context.informativeText = contextText
-        
-        context.actionButtonTitle = "Detail"
-        center.deliver(context)
-        
-        if (center.deliveredNotifications[center.deliveredNotifications.count - 1] != context){
-            showDetailErrorInfo()
+        if #available(OSX 10.14, *) {
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+            
+            let context = UNMutableNotificationContent()
+            context.title = "EdgeViewer"
+            context.subtitle = "Local File Import Result"
+            context.body = contextText
+            context.sound = UNNotificationSound.default()
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let request = UNNotificationRequest(identifier: "import", content: context, trigger: trigger)
+            center.add(request, withCompletionHandler: nil)
+        } else {
+            let center = NSUserNotificationCenter.default
+            center.delegate = self
+            
+            let context = NSUserNotification.init()
+            context.title = "EdgeViewer"
+            context.subtitle = "Local File Import Result"
+            context.identifier = "import"
+            context.informativeText = contextText
+            
+            context.actionButtonTitle = "Detail"
+            center.deliver(context)
+            
+            
+            if (center.deliveredNotifications.count == 0){
+                showDetailErrorInfo()
+            }
         }
+        
+        
     }
     
     fileprivate func checkFileExtention(_ drag : String) -> Bool{
@@ -289,11 +295,7 @@ extension DropView: NSUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
-        if notification.isPresented == false {
-            print(notification)
-            return true
-        }
-        return notification.isPresented
+        return true
     }
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
         
@@ -303,4 +305,16 @@ extension DropView: NSUserNotificationCenterDelegate {
     }
 }
 
+@available(OSX 10.14, *)
+extension DropView: UNUserNotificationCenterDelegate {
 
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.notification.request.identifier == "import" {
+            showDetailErrorInfo()
+        }
+        
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound,.badge])
+    }
+}

@@ -25,7 +25,8 @@
 		995281A8216EC5AC00FE65C5 /* LocalPluginSeriesXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */; };
 		99E3551021599F7C001E12EC /* (null) in Sources */ = {isa = PBXBuildFile; };
 		99E355122159B632001E12EC /* (null) in Resources */ = {isa = PBXBuildFile; };
-		B111D3F320DD975E0096ED6E /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111D3F220DD975E0096ED6E /* DragView.swift */; };
+		B111D3F320DD975E0096ED6E /* DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111D3F220DD975E0096ED6E /* DropView.swift */; };
+		B190F0D62235E7200017048D /* EdgeViewerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B190F0D52235E7200017048D /* EdgeViewerWindow.swift */; };
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
 		B1D8A4AB20C8281B00F4683A /* ButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A4A720C8281B00F4683A /* ButtonItem.xib */; };
 		B1D8A4B520C99CCA00F4683A /* ButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */; };
@@ -39,9 +40,9 @@
 		E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */; };
 		E002F12D208AA77700AACCC0 /* DoublePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */; };
 		E00DEE2F220D6D1300850066 /* JSPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DEE2E220D6D1300850066 /* JSPromise.swift */; };
-		E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E3992180DBB800D14EEA /* Chapter.swift */; };
 		E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E392217F967B00D14EEA /* Acknowledge.swift */; };
 		E016E396217F9A0B00D14EEA /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E395217F9A0B00D14EEA /* AboutWindow.swift */; };
+		E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E3992180DBB800D14EEA /* Chapter.swift */; };
 		E016E39C2185DF9B00D14EEA /* LocalPluginSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */; };
 		E01ED2A92093266600CC805F /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2A82093266600CC805F /* Manga.swift */; };
 		E01ED2AC2093E92F00CC805F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01ED2AA2093E92F00CC805F /* HeaderView.xib */; };
@@ -123,7 +124,8 @@
 		8AB61A8D20DAFDDC00BFEC4A /* ProjectWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindow.swift; sourceTree = "<group>"; };
 		99346663217EC57A006460A6 /* LocalPluginBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalPluginBook.swift; path = EdgeViewer/PluginAPI/LocalPlugin/LocalPluginBook.swift; sourceTree = SOURCE_ROOT; };
 		995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPluginSeriesXMLParser.swift; sourceTree = "<group>"; };
-		B111D3F220DD975E0096ED6E /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
+		B111D3F220DD975E0096ED6E /* DropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropView.swift; sourceTree = "<group>"; };
+		B190F0D52235E7200017048D /* EdgeViewerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeViewerWindow.swift; sourceTree = "<group>"; };
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		B1D8A4A720C8281B00F4683A /* ButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonItem.xib; sourceTree = "<group>"; };
 		B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
@@ -136,9 +138,9 @@
 		E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePageViewController.swift; sourceTree = "<group>"; };
 		E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoublePageViewController.xib; sourceTree = "<group>"; };
 		E00DEE2E220D6D1300850066 /* JSPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPromise.swift; sourceTree = "<group>"; };
-		E016E3992180DBB800D14EEA /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		E016E392217F967B00D14EEA /* Acknowledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledge.swift; sourceTree = "<group>"; };
 		E016E395217F9A0B00D14EEA /* AboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
+		E016E3992180DBB800D14EEA /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginSeries.swift; sourceTree = "<group>"; };
 		E01ED2A82093266600CC805F /* Manga.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
 		E01ED2AA2093E92F00CC805F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
@@ -221,9 +223,17 @@
 		B111D3F120DD973F0096ED6E /* DragAndDropFileReader */ = {
 			isa = PBXGroup;
 			children = (
-				B111D3F220DD975E0096ED6E /* DragView.swift */,
+				B111D3F220DD975E0096ED6E /* DropView.swift */,
 			);
 			path = DragAndDropFileReader;
+			sourceTree = "<group>";
+		};
+		B190F0D42235E6F30017048D /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				B190F0D52235E7200017048D /* EdgeViewerWindow.swift */,
+			);
+			path = Window;
 			sourceTree = "<group>";
 		};
 		B1A894482073B559003A67AB /* ContentView */ = {
@@ -254,6 +264,15 @@
 				B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		E016E38F217F932600D14EEA /* AboutWindow */ = {
+			isa = PBXGroup;
+			children = (
+				E016E395217F9A0B00D14EEA /* AboutWindow.swift */,
+				E016E392217F967B00D14EEA /* Acknowledge.swift */,
+			);
+			path = AboutWindow;
 			sourceTree = "<group>";
 		};
 		E01868D220DB1F55000D4672 /* LocalPlugin */ = {
@@ -292,15 +311,6 @@
 				E0AEDFEC20AD304300E72B6E /* DOMParser.js */,
 			);
 			path = JavaScript;
-			sourceTree = "<group>";
-		};
-		E016E38F217F932600D14EEA /* AboutWindow */ = {
-			isa = PBXGroup;
-			children = (
-				E016E395217F9A0B00D14EEA /* AboutWindow.swift */,
-				E016E392217F967B00D14EEA /* Acknowledge.swift */,
-			);
-			path = AboutWindow;
 			sourceTree = "<group>";
 		};
 		E029CFDE2081E564008EC2A7 /* LibraryView */ = {
@@ -344,6 +354,7 @@
 		E08E863920731A7A0082723B /* EdgeViewer */ = {
 			isa = PBXGroup;
 			children = (
+				B190F0D42235E6F30017048D /* Window */,
 				B1F5435C21913AEA001D1104 /* Notification */,
 				B111D3F120DD973F0096ED6E /* DragAndDropFileReader */,
 				E01ED2AE2093EB8F00CC805F /* PluginAPI */,
@@ -552,7 +563,7 @@
 				1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */,
 				B1D8A4B520C99CCA00F4683A /* ButtonItem.swift in Sources */,
 				8A34150220A8B84A0075D779 /* ChapterController.swift in Sources */,
-				B111D3F320DD975E0096ED6E /* DragView.swift in Sources */,
+				B111D3F320DD975E0096ED6E /* DropView.swift in Sources */,
 				E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */,
 				8AAFCF21207C3C6C003C8605 /* CollectionViewItem.swift in Sources */,
 				E01ED2AD2093E92F00CC805F /* HeaderView.swift in Sources */,
@@ -569,6 +580,7 @@
 				E016E39C2185DF9B00D14EEA /* LocalPluginSeries.swift in Sources */,
 				8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */,
 				995281A8216EC5AC00FE65C5 /* LocalPluginSeriesXMLParser.swift in Sources */,
+				B190F0D62235E7200017048D /* EdgeViewerWindow.swift in Sources */,
 				E0AEDFF120AD304300E72B6E /* LibraryPage.swift in Sources */,
 				E08E863B20731A7A0082723B /* AppDelegate.swift in Sources */,
 				B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */,

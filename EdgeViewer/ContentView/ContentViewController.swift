@@ -243,17 +243,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
         
         if(useAnimation) {
-            if inTransition > 0 {
-                self.pageController.completeTransition()
-                print("compeleted transition")
-            }
-            NSAnimationContext.runAnimationGroup({ context in
-                self.pageController.animator().selectedIndex = currentPage
-                inTransition += 1
-            }) {
-                //self.pageController.completeTransition()
-                self.inTransition -= 1
-            }
+            pageController.takeSelectedIndexFrom(currentPage)
         } else {
             pageController.selectedIndex = currentPage
         }

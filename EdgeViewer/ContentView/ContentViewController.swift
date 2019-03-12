@@ -66,7 +66,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             // to refresh the pageController for the switched view
             pageController.selectedIndex = currentPage + 1
             pageController.selectedIndex = currentPage
-
+            pageController.completeTransition()
         }
     }
     

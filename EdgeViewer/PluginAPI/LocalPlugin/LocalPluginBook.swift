@@ -136,12 +136,6 @@ class LocalPluginBook: Book {
                     return el
                 }
             }
-            else {
-                XMLCorrupt()
-            }
-        }
-        else {
-            XMLCorrupt()
         }
         return nil
     }
@@ -188,7 +182,6 @@ class LocalPluginBook: Book {
         }
         else {
             self.rating = 0
-            XMLCorrupt()
             print("XML Parsing Error: Could not retrieve saved rating")
         }
         if let lastUpdated = elementValue(ofElementWithName: "lastUpdated") as? String {

@@ -87,6 +87,8 @@ class JSPlugin: Plugin {
                 request.setValue(value, forHTTPHeaderField: httpHeaderField)
             }
         }
+        
+        let context = xhr.context!
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
           
             //TODO: handle error with (if let error = error)
@@ -94,12 +96,28 @@ class JSPlugin: Plugin {
                 // request failed
                 return
             }
-            if let mimeType = httpResponse.mimeType,
-                mimeType == "text/html" || mimeType == "application/json",
-                let data = data,
-                let string = String(data: data, encoding: .utf8) {
-                if let callback = callback {
-                    _ = callback.call(withArguments: [httpResponse.statusCode, mimeType, string])!
+            if let mimeType = httpResponse.mimeType {
+                if mimeType == "text/html" || mimeType == "application/json",
+                   let data = data,
+                   let string = String(data: data, encoding: .utf8) {
+                    if let callback = callback {
+                        _ = callback.call(withArguments: [httpResponse.statusCode, mimeType, "text", string])!
+                    }
+                }  else {
+                    if let data = data {
+                        var setString = ""
+                        for i in 0..<data.count {
+                            setString += "ar[\(i)] = \(data[i]);\n"
+                        }
+                        
+                        var arrayBuffer = context.evaluateScript("""
+                            var ab = new ArrayBuffer(\(data.count))
+                            var ar = new Uint8Array(ab);
+                        """ + setString + "ab")!
+                        if let callback = callback {
+                            _ = callback.call(withArguments: [httpResponse.statusCode, "application/octet-stream", "arraybuffer", arrayBuffer])!
+                        }
+                    }
                 }
             }
         }

@@ -43,16 +43,24 @@ class XMLHttpRequest {
     }
     
     send(body = null) {
-        request(this, function(statusCode, mimeType, responseText) {
+        request(this, function(statusCode, mimeType, responseType, response) {
             var evt = new Object();
             evt.target = this;
             this.readyState = 4;
             if(this.onload) {
-                var parser = new DOMParser();
-                this.responseText = responseText;
-                this.responseHTML = parser.parseFromString(responseText, mimeType);
-                this.status = statusCode;
-                this.onload(evt);
+                this.responseType = responseType;
+                if(responseType == "text") {
+                    var parser = new DOMParser();
+                    this.response = response;
+                    this.responseText = response;
+                    this.responseHTML = parser.parseFromString(responseText, mimeType);
+                    this.status = statusCode;
+                    this.onload(evt);
+                } else {
+                    this.response = response;
+                    this.status = statusCode;
+                    this.onload(evt);
+                }
             }
         }.bind(this));
     }

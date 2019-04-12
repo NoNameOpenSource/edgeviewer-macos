@@ -13,6 +13,19 @@ class LocalPluginBook: Book {
     var page: [String] = []
     lazy var rootElement: XMLElement = XMLElement(kind: .element)
     
+    override var coverImage: NSImage {
+        get {
+            var image: NSImage?
+            //DispatchQueue.global(qos: .userInitiated).async {
+                image = NSImage(contentsOf: self.url.appendingPathComponent("Images/\(self.page[0])"))!
+            //}
+            return image ?? super.coverImage
+        }
+        set {
+            super.coverImage = newValue
+        }
+    }
+    
     init(url: URL) throws {
         self.url = url
         super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
@@ -40,10 +53,9 @@ class LocalPluginBook: Book {
         for i in 0..<possibleCovers.count {
             let possibleCover = possibleCovers[i]
             for ext in LocalPlugin.supportedImageExtensions {
-                if let image = NSImage.init(contentsOf: url.appendingPathComponent("Images/\(possibleCover)").appendingPathExtension(ext)) {
-                    coverImage = image
-                    page.append("\(possibleCover).\(ext)")
-                    return
+                if FileManager.default.fileExists(atPath: url.appendingPathComponent("Images/\(possibleCover)").appendingPathExtension(ext).path) {
+                        page.append("\(possibleCover).\(ext)")
+                        return
                 }
             }
         }

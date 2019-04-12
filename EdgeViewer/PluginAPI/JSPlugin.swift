@@ -144,7 +144,7 @@ class JSPlugin: Plugin {
     }
     
     init(folder: URL) {
-        self.name = "test"
+        self.name = folder.lastPathComponent
         self.version = 0.1
         self.folder = folder
         let contentData = FileManager.default.contents(atPath: folder.path + "/plugin.js")

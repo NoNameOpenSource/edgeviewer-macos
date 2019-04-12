@@ -37,6 +37,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     var useAnimation: Bool = false
     var inTransition: Int = 0
     
+    var keyDownEvent: Any?
+    
     @IBOutlet weak var pageView: NSView!
     
     var currentPage = 0 {
@@ -175,7 +177,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         }
         
         // set up event handling for left/right arrow keys (for changing pages)
-        NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
+        self.keyDownEvent = NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
             self.keyDown(with: $0)
             return $0
         }
@@ -427,6 +429,17 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         } else {
             // Fallback on earlier versions
         }
+    }
+    
+    override func viewWillDisappear() {
+        if let keyDownEvent = keyDownEvent {
+            NSEvent.removeMonitor(keyDownEvent)
+            self.keyDownEvent = nil
+        }
+    }
+    
+    deinit {
+        //print("contentVC for \(book!.title) deinited")
     }
 }
 

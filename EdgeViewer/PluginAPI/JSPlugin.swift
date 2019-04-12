@@ -75,9 +75,19 @@ class JSPlugin: Plugin {
     
     let context = JSContext()!
     
-    let request: @convention(block) (String, JSValue?) -> Void  = { url, callback in
-        guard let url = URL(string: url) else { return }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+    let request: @convention(block) (JSValue, JSValue?) -> Void  = { xhr, callback in
+        guard let headers = xhr.forProperty("requestHeaders").toArray() as? [[String: Any]] else { return }
+        
+        guard let urlString = xhr.forProperty("url").toString() else { return }
+        guard let url = URL(string: urlString) else { return }
+        var request = URLRequest(url: url)
+        for header in headers {
+            if let httpHeaderField = header.first?.key,
+               let value = header.first?.value as? String {
+                request.setValue(value, forHTTPHeaderField: httpHeaderField)
+            }
+        }
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
           
             //TODO: handle error with (if let error = error)
             guard let httpResponse = response as? HTTPURLResponse else {

@@ -16,6 +16,7 @@ class XMLHttpRequest {
         this.responseXML = null;
         this.withCredentials = false;
         this.requestMethod = "";
+        this.requestHeaders = [];
     }
     
     open(method, url, async = null, user = null, password = null) {
@@ -35,8 +36,14 @@ class XMLHttpRequest {
         }
     }
     
+    setRequestHeader(header, value) {
+        let obj = {};
+        obj[header] = value;
+        this.requestHeaders.push(obj);
+    }
+    
     send(body = null) {
-        request(this.url, function(statusCode, mimeType, responseText) {
+        request(this, function(statusCode, mimeType, responseText) {
             var evt = new Object();
             evt.target = this;
             this.readyState = 4;

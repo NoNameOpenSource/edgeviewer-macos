@@ -14,7 +14,7 @@ enum ViewType {
     case verticalScroll
 }
 
-class ContentViewController: NSViewController, NSPageControllerDelegate {
+class ContentViewController: NSViewController {
    
     var draggingIndexPath : Set<IndexPath> = []
     var displayedItem: [ButtonType] = [.backward, .forward, .chapter, .pageViewSelector]
@@ -29,9 +29,9 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     @IBOutlet weak var panelBorderedView: NSScrollView!
     
     var timer = Timer()
-    var animationDictionary = [[NSViewAnimation.Key : NSView]]()
+    //var animationDictionary = [[NSViewAnimation.Key : NSView]]()
     
-    var pageController: NSPageController = NSPageController()
+    var pageViewController: PageViewController?
     var book: Book?
     
     var useAnimation: Bool = false
@@ -39,38 +39,8 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     
     var keyDownEvent: Any?
     
+    
     @IBOutlet weak var pageView: NSView!
-    
-    var currentPage = 0 {
-        didSet {
-            // fix if the page number is out of range
-            if(currentPage < 0) {
-                currentPage = 0
-            } else if(currentPage >= book!.numberOfPages) {
-                if (viewType == .singlePage){
-                    currentPage = book!.numberOfPages - 1
-                    print("last page")
-                }else if (viewType == .doublePage){
-                    currentPage = book!.numberOfPages - 2
-                    print("last two page")
-                }
-            }
-        }
-    }
-    
-    var viewType: ViewType = .singlePage {
-        didSet {
-            if(viewType == .doublePage && currentPage % 2 != 0) {
-                // doublePage only wants even page numbers
-                currentPage -= 1
-            }
-            // there could be a better way, but this works
-            // to refresh the pageController for the switched view
-            pageController.selectedIndex = currentPage + 1
-            pageController.selectedIndex = currentPage
-            pageController.completeTransition()
-        }
-    }
     
     @IBAction func enableEditMode(_ sender: NSMenuItem) {
         guard customizationPalette == nil else { return }
@@ -136,15 +106,19 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
         super.viewDidLoad()
         
         // Do view setup here.
-        pageController.view = pageView
-        pageController.delegate = self
         
         guard let book = book else {
             print("book nil")
             return
         }
         
-        self.currentPage = book.currentPage
+        view.layer?.backgroundColor = #colorLiteral(red: 0.1293984056, green: 0.1294192672, blue: 0.1293913424, alpha: 1)
+        
+        if book.type == .manga {
+            self.pageViewController = PageViewController(book: book)
+            self.view.addSubview(pageViewController!.view, positioned: .above, relativeTo: self.view.subviews[0])
+            pageViewController!.view.frame = self.view.frame
+        }
         
         userPanel.isSelectable = true;
         
@@ -181,10 +155,6 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
             self.keyDown(with: $0)
             return $0
         }
-        
-        pageController.arrangedObjects = pages
-        //currentPage = book?.bookMark
-        updatePage()
         
         useAnimation = true
     }
@@ -230,104 +200,13 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     override func viewDidDisappear() {
-        if let book = book {
-            book.bookmark = self.currentPage;
-        }
-    }
-    
-    func updatePage() {
-        if let book = book {
-            var displayPage = "Cover"
-            if currentPage != 0 {
-                displayPage = "\(currentPage) / \(book.numberOfPages - 1)"
-            }
-            //self.pageNumberLabel.stringValue = displayPage
-        }
-        
-        if(useAnimation) {
-            pageController.takeSelectedIndexFrom(currentPage)
-        } else {
-            pageController.selectedIndex = currentPage
-        }
-        
-        //pageController.selectedIndex = currentPage
-    }
- 
-    //------------------------------------------------------------------------------------------------
-    //MARK: PageControllerDelegate
-    //------------------------------------------------------------------------------------------------
-    
-    func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
-        switch viewType {
-        case .singlePage:
-            return NSPageController.ObjectIdentifier("SinglePageViewController")
-        default:
-            if currentPage == 0 {
-                // the first page is cover page
-                // it should be displayed with singlepage view
-                return NSPageController.ObjectIdentifier("SinglePageViewController")
-            }
-            guard currentPage + 1 != book!.numberOfPages else {
-                // there is only one page left
-                // therefore double page view cannot be used
-                return NSPageController.ObjectIdentifier("SinglePageViewController")
-            }
-            return NSPageController.ObjectIdentifier("DoublePageViewController")
-        }
-    }
-    
-    func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        switch viewType {
-        case .singlePage:
-            return SinglePageViewController()
-        default:
-            return DoublePageViewController()
-        }
-    }
-    
-    func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
-        guard let book = book else {
-            print("book nil")
-            return
-        }
-        
-        guard let currentPage = object as? Int else {
-            return
-        }
-        
-        switch viewController {
-            case let viewController as SinglePageViewController:
-                viewController.image = book.page(atIndex: currentPage)
-                break
-            case let viewController as DoublePageViewController:
-                viewController.leftImage = book.page(atIndex: currentPage)
-                viewController.rightImage = book.page(atIndex: currentPage + 1)
-                break
-            default:
-                return
-        }
-    }
-    
-    func pageController(_ pageController: NSPageController, frameFor object: Any?) -> NSRect {
-        return pageController.view.frame
+        // save currentPage
     }
     
     @objc func pageForward(){
-        switch viewType {
-        case .singlePage:
-            currentPage += 1;
-            break
-        case .doublePage:
-            if(currentPage == 0) {
-                currentPage += 1;
-            } else {
-                currentPage += 2;
-            }
-            break
-        default:
-            return
+        if let pageViewController = pageViewController {
+            pageViewController.moveForward()
         }
-        updatePage()
     }
     
     @objc func segueToChapterView(sender : Any) {
@@ -357,17 +236,9 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     @objc public func pageBack(){
-        switch viewType {
-        case .singlePage:
-            currentPage -= 1;
-            break
-        case .doublePage:
-            currentPage -= 2;
-            break
-        default:
-            return
+        if let pageViewController = pageViewController {
+            pageViewController.moveBackward()
         }
-        updatePage()
     }
     
     override func keyDown(with event: NSEvent) {
@@ -384,35 +255,7 @@ class ContentViewController: NSViewController, NSPageControllerDelegate {
     }
     
     @objc public func viewTypeSwitch(){
-        switch viewType {
-        case .singlePage:
-            viewType = .doublePage
-            break
-        case .doublePage:
-            viewType = .singlePage
-            break
-        default:
-            return
-        }
-        
-        if (userPanel.numberOfItems(inSection: 0) > 0) {
-            for i in 0..<userPanel.numberOfItems(inSection: 0) {
-                if let item = userPanel.item(at: i) as? ButtonItem,
-                item.buttonType == .pageViewSelector {
-                    switch viewType {
-                    case .singlePage:
-                        item.image = #imageLiteral(resourceName: "DoublePageViewSelector")
-                    case .doublePage:
-                        item.image = #imageLiteral(resourceName: "SinglePageViewSelector")
-                    default:
-                        return
-                    }
-                }
-            }
-        }
-        
         print("type switched")
-        print(viewType);
     }
     
     fileprivate func configureCollectionView() { // this one makes layout

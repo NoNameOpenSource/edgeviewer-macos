@@ -39,6 +39,8 @@
 		E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */; };
 		E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */; };
 		E002F12D208AA77700AACCC0 /* DoublePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */; };
+		E007FEE522612217001E440E /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEE422612217001E440E /* PageViewController.swift */; };
+		E007FEE922623607001E440E /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E007FEE822623607001E440E /* PageView.xib */; };
 		E00DEE2F220D6D1300850066 /* JSPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DEE2E220D6D1300850066 /* JSPromise.swift */; };
 		E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E392217F967B00D14EEA /* Acknowledge.swift */; };
 		E016E396217F9A0B00D14EEA /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E395217F9A0B00D14EEA /* AboutWindow.swift */; };
@@ -137,6 +139,8 @@
 		E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
 		E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePageViewController.swift; sourceTree = "<group>"; };
 		E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoublePageViewController.xib; sourceTree = "<group>"; };
+		E007FEE422612217001E440E /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		E007FEE822623607001E440E /* PageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
 		E00DEE2E220D6D1300850066 /* JSPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPromise.swift; sourceTree = "<group>"; };
 		E016E392217F967B00D14EEA /* Acknowledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledge.swift; sourceTree = "<group>"; };
 		E016E395217F9A0B00D14EEA /* AboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
@@ -212,10 +216,12 @@
 		B10073E520816CA7005E980A /* PageView */ = {
 			isa = PBXGroup;
 			children = (
+				E007FEE422612217001E440E /* PageViewController.swift */,
 				E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */,
 				E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */,
 				E002F12A208AA77700AACCC0 /* DoublePageViewController.swift */,
 				E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */,
+				E007FEE822623607001E440E /* PageView.xib */,
 			);
 			path = PageView;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				1C1A1CBB20843CD1000074DC /* ChapterViewItem.xib in Resources */,
 				E047C4D120E050C800E6BFEF /* CustomizationPalette.xib in Resources */,
 				1C92690320960E0500ADF847 /* LocalLibrary.xml in Resources */,
+				E007FEE922623607001E440E /* PageView.xib in Resources */,
 				E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */,
 				E08E864220731A7A0082723B /* Main.storyboard in Resources */,
 				8AAFCF22207C3C6C003C8605 /* CollectionViewItem.xib in Resources */,
@@ -577,6 +584,7 @@
 				E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */,
 				1CC6E60D21506ADA00DCF7DB /* Series.swift in Sources */,
 				E01ED2B22093EC6400CC805F /* JSPlugin.swift in Sources */,
+				E007FEE522612217001E440E /* PageViewController.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,
 				E047C4D020E050C800E6BFEF /* CustomizationPalette.swift in Sources */,
 				E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */,

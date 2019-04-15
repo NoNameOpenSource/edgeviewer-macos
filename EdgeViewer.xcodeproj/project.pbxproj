@@ -41,6 +41,8 @@
 		E002F12D208AA77700AACCC0 /* DoublePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */; };
 		E007FEE522612217001E440E /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEE422612217001E440E /* PageViewController.swift */; };
 		E007FEE922623607001E440E /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E007FEE822623607001E440E /* PageView.xib */; };
+		E007FEEB226266C6001E440E /* WebMangaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEEA226266C6001E440E /* WebMangaViewController.swift */; };
+		E007FEEE22626727001E440E /* WebMangaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E007FEED22626727001E440E /* WebMangaView.xib */; };
 		E007FEF022643DCA001E440E /* PageViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEEF22643DCA001E440E /* PageViewProtocol.swift */; };
 		E00DEE2F220D6D1300850066 /* JSPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DEE2E220D6D1300850066 /* JSPromise.swift */; };
 		E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E392217F967B00D14EEA /* Acknowledge.swift */; };
@@ -142,6 +144,8 @@
 		E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoublePageViewController.xib; sourceTree = "<group>"; };
 		E007FEE422612217001E440E /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		E007FEE822623607001E440E /* PageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
+		E007FEEA226266C6001E440E /* WebMangaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMangaViewController.swift; sourceTree = "<group>"; };
+		E007FEED22626727001E440E /* WebMangaView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebMangaView.xib; sourceTree = "<group>"; };
 		E007FEEF22643DCA001E440E /* PageViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewProtocol.swift; sourceTree = "<group>"; };
 		E00DEE2E220D6D1300850066 /* JSPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPromise.swift; sourceTree = "<group>"; };
 		E016E392217F967B00D14EEA /* Acknowledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledge.swift; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 				B1D8A4A520C827F800F4683A /* ButtonItem */,
 				E0D12D1120C5158700D26797 /* ChapterView */,
 				B10073E520816CA7005E980A /* PageView */,
+				E007FEEC2262670D001E440E /* WebMangaView */,
 				B1A894492073B58C003A67AB /* ContentViewController.swift */,
 				E007FEEF22643DCA001E440E /* PageViewProtocol.swift */,
 			);
@@ -273,6 +278,15 @@
 				B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		E007FEEC2262670D001E440E /* WebMangaView */ = {
+			isa = PBXGroup;
+			children = (
+				E007FEEA226266C6001E440E /* WebMangaViewController.swift */,
+				E007FEED22626727001E440E /* WebMangaView.xib */,
+			);
+			path = WebMangaView;
 			sourceTree = "<group>";
 		};
 		E016E38F217F932600D14EEA /* AboutWindow */ = {
@@ -536,6 +550,7 @@
 				E007FEE922623607001E440E /* PageView.xib in Resources */,
 				E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */,
 				E08E864220731A7A0082723B /* Main.storyboard in Resources */,
+				E007FEEE22626727001E440E /* WebMangaView.xib in Resources */,
 				8AAFCF22207C3C6C003C8605 /* CollectionViewItem.xib in Resources */,
 				99E355122159B632001E12EC /* (null) in Resources */,
 			);
@@ -596,6 +611,7 @@
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
 				E016E39C2185DF9B00D14EEA /* LocalPluginSeries.swift in Sources */,
 				8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */,
+				E007FEEB226266C6001E440E /* WebMangaViewController.swift in Sources */,
 				995281A8216EC5AC00FE65C5 /* LocalPluginSeriesXMLParser.swift in Sources */,
 				B190F0D62235E7200017048D /* EdgeViewerWindow.swift in Sources */,
 				E0AEDFF120AD304300E72B6E /* LibraryPage.swift in Sources */,

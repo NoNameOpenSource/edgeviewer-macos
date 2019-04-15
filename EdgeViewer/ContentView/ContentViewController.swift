@@ -118,6 +118,10 @@ class ContentViewController: NSViewController {
             self.pageViewController = PageViewController(book: book)
             self.view.addSubview(pageViewController!.view, positioned: .above, relativeTo: self.view.subviews[0])
             pageViewController!.view.frame = self.view.frame
+        } else if book.type == .webManga {
+            self.pageViewController = WebMangaViewController(book: book)
+            self.view.addSubview(pageViewController!.view, positioned: .above, relativeTo: self.view.subviews[0])
+            pageViewController!.view.frame = self.view.frame
         }
         
         userPanel.isSelectable = true;

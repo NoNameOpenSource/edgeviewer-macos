@@ -16,7 +16,14 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
     var viewType: ViewType = .singlePage
     var readingMode: ReadingMode = .leftToRight
     
-    var currentPage = 0
+    var currentPage: Int {
+        get {
+            return pageController.selectedIndex
+        }
+        set {
+            moveTo(index: newValue)
+        }
+    }
     var useAnimation: Bool = false
     
     var pages: [Int] = []

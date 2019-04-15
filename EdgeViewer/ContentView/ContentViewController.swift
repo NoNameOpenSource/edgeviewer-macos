@@ -31,7 +31,7 @@ class ContentViewController: NSViewController {
     var timer = Timer()
     //var animationDictionary = [[NSViewAnimation.Key : NSView]]()
     
-    var pageViewController: PageViewController?
+    var pageViewController: PageViewProtocol?
     var book: Book?
     
     var useAnimation: Bool = false
@@ -204,7 +204,7 @@ class ContentViewController: NSViewController {
     }
     
     @objc func pageForward(){
-        if let pageViewController = pageViewController {
+        if let pageViewController = pageViewController as? PageViewController {
             pageViewController.moveForward()
         }
     }
@@ -236,7 +236,7 @@ class ContentViewController: NSViewController {
     }
     
     @objc public func pageBack(){
-        if let pageViewController = pageViewController {
+        if let pageViewController = pageViewController as? PageViewController {
             pageViewController.moveBackward()
         }
     }

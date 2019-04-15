@@ -41,6 +41,7 @@
 		E002F12D208AA77700AACCC0 /* DoublePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */; };
 		E007FEE522612217001E440E /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEE422612217001E440E /* PageViewController.swift */; };
 		E007FEE922623607001E440E /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E007FEE822623607001E440E /* PageView.xib */; };
+		E007FEF022643DCA001E440E /* PageViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEEF22643DCA001E440E /* PageViewProtocol.swift */; };
 		E00DEE2F220D6D1300850066 /* JSPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DEE2E220D6D1300850066 /* JSPromise.swift */; };
 		E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E392217F967B00D14EEA /* Acknowledge.swift */; };
 		E016E396217F9A0B00D14EEA /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E395217F9A0B00D14EEA /* AboutWindow.swift */; };
@@ -141,6 +142,7 @@
 		E002F12B208AA77700AACCC0 /* DoublePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoublePageViewController.xib; sourceTree = "<group>"; };
 		E007FEE422612217001E440E /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		E007FEE822623607001E440E /* PageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
+		E007FEEF22643DCA001E440E /* PageViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewProtocol.swift; sourceTree = "<group>"; };
 		E00DEE2E220D6D1300850066 /* JSPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPromise.swift; sourceTree = "<group>"; };
 		E016E392217F967B00D14EEA /* Acknowledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledge.swift; sourceTree = "<group>"; };
 		E016E395217F9A0B00D14EEA /* AboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				E0D12D1120C5158700D26797 /* ChapterView */,
 				B10073E520816CA7005E980A /* PageView */,
 				B1A894492073B58C003A67AB /* ContentViewController.swift */,
+				E007FEEF22643DCA001E440E /* PageViewProtocol.swift */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				1C18FAD120C364620073886B /* LocalPlugin.swift in Sources */,
 				1C95803C20B91A0900D3AC9D /* LocalPluginXMLStorer.swift in Sources */,
+				E007FEF022643DCA001E440E /* PageViewProtocol.swift in Sources */,
 				1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */,
 				B1D8A4B520C99CCA00F4683A /* ButtonItem.swift in Sources */,
 				8A34150220A8B84A0075D779 /* ChapterController.swift in Sources */,

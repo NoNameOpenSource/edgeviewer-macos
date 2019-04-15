@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PageViewController: NSViewController, NSPageControllerDelegate {
+class PageViewController: NSViewController, NSPageControllerDelegate, PageViewProtocol {
     var pageController: NSPageController = NSPageController()
     
     let book: Book

@@ -40,9 +40,14 @@ class WebMangaViewController: NSViewController, PageViewProtocol {
         }
     }
     
-    override func viewDidLayout() {
+    override func viewWillLayout() {
+        let leftPadding = (view.subviews[0].frame.width - viewFrame.width) / 2
         if webMangaView.frame != viewFrame {
-            webMangaView.frame = viewFrame
+            webMangaView.setFrameSize(NSSize(width: webMangaView.frame.width, height: viewFrame.height))
+            
+            for subView in webMangaView.subviews {
+                subView.frame = NSRect(x: leftPadding, y: subView.frame.minY, width: subView.frame.width, height: subView.frame.height)
+            }
         }
     }
     

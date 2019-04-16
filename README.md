@@ -20,4 +20,4 @@ EdgeViewer provides a simple mechanism for installing plugins written in JavaScr
 
 <a name="license"></a>
 ## License
-EdgeViewer for macOS is licensed with the [LGPL License](https://www.gnu.org/licenses/lgpl-3.0.en.html).
+EdgeViewer for macOS is licensed with the [LGPL License](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html).

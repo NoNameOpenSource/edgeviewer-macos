@@ -11,9 +11,7 @@ EdgeViewer is an open source application that aims to be a universal viewer for 
 
 <a name="plugins"></a>
 ## Plugins
-EdgeViewer provides a simple mechanism for installing plugins written in JavaScript that seamlessly integrate with the rest of the application. Though we do not officially support or endorse any third-party plugins, EdgeViewer cannot thrive without an active community of plugin creators. 
-[//]: # "Only EdgeViewer's central codebase is hosted on our GitHub account, but a full list of unsupported plugins is available at on our [EdgeViewer Third-Party Plugins](https://ggomong.com/edgeviewer/plugins) page."
-To connect with us about creating a plugin, contact us at [contributions@ggomong.com](mailto:contributions@ggomong.com).
+EdgeViewer provides a simple mechanism for installing plugins written in JavaScript that seamlessly integrate with the rest of the application. Though we do not officially support or endorse any third-party plugins, EdgeViewer cannot thrive without an active community of plugin creators. To connect with us about creating a plugin, contact us at [contributions@ggomong.com](mailto:contributions@ggomong.com).
 
 <a name="building"></a>
 ## Building

@@ -11,7 +11,7 @@ import Cocoa
 class LocalPlugin: Plugin {
     var name = "LocalPlugin"
     var version = 0.1
-    static let supportedImageExtensions = ["jpg", "png"]
+    static let supportedImageExtensions = ["jpg", "png", "jpeg"]
     
     var homePage: LibraryPage {
         get {

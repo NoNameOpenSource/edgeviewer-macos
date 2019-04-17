@@ -35,9 +35,8 @@ class WebMangaViewController: NSViewController, PageViewProtocol {
         viewFrame = NSRect(x: 0, y: 0, width: width, height: currentY)
         webMangaView.frame = viewFrame
         
-        if let scrollView = view as? NSScrollView, let documentView = scrollView.documentView {
-            documentView.scroll(NSPoint(x: 0, y: currentY))
-        }
+        let bounds = view.subviews[0].bounds
+        view.subviews[0].bounds = NSRect(x: 0, y: currentY, width: bounds.width, height: bounds.height)
     }
     
     override func viewWillLayout() {

@@ -170,9 +170,12 @@ class ContentViewController: NSViewController {
     }
     
     @objc public func pageBack(){
-        if let pageViewController = pageViewController as? PageViewController {
+        if let pageViewController = pageViewController as? PageViewController,
+           pageViewController.currentPage - 1 != 0 {
             pageViewController.moveBackward()
         }
+        // if previous book exist move to next book
+        segueToPreviousBook()
     }
     
     func segueToNextBook() {
@@ -200,6 +203,36 @@ class ContentViewController: NSViewController {
         index += 1
         
         guard index != books.count else {
+            return // no more books
+        }
+        segueToBook(books[index])
+    }
+    
+    func segueToPreviousBook() {
+        guard let book = book, book.seriesID != nil else { return }
+        if self.series == nil {
+            self.series = book.series
+        }
+        guard let series = series else {
+            return // error: failed to retrieve series from book
+        }
+        guard let books = series.books else {
+            return // error: failed to retrieve books list from series
+        }
+        
+        var index: Int = -1
+        for i in 0..<books.count {
+            if books[i] == book {
+                index = i
+                break
+            }
+        }
+        guard index != -1 else {
+            return // error: failed to find book from series
+        }
+        index -= 1
+        
+        guard index != -1 else {
             return // no more books
         }
         segueToBook(books[index])

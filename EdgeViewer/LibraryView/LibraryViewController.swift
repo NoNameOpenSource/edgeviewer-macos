@@ -14,7 +14,7 @@ protocol ShelfViewDelegate {
 }
 
 protocol DetailViewDelegate {
-    func detailView(_: DetailViewController, selectedBook book: Book, fromSeries sereies: Series)
+    func detailView(_: DetailViewController, selectedBook book: Book, fromSeries series: Series)
     func detailView(_: DetailViewController, selectedBook book: Book)
     func detailView(_: DetailViewController, selectedPage page: LibraryPage)
 }
@@ -123,8 +123,8 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate, DetailVie
         }
     }
     
-    func detailView(_ detailVC: DetailViewController, selectedBook book: Book, fromSeries sereies: Series) {
-        segueToContentView(withBook: book)
+    func detailView(_ detailVC: DetailViewController, selectedBook book: Book, fromSeries series: Series) {
+        segueToContentView(withBook: book, fromSeries: series)
     }
     
     func detailView(_ detailVC: DetailViewController, selectedBook book: Book) {

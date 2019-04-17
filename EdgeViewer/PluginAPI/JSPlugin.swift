@@ -259,4 +259,25 @@ class JSPlugin: Plugin {
         }
         return image
     }
+    
+    func isSameBook(_ left: Book, _ right: Book) -> Bool {
+        guard let function = context.objectForKeyedSubscript("isSameBook") else {
+            return false
+        }
+        guard let resultJS = function.call(withArguments: [left.identifier, right.identifier]) else {
+            return false
+        }
+        
+        var result: Bool = false
+        
+        if resultJS.toString() == "true" {
+            result = true
+        } else if resultJS.toString() == "false" {
+            result = false
+        } else {
+            return false // error in js
+        }
+        
+        return result
+    }
 }

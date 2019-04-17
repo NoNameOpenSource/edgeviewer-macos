@@ -74,4 +74,8 @@ class Book {
 			return Double(currentPage) / Double(numberOfPages)
 		}
 	}
+    
+    static func ==(left: Book, right: Book) -> Bool {
+        return left.owner.isSameBook(left, right)
+    }
 }

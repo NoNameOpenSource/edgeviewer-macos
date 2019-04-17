@@ -228,4 +228,9 @@ class LocalPlugin: Plugin {
     enum LocalPluginLibraryPageType {
         case homepage
     }
+    
+    func isSameBook(_ left: Book, _ right: Book) -> Bool {
+        guard let left = left as? LocalPluginBook, let right = right as? LocalPluginBook else { return false }
+        return left.url == right.url
+    }
 }

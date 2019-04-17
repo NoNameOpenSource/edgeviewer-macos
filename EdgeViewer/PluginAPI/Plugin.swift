@@ -20,4 +20,5 @@ protocol Plugin {
     func update(book: Book)
     func update(currentPage: Int, ofBook book: Book)
     func update(rating: Double, ofBook book: Book)
+    func isSameBook(_ left: Book, _ right: Book) -> Bool
 }

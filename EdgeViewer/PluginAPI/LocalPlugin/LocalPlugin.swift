@@ -158,6 +158,10 @@ class LocalPlugin: Plugin {
     func books(ofSeries series: Series) -> [Book]? {
         guard let series = series as? LocalPluginSeries else { return nil }
         let books = loadBooks(inFolder: series.url)
+        for book in books {
+            book.series = series
+            book.seriesID = series.title
+        }
         
         return books
     }

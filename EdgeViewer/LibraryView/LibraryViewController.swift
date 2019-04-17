@@ -13,7 +13,13 @@ protocol ShelfViewDelegate {
     func shelf(_: ShelfViewController, didRecieveBook newBook: LocalPluginBook)
 }
 
-class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
+protocol DetailViewDelegate {
+    func detailView(_: DetailViewController, selectedBook book: Book, fromSeries sereies: Series)
+    func detailView(_: DetailViewController, selectedBook book: Book)
+    func detailView(_: DetailViewController, selectedPage page: LibraryPage)
+}
+
+class LibraryViewController: NSSplitViewController, ShelfViewDelegate, DetailViewDelegate {
     
     var listViewController: LibraryListViewController? = nil
     var shelfViewController: ShelfViewController? = nil
@@ -117,6 +123,18 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
         }
     }
     
+    func detailView(_ detailVC: DetailViewController, selectedBook book: Book, fromSeries sereies: Series) {
+        segueToContentView(withBook: book)
+    }
+    
+    func detailView(_ detailVC: DetailViewController, selectedBook book: Book) {
+        segueToContentView(withBook: book)
+    }
+    
+    func detailView(_ detailVC: DetailViewController, selectedPage page: LibraryPage) {
+        
+    }
+    
     func segue(toPage page: LibraryPage) {
         let newShelf = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ShelfViewController")) as! ShelfViewController
         newShelf.libraryPage = page
@@ -145,10 +163,10 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate {
                                       performHandler: {
                                         self.removeSplitViewItem(self.splitViewItems[1])
                                         self.addSplitViewItem(NSSplitViewItem(viewController: detailViewController))
+                                        detailViewController.delegate = self
                                         self.splitViewItems[0].isCollapsed = true
                                         
         })
-        detailViewController.senderDelegate = self
         detailViewController.series = series;
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()

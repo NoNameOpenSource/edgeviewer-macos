@@ -20,8 +20,9 @@ protocol CoverImageDelegate {
 class DetailViewController: NSViewController, RatingControlDelegate, CoverImageDelegate {
     
     var series: Series? = nil
-    var senderDelegate: LibraryViewController? = nil
     var books: [Book]?
+    
+    var delegate: DetailViewDelegate?
     
     //------------------------------------------------------------------------------------------------
     //MARK: Set up UI Outlets
@@ -137,10 +138,14 @@ class DetailViewController: NSViewController, RatingControlDelegate, CoverImageD
     }
     
     func segueToContentView(withBook book: Book) {
-        if let senderDelegate = senderDelegate {
-            senderDelegate.segueToContentView(withBook: book)
+        if let delegate = delegate {
+            if let series = series {
+                delegate.detailView(self, selectedBook: book, fromSeries: series)
+            } else {
+                delegate.detailView(self, selectedBook: book)
+            }
         } else {
-            print("unable to segue to Content View: nil senderDelegate")
+            print("unable to segue to Content View: nil delegate")
         }
     }
 }

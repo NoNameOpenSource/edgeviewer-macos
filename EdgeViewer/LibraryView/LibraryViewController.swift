@@ -174,6 +174,10 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate, DetailVie
     }
     
     func segueToContentView(withBook book: Book) {
+        segueToContentView(withBook: book, fromSeries: nil)
+    }
+    
+    func segueToContentView(withBook book: Book, fromSeries series: Series?) {
         let contentViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ContentViewController")) as! ContentViewController
         let oldShelf = self.splitViewItems[1].viewController
         let segue = NSStoryboardSegue(identifier: NSStoryboardSegue.Identifier(rawValue: "LibraryPageSegue"),
@@ -184,6 +188,7 @@ class LibraryViewController: NSSplitViewController, ShelfViewDelegate, DetailVie
                                         self.addSplitViewItem(NSSplitViewItem(viewController: contentViewController))
                                         self.splitViewItems[0].isCollapsed = true
         })
+        contentViewController.series = series
         contentViewController.book = book;
         oldShelf.prepare(for: segue, sender: user.self)
         segue.perform()

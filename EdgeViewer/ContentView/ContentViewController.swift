@@ -32,6 +32,7 @@ class ContentViewController: NSViewController {
     //var animationDictionary = [[NSViewAnimation.Key : NSView]]()
     
     var pageViewController: PageViewProtocol?
+    var series: Series?
     var book: Book?
     
     var useAnimation: Bool = false
@@ -114,16 +115,6 @@ class ContentViewController: NSViewController {
         
         view.layer?.backgroundColor = #colorLiteral(red: 0.1293984056, green: 0.1294192672, blue: 0.1293913424, alpha: 1)
         
-        if book.type == .manga {
-            self.pageViewController = PageViewController(book: book)
-            self.view.addSubview(pageViewController!.view, positioned: .above, relativeTo: self.view.subviews[0])
-            pageViewController!.view.frame = self.view.frame
-        } else if book.type == .webManga {
-            self.pageViewController = WebMangaViewController(book: book)
-            self.view.addSubview(pageViewController!.view, positioned: .above, relativeTo: self.view.subviews[0])
-            pageViewController!.view.frame = self.view.frame
-        }
-        
         userPanel.isSelectable = true;
         
         if let visualEffectView = userPanel.superview?.superview?.superview as? NSVisualEffectView {
@@ -131,6 +122,8 @@ class ContentViewController: NSViewController {
             visualEffectView.layer?.masksToBounds = true
             visualEffectView.layer?.cornerRadius = 5.0
         }
+        
+        segueToBook(book)
         
         //userPanel.wantsLayer = true
         userPanel.backgroundColors = [NSColor.clear]
@@ -208,9 +201,63 @@ class ContentViewController: NSViewController {
     }
     
     @objc func pageForward(){
-        if let pageViewController = pageViewController as? PageViewController {
+        if let pageViewController = pageViewController as? PageViewController,
+           pageViewController.currentPage + 1 != pageViewController.book.numberOfPages {
             pageViewController.moveForward()
+            return
         }
+        // if next book exist move to next book
+        segueToNextBook()
+    }
+    
+    func segueToNextBook() {
+        guard let book = book, book.seriesID != nil else { return }
+        if self.series == nil {
+            self.series = book.series
+        }
+        guard let series = series else {
+            return // error: failed to retrieve series from book
+        }
+        guard let books = series.books else {
+            return // error: failed to retrieve books list from series
+        }
+        
+        var index: Int = -1
+        for i in 0..<books.count {
+            if books[i] == book {
+                index = i
+                break
+            }
+        }
+        guard index != -1 else {
+            return // error: failed to find book from series
+        }
+        index += 1
+        
+        guard index != books.count else {
+            return // no more books
+        }
+        segueToBook(books[index])
+    }
+    
+    func segueToBook(_ book: Book) {
+        var pageViewController: PageViewProtocol?
+        if book.type == .manga {
+            pageViewController = PageViewController(book: book)
+            pageViewController!.view.frame = self.view.frame
+        } else if book.type == .webManga {
+            pageViewController = WebMangaViewController(book: book)
+            pageViewController!.view.frame = self.view.frame
+        }
+        
+        if let oldPageVC = self.pageViewController {
+            self.view.replaceSubview(oldPageVC.view, with: pageViewController!.view)
+            self.book = book
+        } else {
+            self.view.addSubview(pageViewController!.view, positioned: .above, relativeTo: self.view.subviews[0])
+        }
+        
+        self.pageViewController = pageViewController
     }
     
     @objc func segueToChapterView(sender : Any) {

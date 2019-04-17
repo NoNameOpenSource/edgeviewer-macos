@@ -26,6 +26,17 @@ class LocalPluginBook: Book {
         }
     }
     
+    private var _series: LocalPluginSeries?
+    
+    override var series: LocalPluginSeries? {
+        get {
+            return _series
+        }
+        set {
+            _series = newValue
+        }
+    }
+    
     init(url: URL) throws {
         self.url = url
         super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
@@ -164,7 +175,7 @@ class LocalPluginBook: Book {
             self.genre = genre
         }
         if let series = elementValue(ofElementWithName: "series") as? String {
-            self.series = series
+            self.seriesID = series
         }
         if let seriesName = elementValue(ofElementWithName: "seriesName") as? String {
             self.seriesName = seriesName

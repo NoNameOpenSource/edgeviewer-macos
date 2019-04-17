@@ -32,8 +32,18 @@ class Book {
     var chapters: [Chapter]?
     var type: BookType
     var readingMode: ReadingMode?
+    
+    var series: Series? {
+        get {
+            if let seriesID = seriesID {
+                return owner.series(withIdentifier: seriesID)
+            } else {
+                return nil
+            }
+        }
+    }
 
-    var series: Any?
+    var seriesID: Any?
     var seriesName: String?
 
     var rating : Double?

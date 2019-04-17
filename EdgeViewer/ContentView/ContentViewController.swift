@@ -29,70 +29,16 @@ class ContentViewController: NSViewController {
     @IBOutlet weak var panelBorderedView: NSScrollView!
     
     var timer = Timer()
-    //var animationDictionary = [[NSViewAnimation.Key : NSView]]()
     
     var pageViewController: PageViewProtocol?
     var series: Series?
     var book: Book?
     
     var useAnimation: Bool = false
-    var inTransition: Int = 0
     
     var keyDownEvent: Any?
     
-    
     @IBOutlet weak var pageView: NSView!
-    
-    @IBAction func enableEditMode(_ sender: NSMenuItem) {
-        guard customizationPalette == nil else { return }
-        for i in 0..<userPanel.numberOfItems(inSection: 0) {
-            let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
-            button.isEnabled = false
-        }
-        showCustomizationPalette()
-    }
-    
-    func showCustomizationPalette() {
-        customizationPalette = CustomizationPalette(nibName: NSNib.Name(rawValue: "CustomizationPalette"), bundle: nil)
-        guard let customizationPalette = customizationPalette else { return }
-        customizationPalette.delegate = self
-        
-        let constraintA = NSLayoutConstraint(item: customizationPalette.view,
-                                        attribute: .centerX,
-                                        relatedBy: .equal,
-                                           toItem: self.view,
-                                        attribute: .centerX,
-                                       multiplier: 1.0,
-                                         constant: 0.0
-        )
-        let constraintB = NSLayoutConstraint(item: customizationPalette.view,
-                                        attribute: .width,
-                                        relatedBy: .equal,
-                                           toItem: nil,
-                                        attribute: .width,
-                                       multiplier: 1.0,
-                                         constant: 480.0
-        )
-        let constraintC = NSLayoutConstraint(item: customizationPalette.view,
-                                        attribute: .height,
-                                        relatedBy: .equal,
-                                           toItem: nil,
-                                        attribute: .height,
-                                       multiplier: 1.0,
-                                         constant: 272.0
-        )
-        let constraintD = NSLayoutConstraint(item: customizationPalette.view,
-                                        attribute: .bottom,
-                                        relatedBy: .equal,
-                                           toItem: userPanel,
-                                        attribute: .top,
-                                       multiplier: 1.0,
-                                         constant: 0.0
-        )
-        customizationPalette.view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(customizationPalette.view)
-        self.view.addConstraints([constraintA, constraintB, constraintC, constraintD])
-    }
     
     func dismissCustomizationPalette() {
         for i in 0..<userPanel.numberOfItems(inSection: 0) {
@@ -107,7 +53,6 @@ class ContentViewController: NSViewController {
         super.viewDidLoad()
         
         // Do view setup here.
-        
         guard let book = book else {
             print("book nil")
             return
@@ -115,37 +60,23 @@ class ContentViewController: NSViewController {
         
         view.layer?.backgroundColor = #colorLiteral(red: 0.1293984056, green: 0.1294192672, blue: 0.1293913424, alpha: 1)
         
-        userPanel.isSelectable = true;
+        // setup page view
+        segueToBook(book)
         
+        // setup user panel
+        userPanel.isSelectable = true
         if let visualEffectView = userPanel.superview?.superview?.superview as? NSVisualEffectView {
             visualEffectView.wantsLayer = true
             visualEffectView.layer?.masksToBounds = true
             visualEffectView.layer?.cornerRadius = 5.0
         }
-        
-        segueToBook(book)
-        
-        //userPanel.wantsLayer = true
         userPanel.backgroundColors = [NSColor.clear]
-        
         configureCollectionView()
         userPanel.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "com.ggomong.EdgeViewer.toolbar")])
         
+        // track if mouse is on panel in order to prevent user panel from disappearing automatically
         let pageViewTrackingArea = NSTrackingArea(rect: pageView.visibleRect, options: [.mouseMoved, .mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self)
         pageView.addTrackingArea(pageViewTrackingArea)
-        
-        var pages = [Int]()
-        
-        if book.readingMode == .rightToLeft {
-            for i in (0..<book.numberOfPages).reversed() {
-                pages.append(i);
-            }
-        }
-        else {
-            for i in 0..<book.numberOfPages {
-                pages.append(i);
-            }
-        }
         
         // set up event handling for left/right arrow keys (for changing pages)
         self.keyDownEvent = NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
@@ -154,6 +85,34 @@ class ContentViewController: NSViewController {
         }
         
         useAnimation = true
+    }
+    
+    override func viewWillDisappear() {
+        if let keyDownEvent = keyDownEvent {
+            NSEvent.removeMonitor(keyDownEvent)
+            self.keyDownEvent = nil
+        }
+    }
+    
+    deinit {
+        //print("contentVC for \(book!.title) deinited")
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    //MARK: Events
+    //------------------------------------------------------------------------------------------------
+    
+    override func keyDown(with event: NSEvent) {
+        let leftArrowKey: UInt16 = 123
+        let rightArrowKey: UInt16 = 124
+        switch event.keyCode {
+        case leftArrowKey:
+            pageBack()
+        case rightArrowKey:
+            pageForward()
+        default:
+            break
+        }
     }
         
     override func mouseMoved(with event: NSEvent) {
@@ -196,9 +155,9 @@ class ContentViewController: NSViewController {
         NSCursor.hide()
     }
     
-    override func viewDidDisappear() {
-        // save currentPage
-    }
+    //------------------------------------------------------------------------------------------------
+    //MARK: Page Control
+    //------------------------------------------------------------------------------------------------
     
     @objc func pageForward(){
         if let pageViewController = pageViewController as? PageViewController,
@@ -208,6 +167,12 @@ class ContentViewController: NSViewController {
         }
         // if next book exist move to next book
         segueToNextBook()
+    }
+    
+    @objc public func pageBack(){
+        if let pageViewController = pageViewController as? PageViewController {
+            pageViewController.moveBackward()
+        }
     }
     
     func segueToNextBook() {
@@ -244,10 +209,8 @@ class ContentViewController: NSViewController {
         var pageViewController: PageViewProtocol?
         if book.type == .manga {
             pageViewController = PageViewController(book: book)
-            pageViewController!.view.frame = self.view.frame
         } else if book.type == .webManga {
             pageViewController = WebMangaViewController(book: book)
-            pageViewController!.view.frame = self.view.frame
         }
         
         if let oldPageVC = self.pageViewController {
@@ -258,7 +221,16 @@ class ContentViewController: NSViewController {
         }
         
         self.pageViewController = pageViewController
+        self.pageViewController!.view.frame = self.view.frame
     }
+    
+    @objc public func viewTypeSwitch(){
+        print("type switched")
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    //MARK: Chapter View
+    //------------------------------------------------------------------------------------------------
     
     @objc func segueToChapterView(sender : Any) {
         guard chapterController == nil else {
@@ -286,27 +258,59 @@ class ContentViewController: NSViewController {
         chapterController = nil
     }
     
-    @objc public func pageBack(){
-        if let pageViewController = pageViewController as? PageViewController {
-            pageViewController.moveBackward()
+    //------------------------------------------------------------------------------------------------
+    //MARK: Panel View
+    //------------------------------------------------------------------------------------------------
+    
+    @IBAction func enableEditMode(_ sender: NSMenuItem) {
+        guard customizationPalette == nil else { return }
+        for i in 0..<userPanel.numberOfItems(inSection: 0) {
+            let button = userPanel.item(at: IndexPath(item: i, section: 0)) as! ButtonItem
+            button.isEnabled = false
         }
+        showCustomizationPalette()
     }
     
-    override func keyDown(with event: NSEvent) {
-        let leftArrowKey: UInt16 = 123
-        let rightArrowKey: UInt16 = 124
-        switch event.keyCode {
-        case leftArrowKey:
-            pageBack()
-        case rightArrowKey:
-            pageForward()
-        default:
-            break
-        }
-    }
-    
-    @objc public func viewTypeSwitch(){
-        print("type switched")
+    func showCustomizationPalette() {
+        customizationPalette = CustomizationPalette(nibName: NSNib.Name(rawValue: "CustomizationPalette"), bundle: nil)
+        guard let customizationPalette = customizationPalette else { return }
+        customizationPalette.delegate = self
+        
+        let constraintA = NSLayoutConstraint(item: customizationPalette.view,
+                                             attribute: .centerX,
+                                             relatedBy: .equal,
+                                             toItem: self.view,
+                                             attribute: .centerX,
+                                             multiplier: 1.0,
+                                             constant: 0.0
+        )
+        let constraintB = NSLayoutConstraint(item: customizationPalette.view,
+                                             attribute: .width,
+                                             relatedBy: .equal,
+                                             toItem: nil,
+                                             attribute: .width,
+                                             multiplier: 1.0,
+                                             constant: 480.0
+        )
+        let constraintC = NSLayoutConstraint(item: customizationPalette.view,
+                                             attribute: .height,
+                                             relatedBy: .equal,
+                                             toItem: nil,
+                                             attribute: .height,
+                                             multiplier: 1.0,
+                                             constant: 272.0
+        )
+        let constraintD = NSLayoutConstraint(item: customizationPalette.view,
+                                             attribute: .bottom,
+                                             relatedBy: .equal,
+                                             toItem: userPanel,
+                                             attribute: .top,
+                                             multiplier: 1.0,
+                                             constant: 0.0
+        )
+        customizationPalette.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(customizationPalette.view)
+        self.view.addConstraints([constraintA, constraintB, constraintC, constraintD])
     }
     
     fileprivate func configureCollectionView() { // this one makes layout
@@ -323,17 +327,6 @@ class ContentViewController: NSViewController {
         } else {
             // Fallback on earlier versions
         }
-    }
-    
-    override func viewWillDisappear() {
-        if let keyDownEvent = keyDownEvent {
-            NSEvent.removeMonitor(keyDownEvent)
-            self.keyDownEvent = nil
-        }
-    }
-    
-    deinit {
-        //print("contentVC for \(book!.title) deinited")
     }
 }
 

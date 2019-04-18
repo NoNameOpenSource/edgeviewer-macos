@@ -173,6 +173,7 @@ class ContentViewController: NSViewController {
         if let pageViewController = pageViewController as? PageViewController,
            pageViewController.currentPage - 1 != 0 {
             pageViewController.moveBackward()
+            return
         }
         // if previous book exist move to next book
         segueToPreviousBook()

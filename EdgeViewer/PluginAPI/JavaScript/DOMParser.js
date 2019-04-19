@@ -14,7 +14,9 @@ class DOMParser {
         if(mimeType == undefined)
             mimeType = "text/html";
         if(mimeType != "text/html") { return; }
-        var htmlString = str.substring(str.indexOf("<html"));
+        let index = str.indexOf("<html");
+        if(index == -1) { return; }
+        var htmlString = str.substring(index);
         var document = new Element(htmlString);
         for (var i = 0; i < document.children.length; i++) {
             if(document.children[i].nodeName == "body") {

@@ -15,6 +15,8 @@ class LazyImageView: NSView {
     var loaded = false
     private var loading = false
     
+    static var semaphore = DispatchSemaphore(value: 1)
+    
     init(request: URLRequest) {
         self.request = request
         super.init(frame: NSRect(x: 0, y: 0, width: 0, height: 0))
@@ -36,6 +38,8 @@ class LazyImageView: NSView {
         guard !loaded && !loading else { return }
         self.loading = true
         
+        let semaphore = LazyImageView.semaphore
+        
         // load async
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -44,6 +48,7 @@ class LazyImageView: NSView {
             }
             if let data = data {
                 if let image = NSImage(data: data) {
+                    semaphore.wait()
                     DispatchQueue.main.async {
                         self.imageView = NSImageView(frame: NSRect(origin: NSPoint(x: 0, y: 0), size: image.size))
                         self.imageView!.image = image
@@ -51,6 +56,7 @@ class LazyImageView: NSView {
                         self.loading = false
                         self.addSubview(self.imageView!)
                         self.fillSuperView()
+                        semaphore.signal()
                     }
                 }
             }

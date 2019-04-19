@@ -43,13 +43,21 @@ class LocalPlugin: Plugin {
             let series = loadSeries(inFolder: booksDirectory!)
             for series in series {
                 let pageItem = PageItem(owner: self, series: series)
-                pageItem.thumbnail = series.coverImage
+                for ext in LocalPlugin.supportedImageExtensions {
+                    let url = series.url.appendingPathComponent("SeriesImage").appendingPathExtension(ext)
+                    if FileManager.default.fileExists(atPath: url.path) {
+                        let request = URLRequest(url: url)
+                        pageItem.thumbnail = LazyImageView(request: request)
+                        break
+                    }
+                }
                 page.items.append(pageItem)
             }
             let books = loadBooks(inFolder: booksDirectory!)
             for book in books {
                 let pageItem = PageItem(owner: self, book: book)
-                pageItem.thumbnail = book.coverImage
+                let request = URLRequest(url: book.url.appendingPathComponent("Images/\(book.page[0])"))
+                pageItem.thumbnail = LazyImageView(request: request)
                 page.items.append(pageItem)
             }
         default:
@@ -116,7 +124,6 @@ class LocalPlugin: Plugin {
     
     func series(withIdentifier identifier: Any) -> Series? {
         var xmlParser: LocalPluginSeriesXMLParser?
-        var seriesImage: NSImage?
         if let identifier = identifier as? String {
             let booksDirectory = LocalPlugin.getBooksDirectory()
             let fileManager = FileManager.default
@@ -126,12 +133,6 @@ class LocalPlugin: Plugin {
                     if seriesFolder.lastPathComponent == identifier {
                         let seriesXMLFile = seriesFolder.appendingPathComponent("SeriesData.xml")
                         xmlParser = LocalPluginSeriesXMLParser(contentsOf: seriesXMLFile)
-                        let filePaths = try fileManager.contentsOfDirectory(at: seriesFolder, includingPropertiesForKeys: nil, options: [])
-                        for filePath in filePaths {
-                            if filePath.lastPathComponent.hasPrefix("SeriesImage.") {
-                                seriesImage = NSImage(contentsOf: filePath)
-                            }
-                        }
                     }
                 }
             }
@@ -142,11 +143,6 @@ class LocalPlugin: Plugin {
         }
         if let xmlParser = xmlParser {
             let series =  xmlParser.series
-            if let series = series {
-                if let seriesImage = seriesImage {
-                    series.coverImage = seriesImage
-                }
-            }
             return series
         }
         else {

@@ -16,12 +16,6 @@ class LocalPluginSeries: Series {
         self.url = url
         super.init(owner: LocalPlugin.sharedInstance, identifier: url)
         try parse()
-        for ext in LocalPlugin.supportedImageExtensions {
-            if let image = NSImage.init(contentsOf: url.appendingPathComponent("SeriesImage").appendingPathExtension(ext)) {
-                coverImage = image
-                break
-            }
-        }
     }
     
     func XMLCorrupt() {

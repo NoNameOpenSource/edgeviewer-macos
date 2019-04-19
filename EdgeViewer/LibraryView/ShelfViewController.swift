@@ -83,7 +83,7 @@ extension ShelfViewController : NSCollectionViewDataSource {
     
     func collectionView(_ itemForRepresentedObjectAtcollectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CollectionViewItem"), for: indexPath)
-        guard let _ = item as? CollectionViewItem else {
+        guard let casted = item as? CollectionViewItem else {
             return item
         }
         guard let libraryPage = libraryPage else {
@@ -92,7 +92,7 @@ extension ShelfViewController : NSCollectionViewDataSource {
         
         let pageItem = libraryPage.items[indexPath.item]
         item.textField!.stringValue = pageItem.name
-        item.imageView!.image = pageItem.thumbnail
+        casted.thumbnail = pageItem.thumbnail
         
         return item
     }

@@ -199,8 +199,10 @@ class JSPlugin: Plugin {
         }
         
         if let thumbnail = object.forProperty("thumbnail"),
-            !thumbnail.isUndefined {
-            pageItem.thumbnailURL = thumbnail.toString()
+            !thumbnail.isUndefined,
+            let url = URL(string: thumbnail.toString()) {
+            let request = URLRequest(url: url)
+            pageItem.thumbnail = LazyImageView(request: request)
         }
         
         return pageItem

@@ -10,6 +10,22 @@ import Cocoa
 
 class CollectionViewItem: NSCollectionViewItem {
     
+    var thumbnail: LazyImageView? {
+        didSet {
+            if self.view.subviews.count == 3 {
+                if let thumbnail = thumbnail {
+                    self.view.replaceSubview(self.view.subviews[0], with: thumbnail)
+                } else {
+                    self.view.subviews[0].removeFromSuperview()
+                }
+            } else {
+                if let thumbnail = thumbnail {
+                    self.view.addSubview(thumbnail, positioned: .below, relativeTo: self.view.subviews[0])
+                }
+            }
+        }
+    }
+    
     override var isSelected: Bool {
         didSet {
             view.layer?.borderWidth = isSelected ? 5.0 : 0.0

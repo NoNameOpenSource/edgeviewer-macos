@@ -18,25 +18,8 @@ class PageItem {
     let owner: Plugin
     let identifier: Any
     let type: PageItemType
-    var thumbnailURL: String?
     var name = ""
-    var thumbnail: NSImage? {
-        get {
-            if let thumbnail = _thumbnail { return thumbnail }
-            guard let thumbnailURL = thumbnailURL else {
-                return nil
-            }
-            guard let url = URL(string: thumbnailURL) else {
-                return nil
-            }
-            return NSImage(contentsOf: url)
-        }
-        set {
-            _thumbnail = newValue
-        }
-    }
-    
-    var _thumbnail: NSImage?
+    var thumbnail: LazyImageView?
     
     private var _content: Any?
     

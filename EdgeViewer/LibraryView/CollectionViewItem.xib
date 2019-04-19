@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,10 +17,6 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="275"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sRw-mL-Hbk">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="275"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="94l-Pl-jPX"/>
-                </imageView>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" verifyAmbiguity="ignoreSizes" translatesAutoresizingMaskIntoConstraints="NO" id="9eX-74-yUM">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="30"/>
                     <constraints>
@@ -42,20 +38,15 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="sRw-mL-Hbk" secondAttribute="bottom" id="7n3-pQ-Ycj"/>
                 <constraint firstAttribute="trailing" secondItem="9eX-74-yUM" secondAttribute="trailing" id="8b9-Cs-Thi"/>
                 <constraint firstItem="9eX-74-yUM" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="CLY-HC-eMk"/>
-                <constraint firstItem="sRw-mL-Hbk" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="FLG-aw-bMe"/>
                 <constraint firstAttribute="bottom" secondItem="9eX-74-yUM" secondAttribute="bottom" id="Fre-Pi-gfU"/>
                 <constraint firstItem="oNC-7B-AVJ" firstAttribute="centerY" secondItem="9eX-74-yUM" secondAttribute="centerY" id="PNG-7z-Rpf"/>
-                <constraint firstAttribute="trailing" secondItem="sRw-mL-Hbk" secondAttribute="trailing" id="PhQ-jq-cKR"/>
                 <constraint firstItem="oNC-7B-AVJ" firstAttribute="centerX" secondItem="9eX-74-yUM" secondAttribute="centerX" id="ZNL-RL-cRR"/>
-                <constraint firstItem="sRw-mL-Hbk" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="dZR-Bx-4JP"/>
             </constraints>
         </customView>
         <collectionViewItem id="ndb-wj-sLB" customClass="CollectionViewItem" customModule="EdgeViewer" customModuleProvider="target">
             <connections>
-                <outlet property="imageView" destination="sRw-mL-Hbk" id="AQl-Oi-rra"/>
                 <outlet property="textField" destination="oNC-7B-AVJ" id="AKV-tF-PqM"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="HmV-xv-Glo"/>
             </connections>

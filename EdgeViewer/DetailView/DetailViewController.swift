@@ -188,7 +188,7 @@ extension DetailViewController : NSCollectionViewDataSource {
         
         // Set the textField and imageView of the current NSCollectionView item
         item.textField!.stringValue = books[indexPath.item].title
-        item.imageView!.image = books[indexPath.item].page(atIndex: 0)
+        //item.imageView!.image = books[indexPath.item].page(atIndex: 0)
         
         return item
     }

@@ -92,7 +92,24 @@ extension ShelfViewController : NSCollectionViewDataSource {
         
         let pageItem = libraryPage.items[indexPath.item]
         item.textField!.stringValue = pageItem.name
+        //item.imageView!.image = NSImage(contentsOf: URL.init(string: pageItem.thumbnailURL!)!)
+        /*
+        if item.view.subviews.count == 3 {
+            if let thumbnail = pageItem.thumbnail {
+                item.view.replaceSubview(item.view.subviews[0], with: thumbnail)
+            } else {
+                item.view.subviews[0].removeFromSuperview()
+            }
+        } else {
+            if let thumbnail = pageItem.thumbnail {
+                item.view.addSubview(pageItem.thumbnail!, positioned: .below, relativeTo: item.view.subviews[0])
+            }
+        }
+        */
+        
         casted.thumbnail = pageItem.thumbnail
+        
+        //if pageItem.thumbnail!.loaded == false { pageItem.thumbnail!.loadImage() }
         
         return item
     }

@@ -242,6 +242,10 @@ class JSPlugin: Plugin {
         return book
     }
     
+    func page(ofBook book: Book, pageIndex: Int) -> BookPage? {
+        return nil
+    }
+    
     func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
         guard let function = context.objectForKeyedSubscript("loadPageOfBook") else {
             return nil

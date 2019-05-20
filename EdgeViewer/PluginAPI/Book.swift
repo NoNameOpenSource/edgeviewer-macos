@@ -54,6 +54,8 @@ class Book {
 
     var numberOfPages: Int
     
+    var pages: [BookPage] = []
+    
     init(owner: Plugin, identifier: Any, type: BookType) {
         self.owner = owner
         self.identifier = identifier
@@ -63,10 +65,6 @@ class Book {
         bookmark = Int()
         currentPage = Int()
         numberOfPages = Int()
-    }
-    
-    func page(atIndex index: Int) -> NSImage? {
-        return owner.page(ofBook: self, pageNumber: index)
     }
 
     var progress: Double {

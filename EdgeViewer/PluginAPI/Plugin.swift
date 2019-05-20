@@ -16,7 +16,7 @@ protocol Plugin {
     func page(withIdentifier identifier: Any) -> LibraryPage?
     func book(withIdentifier identifier: Any) -> Book?
     func series(withIdentifier identifier: Any) -> Series?
-    func page(ofBook book: Book, pageNumber: Int) -> NSImage?
+    func page(ofBook book: Book, pageIndex: Int) -> BookPage?
     func update(book: Book)
     func update(currentPage: Int, ofBook book: Book)
     func update(rating: Double, ofBook book: Book)

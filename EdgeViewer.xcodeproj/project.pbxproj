@@ -44,6 +44,7 @@
 		E007FEEB226266C6001E440E /* WebMangaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEEA226266C6001E440E /* WebMangaViewController.swift */; };
 		E007FEEE22626727001E440E /* WebMangaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E007FEED22626727001E440E /* WebMangaView.xib */; };
 		E007FEF022643DCA001E440E /* PageViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEEF22643DCA001E440E /* PageViewProtocol.swift */; };
+		E007FEF222682BF6001E440E /* BookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEF122682BF5001E440E /* BookPage.swift */; };
 		E007FEF42268D383001E440E /* LazyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007FEF32268D382001E440E /* LazyImageView.swift */; };
 		E00DEE2F220D6D1300850066 /* JSPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DEE2E220D6D1300850066 /* JSPromise.swift */; };
 		E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E016E392217F967B00D14EEA /* Acknowledge.swift */; };
@@ -148,6 +149,7 @@
 		E007FEEA226266C6001E440E /* WebMangaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMangaViewController.swift; sourceTree = "<group>"; };
 		E007FEED22626727001E440E /* WebMangaView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebMangaView.xib; sourceTree = "<group>"; };
 		E007FEEF22643DCA001E440E /* PageViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewProtocol.swift; sourceTree = "<group>"; };
+		E007FEF122682BF5001E440E /* BookPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPage.swift; sourceTree = "<group>"; };
 		E007FEF32268D382001E440E /* LazyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyImageView.swift; sourceTree = "<group>"; };
 		E00DEE2E220D6D1300850066 /* JSPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPromise.swift; sourceTree = "<group>"; };
 		E016E392217F967B00D14EEA /* Acknowledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledge.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				E023917720C4F6C500A9489B /* PageItem.swift */,
 				1CC6E60C21506ADA00DCF7DB /* Series.swift */,
 				E00DEE2E220D6D1300850066 /* JSPromise.swift */,
+				E007FEF122682BF5001E440E /* BookPage.swift */,
 				E007FEF32268D382001E440E /* LazyImageView.swift */,
 			);
 			path = PluginAPI;
@@ -609,6 +612,7 @@
 				E007FEE522612217001E440E /* PageViewController.swift in Sources */,
 				E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */,
 				E007FEF42268D383001E440E /* LazyImageView.swift in Sources */,
+				E007FEF222682BF6001E440E /* BookPage.swift in Sources */,
 				E047C4D020E050C800E6BFEF /* CustomizationPalette.swift in Sources */,
 				E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */,
 				E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */,

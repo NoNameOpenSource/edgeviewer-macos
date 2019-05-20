@@ -24,12 +24,11 @@ class WebMangaViewController: NSViewController, PageViewProtocol {
         var currentY: CGFloat = 0
         var width: CGFloat = 0
         for i in 1..<book.numberOfPages {
-            let image = book.page(atIndex: book.numberOfPages - i)!
-            let imageView = NSImageView(frame: NSRect(x: 0, y: currentY, width: image.size.width, height: image.size.height))
-            imageView.image = image
+            let imageView = book.pages[book.numberOfPages - i].imageView
+            //let imageView = NSImageView(frame: NSRect(x: 0, y: currentY, width: image.size.width, height: image.size.height))
             webMangaView.addSubview(imageView)
-            currentY += image.size.height
-            if image.size.width > width { width = image.size.width }
+            //currentY += image.size.height
+            //if image.size.width > width { width = image.size.width }
         }
         
         viewFrame = NSRect(x: 0, y: 0, width: width, height: currentY)

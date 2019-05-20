@@ -13,7 +13,7 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
     
     let book: Book
     
-    var viewType: ViewType = .singlePage
+    var viewType: ViewType
     var readingMode: ReadingMode = .leftToRight
     
     var currentPage: Int {
@@ -26,19 +26,19 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
     }
     var useAnimation: Bool = false
     
-    var pages: [Int] = []
+    var pages: [Any] = []
     
-    init(book: Book) {
+    init(book: Book, viewType: ViewType) {
         self.book = book
+        self.viewType = viewType
         super.init(nibName: NSNib.Name(rawValue: "PageView"), bundle: nil)
         
         // init pages
-        if book.readingMode == .rightToLeft {
-            for i in (0..<book.numberOfPages).reversed() {
+        if viewType == .singlePage {
+            for i in 0..<book.numberOfPages {
                 pages.append(i);
             }
-        }
-        else {
+        } else {
             for i in 0..<book.numberOfPages {
                 pages.append(i);
             }
@@ -117,11 +117,14 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
         
         switch viewController {
         case let viewController as SinglePageViewController:
-            viewController.image = book.page(atIndex: currentPage)
+            //viewController.image = book.page(atIndex: currentPage)
+            let imageView = book.pages[currentPage].imageView
+            imageView.loadImage()
+            viewController.view.addSubview(imageView)
             break
         case let viewController as DoublePageViewController:
-            viewController.leftImage = book.page(atIndex: currentPage)
-            viewController.rightImage = book.page(atIndex: currentPage + 1)
+            //viewController.leftImage = book.page(atIndex: currentPage)
+            //viewController.rightImage = book.page(atIndex: currentPage + 1)
             break
         default:
             return

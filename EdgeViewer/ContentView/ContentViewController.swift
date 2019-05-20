@@ -240,9 +240,13 @@ class ContentViewController: NSViewController {
     }
     
     func segueToBook(_ book: Book) {
+        segueToBook(book, withViewType: .singlePage)
+    }
+    
+    func segueToBook(_ book: Book, withViewType viewType: ViewType) {
         var pageViewController: PageViewProtocol?
         if book.type == .manga {
-            pageViewController = PageViewController(book: book)
+            pageViewController = PageViewController(book: book, viewType: viewType)
         } else if book.type == .webManga {
             pageViewController = WebMangaViewController(book: book)
         }
@@ -259,7 +263,12 @@ class ContentViewController: NSViewController {
     }
     
     @objc public func viewTypeSwitch(){
-        print("type switched")
+        guard let pageViewController = pageViewController as? PageViewController else { return }
+        var viewType: ViewType = .singlePage
+        if pageViewController.viewType == .singlePage {
+            viewType = .doublePage
+        }
+        segueToBook(pageViewController.book, withViewType: viewType)
     }
     
     //------------------------------------------------------------------------------------------------

@@ -56,8 +56,8 @@ class LocalPlugin: Plugin {
             let books = loadBooks(inFolder: booksDirectory!)
             for book in books {
                 let pageItem = PageItem(owner: self, book: book)
-                let request = URLRequest(url: book.url.appendingPathComponent("Images/\(book.page[0])"))
-                pageItem.thumbnail = LazyImageView(request: request)
+                //let request = URLRequest(url: book.url.appendingPathComponent("Images/\(book.page[0])"))
+                pageItem.thumbnail = book.pages[0].imageView
                 page.items.append(pageItem)
             }
         default:
@@ -162,11 +162,11 @@ class LocalPlugin: Plugin {
         return books
     }
     
-    func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
+    func page(ofBook book: Book, pageIndex: Int) -> BookPage? {
         guard let book = book as? LocalPluginBook else {
             return nil
         }
-        return book.page(atIndex: pageNumber)
+        return book.pages[pageIndex]
     }
     
     func addBook(book: Book) {

@@ -10,21 +10,7 @@ import Cocoa
 
 class LocalPluginBook: Book {
     let url: URL
-    var page: [String] = []
     lazy var rootElement: XMLElement = XMLElement(kind: .element)
-    
-    override var coverImage: NSImage {
-        get {
-            var image: NSImage?
-            //DispatchQueue.global(qos: .userInitiated).async {
-                image = NSImage(contentsOf: self.url.appendingPathComponent("Images/\(self.page[0])"))!
-            //}
-            return image ?? super.coverImage
-        }
-        set {
-            super.coverImage = newValue
-        }
-    }
     
     private var _series: LocalPluginSeries?
     
@@ -64,9 +50,11 @@ class LocalPluginBook: Book {
         for i in 0..<possibleCovers.count {
             let possibleCover = possibleCovers[i]
             for ext in LocalPlugin.supportedImageExtensions {
-                if FileManager.default.fileExists(atPath: url.appendingPathComponent("Images/\(possibleCover)").appendingPathExtension(ext).path) {
-                        page.append("\(possibleCover).\(ext)")
-                        return
+                let url = self.url.appendingPathComponent("Images/\(possibleCover)").appendingPathExtension(ext)
+                if FileManager.default.fileExists(atPath: url.path) {
+                    let request = URLRequest(url: url)
+                    pages.append(BookPage(request: request, pageName: "cover", pageType: .singlePage))
+                    return
                 }
             }
         }
@@ -76,8 +64,8 @@ class LocalPluginBook: Book {
         let fileManager = FileManager.default
         var files = try fileManager.contentsOfDirectory(atPath: url.appendingPathComponent("Images").path)
         var coverExist = false
-        if page.count == 1 { // the cover exist
-            files.remove(at: files.firstIndex(of: page[0]) as! Int)
+        if pages.count == 1 { // the cover exist
+            files.remove(at: files.firstIndex(of: pages[0].imageView.request.url!.lastPathComponent) as! Int)
             coverExist = true
         }
         var names: [(String, String)] = []
@@ -103,17 +91,21 @@ class LocalPluginBook: Book {
             return false // aInt != nil, bInt == nil
         })
         for i in 0..<names.count {
-            page.append(names[i].0)
+            let page = BookPage(request: URLRequest(url: self.url.appendingPathComponent("images/\(names[i].0)")), pageName: String(i), pageType: .singlePage)
+            pages.append(page)
         }
         
+        /*
         if !coverExist && page.count > 0,
            let coverImage = NSImage.init(contentsOf: url.appendingPathComponent("Images/\(page.first!)")) {
             self.coverImage = coverImage
         }
+        */
         
-        numberOfPages = page.count
+        numberOfPages = pages.count
     }
     
+    /*
     override func page(atIndex index: Int) -> NSImage? {
         guard -1 < index && index < page.count else {
             print("Could not get file paths: page \(index) does not exist in this book")
@@ -127,6 +119,7 @@ class LocalPluginBook: Book {
         
         return NSImage(contentsOf: url)
     }
+ */
     
     func XMLCorrupt() {
         print("XML book file is corrupt")

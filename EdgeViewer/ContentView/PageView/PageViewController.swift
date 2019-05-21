@@ -134,4 +134,9 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
     func pageController(_ pageController: NSPageController, frameFor object: Any?) -> NSRect {
         return pageController.view.frame
     }
+    
+    func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
+        // this fixes bug that autoresizing not working after transition
+        pageController.completeTransition()
+    }
 }

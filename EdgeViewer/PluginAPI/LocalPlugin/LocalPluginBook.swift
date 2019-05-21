@@ -27,7 +27,6 @@ class LocalPluginBook: Book {
         self.url = url
         super.init(owner: LocalPlugin.sharedInstance, identifier: url, type: .manga)
         try parse()
-        loadCoverImage()
         try indexPages()
     }
     
@@ -45,7 +44,7 @@ class LocalPluginBook: Book {
         self.title = title
     }
     
-    func loadCoverImage() {
+    func findCoverImage() -> Bool {
         let possibleCovers = ["cover", "0", "1"]
         for i in 0..<possibleCovers.count {
             let possibleCover = possibleCovers[i]
@@ -54,19 +53,20 @@ class LocalPluginBook: Book {
                 if FileManager.default.fileExists(atPath: url.path) {
                     let request = URLRequest(url: url)
                     pages.append(BookPage(request: request, pageName: "cover", pageType: .singlePage))
-                    return
+                    return true
                 }
             }
         }
+        return false
     }
     
     func indexPages() throws {
+        let coverExist = findCoverImage()
+        
         let fileManager = FileManager.default
         var files = try fileManager.contentsOfDirectory(atPath: url.appendingPathComponent("Images").path)
-        var coverExist = false
-        if pages.count == 1 { // the cover exist
+        if coverExist {
             files.remove(at: files.firstIndex(of: pages[0].imageView.request.url!.lastPathComponent) as! Int)
-            coverExist = true
         }
         var names: [(String, String)] = []
         for i in 0..<files.count {
@@ -95,31 +95,8 @@ class LocalPluginBook: Book {
             pages.append(page)
         }
         
-        /*
-        if !coverExist && page.count > 0,
-           let coverImage = NSImage.init(contentsOf: url.appendingPathComponent("Images/\(page.first!)")) {
-            self.coverImage = coverImage
-        }
-        */
-        
         numberOfPages = pages.count
     }
-    
-    /*
-    override func page(atIndex index: Int) -> NSImage? {
-        guard -1 < index && index < page.count else {
-            print("Could not get file paths: page \(index) does not exist in this book")
-            return nil
-        }
-        let url = self.url.appendingPathComponent("Images/\(page[index])")
-        guard FileManager.default.fileExists(atPath: url.path) else {
-            print("Could not get file at path: \(url.absoluteString)")
-            return nil
-        }
-        
-        return NSImage(contentsOf: url)
-    }
- */
     
     func XMLCorrupt() {
         print("XML book file is corrupt")

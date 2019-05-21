@@ -52,6 +52,7 @@ class LazyImageView: NSView {
                     DispatchQueue.main.async {
                         self.imageView = NSImageView(frame: NSRect(origin: NSPoint(x: 0, y: 0), size: image.size))
                         self.imageView!.image = image
+                        self.imageView!.imageScaling = .scaleProportionallyUpOrDown
                         self.loaded = true
                         self.loading = false
                         self.addSubview(self.imageView!)

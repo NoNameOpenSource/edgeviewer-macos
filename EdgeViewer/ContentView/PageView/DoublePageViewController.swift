@@ -26,11 +26,7 @@ class DoublePageViewController: NSViewController {
         // Do view setup here.
         
         view.wantsLayer = true
-        leftView.wantsLayer = true
-        rightView.wantsLayer = true
         view.layer?.backgroundColor = #colorLiteral(red: 0.1293984056, green: 0.1294192672, blue: 0.1293913424, alpha: 1)
-        leftView.layer?.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        rightView.layer?.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
     }
     
     func addImageViews(_ leftImageView: LazyImageView, _ rightImageView: LazyImageView)  {

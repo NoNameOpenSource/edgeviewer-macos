@@ -270,6 +270,7 @@ class ContentViewController: NSViewController {
         if pageViewController.viewType == .singlePage {
             viewType = .doublePage
         }
+        book?.currentPage = pageViewController.currentPage
         segueToBook(pageViewController.book, withViewType: viewType)
     }
     

@@ -18,7 +18,7 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
     
     var currentPage: Int {
         get {
-            return pageController.selectedIndex
+            return pages[pageController.selectedIndex].0
         }
         set {
             moveTo(index: newValue)
@@ -65,7 +65,7 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
         pageController.delegate = self
         pageController.view = self.view
         pageController.arrangedObjects = pages
-        pageController.selectedIndex = book.currentPage
+        moveTo(index: book.currentPage)
     }
     
     func moveForward() {
@@ -77,12 +77,18 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
     }
     
     func moveTo(index: Int) {
-        currentPage = index
+        var i = 0
+        while i < pages.count {
+            if pages[i].0 == index || pages[i].1 == index {
+                break
+            }
+            i += 1
+        }
         
         if(useAnimation) {
-            pageController.takeSelectedIndexFrom(currentPage)
+            pageController.takeSelectedIndexFrom(i)
         } else {
-            pageController.selectedIndex = currentPage
+            pageController.selectedIndex = i
         }
     }
     

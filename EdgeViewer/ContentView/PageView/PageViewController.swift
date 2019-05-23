@@ -122,8 +122,11 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
             viewController.addImageView(imageView)
             break
         case let viewController as DoublePageViewController:
-            //viewController.leftImage = book.page(atIndex: currentPage)
-            //viewController.rightImage = book.page(atIndex: currentPage + 1)
+            let leftImageView = book.pages[currentPage].imageView
+            leftImageView.loadImage()
+            let rightImageView = book.pages[currentPage + 1].imageView
+            rightImageView.loadImage()
+            viewController.addImageViews(leftImageView, rightImageView)
             break
         default:
             return

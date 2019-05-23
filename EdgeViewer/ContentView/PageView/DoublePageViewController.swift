@@ -10,23 +10,8 @@ import Cocoa
 
 class DoublePageViewController: NSViewController {
     
-    var leftImage: NSImage? {
-        didSet {
-            if isViewLoaded {
-                leftImageView.image = leftImage
-            }
-        }
-    }
-    var rightImage: NSImage? {
-        didSet {
-            if isViewLoaded {
-                rightImageView.image = rightImage
-            }
-        }
-    }
-    @IBOutlet weak var leftImageView: NSImageView!
-    @IBOutlet weak var rightImageView: NSImageView!
-
+    @IBOutlet weak var leftView: NSView!
+    @IBOutlet weak var rightView: NSView!
     
     init() {
         super.init(nibName: NSNib.Name(rawValue: "DoublePageViewController"), bundle: nil)
@@ -39,15 +24,28 @@ class DoublePageViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        if leftImageView.image != leftImage {
-            leftImageView.image = leftImage
-        }
-        if rightImageView.image != rightImage {
-            rightImageView.image = rightImage
-        }
         
         view.wantsLayer = true
+        leftView.wantsLayer = true
+        rightView.wantsLayer = true
         view.layer?.backgroundColor = #colorLiteral(red: 0.1293984056, green: 0.1294192672, blue: 0.1293913424, alpha: 1)
+        leftView.layer?.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        rightView.layer?.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
     }
     
+    func addImageViews(_ leftImageView: LazyImageView, _ rightImageView: LazyImageView)  {
+        // left
+        if leftView.subviews.count != 0 {
+            leftView.replaceSubview(leftView.subviews[0], with: leftImageView)
+        } else {
+            leftView.addSubview(leftImageView)
+        }
+        
+        // right
+        if rightView.subviews.count != 0 {
+            rightView.replaceSubview(rightView.subviews[0], with: rightImageView)
+        } else {
+            rightView.addSubview(rightImageView)
+        }
+    }
 }

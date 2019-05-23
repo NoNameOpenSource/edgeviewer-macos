@@ -124,6 +124,20 @@ class JSPlugin: Plugin {
         task.resume()
     }
     
+    func urlRequest(fromXHR xhr: JSValue) -> URLRequest? {
+        guard let headers = xhr.forProperty("requestHeaders").toArray() as? [[String: Any]] else { return nil }
+        guard let urlString = xhr.forProperty("url").toString() else { return nil }
+        guard let url = URL(string: urlString) else { return nil }
+        var request = URLRequest(url: url)
+        for header in headers {
+            if let httpHeaderField = header.first?.key,
+                let value = header.first?.value as? String {
+                request.setValue(value, forHTTPHeaderField: httpHeaderField)
+            }
+        }
+        return request
+    }
+    
     let consoleLog: @convention(block) (String) -> Void = { string in
         print(string)
     }

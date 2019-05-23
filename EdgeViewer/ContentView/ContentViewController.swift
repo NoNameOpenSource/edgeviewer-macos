@@ -118,11 +118,13 @@ class ContentViewController: NSViewController {
     override func mouseMoved(with event: NSEvent) {
         timer.invalidate()
         NSCursor.unhide()
-        NSAnimationContext.runAnimationGroup({ (context) in
-            context.duration = 0.2
-            panelView.animator().alphaValue = 1
-        }, completionHandler: {
-        })
+        if panelView.alphaValue == 0 {
+            NSAnimationContext.runAnimationGroup({ (context) in
+                context.duration = 0.2
+                panelView.animator().alphaValue = 1
+            }, completionHandler: {
+            })
+        }
         checkMouseLocationAndSetTimer(with: event)
     }
     

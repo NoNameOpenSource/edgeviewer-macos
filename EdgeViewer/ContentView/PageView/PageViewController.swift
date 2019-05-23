@@ -26,7 +26,7 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
     }
     var useAnimation: Bool = false
     
-    var pages: [Any] = []
+    var pages: [(Int, Int)] = []
     
     init(book: Book, viewType: ViewType) {
         self.book = book
@@ -36,11 +36,20 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
         // init pages
         if viewType == .singlePage {
             for i in 0..<book.numberOfPages {
-                pages.append(i);
+                pages.append((i, -1));
             }
         } else {
-            for i in 0..<book.numberOfPages {
-                pages.append(i);
+            var i = 0
+            while i < book.numberOfPages {
+                if book.pages[i].pageType == .singlePage,
+                   i + 1 != book.numberOfPages,
+                   book.pages[i + 1].pageType == .singlePage {
+                    pages.append((i, i + 1))
+                    i += 2
+                } else {
+                    pages.append((i, -1))
+                    i += 1
+                }
             }
         }
     }
@@ -82,27 +91,17 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
     //------------------------------------------------------------------------------------------------
     
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
-        switch viewType {
-        case .singlePage:
+        let pages = object as! (Int, Int)
+        if pages.1 == -1 {
             return NSPageController.ObjectIdentifier("SinglePageViewController")
-        default:
-            if currentPage == 0 {
-                // the first page is cover page
-                // it should be displayed with singlepage view
-                return NSPageController.ObjectIdentifier("SinglePageViewController")
-            }
-            guard currentPage + 1 != book.numberOfPages else {
-                // there is only one page left
-                // therefore double page view cannot be used
-                return NSPageController.ObjectIdentifier("SinglePageViewController")
-            }
+        } else {
             return NSPageController.ObjectIdentifier("DoublePageViewController")
         }
     }
     
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        switch viewType {
-        case .singlePage:
+        switch identifier {
+        case NSPageController.ObjectIdentifier("SinglePageViewController"):
             return SinglePageViewController()
         default:
             return DoublePageViewController()
@@ -111,25 +110,27 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
     
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
         
-        guard let currentPage = object as? Int else {
+        guard let pages = object as? (Int, Int) else {
             return
         }
         
         switch viewController {
-        case let viewController as SinglePageViewController:
-            let imageView = book.pages[currentPage].imageView
-            imageView.loadImage()
-            viewController.addImageView(imageView)
-            break
-        case let viewController as DoublePageViewController:
-            let leftImageView = book.pages[currentPage].imageView
-            leftImageView.loadImage()
-            let rightImageView = book.pages[currentPage + 1].imageView
-            rightImageView.loadImage()
-            viewController.addImageViews(leftImageView, rightImageView)
-            break
-        default:
-            return
+            case let viewController as SinglePageViewController:
+                let imageView = book.pages[pages.0].imageView
+                imageView.loadImage()
+                viewController.view.frame = pageController.view.frame
+                viewController.addImageView(imageView)
+                break
+            case let viewController as DoublePageViewController:
+                let leftImageView = book.pages[pages.0].imageView
+                leftImageView.loadImage()
+                let rightImageView = book.pages[pages.1].imageView
+                rightImageView.loadImage()
+                viewController.view.frame = pageController.view.frame
+                viewController.addImageViews(leftImageView, rightImageView)
+                break
+            default:
+                return
         }
     }
     

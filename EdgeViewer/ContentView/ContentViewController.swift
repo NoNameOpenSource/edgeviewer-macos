@@ -173,7 +173,7 @@ class ContentViewController: NSViewController {
     
     @objc public func pageBack(){
         if let pageViewController = pageViewController as? PageViewController,
-           pageViewController.currentPage - 1 != 0 {
+           pageViewController.currentPage - 1 != -1 {
             pageViewController.moveBackward()
             return
         }

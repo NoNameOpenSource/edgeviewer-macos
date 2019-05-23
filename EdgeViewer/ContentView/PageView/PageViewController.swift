@@ -117,10 +117,9 @@ class PageViewController: NSViewController, NSPageControllerDelegate, PageViewPr
         
         switch viewController {
         case let viewController as SinglePageViewController:
-            //viewController.image = book.page(atIndex: currentPage)
             let imageView = book.pages[currentPage].imageView
             imageView.loadImage()
-            viewController.view.addSubview(imageView)
+            viewController.addImageView(imageView)
             break
         case let viewController as DoublePageViewController:
             //viewController.leftImage = book.page(atIndex: currentPage)

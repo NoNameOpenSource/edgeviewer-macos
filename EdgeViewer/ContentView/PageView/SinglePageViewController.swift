@@ -26,4 +26,11 @@ class SinglePageViewController: NSViewController {
         view.layer?.backgroundColor = #colorLiteral(red: 0.1293984056, green: 0.1294192672, blue: 0.1293913424, alpha: 1)
     }
     
+    func addImageView(_ imageView: LazyImageView)  {
+        if view.subviews.count != 0 {
+            view.replaceSubview(view.subviews[0], with: imageView)
+        } else {
+            view.addSubview(imageView)
+        }
+    }
 }

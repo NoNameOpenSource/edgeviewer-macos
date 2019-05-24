@@ -94,8 +94,13 @@ class JSPlugin: Plugin {
             //TODO: handle error with (if let error = error)
             guard let httpResponse = response as? HTTPURLResponse else {
                 // request failed
+                if let error = error {
+                    print("error while requesting following url: \(url)")
+                    _ = callback?.call(withArguments:[])
+                }
                 return
             }
+            
             if let mimeType = httpResponse.mimeType {
                 if mimeType == "text/html" || mimeType == "application/json",
                    let data = data,

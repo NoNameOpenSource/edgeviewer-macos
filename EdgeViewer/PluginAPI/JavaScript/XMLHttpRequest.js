@@ -30,6 +30,9 @@ class XMLHttpRequest {
             case "load":
                 this.onload = listener;
                 break;
+            case "error":
+                this.onerror = listener;
+                break;
             default:
                 return;
                 
@@ -44,6 +47,14 @@ class XMLHttpRequest {
     
     send(body = null) {
         request(this, function(statusCode, mimeType, responseType, response) {
+            if(!statusCode) {
+                if(this.onerror) {
+                    this.onerror(null);
+                } else {
+                    throw Error();
+                }
+                return;
+            }
             var evt = new Object();
             evt.target = this;
             this.readyState = 4;

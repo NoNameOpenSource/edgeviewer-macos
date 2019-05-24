@@ -253,31 +253,27 @@ class JSPlugin: Plugin {
         let book = Book(owner: self, identifier: identifier, type: .manga)
         book.title = title
         book.numberOfPages = numberOfPages
+        
+        for i in 0..<numberOfPages {
+            guard let bookPage = page(ofBook: book, pageIndex: i) else { return nil }
+            book.pages.append(bookPage)
+        }
+        
         return book
     }
     
     func page(ofBook book: Book, pageIndex: Int) -> BookPage? {
-        return nil
-    }
-    
-    func page(ofBook book: Book, pageNumber: Int) -> NSImage? {
         guard let function = context.objectForKeyedSubscript("loadPageOfBook") else {
             return nil
         }
-        guard let pageURL = function.call(withArguments: [book.identifier, pageNumber]).toString() else {
+        guard let xhr = function.call(withArguments: [book.identifier, pageIndex]) else {
             return nil
         }
-        print(pageURL)
-        let url = URL(string: pageURL)
-        guard url != nil else {
-            return nil
-        }
-        let image = NSImage(contentsOf: url!)
-        if let bits = image?.representations.first as? NSBitmapImageRep {
-            let data = bits.representation(using: .jpeg, properties: [:])
-            try? data?.write(to: URL(fileURLWithPath: pluginFolder + "image.jpg"))
-        }
-        return image
+        
+        guard let request = urlRequest(fromXHR: xhr) else { return nil }
+        let bookPage = BookPage(request: request, pageName: String(pageIndex), pageType: .singlePage)
+        
+        return bookPage
     }
     
     func isSameBook(_ left: Book, _ right: Book) -> Bool {

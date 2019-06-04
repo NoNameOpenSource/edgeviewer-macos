@@ -18,6 +18,7 @@ class Acknowledge: NSViewController {
         
         // Do view setup here.
         acknowledgementsTextView.textStorage?.append(NSAttributedString(string: """
+            https://github.com/NoNameOpenSource/edgeviewer-macos
             https://github.com/marmelroy/Zip
             https://github.com/ZipArchive/ZipArchive
             """))

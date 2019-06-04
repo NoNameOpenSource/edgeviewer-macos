@@ -11,11 +11,11 @@ EdgeViewer is an open source application that aims to be a universal viewer for 
 
 <a name="plugins"></a>
 ## Plugins
-EdgeViewer provides a simple mechanism for installing plugins written in JavaScript that seamlessly integrate with the rest of the application. Though we do not officially support or endorse any third-party plugins, EdgeViewer cannot thrive without an active community of plugin creators. To connect with us about creating a plugin, contact us at [contributions@ggomong.com](mailto:contributions@ggomong.com).
+EdgeViewer provides a simple mechanism for installing plugins written in JavaScript that seamlessly integrate with the rest of the application. Though we do not officially support or endorse any third-party plugins, EdgeViewer cannot thrive without an active community of plugin creators. To learn more about how to create a plugin, contact us at [contributions@ggomong.com](mailto:contributions@ggomong.com).
 
 <a name="building"></a>
 ## Building
-1. Use `carthage update` to dowload necessary framework data.
+1. Use `carthage update` to download necessary framework data.
 2. Build with Xcode.
 
 <a name="license"></a>

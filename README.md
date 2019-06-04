@@ -7,7 +7,7 @@
 
 <a name="overview"></a>
 ## Overview
-EdgeViewer is an open source application that aims to be a universal viewer for Manga and other comic book-like content. <a href="https://github.com/NoNameOpenSource/edgeviewer-macos/releases">Download EdgeViewer.</a> EdgeViewer comes out of the box with support for locally-stored content, but you can add plugins written in JavaScript to bring in content from other sources. See the [Plugins](#plugins) section for more information.
+EdgeViewer is an open source application that aims to be a universal viewer for Manga and other comic book-like content. <a href="https://github.com/NoNameOpenSource/edgeviewer-macos/releases/download/0.1.0/EdgeViewer.app.zip">Download EdgeViewer.</a> EdgeViewer comes out of the box with support for locally-stored content, but you can add plugins written in JavaScript to bring in content from other sources. See the [Plugins](#plugins) section for more information.
 
 <a name="plugins"></a>
 ## Plugins

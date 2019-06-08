@@ -58,6 +58,8 @@
 		E01ED2B22093EC6400CC805F /* JSPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01ED2B12093EC6400CC805F /* JSPlugin.swift */; };
 		E023917820C4F6C900A9489B /* PageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023917720C4F6C500A9489B /* PageItem.swift */; };
 		E029CFDD2081E487008EC2A7 /* LibraryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */; };
+		E0389A1422A5728300CD0A21 /* InfoWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0389A1222A5728200CD0A21 /* InfoWindowController.swift */; };
+		E0389A1522A5728300CD0A21 /* InfoWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0389A1322A5728200CD0A21 /* InfoWindowController.xib */; };
 		E047C4D020E050C800E6BFEF /* CustomizationPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047C4CE20E050C800E6BFEF /* CustomizationPalette.swift */; };
 		E047C4D120E050C800E6BFEF /* CustomizationPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = E047C4CF20E050C800E6BFEF /* CustomizationPalette.xib */; };
 		E05BDDA02081B8EB00AEA9AA /* ShelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */; };
@@ -164,6 +166,8 @@
 		E01ED36F2095C90D00CC805F /* XMLHttpRequest.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = XMLHttpRequest.js; sourceTree = "<group>"; };
 		E023917720C4F6C500A9489B /* PageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItem.swift; sourceTree = "<group>"; };
 		E029CFDC2081E487008EC2A7 /* LibraryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListViewController.swift; sourceTree = "<group>"; };
+		E0389A1222A5728200CD0A21 /* InfoWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWindowController.swift; sourceTree = "<group>"; };
+		E0389A1322A5728200CD0A21 /* InfoWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoWindowController.xib; sourceTree = "<group>"; };
 		E047C4CE20E050C800E6BFEF /* CustomizationPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationPalette.swift; sourceTree = "<group>"; };
 		E047C4CF20E050C800E6BFEF /* CustomizationPalette.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationPalette.xib; sourceTree = "<group>"; };
 		E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfViewController.swift; sourceTree = "<group>"; };
@@ -353,6 +357,8 @@
 				E05BDD9F2081B8EB00AEA9AA /* ShelfViewController.swift */,
 				8A40EF5020CE069C00A7B3CE /* ShelfViewFlowLayout.swift */,
 				E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */,
+				E0389A1222A5728200CD0A21 /* InfoWindowController.swift */,
+				E0389A1322A5728200CD0A21 /* InfoWindowController.xib */,
 			);
 			path = LibraryView;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E002F12D208AA77700AACCC0 /* DoublePageViewController.xib in Resources */,
+				E0389A1522A5728300CD0A21 /* InfoWindowController.xib in Resources */,
 				E08E863F20731A7A0082723B /* Assets.xcassets in Resources */,
 				B1D8A4AB20C8281B00F4683A /* ButtonItem.xib in Resources */,
 				E0AEDFF220B3900700E72B6E /* XMLHttpRequest.js in Resources */,
@@ -593,6 +600,7 @@
 				8A40EF5120CE069C00A7B3CE /* ShelfViewFlowLayout.swift in Sources */,
 				E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */,
 				E016E396217F9A0B00D14EEA /* AboutWindow.swift in Sources */,
+				E0389A1422A5728300CD0A21 /* InfoWindowController.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				1C18FAD120C364620073886B /* LocalPlugin.swift in Sources */,
 				1C95803C20B91A0900D3AC9D /* LocalPluginXMLStorer.swift in Sources */,

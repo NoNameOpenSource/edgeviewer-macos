@@ -36,6 +36,11 @@ class ShelfViewController: NSViewController, DropViewDelegate {
     }
    
     @IBAction func bookInfo(_ sender: NSMenuItem) {
+        let panelController = InfoWindowController(windowNibName: NSNib.Name(rawValue: "InfoWindowController"))
+        let panel = panelController.window!
+        panel.level = .popUpMenu
+        panel.isMovableByWindowBackground = true
+        NSApplication.shared.runModal(for: panel)
     }
     
     fileprivate func configureCollectionView() { // this one makes layout

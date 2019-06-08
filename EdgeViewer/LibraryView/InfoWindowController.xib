@@ -8,6 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="InfoWindowController" customModule="EdgeViewer" customModuleProvider="target">
             <connections>
+                <outlet property="authorLabel" destination="yH2-zk-nWP" id="Imz-Kj-itA"/>
+                <outlet property="coverImageView" destination="xkg-jX-1jF" id="Yvk-GL-Xub"/>
+                <outlet property="seriesLabel" destination="hKN-xb-jZw" id="Tpx-vz-sFM"/>
+                <outlet property="titleLabel" destination="9Sd-VT-Nec" id="alI-sz-7YE"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -72,6 +76,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="okButton:" target="-2" id="uLh-uI-p1R"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HG3-OO-oz0">
                         <rect key="frame" x="304" y="13" width="81" height="32"/>
@@ -85,6 +92,9 @@
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="cancelButton:" target="-2" id="g7P-x7-23l"/>
+                        </connections>
                     </button>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="OzW-IR-1Qa">
                         <rect key="frame" x="20" y="61" width="440" height="114"/>

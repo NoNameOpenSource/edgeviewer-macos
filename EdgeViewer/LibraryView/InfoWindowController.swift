@@ -10,6 +10,22 @@ import Cocoa
 
 class InfoWindowController: NSWindowController {
 
+    @IBOutlet weak var coverImageView: NSImageView!
+    @IBOutlet weak var titleLabel: NSTextField!
+    @IBOutlet weak var seriesLabel: NSTextField!
+    @IBOutlet weak var authorLabel: NSTextField!
+    
+    
+    @IBAction func okButton(_ sender: NSButton) {
+        self.close()
+        NSApplication.shared.abortModal()
+    }
+    
+    @IBAction func cancelButton(_ sender: NSButton) {
+        self.close()
+        NSApplication.shared.abortModal()
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
 

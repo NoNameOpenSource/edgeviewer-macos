@@ -21,6 +21,7 @@ class ShelfViewController: NSViewController, DropViewDelegate {
     
     var libraryPage: LibraryPage? = nil
     
+    @IBOutlet var bookMenu: NSMenu!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,8 @@ class ShelfViewController: NSViewController, DropViewDelegate {
         dropView.delegate = self
     }
    
+    @IBAction func bookInfo(_ sender: NSMenuItem) {
+    }
     
     fileprivate func configureCollectionView() { // this one makes layout
         let flowLayout = ShelfViewFlowLayout()
@@ -108,6 +111,8 @@ extension ShelfViewController : NSCollectionViewDataSource {
         */
         
         casted.thumbnail = pageItem.thumbnail
+        
+        item.view.menu = bookMenu
         
         //if pageItem.thumbnail!.loaded == false { pageItem.thumbnail!.loadImage() }
         

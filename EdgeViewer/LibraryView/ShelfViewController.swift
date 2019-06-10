@@ -21,6 +21,7 @@ class ShelfViewController: NSViewController, DropViewDelegate {
     
     var libraryPage: LibraryPage? = nil
     
+    @IBOutlet var bookMenu: NSMenu!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +32,24 @@ class ShelfViewController: NSViewController, DropViewDelegate {
             sections.append(sectionB)
         }
         
+        collectionView.menu = bookMenu
         dropView.delegate = self
     }
    
+    @IBAction func bookInfo(_ sender: NSMenuItem) {
+        guard collectionView.selectionIndexPaths.count != 0 else { return }
+        
+        let indexPath = collectionView.selectionIndexPaths.first!
+        let pageItem = libraryPage!.items[indexPath.item]
+        guard pageItem.type == .book else { return }
+        guard let book = pageItem.owner.book(withIdentifier: pageItem.identifier) else { return }
+        let panelController = InfoWindowController(windowNibName: NSNib.Name(rawValue: "InfoWindowController"))
+        panelController.book = book
+        let panel = panelController.window!
+        panel.level = .popUpMenu
+        panel.isMovableByWindowBackground = true
+        NSApplication.shared.runModal(for: panel)
+    }
     
     fileprivate func configureCollectionView() { // this one makes layout
         let flowLayout = ShelfViewFlowLayout()
@@ -108,6 +124,8 @@ extension ShelfViewController : NSCollectionViewDataSource {
         */
         
         casted.thumbnail = pageItem.thumbnail
+        
+        //item.view.menu = bookMenu
         
         //if pageItem.thumbnail!.loaded == false { pageItem.thumbnail!.loadImage() }
         

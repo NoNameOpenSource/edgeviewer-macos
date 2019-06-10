@@ -55,11 +55,4 @@ class CollectionViewItem: NSCollectionViewItem {
             super.mouseDown(with: event)
         }
     }
-    
-    override func rightMouseDown(with event: NSEvent) {
-        if let collectionView = collectionView, let indexPath = collectionView.indexPath(for: self) {
-            collectionView.selectionIndexPaths = [indexPath]
-        }
-        super.rightMouseDown(with: event)
-    }
 }

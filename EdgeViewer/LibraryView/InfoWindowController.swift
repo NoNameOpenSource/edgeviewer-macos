@@ -14,7 +14,7 @@ class InfoWindowController: NSWindowController {
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var seriesLabel: NSTextField!
     @IBOutlet weak var authorLabel: NSTextField!
-    
+    var book: Book?
     
     @IBAction func okButton(_ sender: NSButton) {
         self.close()
@@ -30,6 +30,12 @@ class InfoWindowController: NSWindowController {
         super.windowDidLoad()
 
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+        if let book = book {
+            titleLabel.stringValue = book.title
+            seriesLabel.stringValue = book.seriesName ?? ""
+            authorLabel.stringValue = book.author ?? ""
+            coverImageView.image = book.coverImage
+        }
     }
     
 }

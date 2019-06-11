@@ -81,7 +81,7 @@ class ContentViewController: NSViewController {
         // set up event handling for left/right arrow keys (for changing pages)
         self.keyDownEvent = NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
             self.keyDown(with: $0)
-            return $0
+            return nil
         }
         
         useAnimation = true

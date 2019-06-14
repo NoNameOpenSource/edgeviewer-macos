@@ -57,7 +57,8 @@ class JSPlugin: Plugin {
     var homePage: LibraryPage {
         get {
             let group = DispatchGroup()
-            var page = context.evaluateScript("loadHomePage();")!
+            var loadPage = context.objectForKeyedSubscript("loadHomePage")
+            var page = loadPage?.call(withArguments: nil)
             if page.toString() == "[object Promise]"  {
                 let promise = JSPromise(withJSValue: page)!
                 let callBack: @convention(block) (JSValue) -> Void = { jsValue in

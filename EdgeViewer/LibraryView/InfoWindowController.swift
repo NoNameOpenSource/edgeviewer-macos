@@ -34,7 +34,9 @@ class InfoWindowController: NSWindowController {
             titleLabel.stringValue = book.title
             seriesLabel.stringValue = book.seriesName ?? ""
             authorLabel.stringValue = book.author ?? ""
-            coverImageView.image = book.coverImage
+            if let url = book.pages[0].imageView.request.url {
+                coverImageView.image = NSImage(byReferencing: url)
+            }
         }
     }
     

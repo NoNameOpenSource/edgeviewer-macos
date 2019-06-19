@@ -37,7 +37,7 @@ class DropView: NSView {
         
         self.wantsLayer = true
         self.layer?.backgroundColor = NSColor.gray.cgColor
-        
+        print(LocalPlugin.getApplicationSupportAppDirectory())
         if #available(OSX 10.13, *) {
             registerForDraggedTypes([NSPasteboard.PasteboardType.URL, NSPasteboard.PasteboardType.fileURL])
         } else {

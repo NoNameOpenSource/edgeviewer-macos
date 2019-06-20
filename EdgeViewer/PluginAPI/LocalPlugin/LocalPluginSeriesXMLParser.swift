@@ -31,6 +31,11 @@ class LocalPluginSeriesXMLParser {
             }
             series.title = titleElementValue
             
+            let stringNodes = rootElement.elements(forName: "string")
+            print(stringNodes)
+            
+            
+            
             // TODO: consider using switch statement
             if let authorElementValue = rootElement.elements(forName: "author")[0].stringValue {
                 series.author = authorElementValue

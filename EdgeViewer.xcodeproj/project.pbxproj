@@ -30,7 +30,6 @@
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
 		B1D8A4AB20C8281B00F4683A /* ButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A4A720C8281B00F4683A /* ButtonItem.xib */; };
 		B1D8A4B520C99CCA00F4683A /* ButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */; };
-		B1EF4BC422BAF66C00B1F726 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EF4BC322BAF66C00B1F726 /* ZipArchive.framework */; };
 		B1EF4BD722BAF6F600B1F726 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EF4BD222BAF6B900B1F726 /* Zip.framework */; };
 		B1EF4BD822BAF6F600B1F726 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1EF4BD222BAF6B900B1F726 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B1F5435E21913AEA001D1104 /* ImportFailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */; };
@@ -238,7 +237,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1EF4BD722BAF6F600B1F726 /* Zip.framework in Frameworks */,
-				B1EF4BC422BAF66C00B1F726 /* ZipArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

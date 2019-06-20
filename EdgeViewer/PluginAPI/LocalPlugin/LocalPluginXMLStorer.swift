@@ -202,7 +202,7 @@ final class LocalPluginXMLStorer { // pseudo-static class
 
         // XML version
         xmlDoc.version = "1.0"
-        
+        print(xmlDoc)
         // return the XMLDocument that has been assembled by the preceding code in this function
         return xmlDoc.xmlData(options:[.nodePrettyPrint, .nodeCompactEmptyElement])
     }

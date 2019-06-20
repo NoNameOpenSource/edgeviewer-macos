@@ -114,20 +114,35 @@ class LocalPluginSeries: Series {
         // XML version
         xmlDocument.version = "1.0"
         
-        localRootElement.addChild(XMLNode.element(withName: "title", stringValue: title) as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "author", stringValue: author ?? "") as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "genre", stringValue: genre ?? "") as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "rating", stringValue: String(rating!)) as! XMLNode)
+        let titleNode = XMLElement.init(name: "string", stringValue: title)
+        titleNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "title") as! XMLNode)
+        let authorNode = XMLElement.init(name: "string", stringValue: author ?? "")
+        authorNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "author")as! XMLNode)
+        let genreNode = XMLElement.init(name: "string", stringValue: genre ?? "")
+        genreNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "genre")as! XMLNode)
+        localRootElement.addChild(titleNode as XMLNode)
+        localRootElement.addChild(authorNode as XMLNode)
+        localRootElement.addChild(genreNode as XMLNode)
         
+        if let rating = rating {
+            
+            let ratingNode = XMLElement.init(name: "Double", stringValue: String(rating))
+            ratingNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "rating") as! XMLNode)
+            localRootElement.addChild(XMLNode.element(withName: "rating", stringValue: String(rating)) as! XMLNode)
+        }
         // lastUpdated
         if let lastUpdated = lastUpdated {
             let RFC3339DateFormatter = DateFormatter()
             RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
             RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
             RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-            localRootElement.addChild(XMLNode.element(withName: "lastUpdated", stringValue: RFC3339DateFormatter.string(from: lastUpdated)) as! XMLNode)
+            let lastupdateNode = XMLElement.init(name: "date", stringValue: RFC3339DateFormatter.string(from: lastUpdated))
+            lastupdateNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "lastUpadate") as! XMLNode)
+            localRootElement.addChild(lastupdateNode as XMLNode)
         } else {
-            localRootElement.addChild(XMLNode.element(withName: "lastUpdated", stringValue: "Unknown Release Date") as! XMLNode)
+            let lastupdateNode = XMLElement.init(name: "date", stringValue: "Unknown Release")
+            lastupdateNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "lastUpadate") as! XMLNode)
+            localRootElement.addChild(lastupdateNode as XMLNode)
         }
         
         let xmlDataString = xmlDocument.xmlData(options:[.nodePrettyPrint, .nodeCompactEmptyElement])
@@ -135,3 +150,4 @@ class LocalPluginSeries: Series {
         try xmlDataString.write(to: xmlLocation)
     }
 }
+

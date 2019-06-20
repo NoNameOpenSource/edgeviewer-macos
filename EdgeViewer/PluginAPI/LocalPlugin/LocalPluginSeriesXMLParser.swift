@@ -32,30 +32,48 @@ class LocalPluginSeriesXMLParser {
             series.title = titleElementValue
             
             let stringNodes = rootElement.elements(forName: "string")
-            print(stringNodes)
+            for node in stringNodes {
+                var n = node.attribute(forName: "name")?.stringValue
+                
+                switch n {
+                    case "author":
+                        if let authorElementValue = rootElement.elements(forName: "author")[0].stringValue {
+                            series.author = authorElementValue
+                        }
+                    case "rating":
+                        if let ratingElementValue = rootElement.elements(forName: "rating")[0].stringValue {
+                            series.rating = Double(ratingElementValue)
+                        }
+                    case "genre":
+                        if let genreElementValue = rootElement.elements(forName: "genre")[0].stringValue {
+                            series.author = genreElementValue
+                        }
+                    default :
+                        break
+                }
+            }
+            
             
             
             
             // TODO: consider using switch statement
-            if let authorElementValue = rootElement.elements(forName: "author")[0].stringValue {
-                series.author = authorElementValue
-            }
-            if let ratingElementValue = rootElement.elements(forName: "rating")[0].stringValue {
-                series.rating = Double(ratingElementValue)
-            }
-            if let genreElementValue = rootElement.elements(forName: "genre")[0].stringValue {
-                series.author = genreElementValue
-            }
-            if let lastUpdatedElementValue = rootElement.elements(forName: "lastUpdated")[0].stringValue {
-                let RFC3339DateFormatter = DateFormatter()
-                RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
-                RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                if let time = RFC3339DateFormatter.date(from: lastUpdatedElementValue) {
-                    series.lastUpdated = time
-                } else {
-                    print("Unable to retrieve date. Check formatting of date string.")
+            
+            
+            
+            if let lastUpdatedElementValue = rootElement.elements(forName: "date")[0].stringValue {
+                if lastUpdatedElementValue == "Unknown Release"{
                     series.lastUpdated = nil
+                }else{
+                    let RFC3339DateFormatter = DateFormatter()
+                    RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                    RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
+                    RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                    if let time = RFC3339DateFormatter.date(from: lastUpdatedElementValue) {
+                        series.lastUpdated = time
+                    } else{
+                        print("Unable to retrieve date. Check formatting of date string.")
+                        series.lastUpdated = nil
+                    }
                 }
             }
         }

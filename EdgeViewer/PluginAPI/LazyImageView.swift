@@ -15,7 +15,7 @@ class LazyImageView: NSView {
     var loaded = false
     private var loading = false
     
-    static var semaphore = DispatchSemaphore(value: 1)
+    static var semaphore = DispatchSemaphore(value: 0)
     
     init(request: URLRequest) {
         self.request = request
@@ -33,6 +33,19 @@ class LazyImageView: NSView {
             fillSuperView()
         }
     }
+    func initializeImageView(image : NSImage){
+        self.imageView = NSImageView(frame: NSRect(origin: NSPoint(x: 0, y: 0), size: image.size))
+        self.imageView!.image = image
+        self.imageView!.imageScaling = .scaleProportionallyUpOrDown
+        self.loaded = true
+        self.loading = false
+        LazyImageView.semaphore.signal()
+    }
+    func addSubviewAsync() {
+        self.addSubview(self.imageView!)
+        self.fillSuperView()
+        LazyImageView.semaphore.signal()
+    }
     
     func loadImage() {
         guard !loaded && !loading else { return }
@@ -48,22 +61,18 @@ class LazyImageView: NSView {
             }
             if let data = data {
                 if let image = NSImage(data: data) {
-                    semaphore.wait()
                     DispatchQueue.main.async {
-                        self.imageView = NSImageView(frame: NSRect(origin: NSPoint(x: 0, y: 0), size: image.size))
-                        self.imageView!.image = image
-                        self.imageView!.imageScaling = .scaleProportionallyUpOrDown
-                        self.loaded = true
-                        self.loading = false
-                        self.addSubview(self.imageView!)
-                        self.fillSuperView()
-                        semaphore.signal()
+                        initializeImageView(image: image)
+                        semaphor.wait()
+                        addSubviewAsync()
+                        semaphore.wait()
                     }
                 }
             }
         }
         
         task.resume()
+        semaphore.wait(timeout: DISPATCH_TIME_FOREVER)
     }
     
     override func resize(withOldSuperviewSize oldSize: NSSize) {

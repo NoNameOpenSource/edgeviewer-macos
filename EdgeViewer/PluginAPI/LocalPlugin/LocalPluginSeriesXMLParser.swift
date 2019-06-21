@@ -33,7 +33,7 @@ class LocalPluginSeriesXMLParser {
             
             let stringNodes = rootElement.elements(forName: "string")
             for node in stringNodes {
-                var n = node.attribute(forName: "name")?.stringValue
+                let n = node.attribute(forName: "name")?.stringValue
                 
                 switch n {
                     case "author":

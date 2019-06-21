@@ -1568,42 +1568,6 @@
                                     <constraint firstAttribute="width" constant="138" id="Bg6-64-3Ws"/>
                                 </constraints>
                             </progressIndicator>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="igz-bX-fLC">
-                                <rect key="frame" x="401" y="484" width="71" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Ome-Ux-EWF"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="Read" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="GT4-LN-EtZ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="readButton:" target="ymU-Zp-kRl" id="kHc-fz-Xum"/>
-                                </connections>
-                            </button>
-                            <button identifier="readDropdown" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HZc-eQ-sBA">
-                                <rect key="frame" x="470" y="488" width="29" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Jpk-cv-2YD"/>
-                                </constraints>
-                                <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="buttonCell:3Nf-0g-gtJ:image" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Nf-0g-gtJ">
-                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="showReadFromBeginningButton:" target="ymU-Zp-kRl" id="1VE-nh-tJN"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BdN-H7-7Lb">
-                                <rect key="frame" x="468" y="456" width="169" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="DAR-cs-PxJ"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="Read From Beginning" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xf1-6m-xOP">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogn-HN-6cc" customClass="RatingControl" customModule="EdgeViewer" customModuleProvider="target">
                                 <rect key="frame" x="159" y="380" width="200" height="36"/>
                                 <constraints>
@@ -1645,41 +1609,32 @@
                             </scrollView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="aVl-8M-baY" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="1cv-c9-CnP"/>
                             <constraint firstItem="NN9-2C-Rxb" firstAttribute="top" secondItem="0TQ-aj-gUl" secondAttribute="top" constant="20" id="2d5-tQ-80S"/>
-                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gIj-sJ-v8P" secondAttribute="trailing" constant="8" id="4fg-Dh-8mQ"/>
                             <constraint firstItem="q0e-5w-N1Z" firstAttribute="top" secondItem="aVl-8M-baY" secondAttribute="bottom" constant="8" symbolic="YES" id="4ub-3B-w5D"/>
-                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aVl-8M-baY" secondAttribute="trailing" constant="8" id="6SS-cq-aDG"/>
                             <constraint firstItem="gIj-sJ-v8P" firstAttribute="top" secondItem="7mB-RJ-UXb" secondAttribute="bottom" constant="8" symbolic="YES" id="ER0-cW-oLX"/>
-                            <constraint firstItem="Ogn-HN-6cc" firstAttribute="top" secondItem="igz-bX-fLC" secondAttribute="bottom" constant="75" id="H2X-PW-be4"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7mB-RJ-UXb" secondAttribute="trailing" constant="100" id="EcE-AO-0kg"/>
                             <constraint firstAttribute="bottom" secondItem="2On-Do-ZzQ" secondAttribute="bottom" constant="20" id="Jfw-ka-biO"/>
                             <constraint firstItem="q0e-5w-N1Z" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="JkR-cl-NSf"/>
                             <constraint firstItem="2On-Do-ZzQ" firstAttribute="leading" secondItem="0TQ-aj-gUl" secondAttribute="leading" constant="20" id="KjJ-JY-Jrm"/>
                             <constraint firstItem="7mB-RJ-UXb" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="Q8a-Ze-x1k"/>
-                            <constraint firstItem="BdN-H7-7Lb" firstAttribute="leading" secondItem="HZc-eQ-sBA" secondAttribute="leading" id="QRC-xk-nie"/>
-                            <constraint firstItem="igz-bX-fLC" firstAttribute="top" secondItem="HZc-eQ-sBA" secondAttribute="top" id="Qjd-D5-gET"/>
-                            <constraint firstItem="HZc-eQ-sBA" firstAttribute="leading" secondItem="igz-bX-fLC" secondAttribute="trailing" constant="8" symbolic="YES" id="SZi-lS-ozE"/>
-                            <constraint firstItem="aVl-8M-baY" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="TGu-Yg-AlL"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HWi-Jl-N00" secondAttribute="trailing" constant="100" id="WWs-bi-uRs"/>
                             <constraint firstItem="NN9-2C-Rxb" firstAttribute="leading" secondItem="0TQ-aj-gUl" secondAttribute="leading" constant="20" id="YEw-k1-AnQ"/>
                             <constraint firstItem="NN9-2C-Rxb" firstAttribute="top" secondItem="HWi-Jl-N00" secondAttribute="top" id="Yu0-hV-Gx4"/>
                             <constraint firstItem="gIj-sJ-v8P" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="ame-ZP-VGn"/>
-                            <constraint firstItem="BdN-H7-7Lb" firstAttribute="top" secondItem="HZc-eQ-sBA" secondAttribute="bottom" constant="7" id="b59-Id-qyx"/>
                             <constraint firstAttribute="trailing" secondItem="2On-Do-ZzQ" secondAttribute="trailing" constant="20" id="bf0-uB-7WU"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="bottom" secondItem="NN9-2C-Rxb" secondAttribute="bottom" id="der-kL-ODC"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="leading" secondItem="q0e-5w-N1Z" secondAttribute="leading" id="dwI-JJ-cpS"/>
-                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="q0e-5w-N1Z" secondAttribute="trailing" constant="24" id="e7C-PO-y0S"/>
-                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HWi-Jl-N00" secondAttribute="trailing" constant="24" id="eBJ-Ra-BXv"/>
                             <constraint firstItem="Ogn-HN-6cc" firstAttribute="top" secondItem="q0e-5w-N1Z" secondAttribute="bottom" constant="8" symbolic="YES" id="eS8-fn-h8q"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BdN-H7-7Lb" secondAttribute="trailing" constant="8" id="oey-cw-Scs"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gIj-sJ-v8P" secondAttribute="trailing" constant="100" id="iG7-UZ-NhG"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aVl-8M-baY" secondAttribute="trailing" constant="100" id="mVR-gd-Qvf"/>
                             <constraint firstItem="HWi-Jl-N00" firstAttribute="leading" secondItem="NN9-2C-Rxb" secondAttribute="trailing" constant="8" symbolic="YES" id="pVY-LS-zJJ"/>
                             <constraint firstItem="48C-KD-Wpa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NN9-2C-Rxb" secondAttribute="bottom" constant="24" id="pvx-Qs-U6O"/>
                             <constraint firstItem="aVl-8M-baY" firstAttribute="top" secondItem="gIj-sJ-v8P" secondAttribute="bottom" constant="8" symbolic="YES" id="s3Q-SP-QH6"/>
-                            <constraint firstItem="igz-bX-fLC" firstAttribute="centerX" secondItem="2On-Do-ZzQ" secondAttribute="centerX" id="uA5-TL-uiO"/>
                             <constraint firstItem="7mB-RJ-UXb" firstAttribute="top" secondItem="HWi-Jl-N00" secondAttribute="bottom" constant="8" symbolic="YES" id="vmQ-yn-bvA"/>
-                            <constraint firstItem="igz-bX-fLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7mB-RJ-UXb" secondAttribute="trailing" constant="8" id="yaP-ys-beK"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ReadFromBeginningButton" destination="BdN-H7-7Lb" id="TKD-g5-qKw"/>
                         <outlet property="chapterView" destination="48C-KD-Wpa" id="g6A-mg-BLz"/>
                         <outlet property="coverImage" destination="NN9-2C-Rxb" id="57P-Bi-3vI"/>
                         <outlet property="mangaAuthor" destination="7mB-RJ-UXb" id="ke9-el-Rqx"/>

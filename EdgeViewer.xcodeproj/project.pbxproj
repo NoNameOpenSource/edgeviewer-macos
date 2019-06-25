@@ -26,6 +26,7 @@
 		99E3551021599F7C001E12EC /* (null) in Sources */ = {isa = PBXBuildFile; };
 		99E355122159B632001E12EC /* (null) in Resources */ = {isa = PBXBuildFile; };
 		B111D3F320DD975E0096ED6E /* DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111D3F220DD975E0096ED6E /* DropView.swift */; };
+		B186339522C2D5ED00B872D0 /* BookSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186339422C2D5ED00B872D0 /* BookSorter.swift */; };
 		B190F0D62235E7200017048D /* EdgeViewerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B190F0D52235E7200017048D /* EdgeViewerWindow.swift */; };
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
 		B1D8A4AB20C8281B00F4683A /* ButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A4A720C8281B00F4683A /* ButtonItem.xib */; };
@@ -135,6 +136,7 @@
 		99346663217EC57A006460A6 /* LocalPluginBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalPluginBook.swift; path = EdgeViewer/PluginAPI/LocalPlugin/LocalPluginBook.swift; sourceTree = SOURCE_ROOT; };
 		995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPluginSeriesXMLParser.swift; sourceTree = "<group>"; };
 		B111D3F220DD975E0096ED6E /* DropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropView.swift; sourceTree = "<group>"; };
+		B186339422C2D5ED00B872D0 /* BookSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSorter.swift; sourceTree = "<group>"; };
 		B190F0D52235E7200017048D /* EdgeViewerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeViewerWindow.swift; sourceTree = "<group>"; };
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		B1D8A4A720C8281B00F4683A /* ButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonItem.xib; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */,
 				E0389A1222A5728200CD0A21 /* InfoWindowController.swift */,
 				E0389A1322A5728200CD0A21 /* InfoWindowController.xib */,
+				B186339422C2D5ED00B872D0 /* BookSorter.swift */,
 			);
 			path = LibraryView;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				E0389A1422A5728300CD0A21 /* InfoWindowController.swift in Sources */,
 				E08E863D20731A7A0082723B /* ViewController.swift in Sources */,
 				1C18FAD120C364620073886B /* LocalPlugin.swift in Sources */,
+				B186339522C2D5ED00B872D0 /* BookSorter.swift in Sources */,
 				1C95803C20B91A0900D3AC9D /* LocalPluginXMLStorer.swift in Sources */,
 				E007FEF022643DCA001E440E /* PageViewProtocol.swift in Sources */,
 				1C7BFFF2207C18FA00B61444 /* DetailViewController.swift in Sources */,

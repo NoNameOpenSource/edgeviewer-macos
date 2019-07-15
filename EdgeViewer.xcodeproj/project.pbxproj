@@ -34,6 +34,7 @@
 		B1EF4BD822BAF6F600B1F726 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1EF4BD222BAF6B900B1F726 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B1EF4BDC22BB0B7800B1F726 /* LocalPluginXMLtoDictParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EF4BDB22BB0B7800B1F726 /* LocalPluginXMLtoDictParser.swift */; };
 		B1F5435E21913AEA001D1104 /* ImportFailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */; };
+		B1FEB43A22DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEB43922DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift */; };
 		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
 		E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */; };
 		E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */; };
@@ -184,6 +185,7 @@
 		B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Zip.xcodeproj; path = Carthage/Checkouts/Zip/Zip.xcodeproj; sourceTree = "<group>"; };
 		B1EF4BDB22BB0B7800B1F726 /* LocalPluginXMLtoDictParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginXMLtoDictParser.swift; sourceTree = "<group>"; };
 		B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportFailDetailViewController.swift; sourceTree = "<group>"; };
+		B1FEB43922DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginDictToXMLParser.swift; sourceTree = "<group>"; };
 		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
 		E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				99346663217EC57A006460A6 /* LocalPluginBook.swift */,
 				995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */,
 				B1EF4BDB22BB0B7800B1F726 /* LocalPluginXMLtoDictParser.swift */,
+				B1FEB43922DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift */,
 				1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */,
 				1C18FAD020C364620073886B /* LocalPlugin.swift */,
 				E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */,
@@ -705,6 +708,7 @@
 				99E3551021599F7C001E12EC /* (null) in Sources */,
 				E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */,
 				99346664217EC57A006460A6 /* LocalPluginBook.swift in Sources */,
+				B1FEB43A22DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift in Sources */,
 				1C1A1CBA20843CD1000074DC /* ChapterViewItem.swift in Sources */,
 				1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */,
 				E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */,

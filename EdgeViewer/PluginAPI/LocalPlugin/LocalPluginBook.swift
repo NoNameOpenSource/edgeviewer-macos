@@ -102,20 +102,31 @@ class LocalPluginBook: Book {
         print("XML book file is corrupt")
     }
     
-    func elementValue(ofElementWithName elName: String) -> Any? {
-        let els = rootElement.elements(forName: elName)
-        if (els.count == 1) {
-            if let el = els[0].stringValue {
-                if let el = Int(el) {
+    func elementValue(ofElementWithName elName: String, ofElementWithType elType : String, ofElementWithRoot elRoot : XMLElement) -> Any? {
+        let els = elRoot.elements(forName: elType)
+        var elements : [XMLElement] = []
+        for el in els{
+            if el.attribute(forName: "name")?.stringValue == elName{
+                elements.append(el)
+            }
+        }
+        if (elements.count == 1) {
+            if let el = elements[0].stringValue {
+                switch elType {
+                case "int":
+                    if let el = Int(el) {
+                        return el
+                    }
+                case "double":
+                    if let el = Double(el) {
+                        return el
+                    }
+                case "string":
                     return el
+                default:
+                    break
                 }
-                else if let el = Double(el) {
-                    return el
-                }
-                else {
-                    // el is a String
-                    return el
-                }
+
             }
         }
         return nil
@@ -132,25 +143,49 @@ class LocalPluginBook: Book {
         
         rootElement = localRootElement
         
-        guard let titleElementValue = rootElement.elements(forName: "title")[0].stringValue else {
-            throw LocalPlugin.ParsingError.missingDataField("title")
+        if let authorElementValue = elementValue(ofElementWithName: "author", ofElementWithType: "string", ofElementWithRoot: rootElement) {
+            self.author = authorElementValue as? String
         }
-        self.title = titleElementValue
+        if let genreElementValue = elementValue(ofElementWithName: "genre", ofElementWithType: "string", ofElementWithRoot: rootElement) {
+            self.genre = genreElementValue as? String
+        }
+        guard let titleElementValue = elementValue(ofElementWithName: "title", ofElementWithType: "string", ofElementWithRoot: rootElement) else {
+                throw LocalPlugin.ParsingError.missingDataField("title")
+            }
+        self.title = titleElementValue as! String
         
-        // TODO: consider using switch statement
-        if let author = elementValue(ofElementWithName: "author") as? String {
-            self.author = author
-        }
-        if let genre = elementValue(ofElementWithName: "genre") as? String {
-            self.genre = genre
-        }
-        if let series = elementValue(ofElementWithName: "series") as? String {
+        if let series = elementValue(ofElementWithName: "series", ofElementWithType: "string", ofElementWithRoot: rootElement) {
             self.seriesID = series
         }
-        if let seriesName = elementValue(ofElementWithName: "seriesName") as? String {
-            self.seriesName = seriesName
+
+        if let seriesName = elementValue(ofElementWithName: "series name", ofElementWithType: "string", ofElementWithRoot: rootElement) {
+            self.seriesName = seriesName as? String
         }
-        if let bookmark = elementValue(ofElementWithName: "bookmark") as? Int {
+        if let type = elementValue(ofElementWithName: "type", ofElementWithType: "string", ofElementWithRoot: rootElement) as? String{
+            switch type {
+                case "manga":
+                    self.type = .manga
+                case "comic":
+                    self.type = .comic
+                case "webManga":
+                    self.type = .webManga
+                default:
+                    XMLCorrupt()
+            }
+        }
+
+        
+        
+        
+        
+        
+        
+        // TODO: consider using switch statement
+        
+
+        
+        
+        if let bookmark = elementValue(ofElementWithName: "bookmark", ofElementWithType: "int", ofElementWithRoot: rootElement) as? Int {
             self.bookmark = bookmark
         }
         else {
@@ -158,14 +193,14 @@ class LocalPluginBook: Book {
             XMLCorrupt()
             print("XML Parsing Error: Could not retrieve saved bookmark")
         }
-        if let rating = elementValue(ofElementWithName: "rating") as? Double {
+        if let rating = elementValue(ofElementWithName: "rating", ofElementWithType: "double", ofElementWithRoot: rootElement) as? Double {
             self.rating = rating
         }
         else {
             self.rating = 0
             print("XML Parsing Error: Could not retrieve saved rating")
         }
-        if let lastUpdated = elementValue(ofElementWithName: "lastUpdated") as? String {
+        if let lastUpdated = elementValue(ofElementWithName: "lastUpdated", ofElementWithType: "date", ofElementWithRoot: rootElement) as? String {
             let RFC3339DateFormatter = DateFormatter()
             RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
             RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
@@ -177,25 +212,15 @@ class LocalPluginBook: Book {
                 print("Unable to retrieve date. Check formatting of date string.")
             }
         }
-        if let currentPage = elementValue(ofElementWithName: "currentPage") as? Int {
+        if let currentPage = elementValue(ofElementWithName: "currentPage", ofElementWithType: "int", ofElementWithRoot: rootElement) as? Int {
             self.currentPage = currentPage
         }
         else {
             self.currentPage = 0
             print("XML Parsing Error: Could not retrieve saved currentPage.")
         }
-        if let type = elementValue(ofElementWithName: "type") as? String {
-            switch type {
-            case "manga":
-                self.type = .manga
-            case "comic":
-                self.type = .comic
-            case "webManga":
-                self.type = .webManga
-            default:
-                XMLCorrupt()
-            }
-            if let readingMode = elementValue(ofElementWithName: "readingMode") as? String {
+
+        if let readingMode = elementValue(ofElementWithName: "readingMode", ofElementWithType: "string", ofElementWithRoot: rootElement) as? String {
                 switch readingMode {
                 case "leftToRight":
                     self.readingMode = .leftToRight
@@ -205,30 +230,20 @@ class LocalPluginBook: Book {
                     XMLCorrupt()
                 }
             }
-            let chaptersElements = rootElement.elements(forName: "chapters")
+            let chaptersElements = rootElement.elements(forName: "array")
             if (chaptersElements.count == 1) {
                 let chaptersElement = chaptersElements[0]
-                let chapters = chaptersElement.elements(forName: "chapter")
+                let chapters = chaptersElement.elements(forName: "dict")
                 self.chapters = [Chapter]()
                 for chapter in chapters {
-                    let titleElements = chapter.elements(forName: "title")
-                    if (titleElements.count == 1) {
-                        let titleElement = titleElements[0]
-                        if let title = titleElement.stringValue {
-                            let pageIndexElements = titleElement.elements(forName: "pageIndex")
-                            if (pageIndexElements.count == 1) {
-                                let pageIndexElement = pageIndexElements[0]
-                                if let pageIndex = pageIndexElement.stringValue {
-                                    if let pageIndexInt = Int(pageIndex) {
-                                        self.chapters!.append(Chapter(title: title, pageIndex: pageIndexInt))
-                                    }
-                                }
-                            }
+                    if let title = elementValue(ofElementWithName: "title", ofElementWithType: "string", ofElementWithRoot: chapter) as? String{
+                        if let pageIndex = elementValue(ofElementWithName: "pageIndex", ofElementWithType: "int", ofElementWithRoot: chapter) as? Int{
+                            self.chapters!.append(Chapter(title: title, pageIndex: pageIndex))
                         }
                     }
                 }
             }
-        }
+        
     }
     
     func serialize() throws {
@@ -240,7 +255,7 @@ class LocalPluginBook: Book {
             throw LocalPlugin.SerializationError.missingDirectory
         }
         
-        let xmlDocument: XMLDocument = XMLDocument(rootElement: XMLElement(name: "book"))
+        let xmlDocument: XMLDocument = XMLDocument(rootElement: XMLElement(name: "dict"))
         let xmlLocation: URL = self.url.appendingPathComponent("BookData.xml")
         guard let localRootElement = xmlDocument.rootElement() else {
             throw LocalPlugin.SerializationError.xmlSerializationError
@@ -249,13 +264,33 @@ class LocalPluginBook: Book {
         // XML version
         xmlDocument.version = "1.0"
         
-        localRootElement.addChild(XMLNode.element(withName: "title", stringValue: title) as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "author", stringValue: author ?? "") as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "genre", stringValue: genre ?? "") as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "seriesName", stringValue: seriesName ?? "") as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "bookmark", stringValue: String(bookmark)) as! XMLNode)
-        localRootElement.addChild(XMLNode.element(withName: "currentPage", stringValue: String(currentPage)) as! XMLNode)
+        let titleNode = XMLElement.init(name: "string", stringValue: title)
+        titleNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "title") as! XMLNode)
+        let authorNode = XMLElement.init(name: "string", stringValue: author ?? "")
+        authorNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "author")as! XMLNode)
+        let genreNode = XMLElement.init(name: "string", stringValue: genre ?? "")
+        genreNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "genre")as! XMLNode)
+        
+        let sNameNode = XMLElement.init(name: "string", stringValue: seriesName ?? "")
+        sNameNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "series name") as! XMLNode)
+        let bookMarkNode = XMLElement.init(name: "int", stringValue: String(bookmark))
+        bookMarkNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "bookmark") as! XMLNode)
+        let cPageNode = XMLElement.init(name: "int", stringValue: String(currentPage))
+        cPageNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "current page") as! XMLNode)
+        
+        
+        
+        
+        localRootElement.addChild(titleNode as XMLNode)
+        localRootElement.addChild(authorNode as XMLNode)
+        localRootElement.addChild(genreNode as XMLNode)
+        localRootElement.addChild(sNameNode as XMLNode)
+        localRootElement.addChild(bookMarkNode as XMLNode)
+        localRootElement.addChild(cPageNode as XMLNode)
         if let rating = rating {
+
+            let ratingNode = XMLElement.init(name: "Double", stringValue: String(rating))
+            ratingNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "rating") as! XMLNode)
             localRootElement.addChild(XMLNode.element(withName: "rating", stringValue: String(rating)) as! XMLNode)
         }
         
@@ -263,12 +298,18 @@ class LocalPluginBook: Book {
         var chapterNodes = [XMLNode]()
         if let chapters = chapters {
             for chapter in chapters {
-                let chapterTitle = XMLNode.element(withName: "title", stringValue: chapter.title)
-                let chapterPageIndex = XMLNode.element(withName: "pageIndex", stringValue: String(chapter.pageIndex))
-                chapterNodes.append(XMLNode.element(withName: "chapter", children: [chapterTitle as! XMLNode, chapterPageIndex as! XMLNode], attributes: nil) as! XMLNode)
+                let chapterTitle = XMLNode.element(withName: "string", stringValue: chapter.title) as! XMLElement
+                chapterTitle.addAttribute(XMLNode.attribute(withName: "name", stringValue: "title") as! XMLNode)
+                let chapterPageIndex = XMLNode.element(withName: "int", stringValue: String(chapter.pageIndex)) as! XMLElement
+                chapterPageIndex.addAttribute(XMLNode.attribute(withName: "name", stringValue: "pageIndex") as! XMLNode)
+                let chapterNode = XMLNode.element(withName: "dict", children: [chapterTitle as! XMLNode, chapterPageIndex as! XMLNode], attributes: nil) as! XMLElement
+                chapterNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "chapter") as! XMLNode)
+                chapterNodes.append(chapterNode as XMLNode)
             }
         }
-        localRootElement.addChild(XMLNode.element(withName: "chapters", children: chapterNodes, attributes: nil) as! XMLNode)
+        let chapters = XMLNode.element(withName: "array", children: chapterNodes, attributes: nil) as! XMLElement
+        chapters.addAttribute(XMLNode.attribute(withName: "name", stringValue: "chapters") as! XMLNode)
+        localRootElement.addChild(chapters as XMLNode)
         
         // bookType
         let bookType: String
@@ -280,7 +321,9 @@ class LocalPluginBook: Book {
         case .webManga:
             bookType = "webManga"
         }
-        localRootElement.addChild(XMLNode.element(withName: "type", stringValue: bookType) as! XMLNode)
+        let typeNode = XMLNode.element(withName: "string", stringValue: bookType) as! XMLElement
+        typeNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "type") as! XMLNode)
+        localRootElement.addChild(typeNode)
         
         // lastUpdated
         if let lastUpdated = lastUpdated {
@@ -288,9 +331,13 @@ class LocalPluginBook: Book {
             RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
             RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssv"
             RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-            localRootElement.addChild(XMLNode.element(withName: "lastUpdated", stringValue: RFC3339DateFormatter.string(from: lastUpdated)) as! XMLNode)
+            let lastupdateNode = XMLElement.init(name: "date", stringValue: RFC3339DateFormatter.string(from: lastUpdated))
+            lastupdateNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "lastUpadate") as! XMLNode)
+            localRootElement.addChild(lastupdateNode as XMLNode)
         } else {
-            localRootElement.addChild(XMLNode.element(withName: "lastUpdated", stringValue: "Unknown Release Date") as! XMLNode)
+            let lastupdateNode = XMLElement.init(name: "date", stringValue: "Unknown Release")
+            lastupdateNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "lastUpadate") as! XMLNode)
+            localRootElement.addChild(lastupdateNode as XMLNode)
         }
         
         let xmlDataString = xmlDocument.xmlData(options:[.nodePrettyPrint, .nodeCompactEmptyElement])

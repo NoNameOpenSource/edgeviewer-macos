@@ -110,22 +110,37 @@ final class LocalPluginXMLStorer { // pseudo-static class
         // Set up XMLDocument element with new values
         
         // root element
-        let xmlDoc = XMLDocument(rootElement: XMLElement(name: "book"))
+        let xmlDoc = XMLDocument(rootElement: XMLElement(name: "dict"))
+        let title = XMLElement.init(name: "string", stringValue: book.title)
+        title.addAttribute(XMLNode.attribute(withName: "name", stringValue: "title") as! XMLNode)
+        let author = XMLElement.init(name: "string", stringValue: book.author)
+        author.addAttribute(XMLNode.attribute(withName: "name", stringValue: "author")as! XMLNode)
+        let genre = XMLElement.init(name: "string", stringValue: book.genre)
+        genre.addAttribute(XMLNode.attribute(withName: "name", stringValue: "genre")as! XMLNode)
         
-        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "title", stringValue: book.title) as! XMLNode)
-        xmlDoc.rootElement()?.addChild(safeElement(withName: "author", withProperty: book.author))
-        xmlDoc.rootElement()?.addChild(safeElement(withName: "genre", withProperty: book.genre))
+        
+        xmlDoc.rootElement()?.addChild(title)
+        
+        xmlDoc.rootElement()?.addChild(author)
+        xmlDoc.rootElement()?.addChild(genre)
         
         // chapters
         var chapters = [XMLNode]()
         if book.chapters != nil {
             for chapter in book.chapters! {
-                let chapterTitle = XMLNode.element(withName: "title", stringValue: chapter.title)
-                let chapterPageIndex = XMLNode.element(withName: "pageIndex", stringValue: String(chapter.pageIndex))
-                chapters.append(XMLNode.element(withName: "chapter", children: [chapterTitle as! XMLNode, chapterPageIndex as! XMLNode], attributes: nil) as! XMLNode)
+                let chapterTitle = XMLElement.init(name: "string", stringValue: chapter.title)
+                chapterTitle.addAttribute(XMLNode.attribute(withName: "name", stringValue: "title")as! XMLNode)
+                let chapterPageIndex = XMLElement.init(name: "int", stringValue: String(chapter.pageIndex))
+                chapterPageIndex.addAttribute(XMLNode.attribute(withName: "pageIndex", stringValue: String(chapter.pageIndex))as! XMLNode)
+                let chapterDic = XMLElement.init(name: "dict")
+                chapterDic.addAttribute(XMLNode.attribute(withName: "name", stringValue: "chapter")as! XMLNode)
+                chapterDic.addChild(chapterTitle)
+                chapterDic.addChild(chapterPageIndex)
+                
+                chapters.append(chapterDic as! XMLNode)
             }
         }
-        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "chapters", children: chapters, attributes: nil) as! XMLNode)
+        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "array", children: chapters, attributes: XMLNode.attribute(withName: "name", stringValue: "chapters") as? [XMLNode]) as! XMLNode)
         
         // bookType
         let bookType: String
@@ -137,7 +152,9 @@ final class LocalPluginXMLStorer { // pseudo-static class
         case .webManga:
             bookType = "webManga"
         }
-        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "type", stringValue: bookType) as! XMLNode)
+        let bookTypeNode = XMLElement.init(name: "string", stringValue: bookType)
+        bookTypeNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "type") as! XMLNode)
+        xmlDoc.rootElement()?.addChild(bookTypeNode as XMLNode)
         
         if let readingMode = book.readingMode {
             let readingModeString: String
@@ -147,7 +164,9 @@ final class LocalPluginXMLStorer { // pseudo-static class
             case .rightToLeft:
                 readingModeString = "rightToLeft"
             }
-            xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "readingMode", stringValue: readingModeString) as! XMLNode)
+            let readingModeNode = XMLElement.init(name: "string", stringValue: readingModeString)
+            readingModeNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "reading mode") as! XMLNode)
+            xmlDoc.rootElement()?.addChild(readingModeNode as XMLNode)
         }
         
         xmlDoc.rootElement()?.addChild(safeElement(withName: "series", withProperty: book.seriesID))
@@ -166,14 +185,24 @@ final class LocalPluginXMLStorer { // pseudo-static class
             print("date nil")
             lastUpdated = "Unknown Release Date"
         }
-        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "lastUpdated", stringValue: lastUpdated) as! XMLNode)
-        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "bookmark", stringValue: String(book.bookmark)) as! XMLNode)
-        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "currentPage", stringValue: String(book.currentPage)) as! XMLNode)
-        xmlDoc.rootElement()?.addChild(XMLNode.element(withName: "numberOfPages", stringValue: String(book.numberOfPages)) as! XMLNode)
+        let lastupdateNode = XMLElement.init(name: "date", stringValue: lastUpdated)
+        lastupdateNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "lastUpadate") as! XMLNode)
+        let bookMarkNode = XMLElement.init(name: "int", stringValue: String(book.bookmark))
+        bookMarkNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "bookmark") as! XMLNode)
+        let cPageNode = XMLElement.init(name: "int", stringValue: String(book.currentPage))
+        cPageNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "current page") as! XMLNode)
+        let numOfBookNode = XMLElement.init(name: "int", stringValue: String(book.numberOfPages))
+        numOfBookNode.addAttribute(XMLNode.attribute(withName: "name", stringValue: "number of pages") as! XMLNode)
+        
+        
+        xmlDoc.rootElement()?.addChild(lastupdateNode as XMLNode)
+        xmlDoc.rootElement()?.addChild(bookMarkNode as XMLNode)
+        xmlDoc.rootElement()?.addChild(cPageNode as XMLNode)
+        xmlDoc.rootElement()?.addChild(numOfBookNode as XMLNode)
 
         // XML version
         xmlDoc.version = "1.0"
-        
+        print(xmlDoc)
         // return the XMLDocument that has been assembled by the preceding code in this function
         return xmlDoc.xmlData(options:[.nodePrettyPrint, .nodeCompactEmptyElement])
     }

@@ -30,10 +30,11 @@
 		B1A8944B2073B58C003A67AB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A894492073B58C003A67AB /* ContentViewController.swift */; };
 		B1D8A4AB20C8281B00F4683A /* ButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A4A720C8281B00F4683A /* ButtonItem.xib */; };
 		B1D8A4B520C99CCA00F4683A /* ButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */; };
-		B1E409E020E1AB6F00F65DE8 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E409DF20E1AB6F00F65DE8 /* Zip.framework */; };
-		B1E409E220E1AB6F00F65DE8 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1E409DF20E1AB6F00F65DE8 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B1E409E420E1AB8A00F65DE8 /* Zip.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */; };
+		B1EF4BD722BAF6F600B1F726 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EF4BD222BAF6B900B1F726 /* Zip.framework */; };
+		B1EF4BD822BAF6F600B1F726 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1EF4BD222BAF6B900B1F726 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B1EF4BDC22BB0B7800B1F726 /* LocalPluginXMLtoDictParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EF4BDB22BB0B7800B1F726 /* LocalPluginXMLtoDictParser.swift */; };
 		B1F5435E21913AEA001D1104 /* ImportFailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */; };
+		B1FEB43A22DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEB43922DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift */; };
 		E002F0FF2081ED0E00AACCC0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */; };
 		E002F10620886E7E00AACCC0 /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */; };
 		E002F10720886E7E00AACCC0 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */; };
@@ -77,6 +78,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B1EF4BCD22BAF6B900B1F726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 347E3A741C1DFFB500A11FD3;
+			remoteInfo = Zip;
+		};
+		B1EF4BCF22BAF6B900B1F726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 347E3A7E1C1DFFB500A11FD3;
+			remoteInfo = ZipTests;
+		};
+		B1EF4BD122BAF6B900B1F726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 343F50FF1C8DAEEC0028C434;
+			remoteInfo = "Zip OSX";
+		};
+		B1EF4BD322BAF6B900B1F726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 343F51081C8DAEEC0028C434;
+			remoteInfo = "Zip OSXTests";
+		};
+		B1EF4BD522BAF6B900B1F726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 342545B51CE525B200336074;
+			remoteInfo = "Zip tvOS";
+		};
+		B1EF4BD922BAF6F600B1F726 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 343F50FE1C8DAEEC0028C434;
+			remoteInfo = "Zip OSX";
+		};
 		E08E864A20731A7A0082723B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E08E862F20731A7A0082723B /* Project object */;
@@ -100,7 +143,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B1E409E220E1AB6F00F65DE8 /* Zip.framework in Embed Frameworks */,
+				B1EF4BD822BAF6F600B1F726 /* Zip.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,7 +154,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				B1E409E420E1AB8A00F65DE8 /* Zip.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,9 +181,11 @@
 		B1A894492073B58C003A67AB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		B1D8A4A720C8281B00F4683A /* ButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonItem.xib; sourceTree = "<group>"; };
 		B1D8A4B420C99CCA00F4683A /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
-		B1E409DF20E1AB6F00F65DE8 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/Mac/Zip.framework; sourceTree = "<group>"; };
-		B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Zip.framework.dSYM; path = Carthage/Build/Mac/Zip.framework.dSYM; sourceTree = "<group>"; };
+		B1EF4BC322BAF66C00B1F726 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/Mac/ZipArchive.framework; sourceTree = "<group>"; };
+		B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Zip.xcodeproj; path = Carthage/Checkouts/Zip/Zip.xcodeproj; sourceTree = "<group>"; };
+		B1EF4BDB22BB0B7800B1F726 /* LocalPluginXMLtoDictParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginXMLtoDictParser.swift; sourceTree = "<group>"; };
 		B1F5435D21913AEA001D1104 /* ImportFailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportFailDetailViewController.swift; sourceTree = "<group>"; };
+		B1FEB43922DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPluginDictToXMLParser.swift; sourceTree = "<group>"; };
 		E002F0FE2081ED0E00AACCC0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E002F10420886E7E00AACCC0 /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
 		E002F10520886E7E00AACCC0 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
@@ -196,7 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1E409E020E1AB6F00F65DE8 /* Zip.framework in Frameworks */,
+				B1EF4BD722BAF6F600B1F726 /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +326,27 @@
 			path = ButtonItem;
 			sourceTree = "<group>";
 		};
+		B1EF4BC222BAF66C00B1F726 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */,
+				B1EF4BC322BAF66C00B1F726 /* ZipArchive.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1EF4BC622BAF6B900B1F726 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1EF4BCE22BAF6B900B1F726 /* Zip.framework */,
+				B1EF4BD022BAF6B900B1F726 /* ZipTests.xctest */,
+				B1EF4BD222BAF6B900B1F726 /* Zip.framework */,
+				B1EF4BD422BAF6B900B1F726 /* Zip OSXTests.xctest */,
+				B1EF4BD622BAF6B900B1F726 /* Zip.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B1F5435C21913AEA001D1104 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +378,8 @@
 			children = (
 				99346663217EC57A006460A6 /* LocalPluginBook.swift */,
 				995281A7216EC5AB00FE65C5 /* LocalPluginSeriesXMLParser.swift */,
+				B1EF4BDB22BB0B7800B1F726 /* LocalPluginXMLtoDictParser.swift */,
+				B1FEB43922DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift */,
 				1C95803B20B91A0900D3AC9D /* LocalPluginXMLStorer.swift */,
 				1C18FAD020C364620073886B /* LocalPlugin.swift */,
 				E016E39B2185DF9B00D14EEA /* LocalPluginSeries.swift */,
@@ -369,13 +436,12 @@
 		E08E862E20731A7A0082723B = {
 			isa = PBXGroup;
 			children = (
-				B1E409E320E1AB8A00F65DE8 /* Zip.framework.dSYM */,
-				B1E409DF20E1AB6F00F65DE8 /* Zip.framework */,
 				1C92690220960E0500ADF847 /* LocalLibrary.xml */,
 				E08E863920731A7A0082723B /* EdgeViewer */,
 				E08E864C20731A7A0082723B /* EdgeViewerTests */,
 				E08E865720731A7A0082723B /* EdgeViewerUITests */,
 				E08E863820731A7A0082723B /* Products */,
+				B1EF4BC222BAF66C00B1F726 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -454,6 +520,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B1EF4BDA22BAF6F600B1F726 /* PBXTargetDependency */,
 			);
 			name = EdgeViewer;
 			productName = EdgeViewer;
@@ -539,6 +606,12 @@
 			mainGroup = E08E862E20731A7A0082723B;
 			productRefGroup = E08E863820731A7A0082723B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B1EF4BC622BAF6B900B1F726 /* Products */;
+					ProjectRef = B1EF4BC522BAF6B900B1F726 /* Zip.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E08E863620731A7A0082723B /* EdgeViewer */,
@@ -547,6 +620,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B1EF4BCE22BAF6B900B1F726 /* Zip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Zip.framework;
+			remoteRef = B1EF4BCD22BAF6B900B1F726 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B1EF4BD022BAF6B900B1F726 /* ZipTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ZipTests.xctest;
+			remoteRef = B1EF4BCF22BAF6B900B1F726 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B1EF4BD222BAF6B900B1F726 /* Zip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Zip.framework;
+			remoteRef = B1EF4BD122BAF6B900B1F726 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B1EF4BD422BAF6B900B1F726 /* Zip OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Zip OSXTests.xctest";
+			remoteRef = B1EF4BD322BAF6B900B1F726 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B1EF4BD622BAF6B900B1F726 /* Zip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Zip.framework;
+			remoteRef = B1EF4BD522BAF6B900B1F726 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E08E863520731A7A0082723B /* Resources */ = {
@@ -597,6 +708,7 @@
 				99E3551021599F7C001E12EC /* (null) in Sources */,
 				E016E39A2180DBB800D14EEA /* Chapter.swift in Sources */,
 				99346664217EC57A006460A6 /* LocalPluginBook.swift in Sources */,
+				B1FEB43A22DD2130009AF7C8 /* LocalPluginDictToXMLParser.swift in Sources */,
 				1C1A1CBA20843CD1000074DC /* ChapterViewItem.swift in Sources */,
 				1C7BFFF6207C282600B61444 /* RatingControl.swift in Sources */,
 				E002F12C208AA77700AACCC0 /* DoublePageViewController.swift in Sources */,
@@ -628,6 +740,7 @@
 				E01ED2B02093EBB700CC805F /* Plugin.swift in Sources */,
 				E016E394217F967B00D14EEA /* Acknowledge.swift in Sources */,
 				E01ED2A92093266600CC805F /* Manga.swift in Sources */,
+				B1EF4BDC22BB0B7800B1F726 /* LocalPluginXMLtoDictParser.swift in Sources */,
 				E016E39C2185DF9B00D14EEA /* LocalPluginSeries.swift in Sources */,
 				8AB61A8E20DAFDDC00BFEC4A /* ProjectWindow.swift in Sources */,
 				E007FEEB226266C6001E440E /* WebMangaViewController.swift in Sources */,
@@ -661,6 +774,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B1EF4BDA22BAF6F600B1F726 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Zip OSX";
+			targetProxy = B1EF4BD922BAF6F600B1F726 /* PBXContainerItemProxy */;
+		};
 		E08E864B20731A7A0082723B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E08E863620731A7A0082723B /* EdgeViewer */;
@@ -798,6 +916,7 @@
 		E08E865E20731A7A0082723B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -819,6 +938,7 @@
 		E08E865F20731A7A0082723B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
